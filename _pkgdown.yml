@@ -1,0 +1,24 @@
+url: https://packages.tesselle.org/chronos
+
+template:
+  package: tekton
+  opengraph:
+    twitter:
+      creator: "@nfrerebeau"
+
+reference:
+- title: Radiocarbon tools
+  contents:
+  - has_concept("radiocarbon tools")
+- title: Statistics
+  contents:
+  - has_concept("statistics")
+- title: Time scales
+  contents:
+  - has_concept("time scales")
+- title: Mutators
+  contents:
+  - has_concept("mutators")
+- title: Datasets
+  contents:
+  - has_concept("datasets")

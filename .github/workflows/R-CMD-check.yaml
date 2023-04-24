@@ -1,0 +1,12 @@
+# https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    uses: tesselle/.github/.github/workflows/R-CMD-check.yaml@main

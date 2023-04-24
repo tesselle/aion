@@ -1,0 +1,12 @@
+# https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: test-coverage
+
+jobs:
+  test-coverage:
+    uses: tesselle/.github/.github/workflows/test-coverage.yaml@main
