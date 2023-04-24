@@ -6,6 +6,11 @@
 #'   **License:** \tab GPL-3 \cr
 #'  }
 #'
+#' @section Package options:
+#'  `chronos` uses the following [options()] to configure behaviour:
+#'  * `chronos.precision`: an [`integer`] indicating the number of decimal
+#'    places (defaults to \eqn{0}).
+#'
 #' @author
 #'  **Full list of authors and contributors** (alphabetic order):
 #'
@@ -29,3 +34,6 @@
 #' @docType package
 #' @keywords internal
 "_PACKAGE"
+
+#' @importFrom methods as new setGeneric setMethod setValidity .valueClassTest
+NULL

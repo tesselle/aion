@@ -17,6 +17,15 @@ What the package does (one paragraph).
 \strong{License:} \tab GPL-3 \cr
 }
 }
+\section{Package options}{
+
+\code{chronos} uses the following \code{\link[=options]{options()}} to configure behaviour:
+\itemize{
+\item \code{chronos.precision}: an \code{\link{integer}} indicating the number of decimal
+places (defaults to \eqn{0}).
+}
+}
+
 \seealso{
 Useful links:
 \itemize{
