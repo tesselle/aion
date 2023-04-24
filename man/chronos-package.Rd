@@ -5,7 +5,7 @@
 \alias{chronos-package}
 \alias{_PACKAGE}
 \alias{chronos}
-\title{chronos: What the Package Does (One Line, Title Case)}
+\title{chronos: Quantitative Chronology and Temporal Reasoning}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
