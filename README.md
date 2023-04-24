@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# chronos
+# chronos <img width=120px src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
 
