@@ -39,6 +39,9 @@ The following time scales are available:
 \item{\code{b2k}}{Years before 2000.}
 }
 }
+\note{
+Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
+}
 \examples{
 ## Define time scales
 BP <- era("BP")

@@ -43,26 +43,6 @@ NULL
 NULL
 
 # Time Scales ==================================================================
-#' Calendar Converter
-#'
-#' Interconverts dates in a variety of calendars.
-#' @param from A [`TimeScale-class`] object describing the source era.
-#' @param to A [`TimeScale-class`] object describing the target era.
-#' @param ... Currently not used.
-#' @return
-#'  A [`function`] that when called with a single numeric argument (years)
-#'  converts years from one calendar to another.
-#' @example inst/examples/ex-era.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family time scales
-#' @aliases convert-method
-#' @keywords internal
-setGeneric(
-  name = "convert",
-  def = function(from, to, ...) standardGeneric("convert")
-)
-
 #' Time Scales
 #'
 #' @param object A [`character`] string specifying the time scale (see details).
@@ -79,6 +59,8 @@ setGeneric(
 #'  }
 #' @return
 #'  A [`TimeScale-class`] object.
+#' @note
+#'  Inspired by [era::era()] by Joe Roe.
 #' @example inst/examples/ex-era.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -88,6 +70,28 @@ setGeneric(
 setGeneric(
   name = "era",
   def = function(object, ...) standardGeneric("era")
+)
+
+#' Calendar Converter
+#'
+#' Interconverts dates in a variety of calendars.
+#' @param from A [`TimeScale-class`] object describing the source era.
+#' @param to A [`TimeScale-class`] object describing the target era.
+#' @param ... Currently not used.
+#' @return
+#'  A [`function`] that when called with a single numeric argument (years)
+#'  converts years from one calendar to another.
+#' @note
+#'  Adapted from [era::yr_transform()] by Joe Roe.
+#' @example inst/examples/ex-era.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time scales
+#' @aliases convert-method
+#' @keywords internal
+setGeneric(
+  name = "convert",
+  def = function(from, to, ...) standardGeneric("convert")
 )
 
 #' Change the Time Scale

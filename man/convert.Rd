@@ -28,6 +28,9 @@ converts years from one calendar to another.
 \description{
 Interconverts dates in a variety of calendars.
 }
+\note{
+Adapted from \code{\link[era:yr_transform]{era::yr_transform()}} by Joe Roe.
+}
 \examples{
 ## Define time scales
 BP <- era("BP")
