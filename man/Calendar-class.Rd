@@ -19,6 +19,8 @@ solar days.}
 
 \seealso{
 Other classes: 
+\code{\link{CalibratedAges-class}},
+\code{\link{CalibratedSPD-class}},
 \code{\link{TimeScale-class}}
 }
 \author{

@@ -1,4 +1,9 @@
-## code to prepare `DATASET` dataset goes here
+# External data ================================================================
+ksarakil <- read.table(file = "data-raw/ksarakil.csv", header = TRUE,
+                       sep = ",", dec = ".")
+usethis::use_data(ksarakil, overwrite = TRUE)
+
+# Internal data ================================================================
 .unit <- list(
   gregorian = list(unit = "Gregorian", length = 365.2425),
   julian = list(unit = "Julian", length = 365.25)
@@ -46,7 +51,7 @@
   ),
   b2k = list(
     label = "b2k",
-    name = "years before 2000",
+    name = "Before 2000",
     epoch = 2000,
     scale = 1L,
     direction = -1L,

@@ -4,10 +4,13 @@
 \name{convert}
 \alias{convert}
 \alias{convert-method}
+\alias{convert,character,character-method}
 \alias{convert,TimeScale,TimeScale-method}
 \title{Calendar Converter}
 \usage{
 convert(from, to, ...)
+
+\S4method{convert}{character,character}(from, to)
 
 \S4method{convert}{TimeScale,TimeScale}(from, to)
 }
@@ -40,7 +43,9 @@ AD_to_BP(1950)
 }
 \seealso{
 Other time scales: 
-\code{\link{era}()}
+\code{\link{era}()},
+\code{\link{project}()},
+\code{\link{years}()}
 }
 \author{
 N. Frerebeau

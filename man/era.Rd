@@ -5,14 +5,20 @@
 \alias{era}
 \alias{era-method}
 \alias{era,character-method}
+\alias{era,CalibratedAges-method}
+\alias{era,CalibratedSPD-method}
 \title{Time Scales}
 \usage{
-era(x, ...)
+era(object, ...)
 
-\S4method{era}{character}(x)
+\S4method{era}{character}(object)
+
+\S4method{era}{CalibratedAges}(object)
+
+\S4method{era}{CalibratedSPD}(object)
 }
 \arguments{
-\item{x}{A \code{\link{character}} string specifying the time scale (see details).}
+\item{object}{A \code{\link{character}} string specifying the time scale (see details).}
 
 \item{...}{Currently not used.}
 }
@@ -48,7 +54,9 @@ AD_to_BP(1950)
 }
 \seealso{
 Other time scales: 
-\code{\link{convert}()}
+\code{\link{convert}()},
+\code{\link{project}()},
+\code{\link{years}()}
 }
 \author{
 N. Frerebeau

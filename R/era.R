@@ -7,10 +7,10 @@ NULL
 #' @aliases era,character-method
 setMethod(
   f = "era",
-  signature = c(x = "character"),
-  definition = function(x) {
+  signature = c(object = "character"),
+  definition = function(object) {
     ## Validation
-    x <- match.arg(x, names(.era), several.ok = FALSE)
+    x <- match.arg(object, names(.era), several.ok = FALSE)
     x <- .era[[x]]
     u <- match.arg(x$unit, names(.unit), several.ok = FALSE)
     u <- .unit[[u]]
@@ -24,6 +24,73 @@ setMethod(
       scale = x$scale,
       direction = x$direction
     )
+  }
+)
+
+#' @export
+#' @rdname era
+#' @aliases era,CalibratedAges-method
+setMethod(
+  f = "era",
+  signature = c(object = "CalibratedAges"),
+  definition = function(object) {
+    object@calendar
+  }
+)
+
+#' @export
+#' @rdname era
+#' @aliases era,CalibratedSPD-method
+setMethod(
+  f = "era",
+  signature = c(object = "CalibratedSPD"),
+  definition = function(object) {
+    object@calendar
+  }
+)
+
+# Grid =========================================================================
+#' @export
+#' @rdname years
+#' @aliases years,CalibratedAges-method
+setMethod(
+  f = "years",
+  signature = "CalibratedAges",
+  definition = function(object) {
+    direction <- era(object)@direction
+    seq(
+      from = object@start,
+      by = object@resolution * direction,
+      length.out = ncol(object)
+    )
+  }
+)
+
+#' @export
+#' @rdname years
+#' @aliases years,CalibratedSPD-method
+setMethod(
+  f = "years",
+  signature = "CalibratedSPD",
+  definition = function(object) {
+    direction <- era(object)@direction
+    seq(
+      from = object@start,
+      by = object@resolution * direction,
+      length.out = length(object)
+    )
+  }
+)
+
+# Convert ======================================================================
+#' @export
+#' @rdname convert
+#' @aliases convert,character,character-method
+setMethod(
+  f = "convert",
+  signature = c(from = "character", to = "character"),
+  definition = function(from, to) {
+    methods::callGeneric(from = era(from), to = era(to))
   }
 )
 
@@ -65,5 +132,34 @@ setMethod(
     }
 
     return(fun)
+  }
+)
+
+# Project ======================================================================
+#' @export
+#' @rdname project
+#' @aliases project,CalibratedAges,character-method
+setMethod(
+  f = "project",
+  signature = c(object = "CalibratedAges", target = "character"),
+  definition = function(object, target) {
+    origin <- era(object)
+    target <- era(target)
+    fun <- convert(origin, target)
+    methods::initialize(object, object@.Data, start = fun(object@start), calendar = target)
+  }
+)
+
+#' @export
+#' @rdname project
+#' @aliases project,CalibratedSPD,character-method
+setMethod(
+  f = "project",
+  signature = c(object = "CalibratedSPD", target = "character"),
+  definition = function(object, target) {
+    origin <- era(object)
+    target <- era(target)
+    fun <- convert(origin, target)
+    methods::initialize(object, start = fun(object@start), calendar = target)
   }
 )

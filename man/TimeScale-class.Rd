@@ -31,7 +31,9 @@ This class inherits from \code{\linkS4class{Calendar}}.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}}
+\code{\link{Calendar-class}},
+\code{\link{CalibratedAges-class}},
+\code{\link{CalibratedSPD-class}}
 }
 \author{
 N. Frerebeau

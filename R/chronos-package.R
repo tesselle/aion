@@ -35,5 +35,6 @@
 #' @keywords internal
 "_PACKAGE"
 
+#' @import arkhe
 #' @importFrom methods as new setGeneric setMethod setValidity .valueClassTest
 NULL
