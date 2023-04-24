@@ -2,11 +2,21 @@ Package: chronos
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(person(given = "Nicolas",
+             family = "Frerebeau",
+             role = c("aut", "cre"),
+             email = "nicolas.frerebeau@u-bordeaux-montaigne.fr",
+             comment = c(ORCID = "0000-0001-5759-4944", 
+                         affiliation = "Université Bordeaux Montaigne")))
+Maintainer: Nicolas Frerebeau
+    <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: GPL (>= 3)
 Encoding: UTF-8
+URL: https://packages.tesselle.org/chronos/,
+    https://github.com/tesselle/chronos
+BugReports: https://github.com/tesselle/chronos/issues
+Depends: 
+    R (>= 3.3)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
