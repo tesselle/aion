@@ -11,19 +11,24 @@ An S4 class to represent a time scale.
 \section{Slots}{
 
 \describe{
-\item{\code{era_label}}{A \code{\link{character}} string giving the abbreviated label of the
-time scale.}
+\item{\code{.Data}}{A \code{numeric} \code{\link{matrix}} giving the the observed time-series
+values.}
 
-\item{\code{era_name}}{A \code{\link{character}} string giving the name of the time scale.}
+\item{\code{era_label}}{A \code{\link{character}} string specifying the abbreviated label of
+the time scale.}
 
-\item{\code{era_epoch}}{A \code{\link{numeric}} value giving the epoch year from which years
-are counted (in Gregorian astronomical years).}
+\item{\code{era_name}}{A \code{\link{character}} string specifying the name of the time scale.}
+
+\item{\code{era_epoch}}{A \code{\link{numeric}} value specifying the epoch year from which
+years are counted (in Gregorian astronomical years).}
 
 \item{\code{era_scale}}{An \code{\link{integer}} specifying the number of years represented by
 one unit. It should be a power of 10 (i.e. 1000 means ka).}
 
 \item{\code{era_direction}}{An \code{\link{integer}} specifying if years are counted backwards
 (\code{-1}) or forwards (\code{1}) from \code{epoch}.}
+
+\item{\code{era_unit}}{A \code{\link{character}} string specifying the name of the year unit.}
 
 \item{\code{era_days}}{A \code{\link{numeric}} vector giving the average length of the year in
 solar days.}
