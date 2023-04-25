@@ -1,5 +1,5 @@
 Package: chronos
-Title: Quantitative Chronology and Temporal Reasoning
+Title: Archaeological Time Series and Temporal Reasoning
 Version: 0.0.0.9000
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),

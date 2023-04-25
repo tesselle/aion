@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-A toolkit for temporal reasoning. **chronos** provides functions for radiocarbon calibration and chronological analysis. It also includes tools to describe and analyze finite time intervals.
+A toolkit for temporal reasoning. **chronos** provides functions for archaeological time series analysis. It also includes tools to describe and analyze finite time intervals.
 
 ## Installation
 
@@ -49,25 +49,6 @@ remotes::install_github("tesselle/chronos")
 ```{r packages-load}
 ## Load packages
 library(chronos)
-```
-
-```{r calibration, fig.width=7, fig.height=6}
-## Data from Bosch et al. 2015
-data("ksarakil")
-
-## Calibrate multiple dates
-cal <- c14_calibrate(
-  ages = ksarakil$date,
-  errors = ksarakil$error,
-  names = ksarakil$code,
-  curves = "marine13",
-  reservoir_offsets = 53,
-  reservoir_errors = 43,
-  from = 50000, to = 0
-)
-
-## Plot
-plot(cal, panel.first = graphics::grid())
 ```
 
 ## Contributing
