@@ -7,7 +7,7 @@ NULL
 median.CalibratedAges <- function(x, na.rm = FALSE, ...) {
   i <- apply(
     X = x,
-    MARGIN = 1,
+    MARGIN = 2,
     FUN = function(x, na.rm) {
       if (na.rm) x <- x[!is.na(x)]
       z <- cumsum(x)
@@ -15,7 +15,7 @@ median.CalibratedAges <- function(x, na.rm = FALSE, ...) {
     },
     na.rm = na.rm
   )
-  years <- years(x)
+  years <- time(x)
   years[i]
 }
 
@@ -29,7 +29,7 @@ setMethod("median", c(x = "CalibratedAges"), median.CalibratedAges)
 mean.CalibratedAges <- function(x, na.rm = FALSE, ...) {
   apply(
     X = x,
-    MARGIN = 1,
+    MARGIN = 2,
     FUN = function(w, x, na.rm) {
       if (na.rm) {
         i <- !is.na(w) & !is.na(x)
@@ -38,7 +38,7 @@ mean.CalibratedAges <- function(x, na.rm = FALSE, ...) {
       }
       stats::weighted.mean(x = x, w = w)
     },
-    x = years(x),
+    x = time(x),
     na.rm = na.rm
   )
 }

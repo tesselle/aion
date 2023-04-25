@@ -14,7 +14,6 @@
   level = 0.954,
   warnings = TRUE,
   decreasing = TRUE,
-  xlim = NULL,
   main = NULL,
   sub = NULL,
   ann = graphics::par("ann"),
@@ -53,8 +52,6 @@ interval be drawn?}
 
 \item{decreasing}{A \code{\link{logical}} scalar: should the sort order be decreasing?}
 
-\item{xlim}{A length-two \code{\link{numeric}} vector giving the x limits of the plot.}
-
 \item{main}{A \code{\link{character}} string giving a main title for the plot.}
 
 \item{sub}{A \code{\link{character}} string giving a subtitle for the plot.}
@@ -76,6 +73,8 @@ place but before the axes, title and box are added.}
 
 \item{...}{Other \link[graphics:par]{graphical parameters} may also be passed as
 arguments to this function.}
+
+\item{xlim}{A length-two \code{\link{numeric}} vector giving the x limits of the plot.}
 
 \item{ylim}{A length-two \code{\link{numeric}} vector giving the y limits of the plot.}
 }

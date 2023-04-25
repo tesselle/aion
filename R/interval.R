@@ -42,9 +42,9 @@ setMethod(
   definition = function(object, level = 0.954) {
     hpd <- apply(
       X = object,
-      MARGIN = 1,
+      MARGIN = 2,
       FUN = function(x, years, level) hpdi(years, density = x, level = level),
-      years = years(object),
+      years = time(object),
       level = level,
       simplify = FALSE
     )

@@ -6,9 +6,6 @@
 \alias{.CalibratedAges}
 \title{Calibrated Radiocarbon Ages}
 \arguments{
-\item{labels}{A \code{\link{character}} vector specifying the names of the ages (e.g.
-laboratory codes).}
-
 \item{ages}{A \code{\link{numeric}} vector giving the BP ages to be calibrated.}
 
 \item{errors}{A \code{\link{numeric}} vector giving the standard deviation of the ages
@@ -23,15 +20,7 @@ An S4 class to represent calibrated radiocarbon ages.
 \section{Slots}{
 
 \describe{
-\item{\code{start}}{A length-one \code{\link{numeric}} vector specifying the beginning of the
-calibrated time range.}
-
-\item{\code{resolution}}{A length-one \code{\link{numeric}} vector specifying the resolution of
-the calibrated time range.}
-
 \item{\code{F14C}}{A \code{\link{logical}} scalar:}
-
-\item{\code{calendar}}{A \code{\linkS4class{TimeScale}} object specfiying the time scale.}
 
 \item{\code{status}}{An \code{\link{integer}} vector specifying the calibration status.
 It must be one of "\code{0}" (OK), "\code{1}" (out of calibration range) or "\code{2}"
@@ -39,13 +28,13 @@ It must be one of "\code{0}" (OK), "\code{1}" (out of calibration range) or "\co
 }}
 
 \note{
-This class inherits from \code{\link{matrix}}.
+This class inherits from \code{\linkS4class{TimeSeries}}.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}},
 \code{\link{CalibratedSPD-class}},
-\code{\link{TimeScale-class}}
+\code{\link{TimeScale-class}},
+\code{\link{TimeSeries-class}}
 }
 \author{
 N. Frerebeau

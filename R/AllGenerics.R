@@ -64,12 +64,74 @@ NULL
 #' @example inst/examples/ex-era.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales
+#' @family time scales tools
 #' @aliases era-method
-#' @keywords internal
 setGeneric(
   name = "era",
-  def = function(object, ...) standardGeneric("era")
+  def = function(object, ...) standardGeneric("era"),
+  valueClass = "TimeScale"
+)
+
+#' Time Scales Mutators
+#'
+#' @param object A [`TimeScale-class`] object.
+#' @note
+#'  Inspired by [era::era()] by Joe Roe.
+#' @example inst/examples/ex-era.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time scales tools
+#' @name era_get
+#' @rdname era_get
+NULL
+
+#' @rdname era_get
+#' @aliases era_label-method
+setGeneric(
+  name = "era_label",
+  def = function(object) standardGeneric("era_label")
+)
+
+#' @rdname era_get
+#' @aliases era_name-method
+setGeneric(
+  name = "era_name",
+  def = function(object) standardGeneric("era_name")
+)
+
+#' @rdname era_get
+#' @aliases era_epoch-method
+setGeneric(
+  name = "era_epoch",
+  def = function(object) standardGeneric("era_epoch")
+)
+
+#' @rdname era_get
+#' @aliases era_scale-method
+setGeneric(
+  name = "era_scale",
+  def = function(object) standardGeneric("era_scale")
+)
+
+#' @rdname era_get
+#' @aliases era_direction-method
+setGeneric(
+  name = "era_direction",
+  def = function(object) standardGeneric("era_direction")
+)
+
+#' @rdname era_get
+#' @aliases era_unit-method
+setGeneric(
+  name = "era_unit",
+  def = function(object) standardGeneric("era_unit")
+)
+
+#' @rdname era_get
+#' @aliases era_days-method
+setGeneric(
+  name = "era_days",
+  def = function(object) standardGeneric("era_days")
 )
 
 #' Calendar Converter
@@ -83,10 +145,10 @@ setGeneric(
 #'  converts years from one calendar to another.
 #' @note
 #'  Adapted from [era::yr_transform()] by Joe Roe.
-#' @example inst/examples/ex-era.R
+#' @example inst/examples/ex-convert.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales
+#' @family time scales tools
 #' @aliases convert-method
 #' @keywords internal
 setGeneric(
@@ -94,37 +156,98 @@ setGeneric(
   def = function(from, to, ...) standardGeneric("convert")
 )
 
-#' Change the Time Scale
+# Time Series ==================================================================
+#' Create Time Series
 #'
-#' Change the time scale of an object.
-#' @param object An object describing the source era.
-#' @param target A [`character`] string specifying the target time scale
-#'  (see [era()]).
+#' @param object A [`numeric`] `vector` or `matrix` of the observed time-series
+#'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
+#'  [data.matrix()].
+#' @param scale A [`TimeScale-class`] object (see [era()]).
+#' @param start A length-one [`numeric`] vector specifying the year of the
+#'  first observation.
+#' @param increment A length-one [`numeric`] vector specifying the time
+#'  difference between two observations (resolution), in years.
+#' @param labels A [`character`] string specifying the names of the time
+#'  series.
 #' @param ... Currently not used.
 #' @return
-#'  An object.
+#'  A [`TimeSeries-class`] object.
+#' @example inst/examples/ex-time.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales
-#' @aliases project-method
+#' @family time series tools
+#' @aliases series-method
 setGeneric(
-  name = "project",
-  def = function(object, target, ...) standardGeneric("project")
+  name = "series",
+  def = function(object, scale, ...) standardGeneric("series"),
+  valueClass = "TimeSeries"
 )
 
-#' Time Grid
+#' Terminal Times of Time Series
 #'
-#' Get the time grid of an object.
-#' @param object An object.
+#' Get the times the first and last observations were taken.
+#' @param x A [`TimeSeries-class`] object.
 #' @return
 #'  A [`numeric`] vector.
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales
-#' @aliases years-method
+#' @family time series tools
+#' @aliases start-method end-method
+#' @name start
+#' @rdname start
+NULL
+
+#' Sampling Times of Time Series
+#'
+#' Get the vector of times at which a time series was sampled.
+#' @param x A [`TimeSeries-class`] object.
+#' @return
+#'  A [`numeric`] vector.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases time-method
+#' @name time
+#' @rdname time
+NULL
+
+#' Time Series Windows
+#'
+#' Extracts the subset of the object `x` observed between the times `start` and
+#' `end`.
+#' @param start A length-one [`numeric`] vector specifying the start time of the
+#'  period of interest.
+#' @param end A length-one [`numeric`] vector specifying the end time of the
+#'  period of interest.
+#' @return
+#'  A [`TimeSeries-class`] object.
+#' @example inst/examples/ex-window.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases window-method
+#' @name window
+#' @rdname window
+NULL
+
+#' Change the Time Scale
+#'
+#' Change the time scale of time series.
+#' @param object A [`TimeSeries-class`] object.
+#' @param target A [`TimeSeries-class`] object serving as a template for the
+#'  time scale. Alternatively, a [`character`] string specifying the target
+#'  time scale or a [`TimeScale-class`] object (see [era()]).
+#' @param ... Currently not used.
+#' @return
+#'  A [`TimeSeries-class`] object.
+#' @example inst/examples/ex-project.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases project-method
 setGeneric(
-  name = "years",
-  def = function(object) standardGeneric("years")
+  name = "project",
+  def = function(object, target, ...) standardGeneric("project")
 )
 
 # Radiocarbon ==================================================================

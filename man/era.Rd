@@ -5,17 +5,14 @@
 \alias{era}
 \alias{era-method}
 \alias{era,character-method}
-\alias{era,CalibratedAges-method}
-\alias{era,CalibratedSPD-method}
+\alias{era,TimeSeries-method}
 \title{Time Scales}
 \usage{
 era(object, ...)
 
 \S4method{era}{character}(object)
 
-\S4method{era}{CalibratedAges}(object)
-
-\S4method{era}{CalibratedSPD}(object)
+\S4method{era}{TimeSeries}(object)
 }
 \arguments{
 \item{object}{A \code{\link{character}} string specifying the time scale (see details).}
@@ -44,25 +41,15 @@ Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 }
 \examples{
 ## Define time scales
-BP <- era("BP")
-AD <- era("AD")
-
-## Make conversion functions
-BP_to_AD <- convert(BP, AD)
-AD_to_BP <- convert(AD, BP)
-
-## Convert years
-BP_to_AD(0)
-AD_to_BP(1950)
+(BP <- era("BP"))
+(AD <- era("AD"))
 }
 \seealso{
-Other time scales: 
+Other time scales tools: 
 \code{\link{convert}()},
-\code{\link{project}()},
-\code{\link{years}()}
+\code{\link{era_get}}
 }
 \author{
 N. Frerebeau
 }
-\concept{time scales}
-\keyword{internal}
+\concept{time scales tools}

@@ -6,30 +6,51 @@ NULL
 ## [ ---------------------------------------------------------------------------
 #' @export
 #' @rdname subset
+#' @aliases [,TimeSeries-method
+setMethod(
+  f = "[",
+  signature = c(x = "TimeSeries"),
+  function(x, i, j, ..., drop = FALSE) {
+    z <- methods::callNextMethod()
+
+    if (is.null(dim(z))) return(z)
+
+    start <- x@time_start
+    labels <- x@time_labels
+    if (!missing(i)) {
+      years <- time(x)
+      start <- years[i][[1L]]
+    }
+    if (!missing(j)) {
+      labels <- labels[j]
+    }
+    x <- methods::as(x, "TimeSeries", strict = TRUE)
+    methods::initialize(x, z, time_labels = labels, time_start = start)
+  }
+)
+
+#' @export
+#' @rdname subset
 #' @aliases [,CalibratedAges-method
 setMethod(
   f = "[",
   signature = c(x = "CalibratedAges"),
-  function(x, i, j, ..., drop = TRUE) {
+  function(x, i, j, ..., drop = FALSE) {
     z <- methods::callNextMethod()
 
-    if (is.null(dim(z))) {
-      return(z)
-    }
+    if (is.null(dim(z))) return(z)
 
-    labels <- x@labels
     ages <- x@ages
     errors <- x@errors
     curves <- x@curves
     status <- x@status
-    if (!missing(i)) {
-      labels <- labels[i]
-      ages <- ages[i]
-      errors <- errors[i]
-      curves <- curves[i]
-      status <- status[i]
+    if (!missing(j)) {
+      ages <- ages[j]
+      errors <- errors[j]
+      curves <- curves[j]
+      status <- status[j]
     }
-    methods::initialize(x, z, labels = labels, ages = ages, errors = errors,
+    methods::initialize(x, z, ages = ages, errors = errors,
                         curves = curves, status = status)
   }
 )

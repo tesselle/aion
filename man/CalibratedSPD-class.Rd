@@ -9,26 +9,14 @@
 An S4 class to represent summed probability distributions (SPD) of
 radiocarbon dates.
 }
-\section{Slots}{
-
-\describe{
-\item{\code{start}}{A length-one \code{\link{numeric}} vector specifying the beginning of the
-calibrated time range.}
-
-\item{\code{resolution}}{A length-one \code{\link{numeric}} vector specifying the resolution of
-the calibrated time range.}
-
-\item{\code{calendar}}{A \code{\linkS4class{TimeScale}} object specfiying the time scale.}
-}}
-
 \note{
-This class inherits from \code{\link{numeric}}.
+This class inherits from \code{\linkS4class{TimeSeries}}.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}},
 \code{\link{CalibratedAges-class}},
-\code{\link{TimeScale-class}}
+\code{\link{TimeScale-class}},
+\code{\link{TimeSeries-class}}
 }
 \author{
 N. Frerebeau

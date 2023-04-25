@@ -3,14 +3,14 @@
 NULL
 
 time_label <- function(x) {
-  paste("Year", era(x)@name, sep = " ")
+  paste("Year", era_name(x), sep = " ")
 }
 
 #' @export
 #' @method plot CalibratedAges
 plot.CalibratedAges <- function(x, density = TRUE, interval = TRUE, level = 0.954,
                                 warnings = TRUE, decreasing = TRUE,
-                                xlim = NULL, main = NULL, sub = NULL,
+                                main = NULL, sub = NULL,
                                 ann = graphics::par("ann"), axes = TRUE,
                                 frame.plot = FALSE,
                                 panel.first = NULL, panel.last = NULL, ...) {
@@ -28,9 +28,8 @@ plot.CalibratedAges <- function(x, density = TRUE, interval = TRUE, level = 0.95
   graphics::plot.new()
 
   ## Set plotting coordinates
-  years <- years(x)
-  xlim <- if (is.null(xlim)) c(years[[1]], years[[length(years)]]) else xlim
-  ylim <- c(1, nrow(x) + 1.5)
+  xlim <- c(start(x), end(x))
+  ylim <- c(1, ncol(x) + 1.5)
   graphics::plot.window(xlim = xlim, ylim = ylim)
 
   ## Evaluate pre-plot expressions
@@ -38,18 +37,18 @@ plot.CalibratedAges <- function(x, density = TRUE, interval = TRUE, level = 0.95
 
   ## Reorder
   mid <- median(x)
-  k <- order(mid, decreasing = decreasing * x@calendar@direction == 1)
-  x <- x[k, , drop = FALSE]
+  k <- order(mid, decreasing = decreasing * era_direction(x) > 0)
+  x <- x[, k, drop = FALSE]
   col <- col[k]
   fill <- fill[k]
 
   ## Plot
+  years <- time(x)
+  ages <- rev(seq_len(ncol(x)))
   if (!density & !interval) density <- TRUE
-  ages <- rev(seq_len(nrow(x)))
-  # graphics::abline(h = ages, col = "grey")
   if (density) {
     for (i in ages) {
-      d <- x[i, , drop = TRUE]
+      d <- x[, i, drop = TRUE]
 
       d <- (d - min(d)) / max(d - min(d)) * 1.5
       k <- which(d > 0) # Keep only density > 0
@@ -134,8 +133,7 @@ plot.CalibratedSPD <- function(x, xlim = NULL, ylim = NULL,
   graphics::plot.new()
 
   ## Set plotting coordinates
-  years <- years(x)
-  xlim <- if (is.null(xlim)) c(years[[1]], years[[length(years)]]) else xlim
+  xlim <- if (is.null(xlim)) c(start(x), end(x)) else xlim
   ylim <- if (is.null(ylim)) range(x) else ylim
   graphics::plot.window(xlim = xlim, ylim = ylim)
 
@@ -143,6 +141,7 @@ plot.CalibratedSPD <- function(x, xlim = NULL, ylim = NULL,
   panel.first
 
   ## Plot
+  years <- time(x)
   xi <- c(years, rev(years))
   yi <- c(x, rep(0, length(x)))
   graphics::polygon(xi, yi, border = NA, col = col)

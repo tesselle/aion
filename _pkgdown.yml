@@ -7,21 +7,24 @@ template:
       creator: "@nfrerebeau"
 
 reference:
-- title: Radiocarbon tools
+- title: Time Scales
   contents:
-  - has_concept("radiocarbon tools")
+  - has_concept("time scales tools")
+- title: Time Series
+  contents:
+  - has_concept("time series tools")
 - title: Allen's Interval Algebra
   contents:
   - has_concept("Allen's intervals")
-- title: Statistics
-  contents:
-  - has_concept("statistics")
-- title: Time scales
-  contents:
-  - has_concept("time scales")
 - title: Mutators
   contents:
   - has_concept("mutators")
+- title: Radiocarbon tools
+  contents:
+  - has_concept("radiocarbon tools")
+- title: Statistics
+  contents:
+  - has_concept("statistics")
 - title: Datasets
   contents:
   - has_concept("datasets")

@@ -45,13 +45,12 @@ BP_to_AD(0)
 AD_to_BP(1950)
 }
 \seealso{
-Other time scales: 
-\code{\link{era}()},
-\code{\link{project}()},
-\code{\link{years}()}
+Other time scales tools: 
+\code{\link{era_get}},
+\code{\link{era}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time scales}
+\concept{time scales tools}
 \keyword{internal}

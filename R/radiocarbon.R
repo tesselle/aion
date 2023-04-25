@@ -194,16 +194,19 @@ setMethod(
       from <- max(calibration_range[keep])
     }
 
-    .CalibratedAges(
-      dens,
+    time_series <- series(
+      object = t(dens),
+      scale = era("BP"),
       labels = names,
+      start = from,
+      increment = resolution
+    )
+    cal <- .CalibratedAges(
+      time_series,
       ages = ages,
       errors = errors,
       curves = curves,
-      start = from,
-      resolution = resolution,
       F14C = F14C,
-      calendar = era("BP"),
       status = status
     )
   }
@@ -296,16 +299,17 @@ setMethod(
     ## Check
     calibrate_check(object@labels, object@status)
 
-    dens <- object
+    dens <- t(object)
     if (normalize_date) dens <- dens / rowSums(dens, na.rm = TRUE)
     spd <- colSums(dens, na.rm = TRUE)
     if (normalize_spd) spd <- spd / sum(spd, na.rm = TRUE)
 
-    .CalibratedSPD(
-      spd,
-      start = object@start,
-      resolution = object@resolution,
-      calendar = era(object)
+    time_series <- series(
+      object = spd,
+      scale = era(object),
+      start = start(object),
+      increment = object@time_increment
     )
+    .CalibratedSPD(time_series)
   }
 )
