@@ -10,6 +10,8 @@
 \S4method{window}{TimeSeries}(x, start = NULL, end = NULL)
 }
 \arguments{
+\item{x}{A \code{\linkS4class{TimeSeries}} object.}
+
 \item{start}{A length-one \code{\link{numeric}} vector specifying the start time of the
 period of interest.}
 

@@ -19,12 +19,6 @@ reference:
 - title: Mutators
   contents:
   - has_concept("mutators")
-- title: Radiocarbon tools
-  contents:
-  - has_concept("radiocarbon tools")
 - title: Statistics
   contents:
   - has_concept("statistics")
-- title: Datasets
-  contents:
-  - has_concept("datasets")

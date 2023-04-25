@@ -1,8 +1,3 @@
-# External data ================================================================
-ksarakil <- read.table(file = "data-raw/ksarakil.csv", header = TRUE,
-                       sep = ",", dec = ".")
-usethis::use_data(ksarakil, overwrite = TRUE)
-
 # Internal data ================================================================
 .unit <- list(
   gregorian = list(unit = "Gregorian", length = 365.2425),

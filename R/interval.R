@@ -32,24 +32,3 @@ setMethod(
     cbind(start = x[inf], stop = x[sup], p = round(p, digits = 2))
   }
 )
-
-#' @export
-#' @rdname hpdi
-#' @aliases hpdi,CalibratedAges,missing-method
-setMethod(
-  f = "hpdi",
-  signature = c(object = "CalibratedAges", density = "missing"),
-  definition = function(object, level = 0.954) {
-    hpd <- apply(
-      X = object,
-      MARGIN = 2,
-      FUN = function(x, years, level) hpdi(years, density = x, level = level),
-      years = time(object),
-      level = level,
-      simplify = FALSE
-    )
-
-    names(hpd) <- names(object)
-    hpd
-  }
-)

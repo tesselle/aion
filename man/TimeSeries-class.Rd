@@ -30,8 +30,6 @@ This class inherits from \code{\link{matrix}} and \code{\linkS4class{TimeScale}}
 }
 \seealso{
 Other classes: 
-\code{\link{CalibratedAges-class}},
-\code{\link{CalibratedSPD-class}},
 \code{\link{TimeScale-class}}
 }
 \author{

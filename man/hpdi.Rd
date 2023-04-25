@@ -5,18 +5,15 @@
 \alias{hpdi}
 \alias{hpdi-method}
 \alias{hpdi,numeric,numeric-method}
-\alias{hpdi,CalibratedAges,missing-method}
 \title{HPD Regions}
 \usage{
 hpdi(object, density, ...)
 
 \S4method{hpdi}{numeric,numeric}(object, density, level = 0.954)
-
-\S4method{hpdi}{CalibratedAges,missing}(object, level = 0.954)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} vector giving the coordinates of the points where
-the density is estimated or a \code{\linkS4class{CalibratedAges}} object.}
+the density is estimated.}
 
 \item{density}{A \code{\link{numeric}} vector giving the estimated density values.
 If \code{density} is missing and \code{object} is a \code{ǹumeric} vector, density
@@ -33,35 +30,9 @@ the HPD interval and associated probabilities.
 \description{
 HPD Regions
 }
-\examples{
-## Calibrate multiple dates
-cal <- c14_calibrate(
-  ages = c(5000, 4500),
-  errors = c(45, 35),
-  names = c("X", "Y")
-)
-
-## HPDI
-hpdi(cal, level = 0.683)
-hpdi(cal, level = 0.954)
-hpdi(cal, level = 0.997)
-
-## Convert BP scale to CE
-CE <- project(cal, "CE")
-hpdi(CE, level = 0.954)
-
-## Convert BP scale to b2k
-b2k <- project(cal, "b2k")
-hpdi(b2k, level = 0.954)
-}
 \references{
 Hyndman, R. J. (1996). Computing and graphing highest density regions.
 \emph{American Statistician}, 50: 120-126. \doi{10.2307/2684423}.
-}
-\seealso{
-Other statistics: 
-\code{\link{mean}()},
-\code{\link{median}()}
 }
 \author{
 N. Frerebeau

@@ -4,12 +4,9 @@
 \name{subset}
 \alias{subset}
 \alias{[,TimeSeries-method}
-\alias{[,CalibratedAges-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
 \S4method{[}{TimeSeries}(x, i, j, ..., drop = FALSE)
-
-\S4method{[}{CalibratedAges}(x, i, j, ..., drop = FALSE)
 }
 \arguments{
 \item{x}{An object from which to extract element(s) or in which to replace
