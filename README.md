@@ -24,14 +24,14 @@ Base R ships with a lot of functionality useful for time series, in
 particular in the **stats** package: a time-series object can be created
 with the `stats::ts()` function. These objects are agnostic: the unit of
 time is not relevant, only the sampling frequency matters. Most of the
-archaeological time series are different, because they are defined for a
+archaeological time-series are different, because they are defined for a
 given year-based time scale (in the same way that geographic data are
 linked to a coordinate system).
 
 **chronos** provides a system of classes and methods to represent and
-work with such time series. This package includes common time scales
+work with such time-series. This package includes common time scales
 (e.g., before present, common era) and supports user-defined scales.
-Time series can be reprojected to a different time scale (e.g. from BP
+Time-series can be reprojected to a different time scale (e.g. from BP
 to CE years). **chronos** only supports data sampled at equidistant
 points in time, expressed in decimal years (1950 means 1950.0, i.e. the
 beginning of the year 1950).
@@ -55,9 +55,29 @@ remotes::install_github("tesselle/chronos")
 ## Usage
 
 ``` r
-## Load packages
+## Load package
 library(chronos)
 ```
+
+``` r
+## Create 6 time-series of 50 observations
+## Sampled every two years starting from 2000 BP
+X <- series(
+  data = matrix(rnorm(300), nrow = 50, ncol = 6),
+  scale = era("BP"),
+  start = 2000,
+  delta = 2
+)
+
+## Reproject to the CE time scale
+(Y <- project(X, era("CE")))
+#> 6 time series observed between -50 and 48 CE.
+
+## Plot
+plot(Y)
+```
+
+![](man/figures/README-time-series-1.png)<!-- -->
 
 ## Contributing
 

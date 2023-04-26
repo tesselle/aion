@@ -59,8 +59,8 @@ NULL
 #'  series.
 #' @slot time_start A [`numeric`] value specifying the year of the
 #'  first observation.
-#' @slot time_frequency A [`numeric`] value specifying the time difference
-#'  between two observations (resolution), in years.
+#' @slot time_frequency A [`numeric`] value specifying the number of
+#'  observations per year.
 #' @details
 #'  It is a matrix that represents data sampled at equidistant points in time,
 #'  according to a given time scale.

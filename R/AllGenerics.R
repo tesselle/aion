@@ -159,7 +159,7 @@ setGeneric(
 # Time Series ==================================================================
 #' Create Time Series
 #'
-#' @param object A [`numeric`] `vector` or `matrix` of the observed time-series
+#' @param data A [`numeric`] `vector` or `matrix` of the observed time-series
 #'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
 #'  [data.matrix()].
 #' @param scale A [`TimeScale-class`] object (see [era()]).
@@ -167,8 +167,10 @@ setGeneric(
 #'  first observation.
 #' @param end A length-one [`numeric`] vector specifying the year of the
 #'  last observation.
-#' @param frequency A length-one [`numeric`] vector specifying the time
-#'  difference between two observations (resolution), in years.
+#' @param frequency A length-one [`numeric`] vector specifying the number of
+#'  observations per year. Only used if `delta` is `NULL`.
+#' @param delta A length-one [`numeric`] vector specifying the fraction of
+#' year between successive observations.
 #' @param names A [`character`] string specifying the names of the time
 #'  series.
 #' @param ... Currently not used.
@@ -178,14 +180,14 @@ setGeneric(
 #'  year 1950).
 #' @return
 #'  A [`TimeSeries-class`] object.
-#' @example inst/examples/ex-time.R
+#' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools
 #' @aliases series-method
 setGeneric(
   name = "series",
-  def = function(object, scale, ...) standardGeneric("series"),
+  def = function(data, scale, ...) standardGeneric("series"),
   valueClass = "TimeSeries"
 )
 
@@ -195,6 +197,7 @@ setGeneric(
 #' @param x A [`TimeSeries-class`] object.
 #' @return
 #'  A [`numeric`] vector.
+#' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools
@@ -210,6 +213,7 @@ NULL
 #' @param x A [`TimeSeries-class`] object.
 #' @return
 #'  A [`numeric`] vector.
+#' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools
@@ -236,6 +240,37 @@ NULL
 #' @aliases window-method
 #' @name window
 #' @rdname window
+NULL
+
+#' Plot Time Series
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param panel A [`function`] in the form `function(x, y, ...)` which gives the
+#'  action to be carried out in each panel of the display. The default is
+#'  [graphics::lines()].
+#' @param main A [`character`] string giving a main title for the plot.
+#' @param sub A [`character`] string giving a subtitle for the plot.
+#' @param ann A [`logical`] scalar: should the default annotation (title and x,
+#'  y and z axis labels) appear on the plot?
+#' @param axes A [`logical`] scalar: should axes be drawn on the plot?
+#' @param frame.plot A [`logical`] scalar: should a box be drawn around the
+#'  plot?
+#' @param panel.first An an `expression` to be evaluated after the plot axes are
+#'  set up but before any plotting takes place. This can be useful for drawing
+#'  background grids.
+#' @param panel.last An `expression` to be evaluated after plotting has taken
+#'  place but before the axes, title and box are added.
+#' @param ... Further parameters to be passed to `panel`
+#'  (e.g. [graphical parameters][graphics::par]).
+#' @return
+#'  `plot()` is called it for its side-effects: it results in a graphic
+#'  being displayed. Invisibly returns `x`.
+#' @example inst/examples/ex-plot.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @name plot
+#' @rdname plot
 NULL
 
 #' Change the Time Scale
