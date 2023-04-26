@@ -11,11 +11,11 @@
 \usage{
 series(object, scale, ...)
 
-\S4method{series}{matrix,TimeScale}(object, scale, start, increment, labels = NULL)
+\S4method{series}{matrix,TimeScale}(object, scale, start, end = NULL, frequency = 1, names = NULL)
 
-\S4method{series}{numeric,TimeScale}(object, scale, start, increment, labels = NULL)
+\S4method{series}{numeric,TimeScale}(object, scale, start, end = NULL, frequency = 1, names = NULL)
 
-\S4method{series}{data.frame,TimeScale}(object, scale, start, increment, labels = NULL)
+\S4method{series}{data.frame,TimeScale}(object, scale, start, end = NULL, frequency = 1, names = NULL)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} \code{vector} or \code{matrix} of the observed time-series
@@ -29,10 +29,13 @@ values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{mat
 \item{start}{A length-one \code{\link{numeric}} vector specifying the year of the
 first observation.}
 
-\item{increment}{A length-one \code{\link{numeric}} vector specifying the time
+\item{end}{A length-one \code{\link{numeric}} vector specifying the year of the
+last observation.}
+
+\item{frequency}{A length-one \code{\link{numeric}} vector specifying the time
 difference between two observations (resolution), in years.}
 
-\item{labels}{A \code{\link{character}} string specifying the names of the time
+\item{names}{A \code{\link{character}} string specifying the names of the time
 series.}
 }
 \value{
@@ -41,9 +44,14 @@ A \code{\linkS4class{TimeSeries}} object.
 \description{
 Create Time Series
 }
+\details{
+\code{series()} only supports data sampled at equidistant points in time,
+expressed in decimal years (1950 means 1950.0, i.e. the beginning of the
+year 1950).
+}
 \examples{
 ## Univariate
-z <- series(rnorm(300), era("BCE"), start = 1000, increment = 1)
+z <- series(rnorm(300), era("BCE"), start = 1000)
 
 names(z)
 start(z)
@@ -51,7 +59,7 @@ end(z)
 time(z)
 
 ## Multivariate
-z <- series(matrix(rnorm(300), 100, 3), era("CE"), start = 1000, increment = 1)
+z <- series(matrix(rnorm(300), 100, 3), era("CE"), start = 1000)
 
 names(z)
 start(z)

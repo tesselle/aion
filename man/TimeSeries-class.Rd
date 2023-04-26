@@ -43,7 +43,7 @@ series.}
 \item{\code{time_start}}{A \code{\link{numeric}} value specifying the year of the
 first observation.}
 
-\item{\code{time_increment}}{A \code{\link{numeric}} value specifying the time difference
+\item{\code{time_frequency}}{A \code{\link{numeric}} value specifying the time difference
 between two observations (resolution), in years.}
 }}
 

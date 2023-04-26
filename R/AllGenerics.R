@@ -165,11 +165,17 @@ setGeneric(
 #' @param scale A [`TimeScale-class`] object (see [era()]).
 #' @param start A length-one [`numeric`] vector specifying the year of the
 #'  first observation.
-#' @param increment A length-one [`numeric`] vector specifying the time
+#' @param end A length-one [`numeric`] vector specifying the year of the
+#'  last observation.
+#' @param frequency A length-one [`numeric`] vector specifying the time
 #'  difference between two observations (resolution), in years.
-#' @param labels A [`character`] string specifying the names of the time
+#' @param names A [`character`] string specifying the names of the time
 #'  series.
 #' @param ... Currently not used.
+#' @details
+#'  `series()` only supports data sampled at equidistant points in time,
+#'  expressed in decimal years (1950 means 1950.0, i.e. the beginning of the
+#'  year 1950).
 #' @return
 #'  A [`TimeSeries-class`] object.
 #' @example inst/examples/ex-time.R
@@ -199,7 +205,8 @@ NULL
 
 #' Sampling Times of Time Series
 #'
-#' Get the vector of times at which a time series was sampled.
+#' * `time()` creates the vector of times at which a time series was sampled.
+#' * `frequency()` returns the number of samples per unit time.
 #' @param x A [`TimeSeries-class`] object.
 #' @return
 #'  A [`numeric`] vector.

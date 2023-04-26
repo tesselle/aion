@@ -1,6 +1,5 @@
 ## Create time series
-mtx <- matrix(rnorm(300), 100, 3)
-(x <- series(mtx, era("CE"), start = 1000, increment = 1))
+(x <- series(matrix(rnorm(300), 100, 3), era("CE"), start = 1000))
 
 ## Subset
 (y <- window(x, start = 1025, end = 1050))

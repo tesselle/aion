@@ -137,7 +137,7 @@ setMethod(
     msg <- "%s (%s): %s years (%g days) counted %s from %g."
     msg <- sprintf(msg, era_name(object), era_label(object), era_unit(object),
             era_days(object), dirout, era_epoch(object))
-    print(msg)
+    cat(msg, sep = "\n")
   }
 )
 

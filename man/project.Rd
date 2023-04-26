@@ -31,8 +31,8 @@ Change the time scale of time series.
 }
 \examples{
 ## Create time series
-A <- series(rnorm(300), scale = era("CE"), start = 1000, increment = 1)
-B <- series(rnorm(300), scale = era("CE"), start = 1000, increment = 1)
+A <- series(rnorm(300), scale = era("CE"), start = 1000)
+B <- series(rnorm(300), scale = era("CE"), start = 1000)
 
 ## Reproject to BP time scale
 (A <- project(A, "BP"))

@@ -38,7 +38,7 @@ setValidity(
     ## Get data
     time_labels <- object@time_labels
     time_start <- object@time_start
-    time_increment <- object@time_increment
+    time_frequency <- object@time_frequency
     p <- ncol(object)
 
     ## Validate
@@ -47,7 +47,7 @@ setValidity(
       arkhe::validate(arkhe::assert_type(time_labels, "character")),
       arkhe::validate(arkhe::assert_length(time_labels, p)),
       arkhe::validate(arkhe::assert_scalar(time_start, "numeric")),
-      arkhe::validate(arkhe::assert_scalar(time_increment, "numeric"))
+      arkhe::validate(arkhe::assert_scalar(time_frequency, "numeric"))
     )
 
     ## Return conditions, if any

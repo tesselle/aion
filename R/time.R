@@ -8,14 +8,33 @@ NULL
 setMethod(
   f = "series",
   signature = c(object = "matrix", scale = "TimeScale"),
-  definition = function(object, scale, start, increment, labels = NULL) {
-    if (!is.null(labels))
-      colnames(object) <- labels
+  definition = function(object, scale, start, end = NULL, frequency = 1,
+                        names = NULL) {
+    ## Validation
+    if (!is.null(end)) {
+      years <- seq(
+        from = start,
+        to = end,
+        by = 1 / frequency * era_direction(scale)
+      )
+      if (length(years) != nrow(object)) {
+        old <- frequency
+        frequency <- abs(1 / ((end - start) / (nrow(object) - 1)))
+
+        msg <- "Frequency is not consistent with the number of observations"
+        msg <- sprintf("%s: %g is used instead of %g.", msg, frequency, old)
+        warning(msg, call. = FALSE)
+      }
+    }
+
+    ## Set the names of the series
+    if (!is.null(names))
+      colnames(object) <- names
     if (is.null(colnames(object)))
       colnames(object) <- paste0("S", seq_len(ncol(object)))
 
     .TimeSeries(object, scale, time_labels = colnames(object),
-                time_start = start, time_increment = increment)
+                time_start = start, time_frequency = frequency)
   }
 )
 
@@ -25,10 +44,11 @@ setMethod(
 setMethod(
   f = "series",
   signature = c(object = "numeric", scale = "TimeScale"),
-  definition = function(object, scale, start, increment, labels = NULL) {
+  definition = function(object, scale, start, end = NULL, frequency = 1,
+                        names = NULL) {
     object <- matrix(data = object, ncol = 1)
-    methods::callGeneric(object, scale, start = start, increment = increment,
-                         labels = labels)
+    methods::callGeneric(object, scale, start = start, end = end,
+                         frequency = frequency, names = names)
   }
 )
 
@@ -38,10 +58,11 @@ setMethod(
 setMethod(
   f = "series",
   signature = c(object = "data.frame", scale = "TimeScale"),
-  definition = function(object, scale, start, increment, labels = NULL) {
+  definition = function(object, scale, start, end = NULL, frequency = 1,
+                        names = NULL) {
     object <- data.matrix(object)
-    methods::callGeneric(object, scale, start = start, increment = increment,
-                         labels = labels)
+    methods::callGeneric(object, scale, start = start, end = end,
+                         frequency = frequency, names = names)
   }
 )
 
@@ -78,7 +99,7 @@ setMethod(
     n <- ncol(object)
     msg <- "%d time series observed between %g and %g %s."
     msg <- sprintf(msg, n, start(object), end(object), format(object))
-    print(msg)
+    cat(msg, sep = "\n")
   }
 )
 
@@ -99,7 +120,7 @@ setMethod(
   f = "end",
   signature = "TimeSeries",
   definition = function(x) {
-    start(x) + x@time_increment * era_direction(x) * nrow(x) - 1
+    start(x) + (nrow(x) - 1) / frequency(x) * era_direction(x)
   }
 )
 
@@ -112,10 +133,19 @@ setMethod(
   definition = function(x) {
     seq(
       from = start(x),
-      by = x@time_increment * era_direction(x),
+      by = 1 / frequency(x) * era_direction(x),
       length.out = nrow(x)
     )
   }
+)
+
+#' @export
+#' @rdname time
+#' @aliases frequency,TimeSeries-method
+setMethod(
+  f = "frequency",
+  signature = "TimeSeries",
+  definition = function(x) x@time_frequency
 )
 
 # Subset =======================================================================

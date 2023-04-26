@@ -59,7 +59,7 @@ NULL
 #'  series.
 #' @slot time_start A [`numeric`] value specifying the year of the
 #'  first observation.
-#' @slot time_increment A [`numeric`] value specifying the time difference
+#' @slot time_frequency A [`numeric`] value specifying the time difference
 #'  between two observations (resolution), in years.
 #' @details
 #'  It is a matrix that represents data sampled at equidistant points in time,
@@ -77,7 +77,7 @@ NULL
   slots = c(
     time_labels = "character",
     time_start = "numeric",
-    time_increment = "numeric"
+    time_frequency = "numeric"
   ),
   contains = c("matrix", "TimeScale")
 )

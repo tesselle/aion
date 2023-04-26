@@ -5,9 +5,12 @@
 \alias{time}
 \alias{time-method}
 \alias{time,TimeSeries-method}
+\alias{frequency,TimeSeries-method}
 \title{Sampling Times of Time Series}
 \usage{
 \S4method{time}{TimeSeries}(x)
+
+\S4method{frequency}{TimeSeries}(x)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
@@ -16,7 +19,10 @@
 A \code{\link{numeric}} vector.
 }
 \description{
-Get the vector of times at which a time series was sampled.
+\itemize{
+\item \code{time()} creates the vector of times at which a time series was sampled.
+\item \code{frequency()} returns the number of samples per unit time.
+}
 }
 \seealso{
 Other time series tools: 
