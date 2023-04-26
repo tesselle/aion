@@ -5,11 +5,11 @@
 \alias{chronos-package}
 \alias{_PACKAGE}
 \alias{chronos}
-\title{chronos: Archaeological Time Series and Temporal Reasoning}
+\title{chronos: Archaeological Time Series}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-What the package does (one paragraph).
+A toolkit for archaeological time series and temporal reasoning. This package provides classes and methods to represent and work with archaeological time series. This package includes common time scales (e.g., before present, common era) and supports user-defined scales. Time series can be reprojected to a different time scale (e.g. from BP to CE years). This package includes common time scales (e.g., before present, common era) and supports user-defined scales. It also includes tools to describe and analyze finite time intervals.
 }
 \details{
 \tabular{ll}{
