@@ -86,7 +86,7 @@ setMethod(
     converse <- chartr(old = old, new = new, x = x)
 
     # Keep Alspaugh order
-    vapply(
+    x <- vapply(
       X = strsplit(converse, split = ""),
       FUN = function(x) {
         x <- x[order(match(x, .alspaugh_code))]
@@ -94,6 +94,9 @@ setMethod(
       },
       FUN.VALUE = character(1)
     )
+
+    x[is.na(converse)] <- NA_character_
+    x
   }
 )
 
