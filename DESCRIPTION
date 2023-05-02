@@ -8,15 +8,13 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-7503-8685"))
   )
 Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
-Description: A toolkit for archaeological time series and temporal
-    reasoning. This package provides classes and methods to represent and
-    work with archaeological time series. This package includes common
+Description: A toolkit for archaeological time series analysis and
+    temporal reasoning. This package provides classes and methods to
+    represent and work with archaeological time series. It includes common
     time scales (e.g., before present, common era) and supports
-    user-defined scales.  Time series can be reprojected to a different
-    time scale (e.g. from BP to CE years).  This package includes common
-    time scales (e.g., before present, common era) and supports
-    user-defined scales.  It also includes tools to describe and analyze
-    finite time intervals.
+    user-defined scales. Time series can be reprojected to a different
+    time scale (e.g. from BP to CE years). It also includes tools to
+    describe and analyze finite time intervals.
 License: GPL (>= 3)
 URL: https://packages.tesselle.org/chronos/,
     https://github.com/tesselle/chronos
@@ -45,12 +43,17 @@ Collate:
     'AllClasses.R'
     'AllGenerics.R'
     'allen.R'
+    'calendar.R'
     'chronos-package.R'
-    'era.R'
     'interval.R'
+    'mutators.R'
     'plot.R'
+    'project.R'
     'series.R'
+    'show.R'
     'subset.R'
+    'time.R'
     'utilities.R'
     'validate.R'
+    'years.R'
     'zzz.R'

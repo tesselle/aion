@@ -32,9 +32,8 @@ linked to a coordinate system).
 work with such time-series. This package includes common time scales
 (e.g., before present, common era) and supports user-defined scales.
 Time-series can be reprojected to a different time scale (e.g. from BP
-to CE years). **chronos** only supports data sampled at equidistant
-points in time, expressed in decimal years (1950 means 1950.0, i.e. the
-beginning of the year 1950).
+to CE years). **chronos** only supports data expressed in decimal years
+(1950 means 1950.0, i.e. the beginning of the year 1950).
 
 ## Installation
 
@@ -63,21 +62,17 @@ library(chronos)
 ## Create 6 time-series of 50 observations
 ## Sampled every two years starting from 2000 BP
 X <- series(
-  data = matrix(rnorm(300), nrow = 50, ncol = 6),
-  scale = era("BP"),
-  start = 2000,
-  delta = 2
+  object = matrix(rnorm(300), nrow = 50, ncol = 6),
+  time = seq(from = 2000, by = 2, length.out = 50),
+  calendar = calendar("BP")
 )
 
 ## Reproject to the CE time scale
-(Y <- project(X, era("CE")))
-#> 6 time series observed between -50 and 48 CE.
+(Y <- project(X, calendar("CE")))
 
 ## Plot
 plot(Y)
 ```
-
-![](man/figures/README-time-series-1.png)<!-- -->
 
 ## Contributing
 

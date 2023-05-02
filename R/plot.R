@@ -15,7 +15,7 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
   n_seq <- seq_len(n)
   n_col <- if (n > 4) 2 else 1
   n_row <- ceiling(n / n_col)
-  ylabs <- names(x) %||% paste("Series", n_seq)
+  ylabs <- colnames(x) %||% paste("Series", n_seq, sep = " ")
 
   ## Graphical parameters
   ## Save and restore
@@ -78,9 +78,9 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
     ## Add annotation
     if (ann) {
       if (do_x) {
-        xlab <- paste("Year", era_name(x), sep = " ")
+        xlab <- paste("Year", calendar_name(x), sep = " ")
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
-              font = font.lab)
+                        font = font.lab)
       }
       graphics::mtext(ylabs[[i]], side = 2, line = 3, cex = cex.lab,
                       col = col.lab, font = font.lab)

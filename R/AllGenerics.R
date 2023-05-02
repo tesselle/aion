@@ -43,7 +43,7 @@ NULL
 NULL
 
 # Time Scales ==================================================================
-#' Time Scales
+#' Calendar
 #'
 #' @param object A [`character`] string specifying the time scale (see details).
 #' @param ... Currently not used.
@@ -58,94 +58,101 @@ NULL
 #'   \item{`b2k`}{Years before 2000.}
 #'  }
 #' @return
-#'  A [`TimeScale-class`] object.
+#'  A [`Calendar-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
-#' @example inst/examples/ex-era.R
+#' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @aliases era-method
+#' @aliases calendar-method
 setGeneric(
-  name = "era",
-  def = function(object, ...) standardGeneric("era"),
-  valueClass = "TimeScale"
+  name = "calendar",
+  def = function(object, ...) standardGeneric("calendar"),
+  valueClass = "Calendar"
 )
 
-#' Time Scales Mutators
+#' Create a Calendar
 #'
-#' @param object A [`TimeScale-class`] object.
+#' @param label A [`character`] string specifying the abbreviated label of
+#'  the time scale.
+#' @param name A [`character`] string specifying the name of the time scale.
+#' @param epoch A length-one [`numeric`] vector specifying the epoch year from
+#'  which years are counted (in Gregorian astronomical years).
+#' @param direction A length-one [`integer`] vector specifying if years are
+#'  counted backwards (`-1`) or forwards (`1`) from `epoch`. Only the
+#'  [sign][sign()] of `direction` will be retained.
+#' @param ... Currently not used.
+#' @return
+#'  A [`Calendar-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
-#' @example inst/examples/ex-era.R
+#' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @name era_get
-#' @rdname era_get
+#' @name as_calendar
+#' @rdname as_calendar
 NULL
 
-#' @rdname era_get
-#' @aliases era_label-method
+#' Calendar Tools
+#'
+#' @param object A [`Calendar-class`] object.
+#' @example inst/examples/ex-calendar.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time scales tools
+#' @name calendar_get
+#' @rdname calendar_get
+NULL
+
+#' @rdname calendar_get
+#' @aliases calendar_label-method
 setGeneric(
-  name = "era_label",
-  def = function(object) standardGeneric("era_label")
+  name = "calendar_label",
+  def = function(object) standardGeneric("calendar_label")
 )
 
-#' @rdname era_get
-#' @aliases era_name-method
+#' @rdname calendar_get
+#' @aliases calendar_name-method
 setGeneric(
-  name = "era_name",
-  def = function(object) standardGeneric("era_name")
+  name = "calendar_name",
+  def = function(object) standardGeneric("calendar_name")
 )
 
-#' @rdname era_get
-#' @aliases era_epoch-method
+#' @rdname calendar_get
+#' @aliases calendar_epoch-method
 setGeneric(
-  name = "era_epoch",
-  def = function(object) standardGeneric("era_epoch")
+  name = "calendar_epoch",
+  def = function(object) standardGeneric("calendar_epoch")
 )
 
-#' @rdname era_get
-#' @aliases era_scale-method
+#' @rdname calendar_get
+#' @aliases calendar_direction-method
 setGeneric(
-  name = "era_scale",
-  def = function(object) standardGeneric("era_scale")
+  name = "calendar_direction",
+  def = function(object) standardGeneric("calendar_direction")
 )
 
-#' @rdname era_get
-#' @aliases era_direction-method
+#' @rdname calendar_get
+#' @aliases calendar_year-method
 setGeneric(
-  name = "era_direction",
-  def = function(object) standardGeneric("era_direction")
-)
-
-#' @rdname era_get
-#' @aliases era_unit-method
-setGeneric(
-  name = "era_unit",
-  def = function(object) standardGeneric("era_unit")
-)
-
-#' @rdname era_get
-#' @aliases era_days-method
-setGeneric(
-  name = "era_days",
-  def = function(object) standardGeneric("era_days")
+  name = "calendar_year",
+  def = function(object) standardGeneric("calendar_year")
 )
 
 #' Calendar Converter
 #'
 #' Interconverts dates in a variety of calendars.
-#' @param from A [`TimeScale-class`] object describing the source era.
-#' @param to A [`TimeScale-class`] object describing the target era.
+#' @param from A [`Calendar-class`] object describing the source calendar.
+#' @param to A [`Calendar-class`] object describing the target calendar.
 #' @param ... Currently not used.
 #' @return
 #'  A [`function`] that when called with a single numeric argument (years)
 #'  converts years from one calendar to another.
 #' @note
 #'  Adapted from [era::yr_transform()] by Joe Roe.
-#' @example inst/examples/ex-convert.R
+# @example inst/examples/ex-convert.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
@@ -157,27 +164,48 @@ setGeneric(
 )
 
 # Time Series ==================================================================
+#' Year Vectors
+#'
+#' @param object A [`numeric`] vector of (decimal) years.
+#' @param calendar A [`Calendar-class`] object (see [calendar()]).
+#' @param scale A length-one [`integer`] vector specifying the number of years
+#'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
+#'  Will be coerced with [as.integer()] (hence truncated toward zero).
+#' @param sort A [`logical`] scalar: should data be sorted in chronological
+#'  order?
+#' @param ... Currently not used.
+#' @details
+#'  `years()` only supports data sampled at equidistant points in time,
+#'  expressed in decimal years (1950 means 1950.0, i.e. the beginning of the
+#'  year 1950).
+#' @return
+#'  A [`TimeLine-class`] object.
+#' @example inst/examples/ex-years.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases years-method
+setGeneric(
+  name = "years",
+  def = function(object, calendar, ...) standardGeneric("years"),
+  valueClass = "TimeLine"
+)
+
 #' Create Time Series
 #'
-#' @param data A [`numeric`] `vector` or `matrix` of the observed time-series
+#' @param object A [`numeric`] `vector` or `matrix` of the observed time-series
 #'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
 #'  [data.matrix()].
-#' @param scale A [`TimeScale-class`] object (see [era()]).
-#' @param start A length-one [`numeric`] vector specifying the year of the
-#'  first observation.
-#' @param end A length-one [`numeric`] vector specifying the year of the
-#'  last observation.
-#' @param frequency A length-one [`numeric`] vector specifying the number of
-#'  observations per year. Only used if `delta` is `NULL`.
-#' @param delta A length-one [`numeric`] vector specifying the fraction of
-#' year between successive observations.
+#' @param time A [`numeric`] vector of (decimal) years or a [`TimeLine-class`]
+#'  object (see [years()]).
+#' @param calendar A [`Calendar-class`] object (see [calendar()]). If missing,
+#'  `years` must be a [`TimeLine-class`] object.
+#' @param scale A length-one [`numeric`] vector specifying the number of years
+#'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
+#'  It will be coerced with [as.integer()] (hence truncated toward zero).
 #' @param names A [`character`] string specifying the names of the time
 #'  series.
 #' @param ... Currently not used.
-#' @details
-#'  `series()` only supports data sampled at equidistant points in time,
-#'  expressed in decimal years (1950 means 1950.0, i.e. the beginning of the
-#'  year 1950).
 #' @return
 #'  A [`TimeSeries-class`] object.
 #' @example inst/examples/ex-series.R
@@ -187,7 +215,7 @@ setGeneric(
 #' @aliases series-method
 setGeneric(
   name = "series",
-  def = function(data, scale, ...) standardGeneric("series"),
+  def = function(object, time, calendar, ...) standardGeneric("series"),
   valueClass = "TimeSeries"
 )
 
@@ -278,12 +306,12 @@ NULL
 #' Change the time scale of time series.
 #' @param object A [`TimeSeries-class`] object.
 #' @param target A [`TimeSeries-class`] object serving as a template for the
-#'  time scale. Alternatively, a [`character`] string specifying the target
-#'  time scale or a [`TimeScale-class`] object (see [era()]).
+#'  target calendar. Alternatively, a [`character`] string specifying the target
+#'  calendar or a [`Calendar-class`] object (see [calendar()]).
 #' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.
-#' @example inst/examples/ex-project.R
+# @example inst/examples/ex-project.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools

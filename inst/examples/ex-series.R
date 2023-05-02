@@ -1,18 +1,18 @@
 ## Create time-series of 100 observations
-## Sampled every years starting from 1000 CE
 
 ## Univariate
-X <- series(rnorm(300), era("BCE"), start = 1000)
+## Sampled every years starting from 1000 CE
+(X <- series(rnorm(100), calendar("BCE"), time = 1000:1099))
 
-names(X)
 start(X)
 end(X)
 time(X)
 
 ## Multivariate
-Y <- series(matrix(rnorm(300), 100, 3), era("CE"), start = 1000)
+## Sampled every century starting from 1000 CE
+## Expressed in kilo years
+(Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
-names(Y)
 start(Y)
 end(Y)
 time(Y)

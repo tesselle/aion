@@ -6,25 +6,66 @@ NULL
 ## [ ---------------------------------------------------------------------------
 #' @export
 #' @rdname subset
+#' @aliases [,TimeLine-method
+setMethod(
+  f = "[",
+  signature = c(x = "TimeLine"),
+  function(x, i) {
+    z <- methods::callNextMethod() # Method for `numeric`
+    methods::initialize(x, z)
+  }
+)
+
+#' @export
+#' @rdname subset
 #' @aliases [,TimeSeries-method
 setMethod(
   f = "[",
   signature = c(x = "TimeSeries"),
   function(x, i, j, ..., drop = FALSE) {
-    z <- methods::callNextMethod()
+    z <- methods::callNextMethod() # Method for `matrix`
 
     if (is.null(dim(z))) return(z)
 
-    start <- x@time_start
-    labels <- x@time_labels
+    time <- x@time
     if (!missing(i)) {
-      years <- time(x)
-      start <- years[i][[1L]]
+      time <- time[i]
     }
-    if (!missing(j)) {
-      labels <- labels[j]
+    methods::initialize(x, z, time = time)
+  }
+)
+
+## [[ --------------------------------------------------------------------------
+#' @export
+#' @rdname subset
+#' @aliases [[,TimeLine-method
+setMethod(
+  f = "[[",
+  signature = c(x = "TimeLine"),
+  function(x, i) {
+    z <- methods::callNextMethod() # Method for `numeric`
+    methods::initialize(x, z)
+  }
+)
+
+# Window =======================================================================
+#' @export
+#' @rdname window
+#' @aliases window,TimeSeries-method
+setMethod(
+  f = "window",
+  signature = "TimeSeries",
+  definition = function(x, start = NULL, end = NULL) {
+    if (is.null(start)) start <- start(x)
+    if (is.null(end)) end <- end(x)
+    years <- time(x)
+
+    if (calendar_direction(x) > 0) {
+      i <- which(years >= start & years <= end)
     }
-    x <- methods::as(x, "TimeSeries", strict = TRUE)
-    methods::initialize(x, z, time_labels = labels, time_start = start)
+    if (calendar_direction(x) < 0) {
+      i <- which(years <= start & years >= end)
+    }
+    x[i, , drop = FALSE]
   }
 )

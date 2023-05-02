@@ -4,66 +4,47 @@
 \name{series}
 \alias{series}
 \alias{series-method}
-\alias{series,matrix,TimeScale-method}
-\alias{series,numeric,TimeScale-method}
-\alias{series,data.frame,TimeScale-method}
+\alias{series,matrix,TimeLine,missing-method}
+\alias{series,matrix,numeric,Calendar-method}
+\alias{series,numeric,numeric,Calendar-method}
+\alias{series,numeric,TimeLine,missing-method}
+\alias{series,data.frame,numeric,Calendar-method}
+\alias{series,data.frame,TimeLine,missing-method}
 \title{Create Time Series}
 \usage{
-series(data, scale, ...)
+series(object, time, calendar, ...)
 
-\S4method{series}{matrix,TimeScale}(
-  data,
-  scale,
-  start,
-  end = NULL,
-  frequency = 1,
-  delta = NULL,
-  names = NULL
-)
+\S4method{series}{matrix,TimeLine,missing}(object, time, names = NULL)
 
-\S4method{series}{numeric,TimeScale}(
-  data,
-  scale,
-  start,
-  end = NULL,
-  frequency = 1,
-  delta = NULL,
-  names = NULL
-)
+\S4method{series}{matrix,numeric,Calendar}(object, time, calendar, scale = 1, names = NULL)
 
-\S4method{series}{data.frame,TimeScale}(
-  data,
-  scale,
-  start,
-  end = NULL,
-  frequency = 1,
-  delta = NULL,
-  names = NULL
-)
+\S4method{series}{numeric,numeric,Calendar}(object, time, calendar, scale = 1, names = NULL)
+
+\S4method{series}{numeric,TimeLine,missing}(object, time, names = NULL)
+
+\S4method{series}{data.frame,numeric,Calendar}(object, time, calendar, scale = 1, names = NULL)
+
+\S4method{series}{data.frame,TimeLine,missing}(object, time, names = NULL)
 }
 \arguments{
-\item{data}{A \code{\link{numeric}} \code{vector} or \code{matrix} of the observed time-series
+\item{object}{A \code{\link{numeric}} \code{vector} or \code{matrix} of the observed time-series
 values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via
 \code{\link[=data.matrix]{data.matrix()}}.}
 
-\item{scale}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=era]{era()}}).}
+\item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{TimeLine}}
+object (see \code{\link[=years]{years()}}).}
+
+\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=calendar]{calendar()}}). If missing,
+\code{years} must be a \code{\linkS4class{TimeLine}} object.}
 
 \item{...}{Currently not used.}
 
-\item{start}{A length-one \code{\link{numeric}} vector specifying the year of the
-first observation.}
-
-\item{end}{A length-one \code{\link{numeric}} vector specifying the year of the
-last observation.}
-
-\item{frequency}{A length-one \code{\link{numeric}} vector specifying the number of
-observations per year. Only used if \code{delta} is \code{NULL}.}
-
-\item{delta}{A length-one \code{\link{numeric}} vector specifying the fraction of
-year between successive observations.}
-
 \item{names}{A \code{\link{character}} string specifying the names of the time
 series.}
+
+\item{scale}{A length-one \code{\link{numeric}} vector specifying the number of years
+represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
+It will be coerced with \code{\link[=as.integer]{as.integer()}} (hence truncated toward zero).}
 }
 \value{
 A \code{\linkS4class{TimeSeries}} object.
@@ -71,27 +52,22 @@ A \code{\linkS4class{TimeSeries}} object.
 \description{
 Create Time Series
 }
-\details{
-\code{series()} only supports data sampled at equidistant points in time,
-expressed in decimal years (1950 means 1950.0, i.e. the beginning of the
-year 1950).
-}
 \examples{
 ## Create time-series of 100 observations
-## Sampled every years starting from 1000 CE
 
 ## Univariate
-X <- series(rnorm(300), era("BCE"), start = 1000)
+## Sampled every years starting from 1000 CE
+(X <- series(rnorm(100), calendar("BCE"), time = 1000:1099))
 
-names(X)
 start(X)
 end(X)
 time(X)
 
 ## Multivariate
-Y <- series(matrix(rnorm(300), 100, 3), era("CE"), start = 1000)
+## Sampled every century starting from 1000 CE
+## Expressed in kilo years
+(Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
-names(Y)
 start(Y)
 end(Y)
 time(Y)
@@ -102,7 +78,8 @@ Other time series tools:
 \code{\link{project}()},
 \code{\link{start}()},
 \code{\link{time}()},
-\code{\link{window}()}
+\code{\link{window}()},
+\code{\link{years}()}
 }
 \author{
 N. Frerebeau
