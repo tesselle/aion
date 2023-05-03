@@ -45,6 +45,7 @@ Collate:
     'allen.R'
     'calendar.R'
     'chronos-package.R'
+    'era.R'
     'interval.R'
     'mutators.R'
     'plot.R'

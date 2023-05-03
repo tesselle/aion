@@ -5,11 +5,14 @@
 \alias{years}
 \alias{years-method}
 \alias{years,numeric,TimeScale-method}
+\alias{years,TimeSeries,missing-method}
 \title{Year Vectors}
 \usage{
 years(object, calendar, ...)
 
 \S4method{years}{numeric,TimeScale}(object, calendar, scale = 1, sort = FALSE)
+
+\S4method{years}{TimeSeries,missing}(object)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} vector of (decimal) years.}

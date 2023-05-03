@@ -27,24 +27,11 @@ setMethod(
 
     if (is.null(dim(z))) return(z)
 
-    time <- x@time
+    time <- years(x)
     if (!missing(i)) {
       time <- time[i]
     }
     methods::initialize(x, z, time = time)
-  }
-)
-
-## [[ --------------------------------------------------------------------------
-#' @export
-#' @rdname subset
-#' @aliases [[,TimeLine-method
-setMethod(
-  f = "[[",
-  signature = c(x = "TimeLine"),
-  function(x, i) {
-    z <- methods::callNextMethod() # Method for `numeric`
-    methods::initialize(x, z)
   }
 )
 

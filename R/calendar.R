@@ -1,10 +1,11 @@
-# TIME SCALE
+# CALENDAR
 #' @include AllGenerics.R
 NULL
 
+# Gregorian calendar ===========================================================
 #' @export
-#' @rdname calendar
-as_gregorian <- function(label, name, epoch, direction) {
+#' @rdname gregorian
+gregorian <- function(label, name, epoch, direction) {
   .GregorianCalendar(
     label = label,
     name = name,
@@ -14,186 +15,46 @@ as_gregorian <- function(label, name, epoch, direction) {
 }
 
 #' @export
-#' @rdname calendar
-as_julian <- function(...) {
-  .JulianCalendar()
-}
-
-#' @export
-#' @rdname era
-#' @aliases era,character-method
+#' @rdname gregorian
+#' @aliases as_gregorian,JulianCalendar-method
 setMethod(
-  f = "era",
-  signature = "character",
+  f = "as_gregorian",
+  signature = "JulianCalendar",
   definition = function(object) {
-    switch (
-      object,
-      BP = .BP(),
-      b2k = .b2k(),
-      BC = .BC(),
-      BCE = .BCE(),
-      AD = .AD(),
-      CE = .CE(),
-      stop(sprintf("Unknown era: %s", object), call. = FALSE)
-    )
+    # TODO
   }
 )
 
 #' @export
-#' @rdname era
-#' @aliases era,TimeLine-method
+#' @rdname gregorian
+#' @aliases is_gregorian,TimeScale-method
 setMethod(
-  f = "era",
-  signature = "TimeLine",
+  f = "is_gregorian",
+  signature = "TimeScale",
   definition = function(object) {
-    object@calendar
+    methods::is(object, "GregorianCalendar")
+  }
+)
+
+# Juliab calendar ==============================================================
+#' @export
+#' @rdname julian
+#' @aliases as_julian,GregorianCalendar-method
+setMethod(
+  f = "as_julian",
+  signature = "GregorianCalendar",
+  definition = function(object) {
+    # TODO
   }
 )
 
 #' @export
-#' @rdname era
-#' @aliases era,TimeSeries-method
+#' @rdname julian
+#' @aliases is_julian,TimeScale-method
 setMethod(
-  f = "era",
-  signature = "TimeSeries",
+  f = "is_julian",
+  signature = "TimeScale",
   definition = function(object) {
-    methods::callGeneric(object = object@time)
+    methods::is(object, "JulianCalendar")
   }
-)
-
-# Mutators =====================================================================
-## Getters ---------------------------------------------------------------------
-#' @export
-#' @rdname era_get
-#' @aliases era_label,TimeScale-method
-setMethod(
-  f = "era_label",
-  signature = "TimeScale",
-  definition = function(object) object@label
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_label,TimeLine-method
-setMethod(
-  f = "era_label",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(object@calendar)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_label,TimeSeries-method
-setMethod(
-  f = "era_label",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(object@time)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_name,TimeScale-method
-setMethod(
-  f = "era_name",
-  signature = "TimeScale",
-  definition = function(object) object@name
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_name,TimeLine-method
-setMethod(
-  f = "era_name",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(object@calendar)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_name,TimeSeries-method
-setMethod(
-  f = "era_name",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(object@time)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_epoch,TimeScale-method
-setMethod(
-  f = "era_epoch",
-  signature = "TimeScale",
-  definition = function(object) object@epoch
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_epoch,TimeLine-method
-setMethod(
-  f = "era_epoch",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(object@calendar)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_epoch,TimeSeries-method
-setMethod(
-  f = "era_epoch",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(object@time)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_direction,TimeScale-method
-setMethod(
-  f = "era_direction",
-  signature = "TimeScale",
-  definition = function(object) sign(object@direction)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_direction,TimeLine-method
-setMethod(
-  f = "era_direction",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(object@calendar)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_direction,TimeSeries-method
-setMethod(
-  f = "era_direction",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(object@time)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_year,TimeScale-method
-setMethod(
-  f = "era_year",
-  signature = "TimeScale",
-  definition = function(object) object@year
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_year,TimeLine-method
-setMethod(
-  f = "era_year",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(object@calendar)
-)
-
-#' @export
-#' @rdname era_get
-#' @aliases era_year,TimeSeries-method
-setMethod(
-  f = "era_year",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(object@time)
 )

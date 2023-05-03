@@ -4,6 +4,9 @@ test_that("Era", {
 test_that("BP", {
   cal <- era("BP")
 
+  expect_true(is_gregorian(cal))
+  expect_false(is_julian(cal))
+
   expect_equal(era_label(cal), "BP")
   expect_equal(era_name(cal), "Before Present")
   expect_equal(era_epoch(cal), 1950)

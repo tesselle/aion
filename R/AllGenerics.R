@@ -72,8 +72,10 @@ setGeneric(
   valueClass = "TimeScale"
 )
 
-#' Calendar
+#' Gregorian Calendar
 #'
+#' @param object A [`GregorianCalendar-class`] or [`JulianCalendar-class`]
+#'  object.
 #' @param label A [`character`] string specifying the abbreviated label of
 #'  the time scale.
 #' @param name A [`character`] string specifying the name of the time scale.
@@ -82,20 +84,65 @@ setGeneric(
 #' @param direction A length-one [`integer`] vector specifying if years are
 #'  counted backwards (`-1`) or forwards (`1`) from `epoch`. Only the
 #'  [sign][sign()] of `direction` will be retained.
-#' @param ... Currently not used.
 #' @return
-#'  A [`TimeScale-class`] object.
+#'  * `as_gregorian()` returns a [`GregorianCalendar-class`] object.
+#'  * `is_gregorian()` returns a [`logical`] scalar.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @name calendar
-#' @rdname calendar
+#' @name gregorian
+#' @rdname gregorian
 NULL
 
-#' Calendar Tools
+#' @rdname gregorian
+#' @aliases as_gregorian-method
+setGeneric(
+  name = "as_gregorian",
+  def = function(object) standardGeneric("as_gregorian"),
+  valueClass = "GregorianCalendar"
+)
+
+#' @rdname gregorian
+#' @aliases is_gregorian-method
+setGeneric(
+  name = "is_gregorian",
+  def = function(object) standardGeneric("is_gregorian")
+)
+
+#' Julian Calendar
+#'
+#' @param object A [`GregorianCalendar-class`] or [`JulianCalendar-class`]
+#'  object.
+#' @return
+#'  * `as_julian()` returns a [`JulianCalendar-class`] object.
+#'  * `is_julian()` returns a [`logical`] scalar.
+#' @example inst/examples/ex-calendar.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time scales tools
+#' @name julian
+#' @rdname julian
+NULL
+
+#' @rdname julian
+#' @aliases as_julian-method
+setGeneric(
+  name = "as_julian",
+  def = function(object) standardGeneric("as_julian"),
+  valueClass = "JulianCalendar"
+)
+
+#' @rdname julian
+#' @aliases is_julian-method
+setGeneric(
+  name = "is_julian",
+  def = function(object) standardGeneric("is_julian")
+)
+
+#' Era Parameters
 #'
 #' @param object A [`TimeScale-class`] object.
 #' @example inst/examples/ex-calendar.R

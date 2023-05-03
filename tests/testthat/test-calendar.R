@@ -1,11 +1,13 @@
 test_that("Gregorian calendar", {
   ## Create a custom gregorian calendar
-  cal <- as_gregorian(
+  cal <- gregorian(
     label = "AUC",
     name = "Ab urbe condita",
     epoch = 753,
     direction = 1
   )
+
+  expect_true(is_gregorian(cal))
 
   expect_equal(era_label(cal), "AUC")
   expect_equal(era_name(cal), "Ab urbe condita")

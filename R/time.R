@@ -17,7 +17,7 @@ setMethod(
 setMethod(
   f = "start",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) methods::callGeneric(years(x))
 )
 
 
@@ -36,7 +36,7 @@ setMethod(
 setMethod(
   f = "end",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) methods::callGeneric(years(x))
 )
 
 #' @export
@@ -56,7 +56,7 @@ setMethod(
 setMethod(
   f = "time",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) methods::callGeneric(years(x))
 )
 
 #' @export
@@ -74,5 +74,5 @@ setMethod(
 setMethod(
   f = "frequency",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) methods::callGeneric(years(x))
 )

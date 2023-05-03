@@ -16,3 +16,12 @@ setMethod(
     .TimeLine(object, calendar = calendar, scale = as.integer(scale))
   }
 )
+
+#' @export
+#' @rdname years
+#' @aliases years,TimeSeries,missing-method
+setMethod(
+  f = "years",
+  signature = c(object = "TimeSeries", calendar = "missing"),
+  definition = function(object) object@time
+)

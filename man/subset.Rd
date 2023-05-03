@@ -5,14 +5,11 @@
 \alias{subset}
 \alias{[,TimeLine-method}
 \alias{[,TimeSeries-method}
-\alias{[[,TimeLine-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
 \S4method{[}{TimeLine}(x, i)
 
 \S4method{[}{TimeSeries}(x, i, j, ..., drop = FALSE)
-
-\S4method{[[}{TimeLine}(x, i)
 }
 \arguments{
 \item{x}{An object from which to extract element(s) or in which to replace

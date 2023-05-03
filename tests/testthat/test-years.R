@@ -23,8 +23,8 @@ test_that("Extract parts of a vector of years", {
   expect_identical(era(z), era("CE"))
 
   z <- y[[1]]
-  expect_identical(z@.Data, c(5000))
-  expect_identical(era(z), era("CE"))
+  expect_identical(z, c(5000))
+  expect_s4_class(z, NA)
 })
 test_that("Replace parts of a vector of years", {
   y <- years(c(5000, 1000, 2000, -3000), era("CE"), sort = FALSE)

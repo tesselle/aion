@@ -4,36 +4,39 @@
 \name{GregorianCalendar-class}
 \alias{GregorianCalendar-class}
 \alias{.GregorianCalendar}
-\alias{BP-class}
-\alias{.BP}
-\alias{b2k-class}
-\alias{.b2k}
-\alias{BC-class}
-\alias{.BC}
-\alias{BCE-class}
-\alias{.BCE}
-\alias{AD-class}
-\alias{.AD}
-\alias{CE-class}
-\alias{.CE}
 \title{GregorianCalendar}
 \description{
 An S4 class to represent a Gregorian calendar.
 }
 \seealso{
 Other classes: 
+\code{\link{AD-class}},
+\code{\link{BC-class}},
+\code{\link{BCE-class}},
+\code{\link{BP-class}},
+\code{\link{CE-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{TimeLine-class}},
 \code{\link{TimeScale-class}},
-\code{\link{TimeSeries-class}}
+\code{\link{TimeSeries-class}},
+\code{\link{b2k-class}}
 
 Other calendar classes: 
 \code{\link{JulianCalendar-class}},
 \code{\link{TimeScale-class}}
+
+Other gregorian era classes: 
+\code{\link{AD-class}},
+\code{\link{BC-class}},
+\code{\link{BCE-class}},
+\code{\link{BP-class}},
+\code{\link{CE-class}},
+\code{\link{b2k-class}}
 }
 \author{
 N. Frerebeau
 }
 \concept{calendar classes}
 \concept{classes}
+\concept{gregorian era classes}
 \keyword{internal}

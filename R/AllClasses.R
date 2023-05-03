@@ -39,6 +39,7 @@ NULL
 #' @author N. Frerebeau
 #' @family classes
 #' @family calendar classes
+#' @family gregorian era classes
 #' @docType class
 #' @aliases GregorianCalendar-class
 #' @keywords internal
@@ -50,7 +51,15 @@ NULL
   contains = "TimeScale"
 )
 
-#' @rdname GregorianCalendar-class
+#' BP
+#'
+#' An S4 class to represent the (Gregorian) BP era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases BP-class
+#' @keywords internal
 .BP <- setClass(
   Class = "BP",
   prototype = list(
@@ -62,7 +71,15 @@ NULL
   contains = "GregorianCalendar"
 )
 
-#' @rdname GregorianCalendar-class
+#' b2k
+#'
+#' An S4 class to represent the (Gregorian) b2k era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases b2k-class
+#' @keywords internal
 .b2k <- setClass(
   Class = "b2k",
   prototype = list(
@@ -74,7 +91,15 @@ NULL
   contains = "GregorianCalendar"
 )
 
-#' @rdname GregorianCalendar-class
+#' BC
+#'
+#' An S4 class to represent the (Gregorian) BC era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases BC-class
+#' @keywords internal
 .BC <- setClass(
   Class = "BC",
   prototype = list(
@@ -86,7 +111,15 @@ NULL
   contains = "GregorianCalendar"
 )
 
-#' @rdname GregorianCalendar-class
+#' BCE
+#'
+#' An S4 class to represent the (Gregorian) BCE era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases BCE-class
+#' @keywords internal
 .BCE <- setClass(
   Class = "BCE",
   prototype = list(
@@ -98,7 +131,15 @@ NULL
   contains = "GregorianCalendar"
 )
 
-#' @rdname GregorianCalendar-class
+#' AD
+#'
+#' An S4 class to represent the (Gregorian) AD era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases AD-class
+#' @keywords internal
 .AD <- setClass(
   Class = "AD",
   prototype = list(
@@ -110,7 +151,15 @@ NULL
   contains = "GregorianCalendar"
 )
 
-#' @rdname GregorianCalendar-class
+#' CE
+#'
+#' An S4 class to represent the (Gregorian) CE era.
+#' @author N. Frerebeau
+#' @family classes
+#' @family gregorian era classes
+#' @docType class
+#' @aliases CE-class
+#' @keywords internal
 .CE <- setClass(
   Class = "CE",
   prototype = list(
