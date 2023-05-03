@@ -8,7 +8,10 @@ NULL
 setMethod(
   f = "start",
   signature = "TimeLine",
-  definition = function(x) min(x, na.rm = TRUE)
+  definition = function(x) {
+    if (era_direction(x) > 0) min(x, na.rm = TRUE)
+    else max(x, na.rm = TRUE)
+  }
 )
 
 #' @export
@@ -27,7 +30,10 @@ setMethod(
 setMethod(
   f = "end",
   signature = "TimeLine",
-  definition = function(x) max(x, na.rm = TRUE)
+  definition = function(x) {
+    if (era_direction(x) > 0) max(x, na.rm = TRUE)
+    else min(x, na.rm = TRUE)
+  }
 )
 
 #' @export

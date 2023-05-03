@@ -36,7 +36,7 @@ setValidity(
 
     ## Validate
     cnd <- list(
-      arkhe::validate(arkhe::assert_scalar(scale, "integer"))
+      arkhe::validate(arkhe::assert_scalar(scale, "numeric"))
     )
 
     ## Return conditions, if any

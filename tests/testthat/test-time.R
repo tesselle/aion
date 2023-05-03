@@ -1,8 +1,8 @@
 test_that("Terminal times", {
   y <- years(1000:1099, era("BCE"))
 
-  expect_equal(start(y), 1000)
-  expect_equal(end(y), 1099)
+  expect_equal(start(y), 1099)
+  expect_equal(end(y), 1000)
 
   x <- series(rnorm(100), time = y)
 
