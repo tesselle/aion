@@ -4,15 +4,24 @@
 \name{project}
 \alias{project}
 \alias{project-method}
+\alias{project,TimeLine,TimeScale-method}
 \alias{project,TimeSeries,character-method}
+\alias{project,TimeLine,TimeLine-method}
+\alias{project,TimeSeries,TimeSeries-method}
 \alias{project,TimeSeries,TimeScale-method}
 \title{Change the Time Scale}
 \usage{
 project(object, target, ...)
 
-\S4method{project}{TimeSeries,character}(object, target)
+\S4method{project}{TimeLine,TimeScale}(object, target)
+
+\S4method{project}{TimeLine,TimeLine}(object, target)
+
+\S4method{project}{TimeSeries,TimeSeries}(object, target)
 
 \S4method{project}{TimeSeries,TimeScale}(object, target)
+
+\S4method{project}{TimeSeries,character}(object, target)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{TimeSeries}} object.}
@@ -28,6 +37,15 @@ A \code{\linkS4class{TimeSeries}} object.
 }
 \description{
 Change the time scale of time series.
+}
+\examples{
+## Create time series
+A <- series(rnorm(100), era("CE"), time = 1000:1099)
+B <- series(rnorm(100), era("CE"), time = 1100:1199)
+
+## Reproject to BP time scale
+(A <- project(A, "BP"))
+(B <- project(B, A))
 }
 \seealso{
 Other time series tools: 

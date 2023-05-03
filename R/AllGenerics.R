@@ -193,10 +193,12 @@ setGeneric(
 #' Interconverts dates in a variety of calendars.
 #' @param from A [`TimeScale-class`] object describing the source calendar.
 #' @param to A [`TimeScale-class`] object describing the target calendar.
+#' @param precision A length-one [`integer`] vector indicating the number of
+#'  decimal places. Defaults to `NA`: no rounding is performed.
 #' @param ... Currently not used.
 #' @return
 #'  A [`function`] that when called with a single numeric argument (years)
-#'  converts years from one calendar to another.
+#'  converts years from one calendar era to another.
 #' @note
 #'  Adapted from [era::yr_transform()] by Joe Roe.
 # @example inst/examples/ex-convert.R
@@ -358,7 +360,7 @@ NULL
 #' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.
-# @example inst/examples/ex-project.R
+#' @example inst/examples/ex-project.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools

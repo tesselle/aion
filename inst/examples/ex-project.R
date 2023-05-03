@@ -1,6 +1,6 @@
 ## Create time series
-A <- series(rnorm(300), scale = era("CE"), start = 1000)
-B <- series(rnorm(300), scale = era("CE"), start = 1000)
+A <- series(rnorm(100), era("CE"), time = 1000:1099)
+B <- series(rnorm(100), era("CE"), time = 1100:1199)
 
 ## Reproject to BP time scale
 (A <- project(A, "BP"))

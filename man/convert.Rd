@@ -10,9 +10,9 @@
 \usage{
 convert(from, to, ...)
 
-\S4method{convert}{character,character}(from, to)
+\S4method{convert}{character,character}(from, to, precision = getOption("chronos.precision"))
 
-\S4method{convert}{TimeScale,TimeScale}(from, to)
+\S4method{convert}{TimeScale,TimeScale}(from, to, precision = getOption("chronos.precision"))
 }
 \arguments{
 \item{from}{A \code{\linkS4class{TimeScale}} object describing the source calendar.}
@@ -20,10 +20,13 @@ convert(from, to, ...)
 \item{to}{A \code{\linkS4class{TimeScale}} object describing the target calendar.}
 
 \item{...}{Currently not used.}
+
+\item{precision}{A length-one \code{\link{integer}} vector indicating the number of
+decimal places. Defaults to \code{NA}: no rounding is performed.}
 }
 \value{
 A \code{\link{function}} that when called with a single numeric argument (years)
-converts years from one calendar to another.
+converts years from one calendar era to another.
 }
 \description{
 Interconverts dates in a variety of calendars.

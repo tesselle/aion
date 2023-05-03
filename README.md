@@ -29,11 +29,14 @@ given year-based time scale (in the same way that geographic data are
 linked to a coordinate system).
 
 **chronos** provides a system of classes and methods to represent and
-work with such time-series. This package includes common time scales
-(e.g., before present, common era) and supports user-defined scales.
-Time-series can be reprojected to a different time scale (e.g. from BP
-to CE years). **chronos** only supports data expressed in decimal years
-(1950 means 1950.0, i.e. the beginning of the year 1950).
+work with such time-series. This package includes common Gregorian era
+(e.g., before present, common era) and supports user-defined time
+scales. Time-series can be reprojected to a different time scale
+(e.g. from BP to CE years).
+
+**chronos** only supports dates expressed in decimal years (1950 means
+1950.0, i.e. the beginning of the year 1950) and uses astronomical
+notation (**there is a year 0**).
 
 ## Installation
 
@@ -63,16 +66,19 @@ library(chronos)
 ## Sampled every two years starting from 2000 BP
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
-  time = seq(from = 2000, by = 2, length.out = 50),
+  time = seq(from = 2000, by = -2, length.out = 50),
   calendar = era("BP")
 )
 
 ## Reproject to the CE time scale
 (Y <- project(X, era("CE")))
+#> 6 time series observed between -50 and 48 CE.
 
 ## Plot
 plot(Y)
 ```
+
+![](man/figures/README-time-series-1.png)<!-- -->
 
 ## Contributing
 

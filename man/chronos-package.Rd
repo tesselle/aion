@@ -24,7 +24,7 @@ A toolkit for archaeological time series analysis and temporal reasoning. This p
 \code{chronos} uses the following \code{\link[=options]{options()}} to configure behaviour:
 \itemize{
 \item \code{chronos.precision}: an \code{\link{integer}} indicating the number of decimal
-places (defaults to \eqn{0}).
+places (defaults to \code{NA}).
 }
 }
 

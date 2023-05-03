@@ -9,7 +9,7 @@
 #' @section Package options:
 #'  `chronos` uses the following [options()] to configure behaviour:
 #'  * `chronos.precision`: an [`integer`] indicating the number of decimal
-#'    places (defaults to \eqn{0}).
+#'    places (defaults to `NA`).
 #'
 #' @author
 #'  **Full list of authors and contributors** (alphabetic order):
