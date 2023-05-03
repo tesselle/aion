@@ -13,19 +13,19 @@
 \alias{era_direction-method}
 \alias{era_year}
 \alias{era_year-method}
-\alias{era_label,Calendar-method}
+\alias{era_label,TimeScale-method}
 \alias{era_label,TimeLine-method}
 \alias{era_label,TimeSeries-method}
-\alias{era_name,Calendar-method}
+\alias{era_name,TimeScale-method}
 \alias{era_name,TimeLine-method}
 \alias{era_name,TimeSeries-method}
-\alias{era_epoch,Calendar-method}
+\alias{era_epoch,TimeScale-method}
 \alias{era_epoch,TimeLine-method}
 \alias{era_epoch,TimeSeries-method}
-\alias{era_direction,Calendar-method}
+\alias{era_direction,TimeScale-method}
 \alias{era_direction,TimeLine-method}
 \alias{era_direction,TimeSeries-method}
-\alias{era_year,Calendar-method}
+\alias{era_year,TimeScale-method}
 \alias{era_year,TimeLine-method}
 \alias{era_year,TimeSeries-method}
 \title{Calendar Tools}
@@ -40,38 +40,38 @@ era_direction(object)
 
 era_year(object)
 
-\S4method{era_label}{Calendar}(object)
+\S4method{era_label}{TimeScale}(object)
 
 \S4method{era_label}{TimeLine}(object)
 
 \S4method{era_label}{TimeSeries}(object)
 
-\S4method{era_name}{Calendar}(object)
+\S4method{era_name}{TimeScale}(object)
 
 \S4method{era_name}{TimeLine}(object)
 
 \S4method{era_name}{TimeSeries}(object)
 
-\S4method{era_epoch}{Calendar}(object)
+\S4method{era_epoch}{TimeScale}(object)
 
 \S4method{era_epoch}{TimeLine}(object)
 
 \S4method{era_epoch}{TimeSeries}(object)
 
-\S4method{era_direction}{Calendar}(object)
+\S4method{era_direction}{TimeScale}(object)
 
 \S4method{era_direction}{TimeLine}(object)
 
 \S4method{era_direction}{TimeSeries}(object)
 
-\S4method{era_year}{Calendar}(object)
+\S4method{era_year}{TimeScale}(object)
 
 \S4method{era_year}{TimeLine}(object)
 
 \S4method{era_year}{TimeSeries}(object)
 }
 \arguments{
-\item{object}{A \code{\linkS4class{Calendar}} object.}
+\item{object}{A \code{\linkS4class{TimeScale}} object.}
 }
 \description{
 Calendar Tools

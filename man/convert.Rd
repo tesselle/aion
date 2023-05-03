@@ -5,19 +5,19 @@
 \alias{convert}
 \alias{convert-method}
 \alias{convert,character,character-method}
-\alias{convert,Calendar,Calendar-method}
+\alias{convert,TimeScale,TimeScale-method}
 \title{Calendar Converter}
 \usage{
 convert(from, to, ...)
 
 \S4method{convert}{character,character}(from, to)
 
-\S4method{convert}{Calendar,Calendar}(from, to)
+\S4method{convert}{TimeScale,TimeScale}(from, to)
 }
 \arguments{
-\item{from}{A \code{\linkS4class{Calendar}} object describing the source calendar.}
+\item{from}{A \code{\linkS4class{TimeScale}} object describing the source calendar.}
 
-\item{to}{A \code{\linkS4class{Calendar}} object describing the target calendar.}
+\item{to}{A \code{\linkS4class{TimeScale}} object describing the target calendar.}
 
 \item{...}{Currently not used.}
 }

@@ -27,7 +27,7 @@ counted backwards (\code{-1}) or forwards (\code{1}) from \code{epoch}. Only the
 \item{...}{Currently not used.}
 }
 \value{
-A \code{\linkS4class{Calendar}} object.
+A \code{\linkS4class{TimeScale}} object.
 }
 \description{
 Calendar

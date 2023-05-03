@@ -2,7 +2,7 @@
 NULL
 
 # Time Scales ==================================================================
-#' Calendar
+#' TimeScale
 #'
 #' A virtual S4 class to represent a calendar.
 #' @slot label A [`character`] string specifying the abbreviated label of
@@ -18,10 +18,10 @@ NULL
 #' @family classes
 #' @family calendar classes
 #' @docType class
-#' @aliases Calendar-class
+#' @aliases TimeScale-class
 #' @keywords internal
-.Calendar <- setClass(
-  Class = "Calendar",
+.TimeScale <- setClass(
+  Class = "TimeScale",
   slots = c(
     label = "character",
     name = "character",
@@ -32,7 +32,7 @@ NULL
   contains = "VIRTUAL"
 )
 
-## Gregorian Calendar ----------------------------------------------------------
+## Gregorian TimeScale ----------------------------------------------------------
 #' GregorianCalendar
 #'
 #' An S4 class to represent a Gregorian calendar.
@@ -47,7 +47,7 @@ NULL
   prototype = list(
     year = 365.2425
   ),
-  contains = "Calendar"
+  contains = "TimeScale"
 )
 
 #' @rdname GregorianCalendar-class
@@ -122,7 +122,7 @@ NULL
   contains = "GregorianCalendar"
 )
 
-## Julian Calendar -------------------------------------------------------------
+## Julian TimeScale -------------------------------------------------------------
 #' JulianCalendar
 #'
 #' An S4 class to represent a Julian calendar.
@@ -137,7 +137,7 @@ NULL
   prototype = list(
     year = 365.25
   ),
-  contains = "Calendar"
+  contains = "TimeScale"
 )
 
 # Time Series ==================================================================
@@ -148,7 +148,7 @@ NULL
 #' @slot error A [`numeric`] vector of uncertainties.
 #' @slot scale A [`numeric`] value specifying the number of years represented by
 #'  one unit. It should be a power of 10 (i.e. 1000 means ka).
-#' @slot calendar A [`Calendar-class`] object specifying the time scale.
+#' @slot calendar A [`TimeScale-class`] object specifying the time scale.
 #' @note
 #'  This class inherits from [`numeric`].
 #' @author N. Frerebeau
@@ -163,7 +163,7 @@ NULL
   slots = c(
     error = "numeric",
     scale = "numeric",
-    calendar = "Calendar"
+    calendar = "TimeScale"
   ),
   contains = "numeric"
 )

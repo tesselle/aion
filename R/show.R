@@ -15,7 +15,7 @@ setMethod(
 # Show =========================================================================
 setMethod(
   f = "show",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) {
     dirout <- if (era_direction(object) > 0) "forwards" else "backwards"
     msg <- "%s (%s): years (%g days) counted %s from %g."

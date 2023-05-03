@@ -25,10 +25,10 @@ This class inherits from \code{\link{matrix}}.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}},
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
-\code{\link{TimeLine-class}}
+\code{\link{TimeLine-class}},
+\code{\link{TimeScale-class}}
 
 Other time classes: 
 \code{\link{TimeLine-class}}

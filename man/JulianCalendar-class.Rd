@@ -10,14 +10,14 @@ An S4 class to represent a Julian calendar.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}},
 \code{\link{GregorianCalendar-class}},
 \code{\link{TimeLine-class}},
+\code{\link{TimeScale-class}},
 \code{\link{TimeSeries-class}}
 
 Other calendar classes: 
-\code{\link{Calendar-class}},
-\code{\link{GregorianCalendar-class}}
+\code{\link{GregorianCalendar-class}},
+\code{\link{TimeScale-class}}
 }
 \author{
 N. Frerebeau

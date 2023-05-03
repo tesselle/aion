@@ -4,10 +4,10 @@ NULL
 
 #' @export
 #' @rdname years
-#' @aliases years,numeric,Calendar-method
+#' @aliases years,numeric,TimeScale-method
 setMethod(
   f = "years",
-  signature = c(object = "numeric", calendar = "Calendar"),
+  signature = c(object = "numeric", calendar = "TimeScale"),
   definition = function(object, calendar, scale = 1, sort = FALSE) {
     if (isTRUE(sort)) {
       i <- order(object, decreasing = era_direction(calendar) < 0)

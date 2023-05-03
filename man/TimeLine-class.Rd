@@ -18,7 +18,7 @@ An S4 class to represent a vector of years.
 \item{\code{scale}}{A \code{\link{numeric}} value specifying the number of years represented by
 one unit. It should be a power of 10 (i.e. 1000 means ka).}
 
-\item{\code{calendar}}{A \code{\linkS4class{Calendar}} object specifying the time scale.}
+\item{\code{calendar}}{A \code{\linkS4class{TimeScale}} object specifying the time scale.}
 }}
 
 \note{
@@ -26,9 +26,9 @@ This class inherits from \code{\link{numeric}}.
 }
 \seealso{
 Other classes: 
-\code{\link{Calendar-class}},
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
+\code{\link{TimeScale-class}},
 \code{\link{TimeSeries-class}}
 
 Other time classes: 

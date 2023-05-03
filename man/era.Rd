@@ -23,7 +23,7 @@ era(object, ...)
 \item{...}{Currently not used.}
 }
 \value{
-A \code{\linkS4class{Calendar}} object.
+A \code{\linkS4class{TimeScale}} object.
 }
 \description{
 Era

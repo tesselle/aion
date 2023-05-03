@@ -65,10 +65,10 @@ setMethod(
 ## Getters ---------------------------------------------------------------------
 #' @export
 #' @rdname era_get
-#' @aliases era_label,Calendar-method
+#' @aliases era_label,TimeScale-method
 setMethod(
   f = "era_label",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) object@label
 )
 
@@ -92,10 +92,10 @@ setMethod(
 
 #' @export
 #' @rdname era_get
-#' @aliases era_name,Calendar-method
+#' @aliases era_name,TimeScale-method
 setMethod(
   f = "era_name",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) object@name
 )
 
@@ -119,10 +119,10 @@ setMethod(
 
 #' @export
 #' @rdname era_get
-#' @aliases era_epoch,Calendar-method
+#' @aliases era_epoch,TimeScale-method
 setMethod(
   f = "era_epoch",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) object@epoch
 )
 
@@ -146,10 +146,10 @@ setMethod(
 
 #' @export
 #' @rdname era_get
-#' @aliases era_direction,Calendar-method
+#' @aliases era_direction,TimeScale-method
 setMethod(
   f = "era_direction",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) sign(object@direction)
 )
 
@@ -173,10 +173,10 @@ setMethod(
 
 #' @export
 #' @rdname era_get
-#' @aliases era_year,Calendar-method
+#' @aliases era_year,TimeScale-method
 setMethod(
   f = "era_year",
-  signature = "Calendar",
+  signature = "TimeScale",
   definition = function(object) object@year
 )
 

@@ -2,9 +2,9 @@
 #' @include AllClasses.R
 NULL
 
-# Calendar =====================================================================
+# TimeScale =====================================================================
 setValidity(
-  Class = "Calendar",
+  Class = "TimeScale",
   method = function(object) {
     ## Get data
     label <- object@label

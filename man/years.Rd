@@ -4,17 +4,17 @@
 \name{years}
 \alias{years}
 \alias{years-method}
-\alias{years,numeric,Calendar-method}
+\alias{years,numeric,TimeScale-method}
 \title{Year Vectors}
 \usage{
 years(object, calendar, ...)
 
-\S4method{years}{numeric,Calendar}(object, calendar, scale = 1, sort = FALSE)
+\S4method{years}{numeric,TimeScale}(object, calendar, scale = 1, sort = FALSE)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} vector of (decimal) years.}
 
-\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=era]{era()}}).}
+\item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=era]{era()}}).}
 
 \item{...}{Currently not used.}
 

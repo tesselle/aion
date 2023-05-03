@@ -22,10 +22,10 @@ setMethod(
 
 #' @export
 #' @rdname series
-#' @aliases series,matrix,numeric,Calendar-method
+#' @aliases series,matrix,numeric,TimeScale-method
 setMethod(
   f = "series",
-  signature = c(object = "matrix", time = "numeric", calendar = "Calendar"),
+  signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     time <- years(time, calendar = calendar, scale = scale)
     methods::callGeneric(object = object, time = time, names = names)
@@ -35,10 +35,10 @@ setMethod(
 # numeric ======================================================================
 #' @export
 #' @rdname series
-#' @aliases series,numeric,numeric,Calendar-method
+#' @aliases series,numeric,numeric,TimeScale-method
 setMethod(
   f = "series",
-  signature = c(object = "numeric", time = "numeric", calendar = "Calendar"),
+  signature = c(object = "numeric", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     object <- matrix(data = object, ncol = 1)
     methods::callGeneric(object = object, time = time, calendar = calendar,
@@ -61,10 +61,10 @@ setMethod(
 # data.frame ===================================================================
 #' @export
 #' @rdname series
-#' @aliases series,data.frame,numeric,Calendar-method
+#' @aliases series,data.frame,numeric,TimeScale-method
 setMethod(
   f = "series",
-  signature = c(object = "data.frame", time = "numeric", calendar = "Calendar"),
+  signature = c(object = "data.frame", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     object <- data.matrix(object)
     methods::callGeneric(object = object, time = time, calendar = calendar,

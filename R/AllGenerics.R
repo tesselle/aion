@@ -58,7 +58,7 @@ NULL
 #'   \item{`b2k`}{Years before 2000.}
 #'  }
 #' @return
-#'  A [`Calendar-class`] object.
+#'  A [`TimeScale-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
 #' @example inst/examples/ex-era.R
@@ -69,7 +69,7 @@ NULL
 setGeneric(
   name = "era",
   def = function(object, ...) standardGeneric("era"),
-  valueClass = "Calendar"
+  valueClass = "TimeScale"
 )
 
 #' Calendar
@@ -84,7 +84,7 @@ setGeneric(
 #'  [sign][sign()] of `direction` will be retained.
 #' @param ... Currently not used.
 #' @return
-#'  A [`Calendar-class`] object.
+#'  A [`TimeScale-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
 #' @example inst/examples/ex-calendar.R
@@ -97,7 +97,7 @@ NULL
 
 #' Calendar Tools
 #'
-#' @param object A [`Calendar-class`] object.
+#' @param object A [`TimeScale-class`] object.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -144,8 +144,8 @@ setGeneric(
 #' Calendar Converter
 #'
 #' Interconverts dates in a variety of calendars.
-#' @param from A [`Calendar-class`] object describing the source calendar.
-#' @param to A [`Calendar-class`] object describing the target calendar.
+#' @param from A [`TimeScale-class`] object describing the source calendar.
+#' @param to A [`TimeScale-class`] object describing the target calendar.
 #' @param ... Currently not used.
 #' @return
 #'  A [`function`] that when called with a single numeric argument (years)
@@ -167,7 +167,7 @@ setGeneric(
 #' Year Vectors
 #'
 #' @param object A [`numeric`] vector of (decimal) years.
-#' @param calendar A [`Calendar-class`] object (see [era()]).
+#' @param calendar A [`TimeScale-class`] object (see [era()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #'  Will be coerced with [as.integer()] (hence truncated toward zero).
@@ -198,7 +198,7 @@ setGeneric(
 #'  [data.matrix()].
 #' @param time A [`numeric`] vector of (decimal) years or a [`TimeLine-class`]
 #'  object (see [years()]).
-#' @param calendar A [`Calendar-class`] object (see [era()]). If missing,
+#' @param calendar A [`TimeScale-class`] object (see [era()]). If missing,
 #'  `years` must be a [`TimeLine-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
@@ -307,7 +307,7 @@ NULL
 #' @param object A [`TimeSeries-class`] object.
 #' @param target A [`TimeSeries-class`] object serving as a template for the
 #'  target calendar. Alternatively, a [`character`] string specifying the target
-#'  calendar or a [`Calendar-class`] object (see [era()]).
+#'  calendar or a [`TimeScale-class`] object (see [era()]).
 #' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.

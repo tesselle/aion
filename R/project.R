@@ -16,10 +16,10 @@ setMethod(
 
 #' @export
 #' @rdname convert
-#' @aliases convert,Calendar,Calendar-method
+#' @aliases convert,TimeScale,TimeScale-method
 setMethod(
   f = "convert",
-  signature = c(from = "Calendar", to = "Calendar"),
+  signature = c(from = "TimeScale", to = "TimeScale"),
   definition = function(from, to) {
     ## Validation
     if (anyNA(era_year(from)) | anyNA(era_year(to))) {
@@ -67,14 +67,14 @@ setMethod(
 
 #' @export
 #' @rdname project
-#' @aliases project,TimeSeries,Calendar-method
+#' @aliases project,TimeSeries,TimeScale-method
 setMethod(
   f = "project",
-  signature = c(object = "TimeSeries", target = "Calendar"),
+  signature = c(object = "TimeSeries", target = "TimeScale"),
   definition = function(object, target) {
     ## Drop subclasses, if any
     time_series <- methods::as(object, "TimeSeries", strict = TRUE)
-    time_scale <- methods::as(target, "Calendar", strict = TRUE)
+    time_scale <- methods::as(target, "TimeScale", strict = TRUE)
 
     ## Preserve class inheritance (?)
     fun <- convert(time_series, time_scale)
