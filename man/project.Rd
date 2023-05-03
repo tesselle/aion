@@ -19,7 +19,7 @@ project(object, target, ...)
 
 \item{target}{A \code{\linkS4class{TimeSeries}} object serving as a template for the
 target calendar. Alternatively, a \code{\link{character}} string specifying the target
-calendar or a \code{\linkS4class{Calendar}} object (see \code{\link[=calendar]{calendar()}}).}
+calendar or a \code{\linkS4class{Calendar}} object (see \code{\link[=era]{era()}}).}
 
 \item{...}{Currently not used.}
 }

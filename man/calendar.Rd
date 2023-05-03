@@ -3,22 +3,26 @@
 \docType{methods}
 \name{calendar}
 \alias{calendar}
-\alias{calendar-method}
-\alias{calendar,character-method}
-\alias{calendar,TimeLine-method}
-\alias{calendar,TimeSeries-method}
+\alias{as_gregorian}
+\alias{as_julian}
 \title{Calendar}
 \usage{
-calendar(object, ...)
+as_gregorian(label, name, epoch, direction)
 
-\S4method{calendar}{character}(object)
-
-\S4method{calendar}{TimeLine}(object)
-
-\S4method{calendar}{TimeSeries}(object)
+as_julian(...)
 }
 \arguments{
-\item{object}{A \code{\link{character}} string specifying the time scale (see details).}
+\item{label}{A \code{\link{character}} string specifying the abbreviated label of
+the time scale.}
+
+\item{name}{A \code{\link{character}} string specifying the name of the time scale.}
+
+\item{epoch}{A length-one \code{\link{numeric}} vector specifying the epoch year from
+which years are counted (in Gregorian astronomical years).}
+
+\item{direction}{A length-one \code{\link{integer}} vector specifying if years are
+counted backwards (\code{-1}) or forwards (\code{1}) from \code{epoch}. Only the
+\link[=sign]{sign} of \code{direction} will be retained.}
 
 \item{...}{Currently not used.}
 }
@@ -28,25 +32,10 @@ A \code{\linkS4class{Calendar}} object.
 \description{
 Calendar
 }
-\details{
-The following time scales are available:
-\describe{
-\item{\code{BP}}{Before Present.}
-\item{\code{BC}}{Before Christ.}
-\item{\code{BCE}}{Before Common Era.}
-\item{\code{AD}}{Anno Domini.}
-\item{\code{CE}}{Common Era.}
-\item{\code{b2k}}{Years before 2000.}
-}
-}
 \note{
 Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 }
 \examples{
-## Define time scales
-(BP <- calendar("BP"))
-(AD <- calendar("AD"))
-
 ## Create a custom gregorian calendar
 as_gregorian(
   label = "cal BP",
@@ -57,9 +46,9 @@ as_gregorian(
 }
 \seealso{
 Other time scales tools: 
-\code{\link{as_calendar}},
-\code{\link{calendar_get}},
-\code{\link{convert}()}
+\code{\link{convert}()},
+\code{\link{era_get}},
+\code{\link{era}()}
 }
 \author{
 N. Frerebeau

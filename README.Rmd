@@ -59,11 +59,11 @@ library(chronos)
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
   time = seq(from = 2000, by = 2, length.out = 50),
-  calendar = calendar("BP")
+  calendar = era("BP")
 )
 
 ## Reproject to the CE time scale
-(Y <- project(X, calendar("CE")))
+(Y <- project(X, era("CE")))
 
 ## Plot
 plot(Y)

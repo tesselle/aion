@@ -78,7 +78,7 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
     ## Add annotation
     if (ann) {
       if (do_x) {
-        xlab <- paste("Year", calendar_name(x), sep = " ")
+        xlab <- paste("Year", era_name(x), sep = " ")
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }

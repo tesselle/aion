@@ -3,7 +3,7 @@
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
   time = seq(2000, by = 2, length.out = 50),
-  calendar = calendar("BP")
+  calendar = era("BP")
 )
 
 ## Plot

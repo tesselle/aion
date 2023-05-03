@@ -34,7 +34,7 @@ values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{mat
 \item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{TimeLine}}
 object (see \code{\link[=years]{years()}}).}
 
-\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=calendar]{calendar()}}). If missing,
+\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=era]{era()}}). If missing,
 \code{years} must be a \code{\linkS4class{TimeLine}} object.}
 
 \item{...}{Currently not used.}
@@ -57,7 +57,7 @@ Create Time Series
 
 ## Univariate
 ## Sampled every years starting from 1000 CE
-(X <- series(rnorm(100), calendar("BCE"), time = 1000:1099))
+(X <- series(rnorm(100), era("BCE"), time = 1000:1099))
 
 start(X)
 end(X)
@@ -66,7 +66,7 @@ time(X)
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 ## Expressed in kilo years
-(Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
+(Y <- series(matrix(rnorm(300), 100, 3), era("CE"), time = 1000:1099))
 
 start(Y)
 end(Y)

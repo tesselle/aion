@@ -7,8 +7,8 @@ setMethod(
   definition = function(x) {
     prefix <- c(ka = 10^3, Ma = 10^6, Ga = 10^9)
     prefix <- names(prefix)[prefix == x@scale]
-    if (length(prefix) == 0) return(calendar_label(x))
-    sprintf("%s %s", prefix, calendar_label(x))
+    if (length(prefix) == 0) return(era_label(x))
+    sprintf("%s %s", prefix, era_label(x))
   }
 )
 
@@ -17,10 +17,10 @@ setMethod(
   f = "show",
   signature = "Calendar",
   definition = function(object) {
-    dirout <- if (calendar_direction(object) > 0) "forwards" else "backwards"
+    dirout <- if (era_direction(object) > 0) "forwards" else "backwards"
     msg <- "%s (%s): years (%g days) counted %s from %g."
-    msg <- sprintf(msg, calendar_name(object), calendar_label(object),
-                   calendar_year(object), dirout, calendar_epoch(object))
+    msg <- sprintf(msg, era_name(object), era_label(object),
+                   era_year(object), dirout, era_epoch(object))
     cat(msg, sep = "\n")
   }
 )
@@ -29,7 +29,7 @@ setMethod(
   f = "show",
   signature = "TimeLine",
   definition = function(object) {
-    methods::callGeneric(object = calendar(object))
+    methods::callGeneric(object = era(object))
     methods::callGeneric(object = methods::as(object, "numeric", strict = TRUE))
   }
 )

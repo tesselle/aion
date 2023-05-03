@@ -60,10 +60,10 @@ setMethod(
     if (is.null(end)) end <- end(x)
     years <- time(x)
 
-    if (calendar_direction(x) > 0) {
+    if (era_direction(x) > 0) {
       i <- which(years >= start & years <= end)
     }
-    if (calendar_direction(x) < 0) {
+    if (era_direction(x) < 0) {
       i <- which(years <= start & years >= end)
     }
     x[i, , drop = FALSE]

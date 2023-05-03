@@ -43,7 +43,7 @@ NULL
 NULL
 
 # Time Scales ==================================================================
-#' Calendar
+#' Era
 #'
 #' @param object A [`character`] string specifying the time scale (see details).
 #' @param ... Currently not used.
@@ -61,18 +61,18 @@ NULL
 #'  A [`Calendar-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
-#' @example inst/examples/ex-calendar.R
+#' @example inst/examples/ex-era.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @aliases calendar-method
+#' @aliases era-method
 setGeneric(
-  name = "calendar",
-  def = function(object, ...) standardGeneric("calendar"),
+  name = "era",
+  def = function(object, ...) standardGeneric("era"),
   valueClass = "Calendar"
 )
 
-#' Create a Calendar
+#' Calendar
 #'
 #' @param label A [`character`] string specifying the abbreviated label of
 #'  the time scale.
@@ -91,8 +91,8 @@ setGeneric(
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @name as_calendar
-#' @rdname as_calendar
+#' @name calendar
+#' @rdname calendar
 NULL
 
 #' Calendar Tools
@@ -102,43 +102,43 @@ NULL
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @name calendar_get
-#' @rdname calendar_get
+#' @name era_get
+#' @rdname era_get
 NULL
 
-#' @rdname calendar_get
-#' @aliases calendar_label-method
+#' @rdname era_get
+#' @aliases era_label-method
 setGeneric(
-  name = "calendar_label",
-  def = function(object) standardGeneric("calendar_label")
+  name = "era_label",
+  def = function(object) standardGeneric("era_label")
 )
 
-#' @rdname calendar_get
-#' @aliases calendar_name-method
+#' @rdname era_get
+#' @aliases era_name-method
 setGeneric(
-  name = "calendar_name",
-  def = function(object) standardGeneric("calendar_name")
+  name = "era_name",
+  def = function(object) standardGeneric("era_name")
 )
 
-#' @rdname calendar_get
-#' @aliases calendar_epoch-method
+#' @rdname era_get
+#' @aliases era_epoch-method
 setGeneric(
-  name = "calendar_epoch",
-  def = function(object) standardGeneric("calendar_epoch")
+  name = "era_epoch",
+  def = function(object) standardGeneric("era_epoch")
 )
 
-#' @rdname calendar_get
-#' @aliases calendar_direction-method
+#' @rdname era_get
+#' @aliases era_direction-method
 setGeneric(
-  name = "calendar_direction",
-  def = function(object) standardGeneric("calendar_direction")
+  name = "era_direction",
+  def = function(object) standardGeneric("era_direction")
 )
 
-#' @rdname calendar_get
-#' @aliases calendar_year-method
+#' @rdname era_get
+#' @aliases era_year-method
 setGeneric(
-  name = "calendar_year",
-  def = function(object) standardGeneric("calendar_year")
+  name = "era_year",
+  def = function(object) standardGeneric("era_year")
 )
 
 #' Calendar Converter
@@ -167,7 +167,7 @@ setGeneric(
 #' Year Vectors
 #'
 #' @param object A [`numeric`] vector of (decimal) years.
-#' @param calendar A [`Calendar-class`] object (see [calendar()]).
+#' @param calendar A [`Calendar-class`] object (see [era()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #'  Will be coerced with [as.integer()] (hence truncated toward zero).
@@ -198,7 +198,7 @@ setGeneric(
 #'  [data.matrix()].
 #' @param time A [`numeric`] vector of (decimal) years or a [`TimeLine-class`]
 #'  object (see [years()]).
-#' @param calendar A [`Calendar-class`] object (see [calendar()]). If missing,
+#' @param calendar A [`Calendar-class`] object (see [era()]). If missing,
 #'  `years` must be a [`TimeLine-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
@@ -307,7 +307,7 @@ NULL
 #' @param object A [`TimeSeries-class`] object.
 #' @param target A [`TimeSeries-class`] object serving as a template for the
 #'  target calendar. Alternatively, a [`character`] string specifying the target
-#'  calendar or a [`Calendar-class`] object (see [calendar()]).
+#'  calendar or a [`Calendar-class`] object (see [era()]).
 #' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.

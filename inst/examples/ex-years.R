@@ -1,2 +1,2 @@
 ## R foundation
-(y <- years(1994, calendar("CE")))
+(y <- years(1994, era("CE")))

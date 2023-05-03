@@ -3,16 +3,14 @@
 \docType{methods}
 \name{subset}
 \alias{subset}
-\alias{[,TimeLine,ANY,ANY,ANY-method}
 \alias{[,TimeLine-method}
-\alias{[,TimeSeries,ANY,ANY,ANY-method}
 \alias{[,TimeSeries-method}
 \alias{[[,TimeLine-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
-\S4method{[}{TimeLine,ANY,ANY,ANY}(x, i)
+\S4method{[}{TimeLine}(x, i)
 
-\S4method{[}{TimeSeries,ANY,ANY,ANY}(x, i, j, ..., drop = FALSE)
+\S4method{[}{TimeSeries}(x, i, j, ..., drop = FALSE)
 
 \S4method{[[}{TimeLine}(x, i)
 }

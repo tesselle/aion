@@ -1,26 +1,15 @@
-test_that("Initialize a calendar", {
-  expect_error(calendar("XXX"), "Unknown calendar")
-
+test_that("Gregorian calendar", {
   ## Create a custom gregorian calendar
   cal <- as_gregorian(
-    label = "cal BP",
-    name = "Before Present",
-    epoch = 1950,
-    direction = -1
+    label = "AUC",
+    name = "Ab urbe condita",
+    epoch = 753,
+    direction = 1
   )
 
-  expect_equal(calendar_label(cal), "cal BP")
-  expect_equal(calendar_name(cal), "Before Present")
-  expect_equal(calendar_epoch(cal), 1950)
-  expect_equal(calendar_direction(cal), -1L)
-  expect_equal(calendar_year(cal), 365.2425) # Inherited from GregorianCalendar
-})
-test_that("BP", {
-  cal <- calendar("BP")
-
-  expect_equal(calendar_label(cal), "BP")
-  expect_equal(calendar_name(cal), "Before Present")
-  expect_equal(calendar_epoch(cal), 1950)
-  expect_equal(calendar_direction(cal), -1L)
-  expect_equal(calendar_year(cal), 365.2425) # Inherited from GregorianCalendar
+  expect_equal(era_label(cal), "AUC")
+  expect_equal(era_name(cal), "Ab urbe condita")
+  expect_equal(era_epoch(cal), 753)
+  expect_equal(era_direction(cal), 1L)
+  expect_equal(era_year(cal), 365.2425) # Inherited from GregorianCalendar
 })

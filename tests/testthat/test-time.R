@@ -1,5 +1,5 @@
 test_that("Terminal times", {
-  y <- years(1000:1099, calendar("BCE"))
+  y <- years(1000:1099, era("BCE"))
 
   expect_equal(start(y), 1000)
   expect_equal(end(y), 1099)
@@ -10,7 +10,7 @@ test_that("Terminal times", {
   expect_identical(end(x), end(y))
 })
 test_that("Sampling times", {
-  y <- years(1000:1099, calendar("BCE"))
+  y <- years(1000:1099, era("BCE"))
 
   expect_equal(time(y), 1000:1099)
 

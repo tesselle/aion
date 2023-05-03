@@ -10,7 +10,7 @@ setMethod(
   f = "convert",
   signature = c(from = "character", to = "character"),
   definition = function(from, to) {
-    methods::callGeneric(from = calendar(from), to = calendar(to))
+    methods::callGeneric(from = era(from), to = era(to))
   }
 )
 
@@ -22,7 +22,7 @@ setMethod(
   signature = c(from = "Calendar", to = "Calendar"),
   definition = function(from, to) {
     ## Validation
-    if (anyNA(calendar_year(from)) | anyNA(calendar_year(to))) {
+    if (anyNA(era_year(from)) | anyNA(era_year(to))) {
       stop("Year length is undefined.", call. = FALSE)
     }
 
@@ -30,12 +30,12 @@ setMethod(
       ## FIXME: rescale to 1 (if not already)
 
       ## Transformation
-      ux <- calendar_year(from)
-      uy <- calendar_year(to)
-      dx <- calendar_direction(from)
-      dy <- calendar_direction(to)
-      ex <- calendar_epoch(from)
-      ey <- calendar_epoch(to)
+      ux <- era_year(from)
+      uy <- era_year(to)
+      dx <- era_direction(from)
+      dy <- era_direction(to)
+      ex <- era_epoch(from)
+      ey <- era_epoch(to)
       y <- ((ux * dx * dy * x) + (365.2425 * dy * (ex - ey))) / uy
 
       ## FIXME: apply destination scale
@@ -60,7 +60,7 @@ setMethod(
   f = "project",
   signature = c(object = "TimeSeries", target = "character"),
   definition = function(object, target) {
-    target <- calendar(target)
+    target <- era(target)
     methods::callGeneric(object, target)
   }
 )

@@ -14,7 +14,7 @@ years(object, calendar, ...)
 \arguments{
 \item{object}{A \code{\link{numeric}} vector of (decimal) years.}
 
-\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=calendar]{calendar()}}).}
+\item{calendar}{A \code{\linkS4class{Calendar}} object (see \code{\link[=era]{era()}}).}
 
 \item{...}{Currently not used.}
 
@@ -38,7 +38,7 @@ year 1950).
 }
 \examples{
 ## R foundation
-(y <- years(1994, calendar("CE")))
+(y <- years(1994, era("CE")))
 }
 \seealso{
 Other time series tools: 
