@@ -7,6 +7,8 @@
 \alias{era_label-method}
 \alias{era_name}
 \alias{era_name-method}
+\alias{era_calendar}
+\alias{era_calendar-method}
 \alias{era_epoch}
 \alias{era_epoch-method}
 \alias{era_direction}
@@ -19,6 +21,9 @@
 \alias{era_name,TimeScale-method}
 \alias{era_name,TimeLine-method}
 \alias{era_name,TimeSeries-method}
+\alias{era_calendar,TimeScale-method}
+\alias{era_calendar,TimeLine-method}
+\alias{era_calendar,TimeSeries-method}
 \alias{era_epoch,TimeScale-method}
 \alias{era_epoch,TimeLine-method}
 \alias{era_epoch,TimeSeries-method}
@@ -33,6 +38,8 @@
 era_label(object)
 
 era_name(object)
+
+era_calendar(object)
 
 era_epoch(object)
 
@@ -51,6 +58,12 @@ era_year(object)
 \S4method{era_name}{TimeLine}(object)
 
 \S4method{era_name}{TimeSeries}(object)
+
+\S4method{era_calendar}{TimeScale}(object)
+
+\S4method{era_calendar}{TimeLine}(object)
+
+\S4method{era_calendar}{TimeSeries}(object)
 
 \S4method{era_epoch}{TimeScale}(object)
 
@@ -89,7 +102,7 @@ gregorian(
 Other time scales tools: 
 \code{\link{convert}()},
 \code{\link{era}()},
-\code{\link{gregorian}()},
+\code{\link{gregorian}},
 \code{\link{julian}()}
 }
 \author{

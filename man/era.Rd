@@ -30,13 +30,15 @@ Era
 }
 \details{
 The following time scales are available:
-\describe{
-\item{\code{BP}}{Before Present.}
-\item{\code{BC}}{Before Christ.}
-\item{\code{BCE}}{Before Common Era.}
-\item{\code{AD}}{Anno Domini.}
-\item{\code{CE}}{Common Era.}
-\item{\code{b2k}}{Years before 2000.}
+
+\tabular{lll}{
+\strong{label} \tab \strong{name}           \tab \strong{calendar} \cr
+\code{BP}      \tab Before Present     \tab Gregorian    \cr
+\code{BC}      \tab Before Christ      \tab Gregorian    \cr
+\code{BCE}     \tab Before Common Era  \tab Gregorian    \cr
+\code{AD}      \tab Anno Domini        \tab Gregorian    \cr
+\code{CE}      \tab Common Era         \tab Gregorian    \cr
+\code{b2k}     \tab Years before 2000  \tab Gregorian    \cr
 }
 }
 \note{
@@ -51,7 +53,7 @@ Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 Other time scales tools: 
 \code{\link{convert}()},
 \code{\link{era_get}},
-\code{\link{gregorian}()},
+\code{\link{gregorian}},
 \code{\link{julian}()}
 }
 \author{

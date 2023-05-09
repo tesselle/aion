@@ -3,24 +3,20 @@
 \docType{methods}
 \name{gregorian}
 \alias{gregorian}
-\alias{as_gregorian}
-\alias{as_gregorian-method}
 \alias{is_gregorian}
 \alias{is_gregorian-method}
+\alias{as_gregorian}
 \alias{is_gregorian,TimeScale-method}
 \title{Gregorian Calendar}
 \usage{
-as_gregorian(object)
-
 is_gregorian(object)
 
-gregorian(label, name, epoch, direction)
+as_gregorian(label, name, epoch, direction)
 
 \S4method{is_gregorian}{TimeScale}(object)
 }
 \arguments{
-\item{object}{A \code{\linkS4class{GregorianCalendar}} or \code{\linkS4class{JulianCalendar}}
-object.}
+\item{object}{A \code{\linkS4class{GregorianCalendar}} object.}
 
 \item{label}{A \code{\link{character}} string specifying the abbreviated label of
 the time scale.}

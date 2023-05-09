@@ -18,8 +18,9 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) {
     dirout <- if (era_direction(object) > 0) "forwards" else "backwards"
-    msg <- "%s (%s): years (%g days) counted %s from %g."
+    msg <- "%s (%s): %s years (%g days) counted %s from %g."
     msg <- sprintf(msg, era_name(object), era_label(object),
+                   era_calendar(object),
                    era_year(object), dirout, era_epoch(object))
     cat(msg, sep = "\n")
   }

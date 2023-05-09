@@ -1,6 +1,6 @@
 test_that("Gregorian calendar", {
   ## Create a custom gregorian calendar
-  cal <- gregorian(
+  cal <- as_gregorian(
     label = "AUC",
     name = "Ab Urbe Condita",
     epoch = 753,

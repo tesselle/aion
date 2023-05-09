@@ -5,7 +5,7 @@ NULL
 # Gregorian calendar ===========================================================
 #' @export
 #' @rdname gregorian
-gregorian <- function(label, name, epoch, direction) {
+as_gregorian <- function(label, name, epoch, direction) {
   .GregorianCalendar(
     label = label,
     name = name,

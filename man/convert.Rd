@@ -38,7 +38,7 @@ Adapted from \code{\link[era:yr_transform]{era::yr_transform()}} by Joe Roe.
 Other time scales tools: 
 \code{\link{era_get}},
 \code{\link{era}()},
-\code{\link{gregorian}()},
+\code{\link{gregorian}},
 \code{\link{julian}()}
 }
 \author{

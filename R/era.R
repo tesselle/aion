@@ -98,6 +98,37 @@ setMethod(
 
 #' @export
 #' @rdname era_get
+#' @aliases era_calendar,TimeScale-method
+setMethod(
+  f = "era_calendar",
+  signature = "TimeScale",
+  definition = function(object) {
+    if (is_gregorian(object)) return("Gregorian")
+    if (is_julian(object)) return("Julian")
+    return("Undefined")
+  }
+)
+
+#' @export
+#' @rdname era_get
+#' @aliases era_calendar,TimeLine-method
+setMethod(
+  f = "era_calendar",
+  signature = "TimeLine",
+  definition = function(object) methods::callGeneric(era(object))
+)
+
+#' @export
+#' @rdname era_get
+#' @aliases era_calendar,TimeSeries-method
+setMethod(
+  f = "era_calendar",
+  signature = "TimeSeries",
+  definition = function(object) methods::callGeneric(era(object))
+)
+
+#' @export
+#' @rdname era_get
 #' @aliases era_epoch,TimeScale-method
 setMethod(
   f = "era_epoch",

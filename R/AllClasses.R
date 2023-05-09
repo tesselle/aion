@@ -46,6 +46,7 @@ NULL
 .GregorianCalendar <- setClass(
   Class = "GregorianCalendar",
   prototype = list(
+    epoch = 1, # January 1, 1 at midnight
     year = 365.2425
   ),
   contains = "TimeScale"
@@ -194,7 +195,6 @@ NULL
 #'
 #' An S4 class to represent a vector of years.
 #' @slot .Data A [`numeric`] vector giving the year values.
-#' @slot error A [`numeric`] vector of uncertainties.
 #' @slot scale A [`numeric`] value specifying the number of years represented by
 #'  one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @slot calendar A [`TimeScale-class`] object specifying the time scale.
@@ -210,7 +210,6 @@ NULL
 .TimeLine <- setClass(
   Class = "TimeLine",
   slots = c(
-    error = "numeric",
     scale = "numeric",
     calendar = "TimeScale"
   ),

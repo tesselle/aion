@@ -49,13 +49,15 @@ NULL
 #' @param ... Currently not used.
 #' @details
 #'  The following time scales are available:
-#'  \describe{
-#'   \item{`BP`}{Before Present.}
-#'   \item{`BC`}{Before Christ.}
-#'   \item{`BCE`}{Before Common Era.}
-#'   \item{`AD`}{Anno Domini.}
-#'   \item{`CE`}{Common Era.}
-#'   \item{`b2k`}{Years before 2000.}
+#'
+#'  \tabular{lll}{
+#'   **label** \tab **name**           \tab **calendar** \cr
+#'   `BP`      \tab Before Present     \tab Gregorian    \cr
+#'   `BC`      \tab Before Christ      \tab Gregorian    \cr
+#'   `BCE`     \tab Before Common Era  \tab Gregorian    \cr
+#'   `AD`      \tab Anno Domini        \tab Gregorian    \cr
+#'   `CE`      \tab Common Era         \tab Gregorian    \cr
+#'   `b2k`     \tab Years before 2000  \tab Gregorian    \cr
 #'  }
 #' @return
 #'  A [`TimeScale-class`] object.
@@ -74,8 +76,7 @@ setGeneric(
 
 #' Gregorian Calendar
 #'
-#' @param object A [`GregorianCalendar-class`] or [`JulianCalendar-class`]
-#'  object.
+#' @param object A [`GregorianCalendar-class`] object.
 #' @param label A [`character`] string specifying the abbreviated label of
 #'  the time scale.
 #' @param name A [`character`] string specifying the name of the time scale.
@@ -98,14 +99,6 @@ setGeneric(
 NULL
 
 #' @rdname gregorian
-#' @aliases as_gregorian-method
-setGeneric(
-  name = "as_gregorian",
-  def = function(object) standardGeneric("as_gregorian"),
-  valueClass = "GregorianCalendar"
-)
-
-#' @rdname gregorian
 #' @aliases is_gregorian-method
 setGeneric(
   name = "is_gregorian",
@@ -114,8 +107,15 @@ setGeneric(
 
 #' Julian Calendar
 #'
-#' @param object A [`GregorianCalendar-class`] or [`JulianCalendar-class`]
-#'  object.
+#' @param object A [`JulianCalendar-class`] object.
+#' @param label A [`character`] string specifying the abbreviated label of
+#'  the time scale.
+#' @param name A [`character`] string specifying the name of the time scale.
+#' @param epoch A length-one [`numeric`] vector specifying the epoch year from
+#'  which years are counted (in Gregorian astronomical years).
+#' @param direction A length-one [`integer`] vector specifying if years are
+#'  counted backwards (`-1`) or forwards (`1`) from `epoch`. Only the
+#'  [sign][sign()] of `direction` will be retained.
 #' @return
 #'  * `as_julian()` returns a [`JulianCalendar-class`] object.
 #'  * `is_julian()` returns a [`logical`] scalar.
@@ -126,14 +126,6 @@ setGeneric(
 #' @name julian
 #' @rdname julian
 NULL
-
-#' @rdname julian
-#' @aliases as_julian-method
-setGeneric(
-  name = "as_julian",
-  def = function(object) standardGeneric("as_julian"),
-  valueClass = "JulianCalendar"
-)
 
 #' @rdname julian
 #' @aliases is_julian-method
@@ -165,6 +157,13 @@ setGeneric(
 setGeneric(
   name = "era_name",
   def = function(object) standardGeneric("era_name")
+)
+
+#' @rdname era_get
+#' @aliases era_calendar-method
+setGeneric(
+  name = "era_calendar",
+  def = function(object) standardGeneric("era_calendar")
 )
 
 #' @rdname era_get
@@ -212,7 +211,7 @@ setGeneric(
   def = function(from, to, ...) standardGeneric("convert")
 )
 
-# Time Series ==================================================================
+# Time Lines ===================================================================
 #' Year Vectors
 #'
 #' @param object A [`numeric`] vector of (decimal) years.
@@ -240,6 +239,7 @@ setGeneric(
   valueClass = "TimeLine"
 )
 
+# Time Series ==================================================================
 #' Create Time Series
 #'
 #' @param object A [`numeric`] `vector` or `matrix` of the observed time-series

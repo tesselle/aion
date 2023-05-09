@@ -3,22 +3,29 @@
 \docType{methods}
 \name{julian}
 \alias{julian}
-\alias{as_julian}
-\alias{as_julian-method}
 \alias{is_julian}
 \alias{is_julian-method}
 \alias{is_julian,TimeScale-method}
 \title{Julian Calendar}
 \usage{
-as_julian(object)
-
 is_julian(object)
 
 \S4method{is_julian}{TimeScale}(object)
 }
 \arguments{
-\item{object}{A \code{\linkS4class{GregorianCalendar}} or \code{\linkS4class{JulianCalendar}}
-object.}
+\item{object}{A \code{\linkS4class{JulianCalendar}} object.}
+
+\item{label}{A \code{\link{character}} string specifying the abbreviated label of
+the time scale.}
+
+\item{name}{A \code{\link{character}} string specifying the name of the time scale.}
+
+\item{epoch}{A length-one \code{\link{numeric}} vector specifying the epoch year from
+which years are counted (in Gregorian astronomical years).}
+
+\item{direction}{A length-one \code{\link{integer}} vector specifying if years are
+counted backwards (\code{-1}) or forwards (\code{1}) from \code{epoch}. Only the
+\link[=sign]{sign} of \code{direction} will be retained.}
 }
 \value{
 \itemize{
@@ -43,7 +50,7 @@ Other time scales tools:
 \code{\link{convert}()},
 \code{\link{era_get}},
 \code{\link{era}()},
-\code{\link{gregorian}()}
+\code{\link{gregorian}}
 }
 \author{
 N. Frerebeau
