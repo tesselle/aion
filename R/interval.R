@@ -4,15 +4,14 @@ NULL
 
 # HPDI =========================================================================
 #' @export
-#' @rdname hpdi
-#' @aliases hpdi,numeric,numeric-method
+#' @rdname interval_hdr
+#' @aliases interval_hdr,numeric,numeric-method
 setMethod(
-  f = "hpdi",
-  signature = c(object = "numeric", density = "numeric"),
-  definition = function(object, density, level = 0.954) {
+  f = "interval_hdr",
+  signature = c(x = "numeric", y = "numeric"),
+  definition = function(x, y, level = 0.954) {
     ## Compute density
-    x <- object
-    y <- density / sum(density)
+    y <- y / sum(y)
 
     ## Order the sample (faster sorting with radix method)
     sorted <- sort(y, decreasing = TRUE, method = "radix")
@@ -29,6 +28,19 @@ setMethod(
     p <- vapply(X = int, FUN = function(i, y) { sum(y[i]) },
                 FUN.VALUE = numeric(1), y = y)
 
-    cbind(start = x[inf], stop = x[sup], p = round(p, digits = 2))
+    cbind(start = x[inf], end = x[sup], p = round(p, digits = 2))
+  }
+)
+
+#' @export
+#' @rdname interval_hdr
+#' @aliases interval_hdr,numeric,missing-method
+setMethod(
+  f = "interval_hdr",
+  signature = c(x = "numeric", y = "missing"),
+  definition = function(x, level = 0.954, ...) {
+    ## Compute density
+    d <- stats::density(x, ...)
+    methods::callGeneric(x = d$x, y = d$y, level = level)
   }
 )

@@ -364,16 +364,16 @@ setGeneric(
 ## HPDI ------------------------------------------------------------------------
 #' HPD Regions
 #'
-#' @param object A [`numeric`] vector giving the coordinates of the points where
+#' @param x A [`numeric`] vector giving the coordinates of the points where
 #'  the density is estimated.
-#' @param density A [`numeric`] vector giving the estimated density values.
-#'  If `density` is missing and `object` is a `ǹumeric` vector, density
-#'  estimates will be computed from `object`.
+#' @param y A [`numeric`] vector giving the estimated density values.
+#'  If `y` is missing and `x` is a `ǹumeric` vector, density estimates will be
+#'  computed from `x`.
 #' @param level A length-one [`numeric`] vector giving the confidence level.
 #' @param ... Currently not used.
 #' @return
-#'  A [`list`] of `numeric` [`matrix`] giving the lower and upper boundaries of
-#'  the HPD interval and associated probabilities.
+#'  A three-columns `numeric` [`matrix`] giving the lower and upper boundaries
+#'  of the HPD interval and associated probabilities.
 #' @references
 #'  Hyndman, R. J. (1996). Computing and graphing highest density regions.
 #'  *American Statistician*, 50: 120-126. \doi{10.2307/2684423}.
@@ -381,10 +381,10 @@ setGeneric(
 #' @author N. Frerebeau
 #' @family statistics
 #' @docType methods
-#' @aliases hpdi-method
+#' @aliases interval_hdr-method
 setGeneric(
-  name = "hpdi",
-  def = function(object, density, ...) standardGeneric("hpdi")
+  name = "interval_hdr",
+  def = function(x, y, ...) standardGeneric("interval_hdr")
 )
 
 ## Allen Interval Algebra ------------------------------------------------------
