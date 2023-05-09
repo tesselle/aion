@@ -51,8 +51,8 @@ setMethod(
   signature = c(object = "TimeLine", target = "TimeScale"),
   definition = function(object, target) {
     fun <- convert(era(object), target)
-    data <- fun(object)
-    methods::initialize(object, data, calendar = target)
+    x <- fun(time(object))
+    methods::initialize(object, x, calendar = target)
   }
 )
 

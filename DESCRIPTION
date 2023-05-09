@@ -49,6 +49,7 @@ Collate:
     'era.R'
     'interval.R'
     'mutators.R'
+    'operators.R'
     'plot.R'
     'project.R'
     'series.R'

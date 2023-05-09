@@ -13,12 +13,15 @@ reference:
 - title: Time Series
   contents:
   - has_concept("time series tools")
-- title: Allen's Interval Algebra
+- title: Operators
   contents:
-  - has_concept("Allen's intervals")
+  - has_concept("operators")
 - title: Mutators
   contents:
   - has_concept("mutators")
 - title: Statistics
   contents:
   - has_concept("statistics")
+- title: Allen's Interval Algebra
+  contents:
+  - has_concept("Allen's intervals")
