@@ -101,32 +101,34 @@ NULL
 # Time Scales ==================================================================
 #' Era
 #'
-#' @param object A [`character`] string specifying the time scale (see details).
+#' @param object A [`character`] string specifying the abbreviated label of
+#'  the time scale (see details) or an object from which to extract the time
+#'  scale.
 #' @param ... Currently not used.
 #' @details
 #'  The following time scales are available:
 #'
 #'  \tabular{lll}{
-#'   **label** \tab **name**           \tab **calendar** \cr
-#'   `BP`      \tab Before Present     \tab Gregorian    \cr
-#'   `BC`      \tab Before Christ      \tab Gregorian    \cr
-#'   `BCE`     \tab Before Common Era  \tab Gregorian    \cr
-#'   `AD`      \tab Anno Domini        \tab Gregorian    \cr
-#'   `CE`      \tab Common Era         \tab Gregorian    \cr
-#'   `b2k`     \tab Years before 2000  \tab Gregorian    \cr
+#'   **label**   \tab **name**           \tab **unit**        \cr
+#'   `BP`        \tab Before Present     \tab Gregorian years \cr
+#'   `BC`        \tab Before Christ      \tab Gregorian years \cr
+#'   `BCE`       \tab Before Common Era  \tab Gregorian years \cr
+#'   `AD`        \tab Anno Domini        \tab Gregorian years \cr
+#'   `CE`        \tab Common Era         \tab Gregorian years \cr
+#'   `b2k`       \tab Years before 2000  \tab Gregorian years \cr
 #'  }
 #' @return
 #'  A [`TimeScale-class`] object.
 #' @note
 #'  Inspired by [era::era()] by Joe Roe.
-#' @example inst/examples/ex-era.R
+#' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @aliases era-method
+#' @aliases calendar-method
 setGeneric(
-  name = "era",
-  def = function(object, ...) standardGeneric("era"),
+  name = "calendar",
+  def = function(object, ...) standardGeneric("calendar"),
   valueClass = "TimeScale"
 )
 
@@ -189,50 +191,50 @@ setGeneric(
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
-#' @name era_get
-#' @rdname era_get
+#' @name calendar_get
+#' @rdname calendar_get
 NULL
 
-#' @rdname era_get
-#' @aliases era_label-method
+#' @rdname calendar_get
+#' @aliases calendar_label-method
 setGeneric(
-  name = "era_label",
-  def = function(object) standardGeneric("era_label")
+  name = "calendar_label",
+  def = function(object) standardGeneric("calendar_label")
 )
 
-#' @rdname era_get
-#' @aliases era_name-method
+#' @rdname calendar_get
+#' @aliases calendar_name-method
 setGeneric(
-  name = "era_name",
-  def = function(object) standardGeneric("era_name")
+  name = "calendar_name",
+  def = function(object) standardGeneric("calendar_name")
 )
 
-#' @rdname era_get
-#' @aliases era_calendar-method
+#' @rdname calendar_get
+#' @aliases calendar_calendar-method
 setGeneric(
-  name = "era_calendar",
-  def = function(object) standardGeneric("era_calendar")
+  name = "calendar_calendar",
+  def = function(object) standardGeneric("calendar_calendar")
 )
 
-#' @rdname era_get
-#' @aliases era_epoch-method
+#' @rdname calendar_get
+#' @aliases calendar_epoch-method
 setGeneric(
-  name = "era_epoch",
-  def = function(object) standardGeneric("era_epoch")
+  name = "calendar_epoch",
+  def = function(object) standardGeneric("calendar_epoch")
 )
 
-#' @rdname era_get
-#' @aliases era_direction-method
+#' @rdname calendar_get
+#' @aliases calendar_direction-method
 setGeneric(
-  name = "era_direction",
-  def = function(object) standardGeneric("era_direction")
+  name = "calendar_direction",
+  def = function(object) standardGeneric("calendar_direction")
 )
 
-#' @rdname era_get
-#' @aliases era_year-method
+#' @rdname calendar_get
+#' @aliases calendar_year-method
 setGeneric(
-  name = "era_year",
-  def = function(object) standardGeneric("era_year")
+  name = "calendar_year",
+  def = function(object) standardGeneric("calendar_year")
 )
 
 #' Calendar Converter
@@ -260,10 +262,58 @@ setGeneric(
 )
 
 # Time Lines ===================================================================
+#' Rata Die
+#'
+#' @param year A [`numeric`] vector of (decimal) years.
+#' @param month A [`numeric`] vector of (decimal) years.
+#' @param day A [`numeric`] vector of (decimal) years.
+#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @return
+#'  A [`RataDie-class`] object.
+#' @example inst/examples/ex-years.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases as_fixed-method
+setGeneric(
+  name = "as_fixed",
+  def = function(year, month, day, calendar) standardGeneric("as_fixed"),
+  valueClass = "RataDie"
+)
+
+#' Year Conversion from Rata Die
+#'
+#' @param object A [`RataDie-class`] object (see [as_fixed()]).
+#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @example inst/examples/ex-years.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases as_year-method
+setGeneric(
+  name = "as_year",
+  def = function(object, calendar) standardGeneric("as_year")
+)
+
+#' Date Conversion from Rata Die
+#'
+#' @param object A [`RataDie-class`] object (see [as_fixed()]).
+#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @example inst/examples/ex-years.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases as_date-method
+setGeneric(
+  name = "as_date",
+  def = function(object, calendar) standardGeneric("as_date"),
+  valueClass = "data.frame"
+)
+
 #' Year Vectors
 #'
 #' @param object A [`numeric`] vector of (decimal) years.
-#' @param calendar A [`TimeScale-class`] object (see [era()]).
+#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @param sort A [`logical`] scalar: should data be sorted in chronological
@@ -294,7 +344,7 @@ setGeneric(
 #'  [data.matrix()].
 #' @param time A [`numeric`] vector of (decimal) years or a [`TimeLine-class`]
 #'  object (see [years()]).
-#' @param calendar A [`TimeScale-class`] object (see [era()]). If missing,
+#' @param calendar A [`TimeScale-class`] object (see [calendar()]). If missing,
 #'  `years` must be a [`TimeLine-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
@@ -402,7 +452,7 @@ NULL
 #' @param object A [`TimeSeries-class`] object.
 #' @param target A [`TimeSeries-class`] object serving as a template for the
 #'  target calendar. Alternatively, a [`character`] string specifying the target
-#'  calendar or a [`TimeScale-class`] object (see [era()]).
+#'  calendar or a [`TimeScale-class`] object (see [calendar()]).
 #' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.

@@ -9,7 +9,7 @@ setMethod(
   f = "start",
   signature = "TimeLine",
   definition = function(x) {
-    min(x * era_direction(x), na.rm = TRUE) * era_direction(x)
+    min(x * calendar_direction(x), na.rm = TRUE) * calendar_direction(x)
   }
 )
 
@@ -30,7 +30,7 @@ setMethod(
   f = "end",
   signature = "TimeLine",
   definition = function(x) {
-    max(x * era_direction(x), na.rm = TRUE) * era_direction(x)
+    max(x * calendar_direction(x), na.rm = TRUE) * calendar_direction(x)
   }
 )
 

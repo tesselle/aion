@@ -24,6 +24,10 @@ is_julian(object)
 Julian Calendar
 }
 \examples{
+## Define time scales
+(BP <- calendar("BP"))
+(AD <- calendar("AD"))
+
 ## Create a custom gregorian calendar
 as_gregorian(
   label = "AUC",
@@ -34,9 +38,9 @@ as_gregorian(
 }
 \seealso{
 Other time scales tools: 
+\code{\link{calendar_get}},
+\code{\link{calendar}()},
 \code{\link{convert}()},
-\code{\link{era_get}},
-\code{\link{era}()},
 \code{\link{gregorian}}
 }
 \author{

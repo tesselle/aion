@@ -29,7 +29,7 @@ project(object, target, ...)
 
 \item{target}{A \code{\linkS4class{TimeSeries}} object serving as a template for the
 target calendar. Alternatively, a \code{\link{character}} string specifying the target
-calendar or a \code{\linkS4class{TimeScale}} object (see \code{\link[=era]{era()}}).}
+calendar or a \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
 
 \item{...}{Currently not used.}
 }
@@ -41,15 +41,18 @@ Change the time scale of time series.
 }
 \examples{
 ## Create time series
-A <- series(rnorm(100), era("CE"), time = 1000:1099)
-B <- series(rnorm(100), era("CE"), time = 1100:1199)
+A <- series(rnorm(100), calendar("CE"), time = 1000:1099)
+B <- series(rnorm(100), calendar("CE"), time = 1100:1199)
 
 ## Reproject to BP time scale
-(A <- project(A, era("BP")))
+(A <- project(A, calendar("BP")))
 (B <- project(B, A))
 }
 \seealso{
 Other time series tools: 
+\code{\link{as_date}()},
+\code{\link{as_fixed}()},
+\code{\link{as_year}()},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{start}()},

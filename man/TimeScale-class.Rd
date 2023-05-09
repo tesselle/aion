@@ -35,6 +35,7 @@ Other classes:
 \code{\link{CE-class}},
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
+\code{\link{RataDie-class}},
 \code{\link{TimeLine-class}},
 \code{\link{TimeSeries-class}},
 \code{\link{b2k-class}}

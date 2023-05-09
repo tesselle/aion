@@ -61,7 +61,7 @@ Plot Time Series
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
   time = seq(2000, by = 2, length.out = 50),
-  calendar = era("BP")
+  calendar = calendar("BP")
 )
 
 ## Plot
@@ -69,6 +69,9 @@ plot(X)
 }
 \seealso{
 Other time series tools: 
+\code{\link{as_date}()},
+\code{\link{as_fixed}()},
+\code{\link{as_year}()},
 \code{\link{project}()},
 \code{\link{series}()},
 \code{\link{start}()},

@@ -21,8 +21,8 @@ setMethod(
       Ga = 10^9
     )
 
-    # if (length(prefix) == 0) return(era_label(x))
-    sprintf("%g %s %s", time(x) / power, format, era_label(x))
+    # if (length(prefix) == 0) return(calendar_label(x))
+    sprintf("%g %s %s", time(x) / power, format, calendar_label(x))
   }
 )
 
@@ -31,11 +31,11 @@ setMethod(
   f = "show",
   signature = "TimeScale",
   definition = function(object) {
-    dirout <- if (era_direction(object) > 0) "forwards" else "backwards"
+    dirout <- if (calendar_direction(object) > 0) "forwards" else "backwards"
     msg <- "%s (%s): %s years (%g days) counted %s from %g."
-    msg <- sprintf(msg, era_name(object), era_label(object),
-                   era_calendar(object),
-                   era_year(object), dirout, era_epoch(object))
+    msg <- sprintf(msg, calendar_name(object), calendar_label(object),
+                   calendar_calendar(object),
+                   calendar_year(object), dirout, calendar_epoch(object))
     cat(msg, sep = "\n")
   }
 )
@@ -44,7 +44,7 @@ setMethod(
   f = "show",
   signature = "TimeLine",
   definition = function(object) {
-    methods::callGeneric(object = era(object))
+    methods::callGeneric(object = calendar(object))
     methods::callGeneric(object = methods::as(object, "numeric", strict = TRUE))
   }
 )
@@ -55,7 +55,7 @@ setMethod(
   definition = function(object) {
     n <- ncol(object)
     msg <- "%d time series observed between %g and %g %s."
-    msg <- sprintf(msg, n, start(object), end(object), era_label(object))
+    msg <- sprintf(msg, n, start(object), end(object), calendar_label(object))
     cat(msg, sep = "\n")
   }
 )

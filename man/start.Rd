@@ -33,7 +33,7 @@ Get the times the first and last observations were taken.
 
 ## Univariate
 ## Sampled every years starting from 1000 CE
-(X <- series(rnorm(100), era("BCE"), time = 1000:1099))
+(X <- series(rnorm(100), calendar("BCE"), time = 1000:1099))
 
 start(X)
 end(X)
@@ -42,7 +42,7 @@ time(X)
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 ## Expressed in kilo years
-(Y <- series(matrix(rnorm(300), 100, 3), era("CE"), time = 1000:1099))
+(Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 start(Y)
 end(Y)
@@ -50,6 +50,9 @@ time(Y)
 }
 \seealso{
 Other time series tools: 
+\code{\link{as_date}()},
+\code{\link{as_fixed}()},
+\code{\link{as_year}()},
 \code{\link{plot}()},
 \code{\link{project}()},
 \code{\link{series}()},

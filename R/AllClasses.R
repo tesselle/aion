@@ -26,6 +26,7 @@ NULL
     label = "character",
     name = "character",
     epoch = "numeric",
+    fixed = "numeric",
     direction = "integer",
     year = "numeric"
   ),
@@ -46,7 +47,8 @@ NULL
 .GregorianCalendar <- setClass(
   Class = "GregorianCalendar",
   prototype = list(
-    epoch = 1, # January 1, 1 at midnight
+    epoch = 0,
+    fixed = 1, # January 1, 1 at midnight
     year = 365.2425
   ),
   contains = "TimeScale"
@@ -106,7 +108,6 @@ NULL
   prototype = list(
     label = "BC",
     name = "Before Christ",
-    epoch = 1,
     direction = -1L
   ),
   contains = "GregorianCalendar"
@@ -126,7 +127,6 @@ NULL
   prototype = list(
     label = "BCE",
     name = "Before Common Era",
-    epoch = 1,
     direction = -1L
   ),
   contains = "GregorianCalendar"
@@ -146,7 +146,6 @@ NULL
   prototype = list(
     label = "AD",
     name = "Anno Domini",
-    epoch = 0,
     direction = 1L
   ),
   contains = "GregorianCalendar"
@@ -166,7 +165,6 @@ NULL
   prototype = list(
     label = "CE",
     name = "Common Era",
-    epoch = 0,
     direction = 1L
   ),
   contains = "GregorianCalendar"
@@ -185,12 +183,41 @@ NULL
 .JulianCalendar <- setClass(
   Class = "JulianCalendar",
   prototype = list(
+    epoch = 0,
+    fixed = -1721424.5,
     year = 365.25
   ),
   contains = "TimeScale"
 )
 
 # Time Series ==================================================================
+#' RataDie
+#'
+#' An S4 class to represent a vector of *rata die*.
+#' @slot .Data A [`numeric`] vector giving the *rata die* values.
+#' @details
+#'  *Rata die* are represented as the number of days since 01-01-01 (Gregorian),
+#'  with negative values for earlier dates. They are always printed following
+#'  the rules of the current Gregorian calendar.
+#'
+#'  It is intended that the date should be an integer value, but this is not
+#'  enforced in the internal representation.
+#'
+#'  When printing there is assumed to be a year zero.
+#' @note
+#'  This class inherits from [`numeric`].
+#' @author N. Frerebeau
+#' @family classes
+#' @family time classes
+#' @docType class
+#' @aliases RataDie-class
+#' @keywords internal
+#' @exportClass RataDie
+.RataDie <- setClass(
+  Class = "RataDie",
+  contains = "numeric"
+)
+
 #' TimeLine
 #'
 #' An S4 class to represent a vector of years.

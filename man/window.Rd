@@ -28,13 +28,16 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 \examples{
 ## Create 3 time-series of 100 observations
 ## Sampled every years starting from 1000 CE
-(x <- series(matrix(rnorm(300), 100, 3), era("CE"), time = 1000:1099))
+(x <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 ## Subset between 1025 and 1050 CE
 (y <- window(x, start = 1025, end = 1050))
 }
 \seealso{
 Other time series tools: 
+\code{\link{as_date}()},
+\code{\link{as_fixed}()},
+\code{\link{as_year}()},
 \code{\link{plot}()},
 \code{\link{project}()},
 \code{\link{series}()},

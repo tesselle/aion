@@ -13,7 +13,7 @@ setMethod(
     object <- object * scale
 
     if (isTRUE(sort)) {
-      i <- order(object, decreasing = era_direction(calendar) < 0)
+      i <- order(object, decreasing = calendar_direction(calendar) < 0)
       object <- object[i]
     }
     .TimeLine(object, calendar = calendar)

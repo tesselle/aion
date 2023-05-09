@@ -1,6 +1,6 @@
 ## Define time scales
-BP <- era("BP")
-AD <- era("AD")
+BP <- calendar("BP")
+AD <- calendar("AD")
 
 ## Make conversion functions
 BP_to_AD <- convert(BP, AD)
