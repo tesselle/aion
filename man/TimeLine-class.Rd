@@ -13,9 +13,6 @@ An S4 class to represent a vector of years.
 \describe{
 \item{\code{.Data}}{A \code{\link{numeric}} vector giving the year values.}
 
-\item{\code{scale}}{A \code{\link{numeric}} value specifying the number of years represented by
-one unit. It should be a power of 10 (i.e. 1000 means ka).}
-
 \item{\code{calendar}}{A \code{\linkS4class{TimeScale}} object specifying the time scale.}
 }}
 

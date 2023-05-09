@@ -22,8 +22,7 @@ years(object, calendar, ...)
 \item{...}{Currently not used.}
 
 \item{scale}{A length-one \code{\link{integer}} vector specifying the number of years
-represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
-Will be coerced with \code{\link[=as.integer]{as.integer()}} (hence truncated toward zero).}
+represented by one unit. It should be a power of 10 (i.e. 1000 means ka).}
 
 \item{sort}{A \code{\link{logical}} scalar: should data be sorted in chronological
 order?}
@@ -41,7 +40,13 @@ year 1950).
 }
 \examples{
 ## R foundation
-(y <- years(1994, era("CE")))
+(y <- years(c(1994, 2000), era("CE")))
+format(y)
+
+## Vector of years expressed in ka BP
+(ka <- years(c(30, 35, 40), era("BP"), scale = 1000))
+format(ka)
+format(ka, format = "ka")
 }
 \seealso{
 Other time series tools: 

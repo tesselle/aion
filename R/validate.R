@@ -28,21 +28,12 @@ setValidity(
 )
 
 # Time Series ==================================================================
-setValidity(
-  Class = "TimeLine",
-  method = function(object) {
-    ## Get data
-    scale <- object@scale
-
-    ## Validate
-    cnd <- list(
-      arkhe::validate(arkhe::assert_scalar(scale, "numeric"))
-    )
-
-    ## Return conditions, if any
-    arkhe::check_class(object, cnd)
-  }
-)
+# setValidity(
+#   Class = "TimeLine",
+#   method = function(object) {
+#
+#   }
+# )
 
 setValidity(
   Class = "TimeSeries",

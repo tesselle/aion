@@ -5,10 +5,11 @@
 \alias{project}
 \alias{project-method}
 \alias{project,TimeLine,TimeScale-method}
-\alias{project,TimeSeries,character-method}
 \alias{project,TimeLine,TimeLine-method}
-\alias{project,TimeSeries,TimeSeries-method}
+\alias{project,TimeSeries,character-method}
 \alias{project,TimeSeries,TimeScale-method}
+\alias{project,TimeSeries,TimeLine-method}
+\alias{project,TimeSeries,TimeSeries-method}
 \title{Change the Time Scale}
 \usage{
 project(object, target, ...)
@@ -17,11 +18,11 @@ project(object, target, ...)
 
 \S4method{project}{TimeLine,TimeLine}(object, target)
 
-\S4method{project}{TimeSeries,TimeSeries}(object, target)
-
 \S4method{project}{TimeSeries,TimeScale}(object, target)
 
-\S4method{project}{TimeSeries,character}(object, target)
+\S4method{project}{TimeSeries,TimeLine}(object, target)
+
+\S4method{project}{TimeSeries,TimeSeries}(object, target)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{TimeSeries}} object.}
@@ -44,7 +45,7 @@ A <- series(rnorm(100), era("CE"), time = 1000:1099)
 B <- series(rnorm(100), era("CE"), time = 1100:1199)
 
 ## Reproject to BP time scale
-(A <- project(A, "BP"))
+(A <- project(A, era("BP")))
 (B <- project(B, A))
 }
 \seealso{

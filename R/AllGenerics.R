@@ -108,16 +108,8 @@ setGeneric(
 #' Julian Calendar
 #'
 #' @param object A [`JulianCalendar-class`] object.
-#' @param label A [`character`] string specifying the abbreviated label of
-#'  the time scale.
-#' @param name A [`character`] string specifying the name of the time scale.
-#' @param epoch A length-one [`numeric`] vector specifying the epoch year from
-#'  which years are counted (in Gregorian astronomical years).
-#' @param direction A length-one [`integer`] vector specifying if years are
-#'  counted backwards (`-1`) or forwards (`1`) from `epoch`. Only the
-#'  [sign][sign()] of `direction` will be retained.
 #' @return
-#'  * `as_julian()` returns a [`JulianCalendar-class`] object.
+#  * `as_julian()` returns a [`JulianCalendar-class`] object.
 #'  * `is_julian()` returns a [`logical`] scalar.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
@@ -218,7 +210,6 @@ setGeneric(
 #' @param calendar A [`TimeScale-class`] object (see [era()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
-#'  Will be coerced with [as.integer()] (hence truncated toward zero).
 #' @param sort A [`logical`] scalar: should data be sorted in chronological
 #'  order?
 #' @param ... Currently not used.
@@ -251,7 +242,6 @@ setGeneric(
 #'  `years` must be a [`TimeLine-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
-#'  It will be coerced with [as.integer()] (hence truncated toward zero).
 #' @param names A [`character`] string specifying the names of the time
 #'  series.
 #' @param ... Currently not used.

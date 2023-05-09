@@ -9,11 +9,14 @@ setMethod(
   f = "years",
   signature = c(object = "numeric", calendar = "TimeScale"),
   definition = function(object, calendar, scale = 1, sort = FALSE) {
+    ## Rescale to years (if not already)
+    object <- object * scale
+
     if (isTRUE(sort)) {
       i <- order(object, decreasing = era_direction(calendar) < 0)
       object <- object[i]
     }
-    .TimeLine(object, calendar = calendar, scale = as.integer(scale))
+    .TimeLine(object, calendar = calendar)
   }
 )
 

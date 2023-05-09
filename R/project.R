@@ -45,19 +45,14 @@ setMethod(
 # Project ======================================================================
 #' @export
 #' @rdname project
-#' @aliases project,TimeSeries,character-method
+#' @aliases project,TimeLine,TimeScale-method
 setMethod(
   f = "project",
   signature = c(object = "TimeLine", target = "TimeScale"),
   definition = function(object, target) {
     fun <- convert(era(object), target)
-
-    data <- object * object@scale # Rescale to 1 (if not already)
-    data <- fun(data)
-    error <- fun(object@error)
-
-    methods::initialize(object, data, error = error,
-                        scale = 1, calendar = target)
+    data <- fun(object)
+    methods::initialize(object, data, calendar = target)
   }
 )
 
@@ -69,24 +64,7 @@ setMethod(
   signature = c(object = "TimeLine", target = "TimeLine"),
   definition = function(object, target) {
     z <- methods::callGeneric(object, era(target))
-    z <- z / target@scale # Apply destination scale
-
     methods::initialize(target, z)
-  }
-)
-
-#' @export
-#' @rdname project
-#' @aliases project,TimeSeries,TimeScale-method
-setMethod(
-  f = "project",
-  signature = c(object = "TimeSeries", target = "TimeSeries"),
-  definition = function(object, target) {
-    z <- methods::callGeneric(years(object), years(target))
-
-    object@time <- z
-    methods::validObject(object)
-    object
   }
 )
 
@@ -105,12 +83,29 @@ setMethod(
   }
 )
 
+
 #' @export
 #' @rdname project
-#' @aliases project,TimeSeries,TimeScale-method
+#' @aliases project,TimeSeries,TimeLine-method
 setMethod(
   f = "project",
-  signature = c(object = "TimeSeries", target = "character"),
+  signature = c(object = "TimeSeries", target = "TimeLine"),
+  definition = function(object, target) {
+    z <- methods::callGeneric(years(object), era(target))
+
+    object@time <- z
+    methods::validObject(object)
+    object
+  }
+)
+
+
+#' @export
+#' @rdname project
+#' @aliases project,TimeSeries,TimeSeries-method
+setMethod(
+  f = "project",
+  signature = c(object = "TimeSeries", target = "TimeSeries"),
   definition = function(object, target) {
     z <- methods::callGeneric(years(object), era(target))
 

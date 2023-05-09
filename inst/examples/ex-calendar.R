@@ -1,5 +1,5 @@
 ## Create a custom gregorian calendar
-gregorian(
+as_gregorian(
   label = "AUC",
   name = "Ab urbe condita",
   epoch = 753,

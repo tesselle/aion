@@ -1,14 +1,28 @@
 # SHOW
 
 # Format =======================================================================
+# The format method return a character vector representing the years.
 setMethod(
   f = "format",
   signature = "TimeLine",
-  definition = function(x) {
-    prefix <- c(ka = 10^3, Ma = 10^6, Ga = 10^9)
-    prefix <- names(prefix)[prefix == x@scale]
-    if (length(prefix) == 0) return(era_label(x))
-    sprintf("%s %s", prefix, era_label(x))
+  definition = function(x, format = c("a", "ka", "Ma", "Ga")) {
+    ## Validation
+    format <- match.arg(format, several.ok = FALSE)
+
+    ## Autoscale
+    # power <- 10^floor(log10(time(x)))
+
+    ## Scale
+    power <- switch (
+      format,
+      a = 1,
+      ka = 10^3,
+      Ma = 10^6,
+      Ga = 10^9
+    )
+
+    # if (length(prefix) == 0) return(era_label(x))
+    sprintf("%g %s %s", time(x) / power, format, era_label(x))
   }
 )
 
@@ -41,7 +55,7 @@ setMethod(
   definition = function(object) {
     n <- ncol(object)
     msg <- "%d time series observed between %g and %g %s."
-    msg <- sprintf(msg, n, start(object), end(object), format(object@time))
+    msg <- sprintf(msg, n, start(object), end(object), era_label(object))
     cat(msg, sep = "\n")
   }
 )

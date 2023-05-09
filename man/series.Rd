@@ -43,8 +43,7 @@ object (see \code{\link[=years]{years()}}).}
 series.}
 
 \item{scale}{A length-one \code{\link{numeric}} vector specifying the number of years
-represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
-It will be coerced with \code{\link[=as.integer]{as.integer()}} (hence truncated toward zero).}
+represented by one unit. It should be a power of 10 (i.e. 1000 means ka).}
 }
 \value{
 A \code{\linkS4class{TimeSeries}} object.

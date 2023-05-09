@@ -44,7 +44,7 @@ Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 }
 \examples{
 ## Create a custom gregorian calendar
-gregorian(
+as_gregorian(
   label = "AUC",
   name = "Ab urbe condita",
   epoch = 753,

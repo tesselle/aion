@@ -195,8 +195,6 @@ NULL
 #'
 #' An S4 class to represent a vector of years.
 #' @slot .Data A [`numeric`] vector giving the year values.
-#' @slot scale A [`numeric`] value specifying the number of years represented by
-#'  one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @slot calendar A [`TimeScale-class`] object specifying the time scale.
 #' @note
 #'  This class inherits from [`numeric`].
@@ -210,7 +208,6 @@ NULL
 .TimeLine <- setClass(
   Class = "TimeLine",
   slots = c(
-    scale = "numeric",
     calendar = "TimeScale"
   ),
   contains = "numeric"

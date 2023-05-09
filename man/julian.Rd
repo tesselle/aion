@@ -14,22 +14,9 @@ is_julian(object)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{JulianCalendar}} object.}
-
-\item{label}{A \code{\link{character}} string specifying the abbreviated label of
-the time scale.}
-
-\item{name}{A \code{\link{character}} string specifying the name of the time scale.}
-
-\item{epoch}{A length-one \code{\link{numeric}} vector specifying the epoch year from
-which years are counted (in Gregorian astronomical years).}
-
-\item{direction}{A length-one \code{\link{integer}} vector specifying if years are
-counted backwards (\code{-1}) or forwards (\code{1}) from \code{epoch}. Only the
-\link[=sign]{sign} of \code{direction} will be retained.}
 }
 \value{
 \itemize{
-\item \code{as_julian()} returns a \code{\linkS4class{JulianCalendar}} object.
 \item \code{is_julian()} returns a \code{\link{logical}} scalar.
 }
 }
@@ -38,7 +25,7 @@ Julian Calendar
 }
 \examples{
 ## Create a custom gregorian calendar
-gregorian(
+as_gregorian(
   label = "AUC",
   name = "Ab urbe condita",
   epoch = 753,
