@@ -242,7 +242,7 @@ setGeneric(
   def = function(from, to, ...) standardGeneric("convert")
 )
 
-# Fixed Date ===================================================================
+# Fixed Dates ==================================================================
 #' *Rata Die*
 #'
 #' @param year A [`numeric`] vector of (decimal) years.
@@ -252,6 +252,9 @@ setGeneric(
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @param ... Currently not used.
+#' @details
+#'  *Rata die* are represented as the number of days since 01-01-01 (Gregorian),
+#'  with negative values for earlier dates.
 #' @return
 #'  A [`RataDie-class`] object.
 #' @example inst/examples/ex-years.R
@@ -318,11 +321,11 @@ setGeneric(
 #'  `years` must be a [`RataDie-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
-# @param sort A [`logical`] scalar: should data be sorted in chronological
-#  order?
 #' @param names A [`character`] string specifying the names of the time
 #'  series.
 #' @param ... Currently not used.
+#' @details
+#'  Data will be sorted in chronological order.
 #' @return
 #'  A [`TimeSeries-class`] object.
 #' @example inst/examples/ex-series.R

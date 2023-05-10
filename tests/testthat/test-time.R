@@ -16,5 +16,5 @@ test_that("Sampling times", {
 
   x <- series(rnorm(100), time = y)
 
-  expect_identical(time(x), time(y))
+  expect_identical(time(x), sort(time(y)))
 })

@@ -19,6 +19,11 @@ setMethod(
     if (is.null(colnames(object)))
       colnames(object) <- paste0("S", seq_len(ncol(object)))
 
+    ## Chronological order
+    i <- order(time, decreasing = FALSE)
+    time <- time[i]
+    object <- object[i, , drop = FALSE]
+
     .TimeSeries(object, time = time)
   }
 )
@@ -30,7 +35,12 @@ setMethod(
   f = "series",
   signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
-    time <- as_fixed(time, calendar = calendar, scale = scale)
+    if (methods::is(time, "RataDie")) {
+      msg <- "%s is already expressed in rata die: %s is ignored."
+      warning(sprintf(msg, sQuote("time"), sQuote("calendar")), call. = FALSE)
+    } else {
+      time <- as_fixed(time, calendar = calendar, scale = scale)
+    }
     methods::callGeneric(object = object, time = time, names = names)
   }
 )

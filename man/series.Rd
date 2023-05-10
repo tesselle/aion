@@ -51,6 +51,9 @@ A \code{\linkS4class{TimeSeries}} object.
 \description{
 Create Time Series
 }
+\details{
+Data will be sorted in chronological order.
+}
 \examples{
 ## Create time-series of 100 observations
 
