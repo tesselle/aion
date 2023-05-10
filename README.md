@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tesselle/chronos/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/chronos/actions)
-[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://codecov.io/gh/tesselle/chronos)
+[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/chronos)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/chronos/badge/main)](https://www.codefactor.io/repository/github/tesselle/chronos/overview/main)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
@@ -30,9 +30,11 @@ given calendar era and may involve dates far in the past.
 **chronos** provides a system of classes and methods to represent and
 work with such time-series. Dates are represented as *rata die*
 (Reingold and Dershowitz 2018), i.e. the number of days since 01-01-01
-(Gregorian), with negative values for earlier dates. This system allows
-to represent dates independently of any calendar: it makes calculations
-and comparisons easier.
+(Gregorian), with negative values for earlier dates (if you want to work
+with vectors of years, you may be interested in the
+[**era**](https://github.com/joeroe/era) package). This system allows to
+represent dates independently of any calendar: it makes calculations and
+comparisons easier.
 
 Once a time series is created with **chronos**, any calendar can be used
 for printing or plotting data (defaults to Gregorian Common Era; see
@@ -40,8 +42,8 @@ for printing or plotting data (defaults to Gregorian Common Era; see
 
 This package supports usual Gregorian era (e.g. Common Era, Before
 Present), more calendars will be gradually implemented. Note that
-**chronos** uses the astronomical notation for Gregorian years (there is
-a year 0).
+**chronos** uses the astronomical notation for Gregorian years (there
+*is* a year 0).
 
 ## Installation
 

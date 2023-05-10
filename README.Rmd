@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/tesselle/chronos/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/chronos/actions)
-[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://codecov.io/gh/tesselle/chronos)
+[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/chronos)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/chronos/badge/main)](https://www.codefactor.io/repository/github/tesselle/chronos/overview/main)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/chronos)](https://tesselle.r-universe.dev){.pkgdown-devel}
@@ -30,11 +30,11 @@ knitr::opts_chunk$set(
 
 Base R ships with a lot of functionality useful for time series, in particular in the **stats** package: a time-series object can be created with the `stats::ts()` function. These objects are agnostic: the unit of time is not relevant, only the sampling frequency matters. Most archaeological time series are different because they are defined for a given calendar era and may involve dates far in the past.
 
-**chronos** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates. This system allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
+**chronos** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates (if you want to work with vectors of years, you may be interested in the [**era**](https://github.com/joeroe/era) package). This system allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
 
 Once a time series is created with **chronos**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("manual")`).
 
-This package supports usual Gregorian era (e.g. Common Era, Before Present), more calendars will be gradually implemented. Note that **chronos** uses the astronomical notation for Gregorian years (there is a year 0).
+This package supports usual Gregorian era (e.g. Common Era, Before Present), more calendars will be gradually implemented. Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
 
 ## Installation
 
