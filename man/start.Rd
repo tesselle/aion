@@ -5,17 +5,17 @@
 \alias{start}
 \alias{start-method}
 \alias{end-method}
-\alias{start,TimeLine-method}
+\alias{start,RataDie-method}
 \alias{start,TimeSeries-method}
-\alias{end,TimeLine-method}
+\alias{end,RataDie-method}
 \alias{end,TimeSeries-method}
 \title{Terminal Times of Time Series}
 \usage{
-\S4method{start}{TimeLine}(x)
+\S4method{start}{RataDie}(x)
 
 \S4method{start}{TimeSeries}(x)
 
-\S4method{end}{TimeLine}(x)
+\S4method{end}{RataDie}(x)
 
 \S4method{end}{TimeSeries}(x)
 }
@@ -26,7 +26,8 @@
 A \code{\link{numeric}} vector.
 }
 \description{
-Get the times the first and last observations were taken.
+Get the times (expressed in \emph{rata die}) the first and last observations were
+taken.
 }
 \examples{
 ## Create time-series of 100 observations
@@ -41,7 +42,6 @@ time(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
-## Expressed in kilo years
 (Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 start(Y)
@@ -50,15 +50,10 @@ time(Y)
 }
 \seealso{
 Other time series tools: 
-\code{\link{as_date}()},
-\code{\link{as_fixed}()},
-\code{\link{as_year}()},
 \code{\link{plot}()},
-\code{\link{project}()},
 \code{\link{series}()},
 \code{\link{time}()},
-\code{\link{window}()},
-\code{\link{years}()}
+\code{\link{window}()}
 }
 \author{
 N. Frerebeau

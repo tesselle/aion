@@ -5,55 +5,28 @@
 \alias{gregorian}
 \alias{is_gregorian}
 \alias{is_gregorian-method}
-\alias{as_gregorian}
 \alias{is_gregorian,TimeScale-method}
 \title{Gregorian Calendar}
 \usage{
 is_gregorian(object)
 
-as_gregorian(label, name, epoch, direction)
-
 \S4method{is_gregorian}{TimeScale}(object)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{GregorianCalendar}} object.}
-
-\item{label}{A \code{\link{character}} string specifying the abbreviated label of
-the time scale.}
-
-\item{name}{A \code{\link{character}} string specifying the name of the time scale.}
-
-\item{epoch}{A length-one \code{\link{numeric}} vector specifying the epoch year from
-which years are counted (in Gregorian astronomical years).}
-
-\item{direction}{A length-one \code{\link{integer}} vector specifying if years are
-counted backwards (\code{-1}) or forwards (\code{1}) from \code{epoch}. Only the
-\link[=sign]{sign} of \code{direction} will be retained.}
 }
 \value{
 \itemize{
-\item \code{as_gregorian()} returns a \code{\linkS4class{GregorianCalendar}} object.
 \item \code{is_gregorian()} returns a \code{\link{logical}} scalar.
 }
 }
 \description{
 Gregorian Calendar
 }
-\note{
-Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
-}
 \examples{
 ## Define time scales
 (BP <- calendar("BP"))
 (AD <- calendar("AD"))
-
-## Create a custom gregorian calendar
-as_gregorian(
-  label = "AUC",
-  name = "Ab urbe condita",
-  epoch = 753,
-  direction = 1
-)
 }
 \seealso{
 Other time scales tools: 

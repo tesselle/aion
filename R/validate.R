@@ -29,7 +29,7 @@ setValidity(
 
 # Time Series ==================================================================
 # setValidity(
-#   Class = "TimeLine",
+#   Class = "RataDie",
 #   method = function(object) {
 #
 #   }

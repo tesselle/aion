@@ -1,7 +1,8 @@
 .onLoad <- function(libname, pkgname) {
   op <- options()
   op.chronos <- list(
-    chronos.precision = 1
+    chronos.precision = 1,
+    chronos.calendar = calendar("CE")
   )
   toset <- !(names(op.chronos) %in% names(op))
   if(any(toset)) options(op.chronos[toset])

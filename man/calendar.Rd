@@ -5,17 +5,11 @@
 \alias{calendar}
 \alias{calendar-method}
 \alias{calendar,character-method}
-\alias{calendar,TimeLine-method}
-\alias{calendar,TimeSeries-method}
-\title{Era}
+\title{Calendar}
 \usage{
 calendar(object, ...)
 
 \S4method{calendar}{character}(object)
-
-\S4method{calendar}{TimeLine}(object)
-
-\S4method{calendar}{TimeSeries}(object)
 }
 \arguments{
 \item{object}{A \code{\link{character}} string specifying the abbreviated label of
@@ -28,19 +22,19 @@ scale.}
 A \code{\linkS4class{TimeScale}} object.
 }
 \description{
-Era
+Calendar
 }
 \details{
 The following time scales are available:
 
 \tabular{lll}{
-\strong{label}   \tab \strong{name}           \tab \strong{unit}        \cr
-\code{BP}        \tab Before Present     \tab Gregorian years \cr
-\code{BC}        \tab Before Christ      \tab Gregorian years \cr
-\code{BCE}       \tab Before Common Era  \tab Gregorian years \cr
-\code{AD}        \tab Anno Domini        \tab Gregorian years \cr
-\code{CE}        \tab Common Era         \tab Gregorian years \cr
-\code{b2k}       \tab Years before 2000  \tab Gregorian years \cr
+\strong{label}   \tab \strong{era}            \tab \strong{calendar} \cr
+\code{BP}        \tab Before Present     \tab Gregorian    \cr
+\code{BC}        \tab Before Christ      \tab Gregorian    \cr
+\code{BCE}       \tab Before Common Era  \tab Gregorian    \cr
+\code{AD}        \tab Anno Domini        \tab Gregorian    \cr
+\code{CE}        \tab Common Era         \tab Gregorian    \cr
+\code{b2k}       \tab Years before 2000  \tab Gregorian    \cr
 }
 }
 \note{
@@ -50,14 +44,6 @@ Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 ## Define time scales
 (BP <- calendar("BP"))
 (AD <- calendar("AD"))
-
-## Create a custom gregorian calendar
-as_gregorian(
-  label = "AUC",
-  name = "Ab urbe condita",
-  epoch = 753,
-  direction = 1
-)
 }
 \seealso{
 Other time scales tools: 

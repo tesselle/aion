@@ -4,38 +4,38 @@
 \name{series}
 \alias{series}
 \alias{series-method}
-\alias{series,matrix,TimeLine,missing-method}
+\alias{series,matrix,RataDie,missing-method}
 \alias{series,matrix,numeric,TimeScale-method}
 \alias{series,numeric,numeric,TimeScale-method}
-\alias{series,numeric,TimeLine,missing-method}
+\alias{series,numeric,RataDie,missing-method}
 \alias{series,data.frame,numeric,TimeScale-method}
-\alias{series,data.frame,TimeLine,missing-method}
+\alias{series,data.frame,RataDie,missing-method}
 \title{Create Time Series}
 \usage{
 series(object, time, calendar, ...)
 
-\S4method{series}{matrix,TimeLine,missing}(object, time, names = NULL)
+\S4method{series}{matrix,RataDie,missing}(object, time, names = NULL)
 
 \S4method{series}{matrix,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
 
 \S4method{series}{numeric,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
 
-\S4method{series}{numeric,TimeLine,missing}(object, time, names = NULL)
+\S4method{series}{numeric,RataDie,missing}(object, time, names = NULL)
 
 \S4method{series}{data.frame,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
 
-\S4method{series}{data.frame,TimeLine,missing}(object, time, names = NULL)
+\S4method{series}{data.frame,RataDie,missing}(object, time, names = NULL)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} \code{vector} or \code{matrix} of the observed time-series
 values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via
 \code{\link[=data.matrix]{data.matrix()}}.}
 
-\item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{TimeLine}}
-object (see \code{\link[=years]{years()}}).}
+\item{time}{A \code{\link{numeric}} vector of (fractional) years or a \code{\linkS4class{RataDie}}
+object (see \code{\link[=as_fixed]{as_fixed()}}).}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}). If missing,
-\code{years} must be a \code{\linkS4class{TimeLine}} object.}
+\code{years} must be a \code{\linkS4class{RataDie}} object.}
 
 \item{...}{Currently not used.}
 
@@ -64,7 +64,6 @@ time(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
-## Expressed in kilo years
 (Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 start(Y)
@@ -73,15 +72,10 @@ time(Y)
 }
 \seealso{
 Other time series tools: 
-\code{\link{as_date}()},
-\code{\link{as_fixed}()},
-\code{\link{as_year}()},
 \code{\link{plot}()},
-\code{\link{project}()},
 \code{\link{start}()},
 \code{\link{time}()},
-\code{\link{window}()},
-\code{\link{years}()}
+\code{\link{window}()}
 }
 \author{
 N. Frerebeau

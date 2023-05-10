@@ -10,7 +10,6 @@ time(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
-## Expressed in kilo years
 (Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 start(Y)

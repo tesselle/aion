@@ -33,7 +33,7 @@ NULL
   contains = "VIRTUAL"
 )
 
-## Gregorian TimeScale ----------------------------------------------------------
+## Gregorian TimeScale ---------------------------------------------------------
 #' GregorianCalendar
 #'
 #' An S4 class to represent a Gregorian calendar.
@@ -170,7 +170,14 @@ NULL
   contains = "GregorianCalendar"
 )
 
-## Julian TimeScale -------------------------------------------------------------
+# .GregorianCalendar(
+#   label = "AUC",
+#   name = "Ab urbe condita",
+#   epoch = 753,
+#   direction = 1
+# )
+
+## Julian TimeScale ------------------------------------------------------------
 #' JulianCalendar
 #'
 #' An S4 class to represent a Julian calendar.
@@ -218,36 +225,13 @@ NULL
   contains = "numeric"
 )
 
-#' TimeLine
-#'
-#' An S4 class to represent a vector of years.
-#' @slot .Data A [`numeric`] vector giving the year values.
-#' @slot calendar A [`TimeScale-class`] object specifying the time scale.
-#' @note
-#'  This class inherits from [`numeric`].
-#' @author N. Frerebeau
-#' @family classes
-#' @family time classes
-#' @docType class
-#' @aliases TimeLine-class
-#' @keywords internal
-#' @exportClass TimeLine
-.TimeLine <- setClass(
-  Class = "TimeLine",
-  slots = c(
-    calendar = "TimeScale"
-  ),
-  contains = "numeric"
-)
-
 #' TimeSeries
 #'
 #' An S4 class to represent time series.
 #' @slot .Data A `numeric` [`matrix`] giving the observed time-series values.
-#' @slot time A [`TimeLine-class`] object.
+#' @slot time A [`RataDie-class`] object.
 #' @details
-#'  It is a matrix that represents data sampled at equidistant points in time,
-#'  according to a given time scale.
+#'  It is a matrix that represents data according to a given time scale.
 #' @note
 #'  This class inherits from [`matrix`].
 #' @author N. Frerebeau
@@ -260,7 +244,7 @@ NULL
 .TimeSeries <- setClass(
   Class = "TimeSeries",
   slots = c(
-    time = "TimeLine"
+    time = "RataDie"
   ),
   contains = "matrix"
 )

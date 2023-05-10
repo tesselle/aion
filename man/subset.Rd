@@ -3,11 +3,11 @@
 \docType{methods}
 \name{subset}
 \alias{subset}
-\alias{[,TimeLine-method}
+\alias{[,RataDie-method}
 \alias{[,TimeSeries-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
-\S4method{[}{TimeLine}(x, i)
+\S4method{[}{RataDie}(x, i)
 
 \S4method{[}{TimeSeries}(x, i, j, ..., drop = FALSE)
 }

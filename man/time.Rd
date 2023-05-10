@@ -4,17 +4,17 @@
 \name{time}
 \alias{time}
 \alias{time-method}
-\alias{time,TimeLine-method}
+\alias{time,RataDie-method}
 \alias{time,TimeSeries-method}
+\alias{frequency,RataDie-method}
 \alias{frequency,TimeSeries-method}
-\alias{frequency,TimeLine-method}
 \title{Sampling Times of Time Series}
 \usage{
-\S4method{time}{TimeLine}(x)
+\S4method{time}{RataDie}(x)
 
 \S4method{time}{TimeSeries}(x)
 
-\S4method{frequency}{TimeSeries}(x)
+\S4method{frequency}{RataDie}(x)
 
 \S4method{frequency}{TimeSeries}(x)
 }
@@ -25,6 +25,7 @@
 A \code{\link{numeric}} vector.
 }
 \description{
+Get the sampling times expressed in \emph{rata die}:
 \itemize{
 \item \code{time()} creates the vector of times at which a time series was sampled.
 \item \code{frequency()} returns the number of samples per unit time.
@@ -43,7 +44,6 @@ time(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
-## Expressed in kilo years
 (Y <- series(matrix(rnorm(300), 100, 3), calendar("CE"), time = 1000:1099))
 
 start(Y)
@@ -52,15 +52,10 @@ time(Y)
 }
 \seealso{
 Other time series tools: 
-\code{\link{as_date}()},
-\code{\link{as_fixed}()},
-\code{\link{as_year}()},
 \code{\link{plot}()},
-\code{\link{project}()},
 \code{\link{series}()},
 \code{\link{start}()},
-\code{\link{window}()},
-\code{\link{years}()}
+\code{\link{window}()}
 }
 \author{
 N. Frerebeau

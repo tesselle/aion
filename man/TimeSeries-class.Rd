@@ -9,15 +9,14 @@
 An S4 class to represent time series.
 }
 \details{
-It is a matrix that represents data sampled at equidistant points in time,
-according to a given time scale.
+It is a matrix that represents data according to a given time scale.
 }
 \section{Slots}{
 
 \describe{
 \item{\code{.Data}}{A \code{numeric} \code{\link{matrix}} giving the observed time-series values.}
 
-\item{\code{time}}{A \code{\linkS4class{TimeLine}} object.}
+\item{\code{time}}{A \code{\linkS4class{RataDie}} object.}
 }}
 
 \note{
@@ -33,13 +32,11 @@ Other classes:
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{RataDie-class}},
-\code{\link{TimeLine-class}},
 \code{\link{TimeScale-class}},
 \code{\link{b2k-class}}
 
 Other time classes: 
-\code{\link{RataDie-class}},
-\code{\link{TimeLine-class}}
+\code{\link{RataDie-class}}
 }
 \author{
 N. Frerebeau

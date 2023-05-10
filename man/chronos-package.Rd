@@ -25,6 +25,8 @@ A toolkit for archaeological time series analysis and temporal reasoning. This p
 \itemize{
 \item \code{chronos.precision}: an \code{\link{integer}} indicating the number of decimal
 places (defaults to \code{NA}).
+\item \code{chronos.calendar}: a \code{\linkS4class{TimeScale}} object (default calendar for
+printing).
 }
 }
 

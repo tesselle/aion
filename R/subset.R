@@ -6,10 +6,10 @@ NULL
 ## [ ---------------------------------------------------------------------------
 #' @export
 #' @rdname subset
-#' @aliases [,TimeLine-method
+#' @aliases [,RataDie-method
 setMethod(
   f = "[",
-  signature = c(x = "TimeLine"),
+  signature = c(x = "RataDie"),
   function(x, i) {
     z <- methods::callNextMethod() # Method for `numeric`
     methods::initialize(x, z)
@@ -27,7 +27,7 @@ setMethod(
 
     if (is.null(dim(z))) return(z)
 
-    time <- years(x)
+    time <- x@time
     if (!missing(i)) {
       time <- time[i]
     }
@@ -47,12 +47,7 @@ setMethod(
     if (is.null(end)) end <- end(x)
     years <- time(x)
 
-    if (calendar_direction(x) > 0) {
-      i <- which(years >= start & years <= end)
-    }
-    if (calendar_direction(x) < 0) {
-      i <- which(years <= start & years >= end)
-    }
+    i <- which(years >= start & years <= end)
     x[i, , drop = FALSE]
   }
 )

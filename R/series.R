@@ -2,13 +2,16 @@
 #' @include AllGenerics.R
 NULL
 
+# TODO: si calendar est founir avec time -> mauvais dispatch!
+# Vérifier la classe de time
+
 # matrix =======================================================================
 #' @export
 #' @rdname series
-#' @aliases series,matrix,TimeLine,missing-method
+#' @aliases series,matrix,RataDie,missing-method
 setMethod(
   f = "series",
-  signature = c(object = "matrix", time = "TimeLine", calendar = "missing"),
+  signature = c(object = "matrix", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
     ## Set the names of the series
     if (!is.null(names))
@@ -27,7 +30,7 @@ setMethod(
   f = "series",
   signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
-    time <- years(time, calendar = calendar, scale = scale)
+    time <- as_fixed(time, calendar = calendar, scale = scale)
     methods::callGeneric(object = object, time = time, names = names)
   }
 )
@@ -48,10 +51,10 @@ setMethod(
 
 #' @export
 #' @rdname series
-#' @aliases series,numeric,TimeLine,missing-method
+#' @aliases series,numeric,RataDie,missing-method
 setMethod(
   f = "series",
-  signature = c(object = "numeric", time = "TimeLine", calendar = "missing"),
+  signature = c(object = "numeric", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
     object <- matrix(data = object, ncol = 1)
     methods::callGeneric(object = object, time = time, names = names)
@@ -74,10 +77,10 @@ setMethod(
 
 #' @export
 #' @rdname series
-#' @aliases series,data.frame,TimeLine,missing-method
+#' @aliases series,data.frame,RataDie,missing-method
 setMethod(
   f = "series",
-  signature = c(object = "data.frame", time = "TimeLine", calendar = "missing"),
+  signature = c(object = "data.frame", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
     object <- data.matrix(object)
     methods::callGeneric(object = object, time = time, names = names)

@@ -1,8 +1,8 @@
 test_that("Terminal times", {
-  y <- years(1000:1099, calendar("BCE"))
+  y <- as_fixed(1000:1099, calendar = calendar("BCE"))
 
-  expect_equal(start(y), 1099)
-  expect_equal(end(y), 1000)
+  expect_equal(start(y), -401766)
+  expect_equal(end(y), -365607)
 
   x <- series(rnorm(100), time = y)
 
@@ -10,9 +10,9 @@ test_that("Terminal times", {
   expect_identical(end(x), end(y))
 })
 test_that("Sampling times", {
-  y <- years(1000:1099, calendar("BCE"))
+  y <- as_fixed(1000:1099, calendar = calendar("BCE"))
 
-  expect_equal(time(y), 1000:1099)
+  expect_equal(time(y), y@.Data)
 
   x <- series(rnorm(100), time = y)
 

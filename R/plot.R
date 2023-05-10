@@ -4,7 +4,8 @@ NULL
 
 #' @export
 #' @method plot TimeSeries
-plot.TimeSeries <- function(x, panel = graphics::lines,
+plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
+                            panel = graphics::lines,
                             main = NULL, sub = NULL,
                             ann = graphics::par("ann"), axes = TRUE,
                             frame.plot = TRUE,
@@ -36,7 +37,8 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
   font.main <- list(...)$font.main %||% graphics::par("font.main")
   col.main <- list(...)$col.main %||% graphics::par("col.main")
 
-  years <- time(x)
+  years <- x@time
+  xlim <- range(years)
   for (i in n_seq) {
     xi <- x[, i, drop = TRUE]
 
@@ -46,7 +48,6 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
     graphics::plot.new()
 
     ## Set plotting coordinates
-    xlim <- c(start(x), end(x))
     ylim <- range(xi)
     graphics::plot.window(xlim = xlim, ylim = ylim)
 
@@ -63,8 +64,9 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
     do_x <- i %% n_row == 0 || i == n
     if (axes) {
       if (do_x) {
-        graphics::axis(side = 1, xpd = NA, cex.axis = cex.axis,
-                       col.axis = col.axis, font.axis = font.axis)
+        axis_year(side = 1, x = years, format = TRUE, calendar = calendar,
+                  xpd = NA, cex.axis = cex.axis,
+                  col.axis = col.axis, font.axis = font.axis)
       }
       graphics::axis(side = 2, xpd = NA, cex.axis = cex.axis,
                      col.axis = col.axis, font.axis = font.axis)
@@ -78,7 +80,7 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
     ## Add annotation
     if (ann) {
       if (do_x) {
-        xlab <- paste("Year", calendar_name(x), sep = " ")
+        xlab <- format(calendar)
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }
@@ -101,3 +103,34 @@ plot.TimeSeries <- function(x, panel = graphics::lines,
 #' @rdname plot
 #' @aliases plot,TimeSeries,missing-method
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
+
+# Axis =========================================================================
+pretty_year <- function(x, calendar = getOption("chronos.calendar"), ...) {
+  x <- as_year(x, calendar = calendar)
+  as_fixed(year = pretty(x, ...), calendar = calendar)
+}
+axis_year <- function(side, x, at = NULL, format = c("a", "ka", "Ma", "Ga"),
+                      labels = TRUE, calendar = getOption("chronos.calendar"),
+                      ...) {
+  range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
+  range[1L] <- ceiling(range[1L])
+  range[2L] <- floor(range[2L])
+
+  has_at <- !missing(at) && !is.null(at)
+  if (has_at && is.numeric(at)) {
+    x <- as_fixed(year = at, calendar = calendar)
+  }
+
+  x <- pretty_year(x, calendar = calendar)
+  keep <- x >= range[1L] & x <= range[2L]
+  x <- x[keep]
+
+  if (!is.logical(labels))
+    labels <- labels[keep]
+  else if (isTRUE(labels))
+    labels <- format(x, format = format, label = FALSE, calendar = calendar)
+  else if (isFALSE(labels))
+    labels <- rep("", length(x))
+
+  graphics::axis(side, at = x, labels = labels, ...)
+}

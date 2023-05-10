@@ -7,100 +7,49 @@
 \alias{calendar_label-method}
 \alias{calendar_name}
 \alias{calendar_name-method}
-\alias{calendar_calendar}
-\alias{calendar_calendar-method}
+\alias{calendar_unit}
+\alias{calendar_unit-method}
 \alias{calendar_epoch}
 \alias{calendar_epoch-method}
 \alias{calendar_direction}
 \alias{calendar_direction-method}
-\alias{calendar_year}
-\alias{calendar_year-method}
 \alias{calendar_label,TimeScale-method}
-\alias{calendar_label,TimeLine-method}
-\alias{calendar_label,TimeSeries-method}
 \alias{calendar_name,TimeScale-method}
-\alias{calendar_name,TimeLine-method}
-\alias{calendar_name,TimeSeries-method}
-\alias{calendar_calendar,TimeScale-method}
-\alias{calendar_calendar,TimeLine-method}
-\alias{calendar_calendar,TimeSeries-method}
+\alias{calendar_unit,TimeScale-method}
 \alias{calendar_epoch,TimeScale-method}
-\alias{calendar_epoch,TimeLine-method}
-\alias{calendar_epoch,TimeSeries-method}
 \alias{calendar_direction,TimeScale-method}
-\alias{calendar_direction,TimeLine-method}
-\alias{calendar_direction,TimeSeries-method}
-\alias{calendar_year,TimeScale-method}
-\alias{calendar_year,TimeLine-method}
-\alias{calendar_year,TimeSeries-method}
-\title{Era Parameters}
+\title{Calendar Parameters}
 \usage{
 calendar_label(object)
 
 calendar_name(object)
 
-calendar_calendar(object)
+calendar_unit(object)
 
 calendar_epoch(object)
 
 calendar_direction(object)
 
-calendar_year(object)
-
 \S4method{calendar_label}{TimeScale}(object)
-
-\S4method{calendar_label}{TimeLine}(object)
-
-\S4method{calendar_label}{TimeSeries}(object)
 
 \S4method{calendar_name}{TimeScale}(object)
 
-\S4method{calendar_name}{TimeLine}(object)
-
-\S4method{calendar_name}{TimeSeries}(object)
-
-\S4method{calendar_calendar}{TimeScale}(object)
-
-\S4method{calendar_calendar}{TimeLine}(object)
-
-\S4method{calendar_calendar}{TimeSeries}(object)
+\S4method{calendar_unit}{TimeScale}(object)
 
 \S4method{calendar_epoch}{TimeScale}(object)
 
-\S4method{calendar_epoch}{TimeLine}(object)
-
-\S4method{calendar_epoch}{TimeSeries}(object)
-
 \S4method{calendar_direction}{TimeScale}(object)
-
-\S4method{calendar_direction}{TimeLine}(object)
-
-\S4method{calendar_direction}{TimeSeries}(object)
-
-\S4method{calendar_year}{TimeScale}(object)
-
-\S4method{calendar_year}{TimeLine}(object)
-
-\S4method{calendar_year}{TimeSeries}(object)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{TimeScale}} object.}
 }
 \description{
-Era Parameters
+Calendar Parameters
 }
 \examples{
 ## Define time scales
 (BP <- calendar("BP"))
 (AD <- calendar("AD"))
-
-## Create a custom gregorian calendar
-as_gregorian(
-  label = "AUC",
-  name = "Ab urbe condita",
-  epoch = 753,
-  direction = 1
-)
 }
 \seealso{
 Other time scales tools: 

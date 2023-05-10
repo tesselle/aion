@@ -4,13 +4,11 @@ NULL
 
 #' @export
 #' @rdname start
-#' @aliases start,TimeLine-method
+#' @aliases start,RataDie-method
 setMethod(
   f = "start",
-  signature = "TimeLine",
-  definition = function(x) {
-    min(x * calendar_direction(x), na.rm = TRUE) * calendar_direction(x)
-  }
+  signature = "RataDie",
+  definition = function(x) min(x)
 )
 
 #' @export
@@ -19,19 +17,17 @@ setMethod(
 setMethod(
   f = "start",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(years(x))
+  definition = function(x) methods::callGeneric(x@time)
 )
 
 
 #' @export
 #' @rdname start
-#' @aliases end,TimeLine-method
+#' @aliases end,RataDie-method
 setMethod(
   f = "end",
-  signature = "TimeLine",
-  definition = function(x) {
-    max(x * calendar_direction(x), na.rm = TRUE) * calendar_direction(x)
-  }
+  signature = "RataDie",
+  definition = function(x) max(x)
 )
 
 #' @export
@@ -40,18 +36,16 @@ setMethod(
 setMethod(
   f = "end",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(years(x))
+  definition = function(x) methods::callGeneric(x@time)
 )
 
 #' @export
 #' @rdname time
-#' @aliases time,TimeLine-method
+#' @aliases time,RataDie-method
 setMethod(
   f = "time",
-  signature = "TimeLine",
-  definition = function(x) {
-    methods::as(x, "numeric", strict = TRUE)
-  }
+  signature = "RataDie",
+  definition = function(x) methods::as(x, "numeric", strict=TRUE)
 )
 
 #' @export
@@ -60,15 +54,15 @@ setMethod(
 setMethod(
   f = "time",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(years(x))
+  definition = function(x) methods::callGeneric(x@time)
 )
 
 #' @export
 #' @rdname time
-#' @aliases frequency,TimeLine-method
+#' @aliases frequency,RataDie-method
 setMethod(
   f = "frequency",
-  signature = "TimeSeries",
+  signature = "RataDie",
   definition = function(x) abs(1 / diff(time(x)))
 )
 
@@ -78,5 +72,5 @@ setMethod(
 setMethod(
   f = "frequency",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(years(x))
+  definition = function(x) methods::callGeneric(x@time)
 )

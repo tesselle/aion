@@ -22,28 +22,8 @@ setMethod(
   }
 )
 
-#' @export
-#' @rdname calendar
-#' @aliases calendar,TimeLine-method
-setMethod(
-  f = "calendar",
-  signature = "TimeLine",
-  definition = function(object) object@calendar
-)
-
-#' @export
-#' @rdname calendar
-#' @aliases calendar,TimeSeries-method
-setMethod(
-  f = "calendar",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(years(object))
-)
-
 # Mutators =====================================================================
-fixed <- function(object) {
-  object@fixed
-}
+fixed <- function(object) object@fixed
 
 ## Getters ---------------------------------------------------------------------
 #' @export
@@ -57,24 +37,6 @@ setMethod(
 
 #' @export
 #' @rdname calendar_get
-#' @aliases calendar_label,TimeLine-method
-setMethod(
-  f = "calendar_label",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_label,TimeSeries-method
-setMethod(
-  f = "calendar_label",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
 #' @aliases calendar_name,TimeScale-method
 setMethod(
   f = "calendar_name",
@@ -84,51 +46,15 @@ setMethod(
 
 #' @export
 #' @rdname calendar_get
-#' @aliases calendar_name,TimeLine-method
+#' @aliases calendar_unit,TimeScale-method
 setMethod(
-  f = "calendar_name",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_name,TimeSeries-method
-setMethod(
-  f = "calendar_name",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_calendar,TimeScale-method
-setMethod(
-  f = "calendar_calendar",
+  f = "calendar_unit",
   signature = "TimeScale",
   definition = function(object) {
     if (is_gregorian(object)) return("Gregorian")
     if (is_julian(object)) return("Julian")
     return("Undefined")
   }
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_calendar,TimeLine-method
-setMethod(
-  f = "calendar_calendar",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_calendar,TimeSeries-method
-setMethod(
-  f = "calendar_calendar",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
 )
 
 #' @export
@@ -142,24 +68,6 @@ setMethod(
 
 #' @export
 #' @rdname calendar_get
-#' @aliases calendar_epoch,TimeLine-method
-setMethod(
-  f = "calendar_epoch",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_epoch,TimeSeries-method
-setMethod(
-  f = "calendar_epoch",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
 #' @aliases calendar_direction,TimeScale-method
 setMethod(
   f = "calendar_direction",
@@ -167,47 +75,11 @@ setMethod(
   definition = function(object) sign(object@direction)
 )
 
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_direction,TimeLine-method
-setMethod(
-  f = "calendar_direction",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_direction,TimeSeries-method
-setMethod(
-  f = "calendar_direction",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_year,TimeScale-method
-setMethod(
-  f = "calendar_year",
-  signature = "TimeScale",
-  definition = function(object) object@year
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_year,TimeLine-method
-setMethod(
-  f = "calendar_year",
-  signature = "TimeLine",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
-
-#' @export
-#' @rdname calendar_get
-#' @aliases calendar_year,TimeSeries-method
-setMethod(
-  f = "calendar_year",
-  signature = "TimeSeries",
-  definition = function(object) methods::callGeneric(calendar(object))
-)
+# @export
+# @rdname calendar_get
+# @aliases calendar_year,TimeScale-method
+# setMethod(
+#   f = "calendar_year",
+#   signature = "TimeScale",
+#   definition = function(object) object@year
+# )

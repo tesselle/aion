@@ -7,4 +7,6 @@ X <- series(
 )
 
 ## Plot
-plot(X)
+plot(X) # Default calendar
+plot(X, calendar = calendar("BP")) # BP
+plot(X, calendar = calendar("b2k")) # b2k

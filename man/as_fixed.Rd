@@ -6,13 +6,13 @@
 \alias{as_fixed-method}
 \alias{as_fixed,numeric,missing,missing,GregorianCalendar-method}
 \alias{as_fixed,numeric,numeric,numeric,GregorianCalendar-method}
-\title{Rata Die}
+\title{\emph{Rata Die}}
 \usage{
-as_fixed(year, month, day, calendar)
+as_fixed(year, month, day, calendar, ...)
 
-\S4method{as_fixed}{numeric,missing,missing,GregorianCalendar}(year, calendar = calendar("CE"))
+\S4method{as_fixed}{numeric,missing,missing,GregorianCalendar}(year, calendar, scale = 1)
 
-\S4method{as_fixed}{numeric,numeric,numeric,GregorianCalendar}(year, month, day, calendar = calendar("CE"))
+\S4method{as_fixed}{numeric,numeric,numeric,GregorianCalendar}(year, month, day, calendar)
 }
 \arguments{
 \item{year}{A \code{\link{numeric}} vector of (decimal) years.}
@@ -22,36 +22,38 @@ as_fixed(year, month, day, calendar)
 \item{day}{A \code{\link{numeric}} vector of (decimal) years.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
+
+\item{...}{Currently not used.}
+
+\item{scale}{A length-one \code{\link{integer}} vector specifying the number of years
+represented by one unit. It should be a power of 10 (i.e. 1000 means ka).}
 }
 \value{
 A \code{\linkS4class{RataDie}} object.
 }
 \description{
-Rata Die
+\emph{Rata Die}
 }
 \examples{
 ## R foundation
-(y <- years(c(1994, 2000), calendar("CE")))
-format(y)
+(y <- as_fixed(year = 1994, calendar = calendar("CE")))
+as_year(y, calendar = calendar("CE"))
 
 ## Vector of years expressed in ka BP
-(ka <- years(c(30, 35, 40), calendar("BP"), scale = 1000))
-format(ka)
-format(ka, format = "ka")
+(ka <- as_fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000))
+as_year(ka, calendar = calendar("CE"))
+}
+\references{
+Reingold, E. M. and Dershowitz, N. (2018). \emph{Calendrical Calculations:
+The Ultimate Edition}. Cambridge University Press.
+\doi{10.1017/9781107415058}.
 }
 \seealso{
-Other time series tools: 
+Other fixed date tools: 
 \code{\link{as_date}()},
-\code{\link{as_year}()},
-\code{\link{plot}()},
-\code{\link{project}()},
-\code{\link{series}()},
-\code{\link{start}()},
-\code{\link{time}()},
-\code{\link{window}()},
-\code{\link{years}()}
+\code{\link{as_year}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{fixed date tools}

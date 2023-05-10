@@ -8,6 +8,7 @@
 \usage{
 \S4method{plot}{TimeSeries,missing}(
   x,
+  calendar = getOption("chronos.calendar"),
   panel = graphics::lines,
   main = NULL,
   sub = NULL,
@@ -21,6 +22,8 @@
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
+
+\item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
 
 \item{panel}{A \code{\link{function}} in the form \verb{function(x, y, ...)} which gives the
 action to be carried out in each panel of the display. The default is
@@ -65,19 +68,16 @@ X <- series(
 )
 
 ## Plot
-plot(X)
+plot(X) # Default calendar
+plot(X, calendar = calendar("BP")) # BP
+plot(X, calendar = calendar("b2k")) # b2k
 }
 \seealso{
 Other time series tools: 
-\code{\link{as_date}()},
-\code{\link{as_fixed}()},
-\code{\link{as_year}()},
-\code{\link{project}()},
 \code{\link{series}()},
 \code{\link{start}()},
 \code{\link{time}()},
-\code{\link{window}()},
-\code{\link{years}()}
+\code{\link{window}()}
 }
 \author{
 N. Frerebeau

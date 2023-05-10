@@ -13,17 +13,17 @@
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
 \item{start}{A length-one \code{\link{numeric}} vector specifying the start time of the
-period of interest.}
+period of interest (expressed in \emph{rata die}).}
 
 \item{end}{A length-one \code{\link{numeric}} vector specifying the end time of the
-period of interest.}
+period of interest (expressed in \emph{rata die}).}
 }
 \value{
 A \code{\linkS4class{TimeSeries}} object.
 }
 \description{
 Extracts the subset of the object \code{x} observed between the times \code{start} and
-\code{end}.
+\code{end} (expressed in \emph{rata die}).
 }
 \examples{
 ## Create 3 time-series of 100 observations
@@ -35,15 +35,10 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 }
 \seealso{
 Other time series tools: 
-\code{\link{as_date}()},
-\code{\link{as_fixed}()},
-\code{\link{as_year}()},
 \code{\link{plot}()},
-\code{\link{project}()},
 \code{\link{series}()},
 \code{\link{start}()},
-\code{\link{time}()},
-\code{\link{years}()}
+\code{\link{time}()}
 }
 \author{
 N. Frerebeau

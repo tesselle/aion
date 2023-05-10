@@ -3,13 +3,13 @@
 \docType{methods}
 \name{compare}
 \alias{compare}
-\alias{Compare,TimeLine,TimeLine-method}
+\alias{Compare,RataDie,RataDie-method}
 \title{Chronological Comparison}
 \usage{
-\S4method{Compare}{TimeLine,TimeLine}(e1, e2)
+\S4method{Compare}{RataDie,RataDie}(e1, e2)
 }
 \arguments{
-\item{e1, e2}{A \code{\linkS4class{TimeLine}} object.}
+\item{e1, e2}{A \code{\linkS4class{RataDie}} object.}
 }
 \value{
 A \code{\link{logical}} vector.
@@ -33,26 +33,15 @@ numerically greater than 3000, but 5000 BP precedes 3000 BP).
 }
 }
 \examples{
-## /!\ Be carefull: chronological comparison (not numerical) /!\
-
 ## Vectors of years
-(x_CE <- years(c(-9551, -7917, -8387, -3371, -3004), calendar("CE")))
-(y_CE <- years(c(-3940, -4055, -8528, -5068, -8442), calendar("CE")))
+(x <- as_fixed(c(-9551, -7917, -8387, -3371, -3004), calendar = calendar("CE")))
+(y <- as_fixed(c(-3940, -4055, -8528, -5068, -8442), calendar = calendar("CE")))
 
 ## x precedes y?
-x_CE < y_CE
+x < y
 
 ## x preceded by y?
-x_CE > y_CE
-
-## Change the origin
-(x_BP <- project(x_CE, calendar("BP")))
-(y_BP <- project(y_CE, calendar("BP")))
-
-## x precedes y?
-x_BP < y_BP
-
-all.equal(x_CE < y_CE, x_BP < y_BP)
+x > y
 }
 \seealso{
 Other operators: 

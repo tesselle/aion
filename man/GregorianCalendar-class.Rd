@@ -17,7 +17,6 @@ Other classes:
 \code{\link{CE-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{RataDie-class}},
-\code{\link{TimeLine-class}},
 \code{\link{TimeScale-class}},
 \code{\link{TimeSeries-class}},
 \code{\link{b2k-class}}

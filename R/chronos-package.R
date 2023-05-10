@@ -10,6 +10,8 @@
 #'  `chronos` uses the following [options()] to configure behaviour:
 #'  * `chronos.precision`: an [`integer`] indicating the number of decimal
 #'    places (defaults to `NA`).
+#'  * `chronos.calendar`: a [`TimeScale-class`] object (default calendar for
+#'    printing).
 #'
 #' @author
 #'  **Full list of authors and contributors** (alphabetic order):

@@ -1,28 +1,39 @@
 # SHOW
 
 # Format =======================================================================
+setMethod(
+  f = "format",
+  signature = "TimeScale",
+  definition = function(x) {
+    label <- calendar_label(x)
+    label <- if (length(label) > 0) sprintf(" %s", label) else ""
+
+    sprintf("%s years%s", calendar_unit(x), label)
+  }
+)
+
 # The format method return a character vector representing the years.
 setMethod(
   f = "format",
-  signature = "TimeLine",
-  definition = function(x, format = c("a", "ka", "Ma", "Ga")) {
-    ## Validation
-    format <- match.arg(format, several.ok = FALSE)
-
-    ## Autoscale
-    # power <- 10^floor(log10(time(x)))
+  signature = "RataDie",
+  definition = function(x, format = c("a", "ka", "Ma", "Ga"), label = TRUE,
+                        calendar = getOption("chronos.calendar")) {
+    y <- as_year(x, calendar = calendar)
 
     ## Scale
-    power <- switch (
-      format,
-      a = 1,
-      ka = 10^3,
-      Ma = 10^6,
-      Ga = 10^9
-    )
+    if (isTRUE(format)) {
+      power <- 10^floor(log10(abs(mean(y, na.rm = TRUE))))
+      if (format < 10^4) format <- "a"
+      if (power >= 10^4 && power < 10^6) format <- "ka"
+      if (power >= 10^6 && power < 10^9) format <- "Ma"
+      if (power >= 10^9) format <- "Ga"
+    }
+    format <- match.arg(format, several.ok = FALSE)
+    power <- switch (format, ka = 10^3, Ma = 10^6, Ga = 10^9, 1)
 
-    # if (length(prefix) == 0) return(calendar_label(x))
-    sprintf("%g %s %s", time(x) / power, format, calendar_label(x))
+    format <- if (power > 1) sprintf(" %s", format) else ""
+    label <- if (isTRUE(label)) sprintf(" %s", calendar_label(calendar)) else ""
+    sprintf("%g%s%s", y / power, format, label)
   }
 )
 
@@ -32,20 +43,10 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) {
     dirout <- if (calendar_direction(object) > 0) "forwards" else "backwards"
-    msg <- "%s (%s): %s years (%g days) counted %s from %g."
+    msg <- "%s (%s): %s years counted %s from %g."
     msg <- sprintf(msg, calendar_name(object), calendar_label(object),
-                   calendar_calendar(object),
-                   calendar_year(object), dirout, calendar_epoch(object))
+                   calendar_unit(object), dirout, calendar_epoch(object))
     cat(msg, sep = "\n")
-  }
-)
-
-setMethod(
-  f = "show",
-  signature = "TimeLine",
-  definition = function(object) {
-    methods::callGeneric(object = calendar(object))
-    methods::callGeneric(object = methods::as(object, "numeric", strict = TRUE))
   }
 )
 
@@ -54,8 +55,10 @@ setMethod(
   signature = "TimeSeries",
   definition = function(object) {
     n <- ncol(object)
-    msg <- "%d time series observed between %g and %g %s."
-    msg <- sprintf(msg, n, start(object), end(object), calendar_label(object))
+    start <- format(start(object))
+    end <- format(end(object))
+    msg <- "%d time series observed between %s and %s r.d."
+    msg <- sprintf(msg, n, start, end)
     cat(msg, sep = "\n")
   }
 )
