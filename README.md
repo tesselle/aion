@@ -23,20 +23,25 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 Base R ships with a lot of functionality useful for time series, in
 particular in the **stats** package: a time-series object can be created
 with the `stats::ts()` function. These objects are agnostic: the unit of
-time is not relevant, only the sampling frequency matters. Most of the
-archaeological time-series are different, because they are defined for a
-given year-based time scale (in the same way that geographic data are
-linked to a coordinate system).
+time is not relevant, only the sampling frequency matters. Most
+archaeological time series are different because they are defined for a
+given calendar era and may involve dates far in the past.
 
 **chronos** provides a system of classes and methods to represent and
-work with such time-series. This package includes common Gregorian era
-(e.g., before present, common era) and supports user-defined time
-scales. Time-series can be reprojected to a different time scale
-(e.g. from BP to CE years).
+work with such time-series. Dates are represented as *rata die*
+(Reingold and Dershowitz 2018), i.e. the number of days since 01-01-01
+(Gregorian), with negative values for earlier dates. This system allows
+to represent dates independently of any calendar: it makes calculations
+and comparisons easier.
 
-**chronos** only supports dates expressed in decimal years (1950 means
-1950.0, i.e. the beginning of the year 1950) and uses astronomical
-notation (**there is a year 0**).
+Once a time series is created with **chronos**, any calendar can be used
+for printing or plotting data (defaults to Gregorian Common Era; see
+`vignette("manual")`).
+
+This package supports usual Gregorian era (e.g. Common Era, Before
+Present), more calendars will be gradually implemented. Note that
+**chronos** uses the astronomical notation for Gregorian years (there is
+a year 0).
 
 ## Installation
 
@@ -62,20 +67,19 @@ library(chronos)
 ```
 
 ``` r
+## Set seed for reproductibility
+set.seed(12345)
+
 ## Create 6 time-series of 50 observations
 ## Sampled every two years starting from 2000 BP
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
   time = seq(from = 2000, by = -2, length.out = 50),
-  calendar = era("BP")
+  calendar = calendar("BP")
 )
 
-## Reproject to the CE time scale
-(Y <- project(X, era("CE")))
-#> 6 time series observed between -50 and 48 CE.
-
 ## Plot
-plot(Y)
+plot(X) # Default calendar
 ```
 
 ![](man/figures/README-time-series-1.png)<!-- -->
@@ -85,3 +89,17 @@ plot(Y)
 Please note that the **chronos** project is released with a [Contributor
 Code of Conduct](https://www.tesselle.org/conduct.html). By contributing
 to this project, you agree to abide by its terms.
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-reingold2018" class="csl-entry">
+
+Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical
+Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press.
+<https://doi.org/10.1017/9781107415058>.
+
+</div>
+
+</div>
