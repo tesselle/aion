@@ -40,6 +40,7 @@ Get the sampling times expressed in \emph{rata die}:
 
 start(X)
 end(X)
+span(X)
 time(X)
 
 ## Multivariate
@@ -48,12 +49,14 @@ time(X)
 
 start(Y)
 end(Y)
+span(Y)
 time(Y)
 }
 \seealso{
 Other time series tools: 
 \code{\link{plot}()},
 \code{\link{series}()},
+\code{\link{span}()},
 \code{\link{start}()},
 \code{\link{window}()}
 }

@@ -372,6 +372,22 @@ NULL
 #' @rdname time
 NULL
 
+#' Duration of Time Series
+#'
+#' Get the duration expressed in *rata die*.
+#' @param x A [`TimeSeries-class`] object.
+#' @return
+#'  A [`numeric`] vector.
+#' @example inst/examples/ex-series.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases span-method
+setGeneric(
+  name = "span",
+  def = function(x) standardGeneric("span")
+)
+
 #' Time Series Windows
 #'
 #' Extracts the subset of the object `x` observed between the times `start` and

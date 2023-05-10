@@ -63,6 +63,7 @@ Data will be sorted in chronological order.
 
 start(X)
 end(X)
+span(X)
 time(X)
 
 ## Multivariate
@@ -71,11 +72,13 @@ time(X)
 
 start(Y)
 end(Y)
+span(Y)
 time(Y)
 }
 \seealso{
 Other time series tools: 
 \code{\link{plot}()},
+\code{\link{span}()},
 \code{\link{start}()},
 \code{\link{time}()},
 \code{\link{window}()}

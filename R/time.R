@@ -74,3 +74,21 @@ setMethod(
   signature = "TimeSeries",
   definition = function(x) methods::callGeneric(x@time)
 )
+
+#' @export
+#' @rdname span
+#' @aliases span,RataDie-method
+setMethod(
+  f = "span",
+  signature = "RataDie",
+  definition = function(x) max(x) - min(x)
+)
+
+#' @export
+#' @rdname span
+#' @aliases span,TimeSeries-method
+setMethod(
+  f = "span",
+  signature = "TimeSeries",
+  definition = function(x) methods::callGeneric(x@time)
+)

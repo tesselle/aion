@@ -6,6 +6,7 @@
 
 start(X)
 end(X)
+span(X)
 time(X)
 
 ## Multivariate
@@ -14,4 +15,5 @@ time(X)
 
 start(Y)
 end(Y)
+span(Y)
 time(Y)

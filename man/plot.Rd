@@ -75,6 +75,7 @@ plot(X, calendar = b2k()) # b2k
 \seealso{
 Other time series tools: 
 \code{\link{series}()},
+\code{\link{span}()},
 \code{\link{start}()},
 \code{\link{time}()},
 \code{\link{window}()}
