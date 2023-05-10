@@ -52,9 +52,10 @@ setMethod(
     year <- as_year(object, calendar = calendar)
     prior_days <- object - as_fixed(year, 01, 01, calendar = calendar)
 
+    march <- as_fixed(year, 03, 01, calendar = calendar)
     correction <- 2
-    ifelse(object < as_fixed(year, 03, 01, calendar = calendar), 0, correction)
-    ifelse(is_gregorian_leap_year(year), 1, correction)
+    correction <- ifelse(object < march, 0, correction)
+    correction <- ifelse(is_gregorian_leap_year(year), 1, correction)
 
     month <- floor((1 / 367) * (12 * (prior_days + correction) + 373))
     day <- object - as_fixed(year, month, 01, calendar = calendar) + 1
