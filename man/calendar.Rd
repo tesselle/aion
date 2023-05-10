@@ -5,11 +5,29 @@
 \alias{calendar}
 \alias{calendar-method}
 \alias{calendar,character-method}
+\alias{BP}
+\alias{b2k}
+\alias{BC}
+\alias{BCE}
+\alias{AD}
+\alias{CE}
 \title{Calendar}
 \usage{
 calendar(object, ...)
 
 \S4method{calendar}{character}(object)
+
+BP(...)
+
+b2k(...)
+
+BC(...)
+
+BCE(...)
+
+AD(...)
+
+CE(...)
 }
 \arguments{
 \item{object}{A \code{\link{character}} string specifying the abbreviated label of

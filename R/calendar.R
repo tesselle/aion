@@ -22,6 +22,30 @@ setMethod(
   }
 )
 
+#' @export
+#' @rdname calendar
+BP <- function(...) calendar("BP")
+
+#' @export
+#' @rdname calendar
+b2k <- function(...) calendar("b2k")
+
+#' @export
+#' @rdname calendar
+BC <- function(...) calendar("BC")
+
+#' @export
+#' @rdname calendar
+BCE <- function(...) calendar("BCE")
+
+#' @export
+#' @rdname calendar
+AD <- function(...) calendar("AD")
+
+#' @export
+#' @rdname calendar
+CE <- function(...) calendar("CE")
+
 # Mutators =====================================================================
 fixed <- function(object) object@fixed
 

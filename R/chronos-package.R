@@ -38,5 +38,6 @@
 "_PACKAGE"
 
 #' @import arkhe
-#' @importFrom methods as new setGeneric setMethod setValidity .valueClassTest
+#' @importFrom methods as callGeneric callNextMethod is new setGeneric setMethod
+#' setValidity .valueClassTest
 NULL

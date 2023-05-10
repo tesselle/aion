@@ -3,10 +3,10 @@
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
   time = seq(2000, by = 2, length.out = 50),
-  calendar = calendar("BP")
+  calendar = BP()
 )
 
 ## Plot
 plot(X) # Default calendar
-plot(X, calendar = calendar("BP")) # BP
-plot(X, calendar = calendar("b2k")) # b2k
+plot(X, calendar = BP()) # BP
+plot(X, calendar = b2k()) # b2k

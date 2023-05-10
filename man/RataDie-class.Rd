@@ -10,8 +10,7 @@ An S4 class to represent a vector of \emph{rata die}.
 }
 \details{
 \emph{Rata die} are represented as the number of days since 01-01-01 (Gregorian),
-with negative values for earlier dates. They are always printed following
-the rules of the current Gregorian calendar.
+with negative values for earlier dates.
 
 It is intended that the date should be an integer value, but this is not
 enforced in the internal representation.

@@ -88,7 +88,7 @@ NULL
 #' @rdname compare
 NULL
 
-# Time Scales ==================================================================
+# Calendars ====================================================================
 #' Calendar
 #'
 #' @param object A [`character`] string specifying the abbreviated label of
