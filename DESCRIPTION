@@ -47,7 +47,6 @@ Collate:
     'calendar-julian.R'
     'calendar.R'
     'chronos-package.R'
-    'interval.R'
     'mutators.R'
     'operators.R'
     'plot.R'
