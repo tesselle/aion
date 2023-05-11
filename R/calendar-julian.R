@@ -32,8 +32,8 @@ setMethod(
 
     rd <- calendar_fixed(calendar) - 1 + # Days before start of calendar
       365 * (year - 1) +                 # Ordinary days since epoch
-      floor((year - 1) / 4) +            # Leap days since epoch
-      floor((1 / 12) * (367 * month - 362)) + # Days in prior months this year assuming 30-day Feb
+      (year - 1) %/% 4 +                 # Leap days since epoch
+      (367 * month - 362) %/% 12 +       # Days in prior months this year assuming 30-day Feb
       correction +                       # Correct for 28- or 29-day Feb
       day                                # Days so far this month.
 
@@ -50,7 +50,7 @@ setMethod(
   signature = c(object = "numeric", calendar = "JulianCalendar"),
   definition = function(object, calendar) {
     d0 <- object - calendar_fixed(calendar)
-    year <- floor((1 / 1461) * (4 * d0 + 1464))
+    year <- (4 * d0 + 1464) %/% 1461
     year[year <= 0] <- year[year <= 0] - 1 # There is no year 0 on the Julian calendar
     unclass(year)
   }
@@ -70,7 +70,7 @@ setMethod(
     correction[object < fixed(year, 03, 01, calendar = calendar)] <- 0
     correction[is_julian_leap_year(year)] <- 1
 
-    month <- floor((1 / 367) * (12 * (prior_days + correction) + 373))
+    month <- (12 * (prior_days + correction) + 373) %/% 367
     day <- object - fixed(year, month, 01, calendar = calendar) + 1
 
     data.frame(

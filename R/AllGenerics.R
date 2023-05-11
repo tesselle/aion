@@ -72,11 +72,11 @@ setGeneric(
 ## Operators -------------------------------------------------------------------
 #' Arithmetic Operators
 #'
-#' Operators performing chronological comparison (not numerical).
-#' @param e1,e2 A [`RataDie-class`] object.
+#' Operators performing arithmetic operations.
+#' @param e1,e2 A [`RataDie-class`] object or a [`numeric`] vector.
 #' @details
-#'  Years will be coerced to a plain numeric vector if a computation means their
-#'  calendar no longer makes sense.
+#'  *Rata die* will be converted to a plain `numeric` vector if a computation no
+#'  longer makes sense in temporal terms.
 #' @return
 #'  A [`logical`] vector.
 #' @example inst/examples/ex-arith.R

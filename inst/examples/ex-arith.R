@@ -7,3 +7,6 @@ x + y
 
 ## Move backward in time
 x - y
+
+## Not rata die anymore
+x * y

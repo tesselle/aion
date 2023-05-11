@@ -46,10 +46,10 @@ setMethod(
 
     rd <- calendar_fixed(calendar) - 1 + # Days before start of calendar
       365 * (year - 1) +                 # Ordinary days since epoch
-      floor((year - 1) / 4) -            # Julian leap days since epoch minus...
-      floor((year - 1) / 100) +          # ...century years since epoch plus...
-      floor((year - 1) / 400) +          # ...years since epoch divisible by 400
-      floor((1 / 12) * (367 * month - 362)) + # Days in prior months this year assuming 30-day Feb
+      (year - 1) %/% 4 -                 # Julian leap days since epoch minus...
+      (year - 1) %/% 100 +               # ...century years since epoch plus...
+      (year - 1) %/% 400 +               # ...years since epoch divisible by 400
+      (367 * month - 362) %/% 12 +       # Days in prior months this year assuming 30-day Feb
       correction +                       # Correct for 28- or 29-day Feb
       day                                # Days so far this month.
 
@@ -70,13 +70,13 @@ setMethod(
   signature = c(object = "numeric", calendar = "GregorianCalendar"),
   definition = function(object, calendar, decimal = TRUE) {
     d0 <- object - calendar_fixed(calendar)
-    n400 <- floor(d0 / 146097)
+    n400 <- d0 %/% 146097
     d1 <- d0 %% 146097
-    n100 <- floor(d1 / 36524)
+    n100 <- d1 %/% 36524
     d2 <- d1 %% 36524
-    n4 <- floor(d2 / 1461)
+    n4 <- d2 %/% 1461
     d3 <- d2 %% 1461
-    n1 <- floor(d3 / 365)
+    n1 <- d3 %/% 365
 
     year <- 400 * n400 + 100 * n100 + 4 * n4 + n1
     year <- ifelse(n100 == 4 | n1 == 4, year, year + 1)
@@ -113,7 +113,7 @@ setMethod(
     correction[object < fixed(year, 03, 01, calendar = calendar)] <- 0
     correction[is_gregorian_leap_year(year)] <- 1
 
-    month <- floor((1 / 367) * (12 * (prior_days + correction) + 373))
+    month <- (12 * (prior_days + correction) + 373) %/% 367
     day <- object - fixed(year, month, 01, calendar = calendar) + 1
 
     data.frame(

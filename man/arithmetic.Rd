@@ -4,22 +4,28 @@
 \name{arithmetic}
 \alias{arithmetic}
 \alias{Arith,RataDie,RataDie-method}
+\alias{Arith,numeric,RataDie-method}
+\alias{Arith,RataDie,numeric-method}
 \title{Arithmetic Operators}
 \usage{
 \S4method{Arith}{RataDie,RataDie}(e1, e2)
+
+\S4method{Arith}{numeric,RataDie}(e1, e2)
+
+\S4method{Arith}{RataDie,numeric}(e1, e2)
 }
 \arguments{
-\item{e1, e2}{A \code{\linkS4class{RataDie}} object.}
+\item{e1, e2}{A \code{\linkS4class{RataDie}} object or a \code{\link{numeric}} vector.}
 }
 \value{
 A \code{\link{logical}} vector.
 }
 \description{
-Operators performing chronological comparison (not numerical).
+Operators performing arithmetic operations.
 }
 \details{
-Years will be coerced to a plain numeric vector if a computation means their
-calendar no longer makes sense.
+\emph{Rata die} will be converted to a plain \code{numeric} vector if a computation no
+longer makes sense in temporal terms.
 }
 \examples{
 ## Vectors of years
@@ -31,6 +37,9 @@ x + y
 
 ## Move backward in time
 x - y
+
+## Not rata die anymore
+x * y
 }
 \author{
 N. Frerebeau
