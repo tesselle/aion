@@ -49,7 +49,7 @@ NULL
 #' @param e1,e2 A [`RataDie-class`] object.
 #' @details
 #'  Years will be coerced to a plain numeric vector if a computation means their
-#'  era no longer makes sense.
+#'  calendar no longer makes sense.
 #' @return
 #'  A [`logical`] vector.
 #' @example inst/examples/ex-arith.R
@@ -58,34 +58,6 @@ NULL
 #' @family operators
 #' @name arithmetic
 #' @rdname arithmetic
-NULL
-
-#' Chronological Comparison
-#'
-#' Operators performing chronological comparison (not numerical).
-#' @param e1,e2 A [`RataDie-class`] object.
-#' @details
-#'  The following operators allow to compare two objects. Remember that this is
-#'  a **chronological comparison** and not a numerical comparison (e.g. 5000 is
-#'  numerically greater than 3000, but 5000 BP precedes 3000 BP).
-#'
-#'  \tabular{ll}{
-#'   **operator** \tab **meaning** \cr
-#'   `==`         \tab equals \cr
-#'   `!=`         \tab differs \cr
-#'   `>`          \tab preceded by \cr
-#'   `<`          \tab precedes \cr
-#'   `>=`         \tab preceded by or equals \cr
-#'   `<=`         \tab precedes or equals \cr
-#'  }
-#' @return
-#'  A [`logical`] vector.
-#' @example inst/examples/ex-compare.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family operators
-#' @name compare
-#' @rdname compare
 NULL
 
 # Calendars ====================================================================

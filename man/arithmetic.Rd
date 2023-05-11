@@ -19,7 +19,7 @@ Operators performing chronological comparison (not numerical).
 }
 \details{
 Years will be coerced to a plain numeric vector if a computation means their
-era no longer makes sense.
+calendar no longer makes sense.
 }
 \examples{
 ## Vectors of years
@@ -31,10 +31,6 @@ x + y
 
 ## Move backward in time
 x - y
-}
-\seealso{
-Other operators: 
-\code{\link{compare}}
 }
 \author{
 N. Frerebeau

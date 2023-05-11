@@ -19,15 +19,3 @@ setMethod(
     )
   }
 )
-
-# "==", ">", "<", "!=", "<=", ">="
-#' @export
-#' @rdname compare
-#' @aliases Compare,RataDie,RataDie-method
-setMethod(
-  f = "Compare",
-  signature = c(e1 = "RataDie", e2 = "RataDie"),
-  definition = function(e1, e2) {
-    methods::callGeneric(e1@.Data, e2@.Data)
-  }
-)
