@@ -381,6 +381,26 @@ setGeneric(
   def = function(year, month, day, calendar) standardGeneric("as_decimal")
 )
 
+#' Date Conversion to Character
+#'
+#' @param x description
+#' @param format A [`character`] string specifying the format.
+#'  It must be one of "`a`", "`ka`", "`Ma`" or "`Ga`".
+#'  If `TRUE`, a good guess for an appropriate format is made.
+#' @param label A [`logical`] scalar: should the label of the calendar be
+#'  displayed?
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @return
+#'  A [`character`] vector representing the date.
+#' @example inst/examples/ex-fixed.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @name format
+#' @rdname format
+NULL
+
 # Time Series ==================================================================
 #' Create Time Series
 #'

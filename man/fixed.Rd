@@ -73,7 +73,8 @@ Other fixed date tools:
 \code{\link{as_decimal}()},
 \code{\link{as_year}()},
 \code{\link{fixed_gregorian}},
-\code{\link{fixed_julian}}
+\code{\link{fixed_julian}},
+\code{\link{format}()}
 }
 \author{
 N. Frerebeau

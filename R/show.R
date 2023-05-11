@@ -1,6 +1,8 @@
 # SHOW
 
 # Format =======================================================================
+#' @export
+#' @rdname format
 setMethod(
   f = "format",
   signature = "TimeScale",
@@ -12,7 +14,8 @@ setMethod(
   }
 )
 
-# The format method return a character vector representing the years.
+#' @export
+#' @rdname format
 setMethod(
   f = "format",
   signature = "RataDie",
