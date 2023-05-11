@@ -17,6 +17,9 @@ as_date(object, calendar)
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
 }
+\value{
+A \code{\link{numeric}} vector of (decimal) years.
+}
 \description{
 Date Conversion from \emph{Rata Die}
 }
@@ -39,6 +42,7 @@ The Ultimate Edition}. Cambridge University Press.
 Other fixed date tools: 
 \code{\link{as_decimal}()},
 \code{\link{as_year}()},
+\code{\link{fixed_gregorian}},
 \code{\link{fixed}()}
 }
 \author{

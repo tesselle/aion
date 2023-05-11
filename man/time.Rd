@@ -4,6 +4,7 @@
 \name{time}
 \alias{time}
 \alias{time-method}
+\alias{frequency-method}
 \alias{time,RataDie-method}
 \alias{time,TimeSeries-method}
 \alias{frequency,RataDie-method}

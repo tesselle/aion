@@ -279,6 +279,8 @@ setGeneric(
 #' @param decimal A [`logical`] scalar: should decimal years be returned?
 #'  If `FALSE`, the decimal part is dropped.
 #' @param ... Currently not used.
+#' @return
+#'  A [`numeric`] vector of (decimal) years.
 #' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
@@ -293,11 +295,34 @@ setGeneric(
   def = function(object, calendar, ...) standardGeneric("as_year")
 )
 
+#' Gregorian Year Conversion to and from *Rata Die*
+#'
+#' Convenient functions for conversion from and to *rata die* for a given
+#' Gregorian era.
+#' @inheritParams fixed
+#' @inheritParams as_year
+#' @return
+#'  * `fixed_from_*()` returns a [`RataDie-class`] object.
+#'  * `fixed_to_*()` returns
+#' @example inst/examples/ex-fixed.R
+#' @references
+#'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
+#'  The Ultimate Edition*. Cambridge University Press.
+#'  \doi{10.1017/9781107415058}.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @name fixed_gregorian
+#' @rdname fixed_gregorian
+NULL
+
 #' Date Conversion from *Rata Die*
 #'
 #' @param object A [`RataDie-class`] object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @return
+#'  A [`numeric`] vector of (decimal) years.
 #' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
@@ -321,6 +346,8 @@ setGeneric(
 #' @param day A [`numeric`] vector of days.
 #' @param calendar A [`TimeScale-class`] object specifying the calendar of
 #'  `year`, `month` and `day` (see [calendar()]).
+#' @return
+#'  A [`numeric`] vector of (ecimal years.
 #' @example inst/examples/ex-fixed.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -390,7 +417,7 @@ NULL
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools
-#' @aliases time-method
+#' @aliases time-method frequency-method
 #' @name time
 #' @rdname time
 NULL

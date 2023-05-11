@@ -59,7 +59,8 @@ The Ultimate Edition}. Cambridge University Press.
 Other fixed date tools: 
 \code{\link{as_date}()},
 \code{\link{as_decimal}()},
-\code{\link{as_year}()}
+\code{\link{as_year}()},
+\code{\link{fixed_gregorian}}
 }
 \author{
 N. Frerebeau

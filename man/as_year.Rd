@@ -22,6 +22,9 @@ as_year(object, calendar, ...)
 \item{decimal}{A \code{\link{logical}} scalar: should decimal years be returned?
 If \code{FALSE}, the decimal part is dropped.}
 }
+\value{
+A \code{\link{numeric}} vector of (decimal) years.
+}
 \description{
 Year Conversion from \emph{Rata Die}
 }
@@ -44,6 +47,7 @@ The Ultimate Edition}. Cambridge University Press.
 Other fixed date tools: 
 \code{\link{as_date}()},
 \code{\link{as_decimal}()},
+\code{\link{fixed_gregorian}},
 \code{\link{fixed}()}
 }
 \author{

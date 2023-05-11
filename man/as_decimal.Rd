@@ -22,6 +22,9 @@ decimal years are expected.}
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the calendar of
 \code{year}, \code{month} and \code{day} (see \code{\link[=calendar]{calendar()}}).}
 }
+\value{
+A \code{\link{numeric}} vector of (ecimal years.
+}
 \description{
 Converts a Date to a Decimal of its Year
 }
@@ -39,6 +42,7 @@ as_year(ka, calendar = CE())
 Other fixed date tools: 
 \code{\link{as_date}()},
 \code{\link{as_year}()},
+\code{\link{fixed_gregorian}},
 \code{\link{fixed}()}
 }
 \author{

@@ -121,29 +121,70 @@ setMethod(
 )
 
 # Era ==========================================================================
-
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_BP <- function(year, month, day) {
   fixed(year, month, day, calendar = BP())
 }
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_BP <- function(object) {
+  as_year(object, calendar = BP(), decimal = TRUE)
+}
 
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_BC <- function(year, month, day) {
   fixed(year, month, day, calendar = BC())
 }
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_BC <- function(object) {
+  as_year(object, calendar = BC(), decimal = TRUE)
+}
 
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_BCE <- function(year, month, day) {
   fixed(year, month, day, calendar = BCE())
 }
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_BCE <- function(object) {
+  as_year(object, calendar = BCE(), decimal = TRUE)
+}
 
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_AD <- function(year, month, day) {
   fixed(year, month, day, calendar = AD())
 }
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_AD <- function(object) {
+  as_year(object, calendar = AD(), decimal = TRUE)
+}
 
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_CE <- function(year, month, day) {
   fixed(year, month, day, calendar = CE())
 }
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_CE <- function(object) {
+  as_year(object, calendar = CE(), decimal = TRUE)
+}
 
+#' @export
+#' @rdname fixed_gregorian
 fixed_from_b2k <- function(year, month, day) {
   fixed(year, month, day, calendar = b2k())
+}
+#' @export
+#' @rdname fixed_gregorian
+fixed_to_b2k <- function(object) {
+  as_year(object, calendar = b2k(), decimal = TRUE)
 }
 
 # Helpers ======================================================================
