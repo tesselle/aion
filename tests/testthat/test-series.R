@@ -11,6 +11,7 @@ test_that("Create from matrix", {
   X <- series(x, time = 1000:1099, calendar = calendar("BCE"), names = c("A", "B", "C"))
   Y <- series(x, time = fixed(1000:1099, calendar = calendar("BCE")), names = c("A", "B", "C"))
   expect_identical(X, Y)
+
 })
 test_that("Create from data.frame", {
   x <- as.data.frame(matrix(rnorm(300), 100, 3))
@@ -24,6 +25,7 @@ test_that("Chronological order", {
   rd <- fixed(year = 1000:1099, calendar = calendar("BCE"))
 
   X <- series(x, time = rd)
+  expect_equal(time(X), sort(rd@.Data))
 
   i <- sample(100)
   Y <- series(x[i, ], time = rd[i]) # Reorder

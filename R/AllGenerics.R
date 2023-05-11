@@ -407,7 +407,7 @@ NULL
 #' @param object A [`numeric`] `vector` or `matrix` of the observed time-series
 #'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
 #'  [data.matrix()].
-#' @param time A [`numeric`] vector of (fractional) years or a [`RataDie-class`]
+#' @param time A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
 #'  object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object specifying the calendar of
 #'  `time` (see [calendar()]). If missing, `time` must be a [`RataDie-class`]
@@ -450,10 +450,15 @@ NULL
 
 #' Sampling Times of Time Series
 #'
-#' Get the sampling times expressed in *rata die*:
-#' * `time()` creates the vector of times at which a time series was sampled.
-#' * `frequency()` returns the number of samples per unit time.
+#' Get the sampling times:
+#' * `time()` creates the vector of times at which a time series was sampled
+#'    (expressed in *rata die*).
+#' * `years()`  creates the vector of years at which a time series was sampled.
+#' * `frequency()` returns the mean number of samples per unit time.
 #' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector.
 #' @example inst/examples/ex-series.R
@@ -464,6 +469,13 @@ NULL
 #' @name time
 #' @rdname time
 NULL
+
+#' @rdname time
+#' @aliases years-method
+setGeneric(
+  name = "years",
+  def = function(x, ...) standardGeneric("years")
+)
 
 #' Duration of Time Series
 #'
@@ -487,9 +499,9 @@ setGeneric(
 #' `end` (expressed in *rata die*).
 #' @param x A [`TimeSeries-class`] object.
 #' @param start A length-one [`numeric`] vector specifying the start time of the
-#'  period of interest (expressed in *rata die*).
+#'  period of interest.
 #' @param end A length-one [`numeric`] vector specifying the end time of the
-#'  period of interest (expressed in *rata die*).
+#'  period of interest.
 #' @return
 #'  A [`TimeSeries-class`] object.
 #' @example inst/examples/ex-window.R

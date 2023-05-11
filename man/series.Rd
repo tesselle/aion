@@ -31,7 +31,7 @@ series(object, time, calendar, ...)
 values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via
 \code{\link[=data.matrix]{data.matrix()}}.}
 
-\item{time}{A \code{\link{numeric}} vector of (fractional) years or a \code{\linkS4class{RataDie}}
+\item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{RataDie}}
 object (see \code{\link[=fixed]{fixed()}}).}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the calendar of
@@ -56,25 +56,27 @@ Create Time Series
 Data will be sorted in chronological order.
 }
 \examples{
-## Create time-series of 100 observations
+## Create time-series of 20 observations
 
 ## Univariate
-## Sampled every years starting from 1099 BCE
-(X <- series(rnorm(100), time = 1099:1000, calendar = BCE()))
+## Sampled every years starting from 1029 BCE
+(X <- series(rnorm(30), time = 1029:1000, calendar = BCE()))
 
 start(X)
 end(X)
 span(X)
 time(X)
+years(X) # Default calendar (Gregorian Common Era)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
-(Y <- series(matrix(rnorm(300), 100, 3), time = 1000:1099, calendar = CE()))
+(Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
 
 start(Y)
 end(Y)
 span(Y)
 time(Y)
+years(Y) # Default calendar (Gregorian Common Era)
 }
 \seealso{
 Other time series tools: 

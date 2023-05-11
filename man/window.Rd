@@ -13,10 +13,10 @@
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
 \item{start}{A length-one \code{\link{numeric}} vector specifying the start time of the
-period of interest (expressed in \emph{rata die}).}
+period of interest.}
 
 \item{end}{A length-one \code{\link{numeric}} vector specifying the end time of the
-period of interest (expressed in \emph{rata die}).}
+period of interest.}
 }
 \value{
 A \code{\linkS4class{TimeSeries}} object.
@@ -31,7 +31,7 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 (x <- series(matrix(rnorm(300), 100, 3), time = 1000:1099, calendar = CE()))
 
 ## Subset between 1025 and 1050 CE
-(y <- window(x, start = 1025, end = 1050))
+(y <- window(x, start = 374009, end = 383140))
 }
 \seealso{
 Other time series tools: 

@@ -4,30 +4,11 @@ NULL
 
 #' @export
 #' @rdname start
-#' @aliases start,RataDie-method
-setMethod(
-  f = "start",
-  signature = "RataDie",
-  definition = function(x) min(x)
-)
-
-#' @export
-#' @rdname start
 #' @aliases start,TimeSeries-method
 setMethod(
   f = "start",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
-)
-
-
-#' @export
-#' @rdname start
-#' @aliases end,RataDie-method
-setMethod(
-  f = "end",
-  signature = "RataDie",
-  definition = function(x) max(x)
+  definition = function(x) min(x@time)
 )
 
 #' @export
@@ -36,16 +17,7 @@ setMethod(
 setMethod(
   f = "end",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
-)
-
-#' @export
-#' @rdname time
-#' @aliases time,RataDie-method
-setMethod(
-  f = "time",
-  signature = "RataDie",
-  definition = function(x) methods::as(x, "numeric", strict=TRUE)
+  definition = function(x) max(x@time)
 )
 
 #' @export
@@ -54,16 +26,7 @@ setMethod(
 setMethod(
   f = "time",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
-)
-
-#' @export
-#' @rdname time
-#' @aliases frequency,RataDie-method
-setMethod(
-  f = "frequency",
-  signature = "RataDie",
-  definition = function(x) abs(1 / diff(time(x)))
+  definition = function(x) methods::as(x@time, "numeric", strict=TRUE)
 )
 
 #' @export
@@ -72,16 +35,18 @@ setMethod(
 setMethod(
   f = "frequency",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) mean(abs(1 / diff(time(x@time))))
 )
 
 #' @export
-#' @rdname span
-#' @aliases span,RataDie-method
+#' @rdname time
+#' @aliases years,TimeSeries-method
 setMethod(
-  f = "span",
-  signature = "RataDie",
-  definition = function(x) max(x) - min(x)
+  f = "years",
+  signature = "TimeSeries",
+  definition = function(x, calendar = getOption("chronos.calendar")) {
+    as_year(x@time, calendar = calendar, decimal = TRUE)
+  }
 )
 
 #' @export
@@ -90,5 +55,5 @@ setMethod(
 setMethod(
   f = "span",
   signature = "TimeSeries",
-  definition = function(x) methods::callGeneric(x@time)
+  definition = function(x) max(x@time) - min(x@time)
 )

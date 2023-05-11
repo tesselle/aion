@@ -1,22 +1,16 @@
 test_that("Terminal times", {
   y <- fixed(1000:1099, calendar = BCE())
-
-  expect_equal(start(y), -401766)
-  expect_equal(end(y), -365607)
-
   x <- series(rnorm(100), time = y)
 
-  expect_identical(start(x), start(y))
-  expect_identical(end(x), end(y))
+  expect_identical(start(x), min(y))
+  expect_identical(end(x), max(y))
 })
 test_that("Sampling times", {
   y <- fixed(1000:1099, calendar = BCE())
-
-  expect_equal(time(y), y@.Data)
-
   x <- series(rnorm(100), time = y)
 
-  expect_identical(time(x), sort(time(y)))
+  expect_identical(time(x), sort(y@.Data))
+  expect_identical(years(x, calendar = CE()), sort(as_year(y, calendar = CE())))
 })
 test_that("Duration", {
   y <- fixed(c(1900, 1950), calendar = CE())

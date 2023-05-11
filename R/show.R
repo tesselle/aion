@@ -61,7 +61,7 @@ setMethod(
   definition = function(object) {
     msg <- "Rata die: number of days since 01-01-01 (Gregorian)."
     cat(msg, sep = "\n")
-    methods::callGeneric(time(object))
+    methods::callGeneric(object@.Data)
   }
 )
 
