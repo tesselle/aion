@@ -12,7 +12,7 @@ as_year(object, calendar)
 \S4method{as_year}{numeric,GregorianCalendar}(object, calendar)
 }
 \arguments{
-\item{object}{A \code{\linkS4class{RataDie}} object (see \code{\link[=as_fixed]{as_fixed()}}).}
+\item{object}{A \code{\linkS4class{RataDie}} object (see \code{\link[=fixed]{fixed()}}).}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
 }
@@ -21,12 +21,12 @@ Year Conversion from \emph{Rata Die}
 }
 \examples{
 ## R 1.0.0
-(y <- as_fixed(year = 2000, month = 02, day = 29, calendar = CE()))
+(y <- fixed(year = 2000, month = 02, day = 29, calendar = CE()))
 as_date(y, calendar = CE())
 as_year(y, calendar = CE())
 
 ## Vector of years expressed in ka BP
-(ka <- as_fixed(c(30, 35, 40), calendar = BP(), scale = 1000))
+(ka <- fixed(c(30, 35, 40), calendar = BP(), scale = 1000))
 as_year(ka, calendar = CE())
 }
 \references{
@@ -37,7 +37,7 @@ The Ultimate Edition}. Cambridge University Press.
 \seealso{
 Other fixed date tools: 
 \code{\link{as_date}()},
-\code{\link{as_fixed}()}
+\code{\link{fixed}()}
 }
 \author{
 N. Frerebeau

@@ -203,8 +203,8 @@ NULL
 #' An S4 class to represent a vector of *rata die*.
 #' @slot .Data A [`numeric`] vector giving the *rata die* values.
 #' @details
-#'  *Rata die* are represented as the number of days since 01-01-01 (Gregorian),
-#'  with negative values for earlier dates.
+#'  *Rata die* (fixed date) are represented as the number of days since 01-01-01
+#'  (Gregorian), with negative values for earlier dates.
 #'
 #'  It is intended that the date should be an integer value, but this is not
 #'  enforced in the internal representation.

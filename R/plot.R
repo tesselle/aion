@@ -107,7 +107,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 # Axis =========================================================================
 pretty_year <- function(x, calendar = getOption("chronos.calendar"), ...) {
   x <- as_year(x, calendar = calendar)
-  as_fixed(year = pretty(x, ...), calendar = calendar)
+  fixed(year = pretty(x, ...), calendar = calendar)
 }
 axis_year <- function(side, x, at = NULL, format = c("a", "ka", "Ma", "Ga"),
                       labels = TRUE, calendar = getOption("chronos.calendar"),
@@ -118,7 +118,7 @@ axis_year <- function(side, x, at = NULL, format = c("a", "ka", "Ma", "Ga"),
 
   has_at <- !missing(at) && !is.null(at)
   if (has_at && is.numeric(at)) {
-    x <- as_fixed(year = at, calendar = calendar)
+    x <- fixed(year = at, calendar = calendar)
   }
 
   x <- pretty_year(x, calendar = calendar)

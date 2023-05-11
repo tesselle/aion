@@ -243,11 +243,11 @@ setGeneric(
 )
 
 # Fixed Dates ==================================================================
-#' *Rata Die*
+#' *Rata Die* (Fixed Date)
 #'
 #' @param year A [`numeric`] vector of (decimal) years.
-#' @param month A [`numeric`] vector of (decimal) years.
-#' @param day A [`numeric`] vector of (decimal) years.
+#' @param month A [`numeric`] vector of months.
+#' @param day A [`numeric`] vector of days.
 #' @param calendar A [`TimeScale-class`] object (see [calendar()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
@@ -257,7 +257,7 @@ setGeneric(
 #'  with negative values for earlier dates.
 #' @return
 #'  A [`RataDie-class`] object.
-#' @example inst/examples/ex-years.R
+#' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
 #'  The Ultimate Edition*. Cambridge University Press.
@@ -265,18 +265,18 @@ setGeneric(
 #' @author N. Frerebeau
 #' @docType methods
 #' @family fixed date tools
-#' @aliases as_fixed-method
+#' @aliases fixed-method
 setGeneric(
-  name = "as_fixed",
-  def = function(year, month, day, calendar, ...) standardGeneric("as_fixed"),
+  name = "fixed",
+  def = function(year, month, day, calendar, ...) standardGeneric("fixed"),
   valueClass = "RataDie"
 )
 
 #' Year Conversion from *Rata Die*
 #'
-#' @param object A [`RataDie-class`] object (see [as_fixed()]).
+#' @param object A [`RataDie-class`] object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object (see [calendar()]).
-#' @example inst/examples/ex-years.R
+#' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
 #'  The Ultimate Edition*. Cambridge University Press.
@@ -292,9 +292,9 @@ setGeneric(
 
 #' Date Conversion from *Rata Die*
 #'
-#' @param object A [`RataDie-class`] object (see [as_fixed()]).
+#' @param object A [`RataDie-class`] object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object (see [calendar()]).
-#' @example inst/examples/ex-years.R
+#' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
 #'  The Ultimate Edition*. Cambridge University Press.
@@ -316,7 +316,7 @@ setGeneric(
 #'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
 #'  [data.matrix()].
 #' @param time A [`numeric`] vector of (fractional) years or a [`RataDie-class`]
-#'  object (see [as_fixed()]).
+#'  object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object (see [calendar()]). If missing,
 #'  `years` must be a [`RataDie-class`] object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years

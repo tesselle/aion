@@ -16,10 +16,10 @@ setMethod(
 
 # Fixed from Gregorian =========================================================
 #' @export
-#' @rdname as_fixed
-#' @aliases as_fixed,numeric,missing,missing,GregorianCalendar-method
+#' @rdname fixed
+#' @aliases fixed,numeric,missing,missing,GregorianCalendar-method
 setMethod(
-  f = "as_fixed",
+  f = "fixed",
   signature = c(year = "numeric", month = "missing", day = "missing", calendar = "GregorianCalendar"),
   definition = function(year, calendar, scale = 1) {
     ## Rescale to years (if not already)
@@ -30,10 +30,10 @@ setMethod(
 )
 
 #' @export
-#' @rdname as_fixed
-#' @aliases as_fixed,numeric,numeric,numeric,GregorianCalendar-method
+#' @rdname fixed
+#' @aliases fixed,numeric,numeric,numeric,GregorianCalendar-method
 setMethod(
-  f = "as_fixed",
+  f = "fixed",
   signature = c(year = "numeric", month = "numeric", day = "numeric", calendar = "GregorianCalendar"),
   definition = function(year, month, day, calendar) {
     ## Switch origin
@@ -43,7 +43,7 @@ setMethod(
     correction <- ifelse(is_gregorian_leap_year(year), -1, -2)
     correction <- ifelse(month <= 2, 0, correction)
 
-    rd <- fixed(calendar) - 1 +   # Days before start of calendar
+    rd <- calendar_fixed(calendar) - 1 +   # Days before start of calendar
       365 * (year - 1) +        # Ordinary days since epoch
       floor((year - 1) / 4) -   # Julian leap days since epoch minus...
       floor((year - 1) / 100) + # ...century years since epoch plus...
@@ -55,6 +55,25 @@ setMethod(
     .RataDie(rd)
   }
 )
+
+from_BP <- function(year, month, day) {
+  fixed(year, month, day, calendar = BP())
+}
+from_BC <- function(year, month, day) {
+  fixed(year, month, day, calendar = BC())
+}
+from_BCE <- function(year, month, day) {
+  fixed(year, month, day, calendar = BCE())
+}
+from_AD <- function(year, month, day) {
+  fixed(year, month, day, calendar = AD())
+}
+from_CE <- function(year, month, day) {
+  fixed(year, month, day, calendar = CE())
+}
+from_b2k <- function(year, month, day) {
+  fixed(year, month, day, calendar = b2k())
+}
 
 # Helpers ======================================================================
 is_gregorian_leap_year <- function(year) {

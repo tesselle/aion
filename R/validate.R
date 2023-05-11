@@ -10,6 +10,7 @@ setValidity(
     label <- object@label
     name <- object@name
     epoch <- object@epoch
+    fixed <- object@fixed
     direction <- object@direction
     year <- object@year
 
@@ -18,6 +19,7 @@ setValidity(
       arkhe::validate(arkhe::assert_scalar(label, "character")),
       arkhe::validate(arkhe::assert_scalar(name, "character")),
       arkhe::validate(arkhe::assert_scalar(epoch, "numeric")),
+      arkhe::validate(arkhe::assert_scalar(fixed, "numeric")),
       arkhe::validate(arkhe::assert_scalar(direction, "integer")),
       arkhe::validate(arkhe::assert_scalar(year, "numeric"))
     )

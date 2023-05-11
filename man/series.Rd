@@ -32,7 +32,7 @@ values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{mat
 \code{\link[=data.matrix]{data.matrix()}}.}
 
 \item{time}{A \code{\link{numeric}} vector of (fractional) years or a \code{\linkS4class{RataDie}}
-object (see \code{\link[=as_fixed]{as_fixed()}}).}
+object (see \code{\link[=fixed]{fixed()}}).}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}). If missing,
 \code{years} must be a \code{\linkS4class{RataDie}} object.}

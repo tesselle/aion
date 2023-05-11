@@ -1,5 +1,5 @@
 test_that("BP", {
-  x <- as_fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
+  x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
 
   expect_snapshot(format(x))
   expect_snapshot(format(x, format = "ka"))

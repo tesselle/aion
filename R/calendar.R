@@ -47,7 +47,7 @@ AD <- function(...) calendar("AD")
 CE <- function(...) calendar("CE")
 
 # Mutators =====================================================================
-fixed <- function(object) object@fixed
+calendar_fixed <- function(object) object@fixed
 
 ## Getters ---------------------------------------------------------------------
 #' @export

@@ -23,7 +23,7 @@ setMethod(
     ## TODO: validation
 
     fun <- function(x) {
-      a <- as_fixed(x, month = 01, day = 01, calendar = from)
+      a <- fixed(x, month = 01, day = 01, calendar = from)
       b <- as_year(a, calendar = to)
       return(b)
     }

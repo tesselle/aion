@@ -7,12 +7,12 @@ as_decimal = function(year, month, day, calendar) {
   year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
 
   ## Year length in days
-  start <- as_fixed(year, 01, 01, calendar = calendar)
-  end <- as_fixed(year, 12, 31, calendar = calendar)
+  start <- fixed(year, 01, 01, calendar = calendar)
+  end <- fixed(year, 12, 31, calendar = calendar)
   total <- end - start + 1
 
   ## Elapsed time
-  date <- as_fixed(year, month, day, calendar = calendar)
+  date <- fixed(year, month, day, calendar = calendar)
   sofar <- date - start
 
   unclass(year + sofar / total)
@@ -26,7 +26,7 @@ setMethod(
   f = "as_year",
   signature = c(object = "numeric", calendar = "GregorianCalendar"),
   definition = function(object, calendar) {
-    d0 <- object - fixed(calendar)
+    d0 <- object - calendar_fixed(calendar)
     n400 <- floor(d0 / 146097)
     d1 <- d0 %% 146097
     n100 <- floor(d1 / 36524)
@@ -50,15 +50,15 @@ setMethod(
   signature = c(object = "numeric", calendar = "GregorianCalendar"),
   definition = function(object, calendar) {
     year <- as_year(object, calendar = calendar)
-    prior_days <- object - as_fixed(year, 01, 01, calendar = calendar)
+    prior_days <- object - fixed(year, 01, 01, calendar = calendar)
 
-    march <- as_fixed(year, 03, 01, calendar = calendar)
+    march <- fixed(year, 03, 01, calendar = calendar)
     correction <- 2
     correction <- ifelse(object < march, 0, correction)
     correction <- ifelse(is_gregorian_leap_year(year), 1, correction)
 
     month <- floor((1 / 367) * (12 * (prior_days + correction) + 373))
-    day <- object - as_fixed(year, month, 01, calendar = calendar) + 1
+    day <- object - fixed(year, month, 01, calendar = calendar) + 1
 
     data.frame(
       year = unclass(year),

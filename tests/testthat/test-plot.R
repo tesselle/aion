@@ -16,7 +16,7 @@ test_that("Plot facets", {
 })
 test_that("Axis", {
   ## Vector of years expressed in ka BP
-  x <- as_fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
+  x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
 
   axis_default <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")

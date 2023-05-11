@@ -39,7 +39,7 @@ setMethod(
       msg <- "%s is already expressed in rata die: %s is ignored."
       warning(sprintf(msg, sQuote("time"), sQuote("calendar")), call. = FALSE)
     } else {
-      time <- as_fixed(time, calendar = calendar, scale = scale)
+      time <- fixed(time, calendar = calendar, scale = scale)
     }
     methods::callGeneric(object = object, time = time, names = names)
   }
