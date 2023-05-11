@@ -10,13 +10,14 @@ setMethod(
   signature = "character",
   definition = function(object) {
     switch (
-      object,
-      BP = .BP(),
+      tolower(object),
+      bp = .BP(),
       b2k = .b2k(),
-      BC = .BC(),
-      BCE = .BCE(),
-      AD = .AD(),
-      CE = .CE(),
+      bc = .BC(),
+      bce = .BCE(),
+      ad = .AD(),
+      ce = .CE(),
+      julian = .JulianCalendar(),
       stop(sprintf("Unknown calendar: %s", object), call. = FALSE)
     )
   }
@@ -45,6 +46,10 @@ AD <- function(...) calendar("AD")
 #' @export
 #' @rdname gregorian
 CE <- function(...) calendar("CE")
+
+#' @export
+#' @rdname julian
+J <- function(...) calendar("julian")
 
 # Mutators =====================================================================
 calendar_fixed <- function(object) object@fixed

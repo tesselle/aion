@@ -1,7 +1,7 @@
-test_that("Gregorian era", {
+test_that("Calendar", {
   expect_error(calendar("XXX"), "Unknown calendar")
 })
-test_that("BP", {
+test_that("Gregorian calendar", {
   cal <- calendar("BP")
 
   expect_snapshot(format(cal))

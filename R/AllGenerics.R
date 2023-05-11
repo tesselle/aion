@@ -104,6 +104,7 @@ NULL
 #'   `AD`        \tab Anno Domini        \tab Gregorian    \cr
 #'   `CE`        \tab Common Era         \tab Gregorian    \cr
 #'   `b2k`       \tab Years before 2000  \tab Gregorian    \cr
+#'   `julian`    \tab                    \tab Julian       \cr
 #'  }
 #' @return
 #'  A [`TimeScale-class`] object.
@@ -303,8 +304,10 @@ setGeneric(
 #' @inheritParams as_year
 #' @return
 #'  * `fixed_from_*()` returns a [`RataDie-class`] object.
-#'  * `fixed_to_*()` returns
+#'  * `fixed_to_*()` returns a [`numeric`] vector of Gregorian years.
 #' @example inst/examples/ex-fixed.R
+#' @details
+#'  The astronomical notation is used for Gregorian years (there *is* a year 0).
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
 #'  The Ultimate Edition*. Cambridge University Press.
@@ -314,6 +317,26 @@ setGeneric(
 #' @family fixed date tools
 #' @name fixed_gregorian
 #' @rdname fixed_gregorian
+NULL
+
+#' Julian Year Conversion to and from *Rata Die*
+#'
+#' Convenient functions for conversion from and to *rata die*.
+#' @inheritParams fixed
+#' @inheritParams as_year
+#' @return
+#'  * `fixed_from_julian()` returns a [`RataDie-class`] object.
+#'  * `fixed_to_julian()` returns a [`numeric`] vector of Julian years.
+#' @example inst/examples/ex-fixed.R
+#' @references
+#'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
+#'  The Ultimate Edition*. Cambridge University Press.
+#'  \doi{10.1017/9781107415058}.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @name fixed_julian
+#' @rdname fixed_julian
 NULL
 
 #' Date Conversion from *Rata Die*

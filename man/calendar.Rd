@@ -33,6 +33,7 @@ The following time scales are available:
 \code{AD}        \tab Anno Domini        \tab Gregorian    \cr
 \code{CE}        \tab Common Era         \tab Gregorian    \cr
 \code{b2k}       \tab Years before 2000  \tab Gregorian    \cr
+\code{julian}    \tab                    \tab Julian       \cr
 }
 }
 \note{
@@ -40,8 +41,14 @@ Inspired by \code{\link[era:era]{era::era()}} by Joe Roe.
 }
 \examples{
 ## Define time scales
-(BP <- calendar("BP"))
-(AD <- calendar("AD"))
+calendar("BP")
+calendar("AD")
+calendar("julian")
+
+## Shortcuts
+BP()
+AD()
+J()
 }
 \seealso{
 Other time scales tools: 

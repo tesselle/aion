@@ -1,4 +1,4 @@
-# BP
+# Gregorian calendar
 
     Code
       format(cal)

@@ -43,10 +43,22 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) {
     dirout <- if (calendar_direction(object) > 0) "forwards" else "backwards"
-    msg <- "%s (%s): %s years counted %s from %g."
-    msg <- sprintf(msg, calendar_name(object), calendar_label(object),
-                   calendar_unit(object), dirout, calendar_epoch(object))
+    era <- sprintf("%s (%s):", calendar_name(object), calendar_label(object))
+    if (length(era) == 0) era <- ""
+
+    msg <- "%s%s years counted %s from %g."
+    msg <- sprintf(msg, era, calendar_unit(object), dirout, calendar_epoch(object))
     cat(msg, sep = "\n")
+  }
+)
+
+setMethod(
+  f = "show",
+  signature = "RataDie",
+  definition = function(object) {
+    msg <- "Rata die: number of days since 01-01-01 (Gregorian)."
+    cat(msg, sep = "\n")
+    methods::callGeneric(time(object))
   }
 )
 

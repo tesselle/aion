@@ -48,6 +48,7 @@ NULL
   Class = "GregorianCalendar",
   prototype = list(
     epoch = 0,
+    direction = 1L,
     fixed = 1, # January 1, 1 at midnight
     year = 365.2425
   ),
@@ -145,8 +146,7 @@ NULL
   Class = "AD",
   prototype = list(
     label = "AD",
-    name = "Anno Domini",
-    direction = 1L
+    name = "Anno Domini"
   ),
   contains = "GregorianCalendar"
 )
@@ -164,8 +164,7 @@ NULL
   Class = "CE",
   prototype = list(
     label = "CE",
-    name = "Common Era",
-    direction = 1L
+    name = "Common Era"
   ),
   contains = "GregorianCalendar"
 )
@@ -191,7 +190,8 @@ NULL
   Class = "JulianCalendar",
   prototype = list(
     epoch = 0,
-    fixed = -1721424.5,
+    direction = 1L,
+    fixed = -1,
     year = 365.25
   ),
   contains = "TimeScale"

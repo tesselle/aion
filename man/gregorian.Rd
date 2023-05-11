@@ -34,8 +34,14 @@ Gregorian Calendar
 }
 \examples{
 ## Define time scales
-(BP <- calendar("BP"))
-(AD <- calendar("AD"))
+calendar("BP")
+calendar("AD")
+calendar("julian")
+
+## Shortcuts
+BP()
+AD()
+J()
 }
 \seealso{
 \code{\link[=calendar]{calendar()}}

@@ -1,4 +1,4 @@
-test_that("Fixed from Gregorian - Date", {
+test_that("Rata die <> Gregorian date", {
   y <- c(-586, -168, 70, 135, 470)
   m <- c(7, 12, 9, 10, 1)
   d <- c(24, 5, 24, 2, 8)
@@ -26,7 +26,7 @@ test_that("Fixed from Gregorian - Date", {
   R <- fixed(2000, 02, 29, calendar = CE())
   expect_equal(as_date(R, calendar = CE()), data.frame(year = 2000, month = 02, day = 29))
 })
-test_that("Fixed from Gregorian - Fractional year", {
+test_that("Rata die <> Gregorian decimal year", {
   ## Stardard year
   dec <- as_decimal(2023, 05, 09, calendar = CE()) # 2023.351
 
