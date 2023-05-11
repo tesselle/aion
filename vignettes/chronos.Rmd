@@ -72,8 +72,6 @@ format(rd) # Default calendar (Gregorian Common Era)
 format(rd, format = "ka", calendar = BP())
 ```
 
-Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
-
 # Time series
 
 A Time Series is a sequence of observation time and value pairs with strictly increasing observation times.
@@ -93,5 +91,7 @@ X <- series(
 ## Plot
 plot(X) # Default calendar
 ```
+
+Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
 
 # References

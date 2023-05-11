@@ -38,12 +38,7 @@ comparisons easier.
 
 Once a time series is created with **chronos**, any calendar can be used
 for printing or plotting data (defaults to Gregorian Common Era; see
-`vignette("manual")`).
-
-This package supports usual Gregorian era (e.g. Common Era, Before
-Present), more calendars will be gradually implemented. Note that
-**chronos** uses the astronomical notation for Gregorian years (there
-*is* a year 0).
+`vignette("chronos")`).
 
 ## Installation
 

@@ -32,9 +32,7 @@ Base R ships with a lot of functionality useful for time series, in particular i
 
 **chronos** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates (if you want to work with vectors of years, you may be interested in the [**era**](https://github.com/joeroe/era) package). This system allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
 
-Once a time series is created with **chronos**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("manual")`).
-
-This package supports usual Gregorian era (e.g. Common Era, Before Present), more calendars will be gradually implemented. Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
+Once a time series is created with **chronos**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("chronos")`).
 
 ## Installation
 
