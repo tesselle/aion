@@ -39,18 +39,23 @@ setMethod(
     ## Switch origin
     year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
 
-    # Correct for 28- or 29-day Feb
-    correction <- ifelse(is_gregorian_leap_year(year), -1, -2)
-    correction <- ifelse(month <= 2, 0, correction)
+    ## Correct for 28- or 29-day Feb
+    correction <- rep(-2, length(year))
+    correction[is_gregorian_leap_year(year)] <- -1
+    correction[month <= 2] <- 0
 
-    rd <- calendar_fixed(calendar) - 1 +   # Days before start of calendar
-      365 * (year - 1) +        # Ordinary days since epoch
-      floor((year - 1) / 4) -   # Julian leap days since epoch minus...
-      floor((year - 1) / 100) + # ...century years since epoch plus...
-      floor((year - 1) / 400) + # ...years since epoch divisible by 400
+    rd <- calendar_fixed(calendar) - 1 + # Days before start of calendar
+      365 * (year - 1) +                 # Ordinary days since epoch
+      floor((year - 1) / 4) -            # Julian leap days since epoch minus...
+      floor((year - 1) / 100) +          # ...century years since epoch plus...
+      floor((year - 1) / 400) +          # ...years since epoch divisible by 400
       floor((1 / 12) * (367 * month - 362)) + # Days in prior months this year assuming 30-day Feb
-      correction +              # Correct for 28- or 29-day Feb
-      day                       # Days so far this month.
+      correction +                       # Correct for 28- or 29-day Feb
+      day                                # Days so far this month.
+
+    ## Needed if a decimal leap year is provided
+    ## TODO: investigate this (???)
+    rd <- ceiling(rd)
 
     .RataDie(rd)
   }
@@ -104,10 +109,9 @@ setMethod(
     year <- as_year(object, calendar = calendar, decimal = FALSE)
     prior_days <- object - fixed(year, 01, 01, calendar = calendar)
 
-    march <- fixed(year, 03, 01, calendar = calendar)
-    correction <- 2
-    correction <- ifelse(object < march, 0, correction)
-    correction <- ifelse(is_gregorian_leap_year(year), 1, correction)
+    correction <- rep(2, length(object))
+    correction[object < fixed(year, 03, 01, calendar = calendar)] <- 0
+    correction[is_gregorian_leap_year(year)] <- 1
 
     month <- floor((1 / 367) * (12 * (prior_days + correction) + 373))
     day <- object - fixed(year, month, 01, calendar = calendar) + 1
@@ -124,7 +128,8 @@ setMethod(
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_BP <- function(year, month, day) {
-  fixed(year, month, day, calendar = BP())
+  if (missing(month) || missing(day)) fixed(year, calendar = BP())
+  else fixed(year, month, day, calendar = BP())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -135,7 +140,8 @@ fixed_to_BP <- function(object) {
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_BC <- function(year, month, day) {
-  fixed(year, month, day, calendar = BC())
+  if (missing(month) || missing(day)) fixed(year, calendar = BC())
+  else fixed(year, month, day, calendar = BC())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -146,7 +152,8 @@ fixed_to_BC <- function(object) {
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_BCE <- function(year, month, day) {
-  fixed(year, month, day, calendar = BCE())
+  if (missing(month) || missing(day)) fixed(year, calendar = BCE())
+  else fixed(year, month, day, calendar = BCE())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -157,7 +164,8 @@ fixed_to_BCE <- function(object) {
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_AD <- function(year, month, day) {
-  fixed(year, month, day, calendar = AD())
+  if (missing(month) || missing(day)) fixed(year, calendar = AD())
+  else fixed(year, month, day, calendar = AD())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -168,7 +176,8 @@ fixed_to_AD <- function(object) {
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_CE <- function(year, month, day) {
-  fixed(year, month, day, calendar = CE())
+  if (missing(month) || missing(day)) fixed(year, calendar = CE())
+  else fixed(year, month, day, calendar = CE())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -179,7 +188,8 @@ fixed_to_CE <- function(object) {
 #' @export
 #' @rdname fixed_gregorian
 fixed_from_b2k <- function(year, month, day) {
-  fixed(year, month, day, calendar = b2k())
+  if (missing(month) || missing(day)) fixed(year, calendar = b2k())
+  else fixed(year, month, day, calendar = b2k())
 }
 #' @export
 #' @rdname fixed_gregorian
@@ -189,6 +199,7 @@ fixed_to_b2k <- function(object) {
 
 # Helpers ======================================================================
 is_gregorian_leap_year <- function(year) {
+  year <- floor(year) # Drop decimal part (if any)
   ((year %% 4) == 0) &
     (year %% 400 != 100) &
     (year %% 400 != 200) &

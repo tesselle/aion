@@ -27,11 +27,19 @@ test_that("Fixed from Gregorian - Date", {
   expect_equal(as_date(R, calendar = CE()), data.frame(year = 2000, month = 02, day = 29))
 })
 test_that("Fixed from Gregorian - Fractional year", {
+  ## Stardard year
   dec <- as_decimal(2023, 05, 09, calendar = CE()) # 2023.351
 
   fix <- fixed(dec, calendar = CE())
   expect_equal(fix, fixed(2023, 05, 09, calendar = CE()))
   expect_equal(as_date(fix, calendar = CE()), data.frame(year = 2023, month = 05, day = 09))
-
   expect_equal(as_year(fix, calendar = CE(), decimal = TRUE), dec)
+
+  ## Leap year
+  leap_dec <- as_decimal(2000, 02, 29, calendar = CE()) # 2000.161
+
+  leap_fix <- fixed(leap_dec, calendar = CE())
+  expect_equal(leap_fix, fixed(2000, 02, 29, calendar = CE()))
+  expect_equal(as_date(leap_fix, calendar = CE()), data.frame(year = 2000, month = 02, day = 29))
+  expect_equal(as_year(leap_fix, calendar = CE(), decimal = TRUE), leap_dec)
 })
