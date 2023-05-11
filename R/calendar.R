@@ -23,31 +23,32 @@ setMethod(
 )
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 BP <- function(...) calendar("BP")
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 b2k <- function(...) calendar("b2k")
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 BC <- function(...) calendar("BC")
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 BCE <- function(...) calendar("BCE")
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 AD <- function(...) calendar("AD")
 
 #' @export
-#' @rdname calendar
+#' @rdname gregorian
 CE <- function(...) calendar("CE")
 
 # Mutators =====================================================================
 calendar_fixed <- function(object) object@fixed
+calendar_year <- function(object) object@year
 
 ## Getters ---------------------------------------------------------------------
 #' @export
@@ -98,12 +99,3 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) sign(object@direction)
 )
-
-# @export
-# @rdname calendar_get
-# @aliases calendar_year,TimeScale-method
-# setMethod(
-#   f = "calendar_year",
-#   signature = "TimeScale",
-#   definition = function(object) object@year
-# )

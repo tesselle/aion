@@ -43,6 +43,21 @@ calendar_direction(object)
 \arguments{
 \item{object}{A \code{\linkS4class{TimeScale}} object.}
 }
+\value{
+\itemize{
+\item \code{calendar_label()} returns a \code{\link{character}} string specifying the
+abbreviated label of the time scale.
+\item \code{calendar_name()} returns a \code{\link{character}} string specifying the name of
+the time scale.
+\item \code{calendar_unit()} returns a \code{\link{character}} string specifying the name of
+the calendar.
+\item \code{calendar_epoch()} returns length-one \code{\link{numeric}} vector specifying the
+epoch year from which years are counted (in Gregorian years).
+\item \code{calendar_direction()} returns a length-one \code{\link{integer}} vector specifying
+if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
+\code{epoch}. Only the \link[=sign]{sign} of \code{calendar_direction()} is relevant.
+}
+}
 \description{
 Calendar Parameters
 }

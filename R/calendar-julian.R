@@ -4,7 +4,7 @@ NULL
 
 # Juliab calendar ==============================================================
 #' @export
-#' @rdname julian
+#' @rdname is
 #' @aliases is_julian,TimeScale-method
 setMethod(
   f = "is_julian",

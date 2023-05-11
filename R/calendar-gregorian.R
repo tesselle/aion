@@ -4,7 +4,7 @@ NULL
 
 # Gregorian calendar ===========================================================
 #' @export
-#' @rdname gregorian
+#' @rdname is
 #' @aliases is_gregorian,TimeScale-method
 setMethod(
   f = "is_gregorian",

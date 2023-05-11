@@ -42,6 +42,33 @@ NULL
 #' @rdname subset
 NULL
 
+## Predicates ------------------------------------------------------------------
+#' Predicates
+#'
+#' @param object Any \R object.
+#' @return
+#'  A [`logical`] vector.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family mutators
+#' @name is
+#' @rdname is
+NULL
+
+#' @rdname is
+#' @aliases is_gregorian-method
+setGeneric(
+  name = "is_gregorian",
+  def = function(object) standardGeneric("is_gregorian")
+)
+
+#' @rdname is
+#' @aliases is_julian-method
+setGeneric(
+  name = "is_julian",
+  def = function(object) standardGeneric("is_julian")
+)
+
 ## Operators -------------------------------------------------------------------
 #' Arithmetic Operators
 #'
@@ -66,15 +93,6 @@ NULL
 #' @param object A [`character`] string specifying the abbreviated label of
 #'  the time scale (see details) or an object from which to extract the time
 #'  scale.
-# @param label A [`character`] string specifying the abbreviated label of
-#  the time scale.
-# @param name A [`character`] string specifying the name of the time scale.
-# @param epoch A length-one [`numeric`] vector specifying the epoch year from
-#  which years are counted (in Gregorian astronomical years).
-# @param direction A length-one [`integer`] vector specifying if years are
-#  counted backwards (`-1`) or forwards (`1`) from `epoch`. Only the
-#  [sign][sign()] of `direction` will be retained.
-#' @param ... Currently not used.
 #' @details
 #'  The following time scales are available:
 #'
@@ -98,16 +116,17 @@ NULL
 #' @aliases calendar-method
 setGeneric(
   name = "calendar",
-  def = function(object, ...) standardGeneric("calendar"),
+  def = function(object) standardGeneric("calendar"),
   valueClass = "TimeScale"
 )
 
 #' Gregorian Calendar
 #'
-#' @param object A [`GregorianCalendar-class`] object.
+#' @param ... Currently not used.
 #' @return
-#'  * `is_gregorian()` returns a [`logical`] scalar.
+#'  A [`GregorianCalendar-class`] object.
 #' @example inst/examples/ex-calendar.R
+#' @seealso [calendar()]
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
@@ -115,19 +134,13 @@ setGeneric(
 #' @rdname gregorian
 NULL
 
-#' @rdname gregorian
-#' @aliases is_gregorian-method
-setGeneric(
-  name = "is_gregorian",
-  def = function(object) standardGeneric("is_gregorian")
-)
-
 #' Julian Calendar
 #'
-#' @param object A [`JulianCalendar-class`] object.
+#' @param ... Currently not used.
 #' @return
-#'  * `is_julian()` returns a [`logical`] scalar.
+#'  A [`JulianCalendar-class`] object.
 #' @example inst/examples/ex-calendar.R
+#' @seealso [calendar()]
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time scales tools
@@ -135,16 +148,21 @@ setGeneric(
 #' @rdname julian
 NULL
 
-#' @rdname julian
-#' @aliases is_julian-method
-setGeneric(
-  name = "is_julian",
-  def = function(object) standardGeneric("is_julian")
-)
-
 #' Calendar Parameters
 #'
 #' @param object A [`TimeScale-class`] object.
+#' @return
+#'  * `calendar_label()` returns a [`character`] string specifying the
+#'     abbreviated label of the time scale.
+#'  * `calendar_name()` returns a [`character`] string specifying the name of
+#'     the time scale.
+#'  * `calendar_unit()` returns a [`character`] string specifying the name of
+#'     the calendar.
+#'  * `calendar_epoch()` returns length-one [`numeric`] vector specifying the
+#'     epoch year from which years are counted (in Gregorian years).
+#'  * `calendar_direction()` returns a length-one [`integer`] vector specifying
+#'     if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
+#'     `epoch`. Only the [sign][sign()] of `calendar_direction()` is relevant.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -187,6 +205,13 @@ setGeneric(
   name = "calendar_direction",
   def = function(object) standardGeneric("calendar_direction")
 )
+
+# @rdname calendar_get
+# @aliases calendar_fixed-method
+# setGeneric(
+#   name = "calendar_fixed",
+#   def = function(object) standardGeneric("calendar_fixed")
+# )
 
 # @rdname calendar_get
 # @aliases calendar_year-method

@@ -5,36 +5,16 @@
 \alias{calendar}
 \alias{calendar-method}
 \alias{calendar,character-method}
-\alias{BP}
-\alias{b2k}
-\alias{BC}
-\alias{BCE}
-\alias{AD}
-\alias{CE}
 \title{Calendar}
 \usage{
-calendar(object, ...)
+calendar(object)
 
 \S4method{calendar}{character}(object)
-
-BP(...)
-
-b2k(...)
-
-BC(...)
-
-BCE(...)
-
-AD(...)
-
-CE(...)
 }
 \arguments{
 \item{object}{A \code{\link{character}} string specifying the abbreviated label of
 the time scale (see details) or an object from which to extract the time
 scale.}
-
-\item{...}{Currently not used.}
 }
 \value{
 A \code{\linkS4class{TimeScale}} object.
