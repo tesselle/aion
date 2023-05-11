@@ -23,7 +23,8 @@
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
-\item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
+\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
+(see \code{\link[=calendar]{calendar()}}).}
 
 \item{panel}{A \code{\link{function}} in the form \verb{function(x, y, ...)} which gives the
 action to be carried out in each panel of the display. The default is

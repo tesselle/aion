@@ -23,5 +23,5 @@ test_that("Duration", {
   x <- series(rnorm(2), time = y)
 
   expect_identical(span(x), 18262)
-  expect_identical(as_year(span(x), calendar = CE()), 1950-1900)
+  expect_identical(as_year(span(x), calendar = CE(), decimal = FALSE), 1950-1900)
 })

@@ -24,7 +24,7 @@ setMethod(
 
     fun <- function(x) {
       a <- fixed(x, month = 01, day = 01, calendar = from)
-      b <- as_year(a, calendar = to)
+      b <- as_year(a, calendar = to, decimal = TRUE)
       return(b)
     }
 

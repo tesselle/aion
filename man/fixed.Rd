@@ -15,13 +15,15 @@ fixed(year, month, day, calendar, ...)
 \S4method{fixed}{numeric,numeric,numeric,GregorianCalendar}(year, month, day, calendar)
 }
 \arguments{
-\item{year}{A \code{\link{numeric}} vector of (decimal) years.}
+\item{year}{A \code{\link{numeric}} vector of years. If \code{month} and \code{day} are missing,
+decimal years are expected.}
 
 \item{month}{A \code{\link{numeric}} vector of months.}
 
 \item{day}{A \code{\link{numeric}} vector of days.}
 
-\item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}).}
+\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the calendar of
+\code{year}, \code{month} and \code{day} (see \code{\link[=calendar]{calendar()}}).}
 
 \item{...}{Currently not used.}
 
@@ -56,6 +58,7 @@ The Ultimate Edition}. Cambridge University Press.
 \seealso{
 Other fixed date tools: 
 \code{\link{as_date}()},
+\code{\link{as_decimal}()},
 \code{\link{as_year}()}
 }
 \author{

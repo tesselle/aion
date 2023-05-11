@@ -34,8 +34,9 @@ values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{mat
 \item{time}{A \code{\link{numeric}} vector of (fractional) years or a \code{\linkS4class{RataDie}}
 object (see \code{\link[=fixed]{fixed()}}).}
 
-\item{calendar}{A \code{\linkS4class{TimeScale}} object (see \code{\link[=calendar]{calendar()}}). If missing,
-\code{years} must be a \code{\linkS4class{RataDie}} object.}
+\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the calendar of
+\code{time} (see \code{\link[=calendar]{calendar()}}). If missing, \code{time} must be a \code{\linkS4class{RataDie}}
+object.}
 
 \item{...}{Currently not used.}
 

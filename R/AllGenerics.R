@@ -242,10 +242,12 @@ setGeneric(
 # Fixed Dates ==================================================================
 #' *Rata Die* (Fixed Date)
 #'
-#' @param year A [`numeric`] vector of (decimal) years.
+#' @param year A [`numeric`] vector of years. If `month` and `day` are missing,
+#'  decimal years are expected.
 #' @param month A [`numeric`] vector of months.
 #' @param day A [`numeric`] vector of days.
-#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @param calendar A [`TimeScale-class`] object specifying the calendar of
+#'  `year`, `month` and `day` (see [calendar()]).
 #' @param scale A length-one [`integer`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @param ... Currently not used.
@@ -272,7 +274,11 @@ setGeneric(
 #' Year Conversion from *Rata Die*
 #'
 #' @param object A [`RataDie-class`] object (see [fixed()]).
-#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param decimal A [`logical`] scalar: should decimal years be returned?
+#'  If `FALSE`, the decimal part is dropped.
+#' @param ... Currently not used.
 #' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
@@ -284,13 +290,14 @@ setGeneric(
 #' @aliases as_year-method
 setGeneric(
   name = "as_year",
-  def = function(object, calendar) standardGeneric("as_year")
+  def = function(object, calendar, ...) standardGeneric("as_year")
 )
 
 #' Date Conversion from *Rata Die*
 #'
 #' @param object A [`RataDie-class`] object (see [fixed()]).
-#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
 #' @example inst/examples/ex-fixed.R
 #' @references
 #'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
@@ -306,6 +313,24 @@ setGeneric(
   valueClass = "data.frame"
 )
 
+#' Converts a Date to a Decimal of its Year
+#'
+#' @param year A [`numeric`] vector of years. If `month` and `day` are missing,
+#'  decimal years are expected.
+#' @param month A [`numeric`] vector of months.
+#' @param day A [`numeric`] vector of days.
+#' @param calendar A [`TimeScale-class`] object specifying the calendar of
+#'  `year`, `month` and `day` (see [calendar()]).
+#' @example inst/examples/ex-fixed.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @aliases as_decimal-method
+setGeneric(
+  name = "as_decimal",
+  def = function(year, month, day, calendar) standardGeneric("as_decimal")
+)
+
 # Time Series ==================================================================
 #' Create Time Series
 #'
@@ -314,8 +339,9 @@ setGeneric(
 #'  [data.matrix()].
 #' @param time A [`numeric`] vector of (fractional) years or a [`RataDie-class`]
 #'  object (see [fixed()]).
-#' @param calendar A [`TimeScale-class`] object (see [calendar()]). If missing,
-#'  `years` must be a [`RataDie-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the calendar of
+#'  `time` (see [calendar()]). If missing, `time` must be a [`RataDie-class`]
+#'  object.
 #' @param scale A length-one [`numeric`] vector specifying the number of years
 #'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
 #' @param names A [`character`] string specifying the names of the time
@@ -408,7 +434,8 @@ NULL
 #' Plot Time Series
 #'
 #' @param x A [`TimeSeries-class`] object.
-#' @param calendar A [`TimeScale-class`] object (see [calendar()]).
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
 #' @param panel A [`function`] in the form `function(x, y, ...)` which gives the
 #'  action to be carried out in each panel of the display. The default is
 #'  [graphics::lines()].

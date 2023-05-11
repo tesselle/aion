@@ -112,6 +112,7 @@ pretty_year <- function(x, calendar = getOption("chronos.calendar"), ...) {
 axis_year <- function(side, x, at = NULL, format = c("a", "ka", "Ma", "Ga"),
                       labels = TRUE, calendar = getOption("chronos.calendar"),
                       ...) {
+
   range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
   range[1L] <- ceiling(range[1L])
   range[2L] <- floor(range[2L])
