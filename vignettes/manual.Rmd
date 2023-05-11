@@ -1,0 +1,97 @@
+---
+title: "Manual"
+author: "N. Frerebeau"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    number_sections: yes
+    fig_caption: yes
+    toc: true
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{Manual}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(chronos)
+```
+
+Base R ships with a lot of functionality useful for time series, in particular in the **stats** package: a time-series object can be created with the `stats::ts()` function. These objects are agnostic: the unit of time is not relevant, only the sampling frequency matters. Most archaeological time series are different because they are defined for a given calendar era and may involve dates far in the past.
+
+**chronos** provides a system of classes and methods to represent and work with such time-series.
+
+# Vectors of dates
+
+In base R, dates are represented as the number of days since 1970-01-01 (by default), with negative values for earlier dates (see `help(Date)`). **chronos** uses a different approach: it allows to create date vectors represented as *rata die* [@reingold2018], i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
+
+This makes it possible to get rid of a specific calendar and to make calculations easier. It is then possible to convert a vector of *rata die* into dates or (decimal) years of any calendar^[Only the Gregorian calendar (and its different eras) and the Julian calendar are currently supported. Others will be gradually implemented.].
+
+The `fixed()` function allows to create a vector of *rata die* from dates belonging to a specific calendar:
+
+```{r}
+## Create a calendar object
+## (Gregorian Common Era)
+(cal <- calendar("CE"))
+
+## Convert 2000-02-29 (Gregorian) to rata die
+fixed(2000, 02, 29, calendar = cal)
+
+## If days and months are missing, decimal years are expected
+fixed(2000.161, calendar = cal)
+```
+
+A *rata die* vector can be converted into dates (or years) of a particular calendar:
+
+```{r}
+## Create a vector of 10 years BP (Gregorian)
+## (every 20 years starting from 2000 BP)
+(years <- seq(from = 20000, by = -20, length.out = 10))
+
+## Convert years to rata die
+(rd <- fixed(years, calendar = calendar("BP")))
+
+## Convert back to Gregorian years
+as_year(rd, calendar = calendar("CE"))  # Common Era
+as_year(rd, calendar = calendar("BP"))  # Before Present
+as_year(rd, calendar = calendar("b2k")) # Before 2000
+```
+
+*Rata die* can be represented as (nicely formated) character vectors:
+
+```{r}
+format(rd) # Default calendar (Gregorian Common Era)
+format(rd, format = "ka", calendar = BP())
+```
+
+Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
+
+# Time series
+
+A Time Series is a sequence of observation time and value pairs with strictly increasing observation times.
+
+```{r time-series, fig.width=7, fig.height=5}
+## Set seed for reproductibility
+set.seed(12345)
+
+## Create 6 time-series of 50 observations
+## Sampled every two years starting from 2000 BP
+X <- series(
+  object = matrix(rnorm(300), nrow = 50, ncol = 6),
+  time = seq(from = 2000, by = -2, length.out = 50),
+  calendar = calendar("BP")
+)
+
+## Plot
+plot(X) # Default calendar
+```
+
+# References
