@@ -14,8 +14,6 @@ An S4 class to represent a vector of \emph{rata die}.
 
 It is intended that the date should be an integer value, but this is not
 enforced in the internal representation.
-
-When printing there is assumed to be a year zero.
 }
 \section{Slots}{
 

@@ -5,7 +5,7 @@
 \alias{fixed_julian}
 \alias{fixed_from_julian}
 \alias{fixed_to_julian}
-\title{Julian Year Conversion to and from \emph{Rata Die}}
+\title{\emph{Rata Die} Conversion to and from Julian Years}
 \usage{
 fixed_from_julian(year, month, day)
 
@@ -55,6 +55,7 @@ The Ultimate Edition}. Cambridge University Press.
 }
 \seealso{
 Other fixed date tools: 
+\code{\link{arithmetic}},
 \code{\link{as_date}()},
 \code{\link{as_decimal}()},
 \code{\link{as_year}()},

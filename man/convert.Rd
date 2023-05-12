@@ -42,13 +42,14 @@ BP_to_AD(0)
 AD_to_BP(1950)
 }
 \seealso{
-Other time scales tools: 
+Other calendar tools: 
 \code{\link{calendar_get}},
 \code{\link{calendar}()},
 \code{\link{gregorian}},
+\code{\link{is}()},
 \code{\link{julian}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time scales tools}
+\concept{calendar tools}

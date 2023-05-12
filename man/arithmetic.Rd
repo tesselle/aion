@@ -41,7 +41,17 @@ x - y
 ## Not rata die anymore
 x * y
 }
+\seealso{
+Other fixed date tools: 
+\code{\link{as_date}()},
+\code{\link{as_decimal}()},
+\code{\link{as_year}()},
+\code{\link{fixed_gregorian}},
+\code{\link{fixed_julian}},
+\code{\link{fixed}()},
+\code{\link{format}()}
+}
 \author{
 N. Frerebeau
 }
-\concept{operators}
+\concept{fixed date tools}

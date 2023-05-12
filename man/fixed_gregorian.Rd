@@ -15,7 +15,7 @@
 \alias{fixed_to_CE}
 \alias{fixed_from_b2k}
 \alias{fixed_to_b2k}
-\title{Gregorian Year Conversion to and from \emph{Rata Die}}
+\title{\emph{Rata Die} Conversion to and from Gregorian Years}
 \usage{
 fixed_from_BP(year, month, day)
 
@@ -89,6 +89,7 @@ The Ultimate Edition}. Cambridge University Press.
 }
 \seealso{
 Other fixed date tools: 
+\code{\link{arithmetic}},
 \code{\link{as_date}()},
 \code{\link{as_decimal}()},
 \code{\link{as_year}()},

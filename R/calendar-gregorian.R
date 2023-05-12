@@ -5,10 +5,10 @@ NULL
 # Gregorian calendar ===========================================================
 #' @export
 #' @rdname is
-#' @aliases is_gregorian,TimeScale-method
+#' @aliases is_gregorian,ANY-method
 setMethod(
   f = "is_gregorian",
-  signature = "TimeScale",
+  signature = "ANY",
   definition = function(object) {
     methods::is(object, "GregorianCalendar")
   }

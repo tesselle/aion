@@ -46,13 +46,14 @@ J()
 \seealso{
 \code{\link[=calendar]{calendar()}}
 
-Other time scales tools: 
+Other calendar tools: 
 \code{\link{calendar_get}},
 \code{\link{calendar}()},
 \code{\link{convert}()},
+\code{\link{is}()},
 \code{\link{julian}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time scales tools}
+\concept{calendar tools}

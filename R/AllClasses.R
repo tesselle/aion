@@ -189,7 +189,7 @@ NULL
 .JulianCalendar <- setClass(
   Class = "JulianCalendar",
   prototype = list(
-    epoch = 0,
+    epoch = 1,
     direction = 1L,
     fixed = -1,
     year = 365.25
@@ -208,8 +208,6 @@ NULL
 #'
 #'  It is intended that the date should be an integer value, but this is not
 #'  enforced in the internal representation.
-#'
-#'  When printing there is assumed to be a year zero.
 #' @note
 #'  This class inherits from [`numeric`].
 #' @author N. Frerebeau
@@ -230,8 +228,6 @@ NULL
 #' An S4 class to represent time series.
 #' @slot .Data A `numeric` [`matrix`] giving the observed time-series values.
 #' @slot time A [`RataDie-class`] object.
-#' @details
-#'  It is a matrix that represents data according to a given time scale.
 #' @note
 #'  This class inherits from [`matrix`].
 #' @author N. Frerebeau

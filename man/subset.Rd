@@ -29,11 +29,6 @@ A subsetted object.
 \description{
 Operators acting on objects to extract or replace parts.
 }
-\seealso{
-Other mutators: 
-\code{\link{is}()},
-\code{\link{mutators}}
-}
 \author{
 N. Frerebeau
 }

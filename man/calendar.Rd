@@ -51,13 +51,14 @@ AD()
 J()
 }
 \seealso{
-Other time scales tools: 
+Other calendar tools: 
 \code{\link{calendar_get}},
 \code{\link{convert}()},
 \code{\link{gregorian}},
+\code{\link{is}()},
 \code{\link{julian}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time scales tools}
+\concept{calendar tools}

@@ -48,6 +48,7 @@ fixed_to_BP(rd)
 }
 \seealso{
 Other fixed date tools: 
+\code{\link{arithmetic}},
 \code{\link{as_date}()},
 \code{\link{as_year}()},
 \code{\link{fixed_gregorian}},

@@ -52,6 +52,7 @@ The Ultimate Edition}. Cambridge University Press.
 }
 \seealso{
 Other fixed date tools: 
+\code{\link{arithmetic}},
 \code{\link{as_decimal}()},
 \code{\link{as_year}()},
 \code{\link{fixed_gregorian}},

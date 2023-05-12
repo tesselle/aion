@@ -74,6 +74,8 @@ plot(X, calendar = BP()) # BP
 plot(X, calendar = b2k()) # b2k
 }
 \seealso{
+\code{\link[graphics:plot.default]{graphics::plot()}}
+
 Other time series tools: 
 \code{\link{series}()},
 \code{\link{span}()},

@@ -7,18 +7,15 @@ template:
       creator: "@nfrerebeau"
 
 reference:
-- title: Time Scales
+- title: Calendars
   contents:
-  - has_concept("time scales tools")
-- title: Rata die
+  - has_concept("calendar tools")
+- title: Rata Die
   contents:
   - has_concept("fixed date tools")
 - title: Time Series
   contents:
   - has_concept("time series tools")
-- title: Operators
-  contents:
-  - has_concept("operators")
 - title: Mutators
   contents:
   - has_concept("mutators")

@@ -8,17 +8,17 @@
 \alias{is_gregorian-method}
 \alias{is_julian}
 \alias{is_julian-method}
-\alias{is_gregorian,TimeScale-method}
-\alias{is_julian,TimeScale-method}
-\title{Predicates}
+\alias{is_gregorian,ANY-method}
+\alias{is_julian,ANY-method}
+\title{Is an Object a Calendar?}
 \usage{
 is_gregorian(object)
 
 is_julian(object)
 
-\S4method{is_gregorian}{TimeScale}(object)
+\S4method{is_gregorian}{ANY}(object)
 
-\S4method{is_julian}{TimeScale}(object)
+\S4method{is_julian}{ANY}(object)
 }
 \arguments{
 \item{object}{Any \R object.}
@@ -27,14 +27,17 @@ is_julian(object)
 A \code{\link{logical}} vector.
 }
 \description{
-Predicates
+Test inheritance relationships between an object and a calendar class.
 }
 \seealso{
-Other mutators: 
-\code{\link{mutators}},
-\code{\link{subset}()}
+Other calendar tools: 
+\code{\link{calendar_get}},
+\code{\link{calendar}()},
+\code{\link{convert}()},
+\code{\link{gregorian}},
+\code{\link{julian}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{mutators}
+\concept{calendar tools}

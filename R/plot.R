@@ -2,6 +2,7 @@
 #' @include AllGenerics.R
 NULL
 
+# Plot =========================================================================
 #' @export
 #' @method plot TimeSeries
 plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),

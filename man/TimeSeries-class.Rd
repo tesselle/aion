@@ -8,9 +8,6 @@
 \description{
 An S4 class to represent time series.
 }
-\details{
-It is a matrix that represents data according to a given time scale.
-}
 \section{Slots}{
 
 \describe{

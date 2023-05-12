@@ -5,10 +5,10 @@ NULL
 # Juliab calendar ==============================================================
 #' @export
 #' @rdname is
-#' @aliases is_julian,TimeScale-method
+#' @aliases is_julian,ANY-method
 setMethod(
   f = "is_julian",
-  signature = "TimeScale",
+  signature = "ANY",
   definition = function(object) {
     methods::is(object, "JulianCalendar")
   }
@@ -51,7 +51,10 @@ setMethod(
   definition = function(object, calendar) {
     d0 <- object - calendar_fixed(calendar)
     year <- (4 * d0 + 1464) %/% 1461
-    year[year <= 0] <- year[year <= 0] - 1 # There is no year 0 on the Julian calendar
+
+    ## There is no year 0 on the Julian calendar
+    year[year <= 0] <- year[year <= 0] - 1
+
     unclass(year)
   }
 )

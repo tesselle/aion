@@ -4,21 +4,21 @@ NULL
 
 # Tools ========================================================================
 ## Mutators --------------------------------------------------------------------
-#' Get or Set Parts of an Object
-#'
-#' Getters and setters to extract or replace parts of an object.
-#' @param x An object from which to get or set element(s).
-#' @param value A possible value for the element(s) of `x`.
-#' @return
-#'  An object of the same sort as `x` with the new values assigned.
+# Get or Set Parts of an Object
+#
+# Getters and setters to extract or replace parts of an object.
+# @param x An object from which to get or set element(s).
+# @param value A possible value for the element(s) of `x`.
+# @return
+#  An object of the same sort as `x` with the new values assigned.
 # @example inst/examples/ex-mutator.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family mutators
-#' @name mutators
-#' @rdname mutators
-#' @aliases get set
-NULL
+# @author N. Frerebeau
+# @docType methods
+# @family mutators
+# @name mutators
+# @rdname mutators
+# @aliases get set
+# NULL
 
 ## Subset ----------------------------------------------------------------------
 #' Extract or Replace Parts of an Object
@@ -40,51 +40,6 @@ NULL
 #' @family mutators
 #' @name subset
 #' @rdname subset
-NULL
-
-## Predicates ------------------------------------------------------------------
-#' Predicates
-#'
-#' @param object Any \R object.
-#' @return
-#'  A [`logical`] vector.
-#' @author N. Frerebeau
-#' @docType methods
-#' @family mutators
-#' @name is
-#' @rdname is
-NULL
-
-#' @rdname is
-#' @aliases is_gregorian-method
-setGeneric(
-  name = "is_gregorian",
-  def = function(object) standardGeneric("is_gregorian")
-)
-
-#' @rdname is
-#' @aliases is_julian-method
-setGeneric(
-  name = "is_julian",
-  def = function(object) standardGeneric("is_julian")
-)
-
-## Operators -------------------------------------------------------------------
-#' Arithmetic Operators
-#'
-#' Operators performing arithmetic operations.
-#' @param e1,e2 A [`RataDie-class`] object or a [`numeric`] vector.
-#' @details
-#'  *Rata die* will be converted to a plain `numeric` vector if a computation no
-#'  longer makes sense in temporal terms.
-#' @return
-#'  A [`logical`] vector.
-#' @example inst/examples/ex-arith.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family operators
-#' @name arithmetic
-#' @rdname arithmetic
 NULL
 
 # Calendars ====================================================================
@@ -113,7 +68,7 @@ NULL
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales tools
+#' @family calendar tools
 #' @aliases calendar-method
 setGeneric(
   name = "calendar",
@@ -130,7 +85,7 @@ setGeneric(
 #' @seealso [calendar()]
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales tools
+#' @family calendar tools
 #' @name gregorian
 #' @rdname gregorian
 NULL
@@ -144,10 +99,37 @@ NULL
 #' @seealso [calendar()]
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales tools
+#' @family calendar tools
 #' @name julian
 #' @rdname julian
 NULL
+
+#' Is an Object a Calendar?
+#'
+#' Test inheritance relationships between an object and a calendar class.
+#' @param object Any \R object.
+#' @return
+#'  A [`logical`] vector.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family calendar tools
+#' @name is
+#' @rdname is
+NULL
+
+#' @rdname is
+#' @aliases is_gregorian-method
+setGeneric(
+  name = "is_gregorian",
+  def = function(object) standardGeneric("is_gregorian")
+)
+
+#' @rdname is
+#' @aliases is_julian-method
+setGeneric(
+  name = "is_julian",
+  def = function(object) standardGeneric("is_julian")
+)
 
 #' Calendar Parameters
 #'
@@ -167,7 +149,7 @@ NULL
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales tools
+#' @family calendar tools
 #' @name calendar_get
 #' @rdname calendar_get
 NULL
@@ -233,7 +215,7 @@ setGeneric(
 #' @example inst/examples/ex-convert.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time scales tools
+#' @family calendar tools
 #' @aliases convert-method
 setGeneric(
   name = "convert",
@@ -296,7 +278,7 @@ setGeneric(
   def = function(object, calendar, ...) standardGeneric("as_year")
 )
 
-#' Gregorian Year Conversion to and from *Rata Die*
+#' *Rata Die* Conversion to and from Gregorian Years
 #'
 #' Convenient functions for conversion from and to *rata die* for a given
 #' Gregorian era.
@@ -319,7 +301,7 @@ setGeneric(
 #' @rdname fixed_gregorian
 NULL
 
-#' Julian Year Conversion to and from *Rata Die*
+#' *Rata Die* Conversion to and from Julian Years
 #'
 #' Convenient functions for conversion from and to *rata die*.
 #' @inheritParams fixed
@@ -399,6 +381,23 @@ setGeneric(
 #' @family fixed date tools
 #' @name format
 #' @rdname format
+NULL
+
+#' Arithmetic Operators
+#'
+#' Operators performing arithmetic operations.
+#' @param e1,e2 A [`RataDie-class`] object or a [`numeric`] vector.
+#' @details
+#'  *Rata die* will be converted to a plain `numeric` vector if a computation no
+#'  longer makes sense in temporal terms.
+#' @return
+#'  A [`logical`] vector.
+#' @example inst/examples/ex-arith.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @name arithmetic
+#' @rdname arithmetic
 NULL
 
 # Time Series ==================================================================
@@ -539,12 +538,34 @@ NULL
 #'  `plot()` is called it for its side-effects: it results in a graphic
 #'  being displayed. Invisibly returns `x`.
 #' @example inst/examples/ex-plot.R
+#' @seealso [graphics::plot()]
 #' @author N. Frerebeau
 #' @docType methods
 #' @family time series tools
 #' @name plot
 #' @rdname plot
 NULL
+
+# Heat Map
+#
+# @param x A [`TimeSeries-class`] object.
+# @param calendar A [`TimeScale-class`] object specifying the target calendar
+#  (see [calendar()]).
+# @param col	A vector of colors such as that generated by
+#  [grDevices::hcl.colors()], [grDevices::gray.colors()] or similar functions.
+# @param ... Further [graphical parameters][graphics::par] to be passed to
+#  [graphics::plot()].
+# @return
+#  `image()` is called it for its side-effects: it results in a graphic
+#  being displayed. Invisibly returns `x`.
+# @example inst/examples/ex-plot.R
+# @seealso [graphics::image()]
+# @author N. Frerebeau
+# @docType methods
+# @family time series tools
+# @name image
+# @rdname image
+# NULL
 
 # Interval Analysis ============================================================
 ## Allen Interval Algebra ------------------------------------------------------
