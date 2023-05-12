@@ -21,18 +21,15 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 ## Overview
 
 Base R ships with a lot of functionality useful for time series, in
-particular in the **stats** package: a time-series object can be created
-with the `stats::ts()` function. These objects are agnostic: the unit of
-time is not relevant, only the sampling frequency matters. Most
-archaeological time series are different because they are defined for a
-given calendar era and may involve dates far in the past.
+particular in the **stats** package. However, these features are not
+adapted to most archaeological time series. These are indeed defined for
+a given calendar era, they can involve dates very far in the past and
+the sampling of the observation time is (in most cases) not constant.
 
 **chronos** provides a system of classes and methods to represent and
 work with such time-series. Dates are represented as *rata die*
 (Reingold and Dershowitz 2018), i.e. the number of days since 01-01-01
-(Gregorian), with negative values for earlier dates (if you want to work
-with vectors of years, you may be interested in the
-[**era**](https://github.com/joeroe/era) package). This system allows to
+(Gregorian), with negative values for earlier dates. This allows to
 represent dates independently of any calendar: it makes calculations and
 comparisons easier.
 
@@ -80,6 +77,12 @@ plot(X) # Default calendar
 ```
 
 ![](man/figures/README-time-series-1.png)<!-- -->
+
+## Related Works
+
+- [**era**](https://github.com/joeroe/era): provides a consistent
+  representation of year-based time scales as a numeric vector with an
+  associated era.
 
 ## Contributing
 
