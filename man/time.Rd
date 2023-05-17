@@ -5,28 +5,19 @@
 \alias{time}
 \alias{time-method}
 \alias{frequency-method}
-\alias{years}
-\alias{years-method}
 \alias{time,TimeSeries-method}
 \alias{frequency,TimeSeries-method}
-\alias{years,TimeSeries-method}
 \title{Sampling Times of Time Series}
 \usage{
-years(x, ...)
-
-\S4method{time}{TimeSeries}(x)
+\S4method{time}{TimeSeries}(x, calendar = NULL)
 
 \S4method{frequency}{TimeSeries}(x)
-
-\S4method{years}{TimeSeries}(x, calendar = getOption("chronos.calendar"))
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
-\item{...}{Currently not used.}
-
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
-(see \code{\link[=calendar]{calendar()}}).}
+(see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
 A \code{\link{numeric}} vector.
@@ -36,7 +27,6 @@ Get the sampling times:
 \itemize{
 \item \code{time()} creates the vector of times at which a time series was sampled
 (expressed in \emph{rata die}).
-\item \code{years()}  creates the vector of years at which a time series was sampled.
 \item \code{frequency()} returns the mean number of samples per unit time.
 }
 }
@@ -49,19 +39,16 @@ Get the sampling times:
 
 start(X)
 end(X)
-span(X)
 time(X)
-years(X) # Default calendar (Gregorian Common Era)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 (Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
 
-start(Y)
-end(Y)
-span(Y)
-time(Y)
-years(Y) # Default calendar (Gregorian Common Era)
+start(Y, calendar = CE())
+end(Y, calendar = CE())
+span(Y, calendar = CE())
+time(Y, calendar = CE())
 }
 \seealso{
 Other time series tools: 

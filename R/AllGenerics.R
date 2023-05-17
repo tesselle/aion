@@ -433,9 +433,10 @@ setGeneric(
 
 #' Terminal Times of Time Series
 #'
-#' Get the times (expressed in *rata die*) the first and last observations were
-#' taken.
+#' Get the times the first and last observations were taken.
 #' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @return
 #'  A [`numeric`] vector.
 #' @example inst/examples/ex-series.R
@@ -452,12 +453,10 @@ NULL
 #' Get the sampling times:
 #' * `time()` creates the vector of times at which a time series was sampled
 #'    (expressed in *rata die*).
-#' * `years()`  creates the vector of years at which a time series was sampled.
 #' * `frequency()` returns the mean number of samples per unit time.
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]).
-#' @param ... Currently not used.
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @return
 #'  A [`numeric`] vector.
 #' @example inst/examples/ex-series.R
@@ -469,17 +468,13 @@ NULL
 #' @rdname time
 NULL
 
-#' @rdname time
-#' @aliases years-method
-setGeneric(
-  name = "years",
-  def = function(x, ...) standardGeneric("years")
-)
-
 #' Duration of Time Series
 #'
-#' Get the duration expressed in *rata die*.
+#' Get the duration.
 #' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector.
 #' @example inst/examples/ex-series.R
@@ -489,7 +484,7 @@ setGeneric(
 #' @aliases span-method
 setGeneric(
   name = "span",
-  def = function(x) standardGeneric("span")
+  def = function(x, ...) standardGeneric("span")
 )
 
 #' Time Series Windows

@@ -8,7 +8,11 @@ NULL
 setMethod(
   f = "start",
   signature = "TimeSeries",
-  definition = function(x) min(x@time)
+  definition = function(x, calendar = NULL) {
+    z <- min(x@time)
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
 )
 
 #' @export
@@ -17,7 +21,11 @@ setMethod(
 setMethod(
   f = "end",
   signature = "TimeSeries",
-  definition = function(x) max(x@time)
+  definition = function(x, calendar = NULL) {
+    z <- max(x@time)
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
 )
 
 #' @export
@@ -26,7 +34,11 @@ setMethod(
 setMethod(
   f = "time",
   signature = "TimeSeries",
-  definition = function(x) methods::as(x@time, "numeric", strict=TRUE)
+  definition = function(x, calendar = NULL) {
+    z <- x@time
+    if (is.null(calendar)) return(methods::as(z, "numeric", strict=TRUE))
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
 )
 
 #' @export
@@ -39,21 +51,14 @@ setMethod(
 )
 
 #' @export
-#' @rdname time
-#' @aliases years,TimeSeries-method
-setMethod(
-  f = "years",
-  signature = "TimeSeries",
-  definition = function(x, calendar = getOption("chronos.calendar")) {
-    as_year(x@time, calendar = calendar, decimal = TRUE)
-  }
-)
-
-#' @export
 #' @rdname span
 #' @aliases span,TimeSeries-method
 setMethod(
   f = "span",
   signature = "TimeSeries",
-  definition = function(x) max(x@time) - min(x@time)
+  definition = function(x, calendar = NULL) {
+    z <- max(x@time) - min(x@time)
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
 )

@@ -9,19 +9,21 @@
 \alias{end,TimeSeries-method}
 \title{Terminal Times of Time Series}
 \usage{
-\S4method{start}{TimeSeries}(x)
+\S4method{start}{TimeSeries}(x, calendar = NULL)
 
-\S4method{end}{TimeSeries}(x)
+\S4method{end}{TimeSeries}(x, calendar = NULL)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
+
+\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
+(see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
 A \code{\link{numeric}} vector.
 }
 \description{
-Get the times (expressed in \emph{rata die}) the first and last observations were
-taken.
+Get the times the first and last observations were taken.
 }
 \examples{
 ## Create time-series of 20 observations
@@ -32,19 +34,16 @@ taken.
 
 start(X)
 end(X)
-span(X)
 time(X)
-years(X) # Default calendar (Gregorian Common Era)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 (Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
 
-start(Y)
-end(Y)
-span(Y)
-time(Y)
-years(Y) # Default calendar (Gregorian Common Era)
+start(Y, calendar = CE())
+end(Y, calendar = CE())
+span(Y, calendar = CE())
+time(Y, calendar = CE())
 }
 \seealso{
 Other time series tools: 
