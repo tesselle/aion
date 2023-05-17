@@ -46,7 +46,7 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) {
     dirout <- if (calendar_direction(object) > 0) "forwards" else "backwards"
-    era <- sprintf("%s (%s):", calendar_name(object), calendar_label(object))
+    era <- sprintf("%s (%s): ", calendar_name(object), calendar_label(object))
     if (length(era) == 0) era <- ""
 
     msg <- "%s%s years counted %s from %g."

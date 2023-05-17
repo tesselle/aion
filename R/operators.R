@@ -33,7 +33,6 @@ setMethod(
       `+` = return(.RataDie(z)),
       `-` = return(.RataDie(z)),
       `*` = return(.RataDie(z)),
-      `/` = return(.RataDie(z)),
       return(z)
     )
   }

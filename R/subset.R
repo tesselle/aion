@@ -25,7 +25,7 @@ setMethod(
   function(x, i, j, ..., drop = FALSE) {
     z <- methods::callNextMethod() # Method for `matrix`
 
-    if (is.null(dim(z))) return(z)
+    if (is.null(dim(z)) || isTRUE(drop)) return(z)
 
     time <- x@time
     if (!missing(i)) {

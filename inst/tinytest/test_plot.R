@@ -1,0 +1,51 @@
+## Force tests to be executed if in dev release
+## (which we define as having a sub-release)
+NOT_CRAN <- length(unclass(packageVersion("chronos"))[[1]]) == 4
+
+if (NOT_CRAN) {
+  using("tinysnapshot")
+  options(tinysnapshot_device = "svglite")
+  options(tinysnapshot_height = 7) # inches
+  options(tinysnapshot_width = 7)
+  options(tinysnapshot_tol = 200) # pixels
+  options(tinysnapshot_os = "Linux")
+
+  # Plot facets ================================================================
+  X <- series(
+    object = matrix(sin(1:300), nrow = 50, ncol = 6),
+    time = seq(2000, by = 2, length.out = 50),
+    calendar = calendar("BP")
+  )
+
+  plot_facet_CE <- function() plot(X)
+  expect_snapshot_plot(plot_facet_CE, "plot_facet_CE")
+
+  plot_facet_BP <- function() plot(X, calendar = calendar("BP"))
+  expect_snapshot_plot(plot_facet_BP, "plot_facet_BP")
+
+  plot_facet_b2k <- function() plot(X, calendar = calendar("b2k"))
+  expect_snapshot_plot(plot_facet_b2k, "plot_facet_b2k")
+
+  # Axis =======================================================================
+  ## Vector of years expressed in ka BP
+  x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
+
+  axis_default <- function() {
+    plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
+    chronos:::axis_year(side = 1, x = x)
+  }
+  expect_snapshot_plot(axis_default, "axis_default")
+
+  axis_ka <- function() {
+    plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
+    chronos:::axis_year(side = 1, x = x, format = "ka")
+  }
+  expect_snapshot_plot(axis_ka, "axis_ka")
+
+  axis_Ma <- function() {
+    plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
+    chronos:::axis_year(side = 1, x = x, format = "Ma")
+  }
+  expect_snapshot_plot(axis_Ma, "axis_Ma")
+
+}

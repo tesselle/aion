@@ -35,7 +35,7 @@ setMethod(
 setMethod(
   f = "frequency",
   signature = "TimeSeries",
-  definition = function(x) mean(abs(1 / diff(time(x@time))))
+  definition = function(x) mean(abs(1 / diff(time(x))))
 )
 
 #' @export

@@ -25,7 +25,11 @@ setMethod(
     ## Rescale to years (if not already)
     year <- year * scale
 
-    methods::callGeneric(year = year, month = 01, day = 01, calendar = calendar)
+    rd <- fixed(year, 01, 01, calendar = calendar)
+
+    is_leap <- is_gregorian_leap_year(year)
+    rd[is_leap] <- ceiling(rd[is_leap]) # WHY ???
+    rd
   }
 )
 
@@ -52,10 +56,6 @@ setMethod(
       (367 * month - 362) %/% 12 +       # Days in prior months this year assuming 30-day Feb
       correction +                       # Correct for 28- or 29-day Feb
       day                                # Days so far this month.
-
-    ## Needed if a decimal leap year is provided
-    ## TODO: investigate this (???)
-    rd <- ceiling(rd)
 
     .RataDie(rd)
   }
@@ -117,9 +117,9 @@ setMethod(
     day <- object - fixed(year, month, 01, calendar = calendar) + 1
 
     data.frame(
-      year = unclass(year),
-      month = unclass(month),
-      day = unclass(day)
+      year = as.numeric(year),
+      month = as.numeric(month),
+      day = as.numeric(day)
     )
   }
 )
