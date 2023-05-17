@@ -46,6 +46,7 @@ Collate:
     'calendar.R'
     'chronos-package.R'
     'convert.R'
+    'data.R'
     'mutators.R'
     'operators.R'
     'plot.R'
