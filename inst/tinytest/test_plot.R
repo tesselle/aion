@@ -1,8 +1,4 @@
-## Force tests to be executed if in dev release
-## (which we define as having a sub-release)
-NOT_CRAN <- length(unclass(packageVersion("chronos"))[[1]]) == 4
-
-if (NOT_CRAN) {
+if (at_home()) {
   using("tinysnapshot")
   options(tinysnapshot_device = "svglite")
   options(tinysnapshot_height = 7) # inches

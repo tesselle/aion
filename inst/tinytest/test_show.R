@@ -11,11 +11,7 @@ expect_identical(format(x, format = "Ga"), c("-2.805e-05 Ga CE", "-3.305e-05 Ga 
 expect_identical(format(x, format = TRUE), c("-28.05 ka CE", "-33.05 ka CE", "-38.05 ka CE"))
 
 # Show =========================================================================
-## Force tests to be executed if in dev release
-## (which we define as having a sub-release)
-NOT_CRAN <- length(unclass(packageVersion("chronos"))[[1]]) == 4
-
-if (NOT_CRAN) {
+if (at_home()) {
   using("tinysnapshot")
 
   # TimeScale
