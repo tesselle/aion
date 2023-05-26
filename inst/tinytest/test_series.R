@@ -31,3 +31,13 @@ Y <- series(x[i, ], time = rd[i]) # Reorder
 expect_identical(X, Y)
 
 expect_warning(series(x, time = rd, calendar = CE()), "expressed in rata die")
+
+# Coerce to data.frame =========================================================
+X <- series(
+  object = matrix(rnorm(300), nrow = 50, ncol = 6),
+  time = seq(from = 2000, by = -2, length.out = 50),
+  calendar = calendar("BP")
+)
+df <- as.data.frame(X, calendar = b2k())
+expect_equal(ncol(df), ncol(X) + 1)
+expect_equal(df$time, time(X, calendar = b2k()))

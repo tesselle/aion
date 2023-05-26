@@ -469,8 +469,7 @@ NULL
 #' Sampling Times of Time Series
 #'
 #' Get the sampling times:
-#' * `time()` creates the vector of times at which a time series was sampled
-#'    (expressed in *rata die*).
+#' * `time()` creates the vector of times at which a time series was sampled.
 #' * `frequency()` returns the mean number of samples per unit time.
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
@@ -597,6 +596,23 @@ setGeneric(
   name = "axis_year",
   def = function(x, ...) standardGeneric("axis_year")
 )
+
+#' Coerce to a Data Frame
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Further parameters to be passed to [data.frame()].
+#' @return
+#'  A [`data.frame`] with an extra `time` column giving the (decimal) years at
+#'  which the time series was sampled.
+#' @example inst/examples/ex-series.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @name data.frame
+#' @rdname data.frame
+NULL
 
 # Heat Map
 #

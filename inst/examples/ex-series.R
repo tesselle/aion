@@ -16,3 +16,7 @@ start(Y, calendar = CE())
 end(Y, calendar = CE())
 span(Y, calendar = CE())
 time(Y, calendar = CE())
+
+## Coerce to data frame
+df <- as.data.frame(Y, calendar = b2k())
+head(df)

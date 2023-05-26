@@ -36,6 +36,7 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 \seealso{
 Other time series tools: 
 \code{\link{axis_year}()},
+\code{\link{data.frame}},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{span}()},

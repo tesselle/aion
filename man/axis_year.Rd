@@ -79,6 +79,7 @@ plot(X, type = "single", calendar = BP(), col = rainbow(6)) # BP
 }
 \seealso{
 Other time series tools: 
+\code{\link{data.frame}},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{span}()},
