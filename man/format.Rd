@@ -17,10 +17,10 @@
 )
 }
 \arguments{
-\item{x}{description}
+\item{x}{A \code{\linkS4class{RataDie}} object.}
 
-\item{format}{A \code{\link{character}} string specifying the format.
-It must be one of "\code{a}", "\code{ka}", "\code{Ma}" or "\code{Ga}".
+\item{format}{A \code{\link{character}} string specifying the prefix.
+It should be one of "\code{a}", "\code{ka}", "\code{Ma}" or "\code{Ga}".
 If \code{TRUE}, a good guess for an appropriate format is made.}
 
 \item{label}{A \code{\link{logical}} scalar: should the label of the calendar be
@@ -61,7 +61,8 @@ Other fixed date tools:
 \code{\link{as_year}()},
 \code{\link{fixed_gregorian}},
 \code{\link{fixed_julian}},
-\code{\link{fixed}()}
+\code{\link{fixed}()},
+\code{\link{pretty}()}
 }
 \author{
 N. Frerebeau

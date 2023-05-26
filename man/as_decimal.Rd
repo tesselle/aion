@@ -54,7 +54,8 @@ Other fixed date tools:
 \code{\link{fixed_gregorian}},
 \code{\link{fixed_julian}},
 \code{\link{fixed}()},
-\code{\link{format}()}
+\code{\link{format}()},
+\code{\link{pretty}()}
 }
 \author{
 N. Frerebeau

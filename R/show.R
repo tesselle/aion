@@ -1,5 +1,17 @@
 # SHOW
 
+# Pretty =======================================================================
+#' @export
+#' @rdname pretty
+setMethod(
+  f = "pretty",
+  signature = "RataDie",
+  definition = function(x, calendar = getOption("chronos.calendar"), ...) {
+    x <- as_year(x, calendar = calendar)
+    fixed(year = pretty(x, ...), calendar = calendar)
+  }
+)
+
 # Format =======================================================================
 #' @export
 #' @rdname format

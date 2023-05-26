@@ -47,6 +47,7 @@ time(Y, calendar = CE())
 }
 \seealso{
 Other time series tools: 
+\code{\link{axis_year}()},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{start}()},

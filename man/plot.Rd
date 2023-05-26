@@ -14,7 +14,7 @@
   sub = NULL,
   ann = graphics::par("ann"),
   axes = TRUE,
-  frame.plot = TRUE,
+  frame.plot = axes,
   panel.first = NULL,
   panel.last = NULL,
   ...
@@ -77,6 +77,7 @@ plot(X, calendar = b2k()) # b2k
 \code{\link[graphics:plot.default]{graphics::plot()}}
 
 Other time series tools: 
+\code{\link{axis_year}()},
 \code{\link{series}()},
 \code{\link{span}()},
 \code{\link{start}()},

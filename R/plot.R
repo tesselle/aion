@@ -9,7 +9,7 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
                             panel = graphics::lines,
                             main = NULL, sub = NULL,
                             ann = graphics::par("ann"), axes = TRUE,
-                            frame.plot = TRUE,
+                            frame.plot = axes,
                             panel.first = NULL, panel.last = NULL, ...) {
 
   panel <- match.fun(panel)
@@ -65,7 +65,7 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
     do_x <- i %% n_row == 0 || i == n
     if (axes) {
       if (do_x) {
-        axis_year(side = 1, x = years, format = TRUE, calendar = calendar,
+        axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
                   xpd = NA, cex.axis = cex.axis,
                   col.axis = col.axis, font.axis = font.axis)
       }
@@ -106,33 +106,53 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
 # Axis =========================================================================
-pretty_year <- function(x, calendar = getOption("chronos.calendar"), ...) {
-  x <- as_year(x, calendar = calendar)
-  fixed(year = pretty(x, ...), calendar = calendar)
-}
-axis_year <- function(side, x, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                      labels = TRUE, calendar = getOption("chronos.calendar"),
-                      ...) {
+#' @export
+#' @rdname axis_year
+#' @aliases axis_year,RataDie-method
+setMethod(
+  f = "axis_year",
+  signature = c(x = "RataDie"),
+  definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
+                        labels = TRUE, calendar = getOption("chronos.calendar"),
+                        ...) {
 
-  range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
-  range[1L] <- ceiling(range[1L])
-  range[2L] <- floor(range[2L])
+    range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
+    range[1L] <- ceiling(range[1L])
+    range[2L] <- floor(range[2L])
 
-  has_at <- !missing(at) && !is.null(at)
-  if (has_at && is.numeric(at)) {
-    x <- fixed(year = at, calendar = calendar)
+    has_at <- !missing(at) && !is.null(at)
+    if (has_at && is.numeric(at)) {
+      x <- fixed(year = at, calendar = calendar)
+    }
+
+    x <- pretty(x, calendar = calendar)
+    keep <- x >= range[1L] & x <= range[2L]
+    x <- x[keep]
+
+    if (!is.logical(labels))
+      labels <- labels[keep]
+    else if (isTRUE(labels))
+      labels <- format(x, format = format, label = FALSE, calendar = calendar)
+    else if (isFALSE(labels))
+      labels <- rep("", length(x))
+
+    graphics::axis(side, at = x, labels = labels, ...)
+
+    invisible(x)
   }
+)
 
-  x <- pretty_year(x, calendar = calendar)
-  keep <- x >= range[1L] & x <= range[2L]
-  x <- x[keep]
-
-  if (!is.logical(labels))
-    labels <- labels[keep]
-  else if (isTRUE(labels))
-    labels <- format(x, format = format, label = FALSE, calendar = calendar)
-  else if (isFALSE(labels))
-    labels <- rep("", length(x))
-
-  graphics::axis(side, at = x, labels = labels, ...)
-}
+#' @export
+#' @rdname axis_year
+#' @aliases axis_year,TimeSeries-method
+setMethod(
+  f = "axis_year",
+  signature = c(x = "TimeSeries"),
+  definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
+                        labels = TRUE, calendar = getOption("chronos.calendar"),
+                        ...) {
+    x <- x@time
+    methods::callGeneric(x, side = side, at = at, format = format,
+                         labels = labels, calendar = calendar, ...)
+  }
+)

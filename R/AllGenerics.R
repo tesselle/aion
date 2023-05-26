@@ -365,9 +365,9 @@ setGeneric(
 
 #' Date Conversion to Character
 #'
-#' @param x description
-#' @param format A [`character`] string specifying the format.
-#'  It must be one of "`a`", "`ka`", "`Ma`" or "`Ga`".
+#' @param x A [`RataDie-class`] object.
+#' @param format A [`character`] string specifying the prefix.
+#'  It should be one of "`a`", "`ka`", "`Ma`" or "`Ga`".
 #'  If `TRUE`, a good guess for an appropriate format is made.
 #' @param label A [`logical`] scalar: should the label of the calendar be
 #'  displayed?
@@ -381,6 +381,24 @@ setGeneric(
 #' @family fixed date tools
 #' @name format
 #' @rdname format
+NULL
+
+#' Pretty Breakpoints
+#'
+#' @param x A [`RataDie-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param ... Further parameters to be passed to [base::pretty()].
+#' @details
+#'  `pretty()` computes a vector of increasing numbers which are "pretty" in
+#'  decimal notation of `calendar`. Pretty breakpoints are then converted to
+#'  *rata die*.
+#' @return
+#'  A [`RataDie-class`] object.
+#' @docType methods
+#' @family fixed date tools
+#' @name pretty
+#' @rdname pretty
 NULL
 
 #' Arithmetic Operators
@@ -540,6 +558,36 @@ NULL
 #' @name plot
 #' @rdname plot
 NULL
+
+#' Time Series Plotting Functions
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param side An [`integer`] specifying which side of the plot the axis is to
+#'  be drawn on. The axis is placed as follows: 1=below, 2=left, 3=above and
+#'  4=right.
+#' @param at A [`numeric`] vector giving the points at which tick-marks are to
+#'  be drawn. If `NULL`, tickmark locations are computed.
+#' @param format A [`character`] string specifying the prefix.
+#'  It should be one of "`a`", "`ka`", "`Ma`" or "`Ga`".
+#'  If `TRUE`, a good guess for an appropriate format is made.
+#' @param labels A [`logical`] scalar specifying whether annotations are to be
+#'  made at the tickmarks, or a vector of [`character`] strings to be placed at
+#'  the tickpoints.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param ... Further parameters to be passed to [graphics::axis()].
+#'  (e.g. [graphical parameters][graphics::par]).
+#' @return
+#'  `axis_year()` is called it for its side-effects. Invisibly returns `x`.
+#' @example inst/examples/ex-plot.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @aliases axis_year-method
+setGeneric(
+  name = "axis_year",
+  def = function(x, ...) standardGeneric("axis_year")
+)
 
 # Heat Map
 #
