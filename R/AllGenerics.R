@@ -254,6 +254,26 @@ setGeneric(
   valueClass = "RataDie"
 )
 
+#' Coerce to *Rata Die*
+#'
+#' @param from A [`numeric`] vector of *rata die*.
+#' @return
+#'  A [`RataDie-class`] object.
+#' @example inst/examples/ex-fixed.R
+#' @references
+#'  Reingold, E. M. and Dershowitz, N. (2018). *Calendrical Calculations:
+#'  The Ultimate Edition*. Cambridge University Press.
+#'  \doi{10.1017/9781107415058}.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family fixed date tools
+#' @aliases as_fixed-method
+setGeneric(
+  name = "as_fixed",
+  def = function(from) standardGeneric("as_fixed"),
+  valueClass = "RataDie"
+)
+
 #' Year Conversion from *Rata Die*
 #'
 #' @param object A [`RataDie-class`] object (see [fixed()]).
