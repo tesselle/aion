@@ -5,24 +5,101 @@ NULL
 # Plot =========================================================================
 #' @export
 #' @method plot TimeSeries
-plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
-                            panel = graphics::lines,
+plot.TimeSeries <- function(x, type = c("multiple", "single"),
+                            calendar = getOption("chronos.calendar"),
+                            panel = graphics::lines, flip = FALSE, ncol = NULL,
                             main = NULL, sub = NULL,
                             ann = graphics::par("ann"), axes = TRUE,
                             frame.plot = axes,
                             panel.first = NULL, panel.last = NULL, ...) {
+  ## Validation
+  type <- match.arg(type, several.ok = FALSE)
+  n_series <- NCOL(x)
+  seq_series <- seq_len(n_series)
+
+  ## Graphical parameters
+  col <- list(...)$col %||% c("grey")
+  lty <- list(...)$lty %||% graphics::par("lty")
+  lwd <- list(...)$lwd %||% graphics::par("lwd")
+  if (length(col) != n_series) col <- rep(col, length.out = n_series)
+  if (length(lty) != n_series) lty <- rep(lty, length.out = n_series)
+  if (length(lwd) != n_series) lwd <- rep(lwd, length.out = n_series)
+
+  if (type == "multiple" && n_series > 1) {
+    .plot_stacked(x, calendar = calendar, panel = panel, y_flip = flip,
+                  n_col = ncol, main = main, sub = sub, ann = ann, axes = axes,
+                  frame.plot = frame.plot, panel.first = panel.first,
+                  panel.last = panel.last, ...)
+  } else {
+    ## Open new window
+    grDevices::dev.hold()
+    on.exit(grDevices::dev.flush(), add = TRUE)
+    graphics::plot.new()
+
+    ## Set plotting coordinates
+    years <- x@time
+    xlim <- range(years)
+    ylim <- range(x)
+    graphics::plot.window(xlim = xlim, ylim = ylim)
+
+    ## Evaluate pre-plot expressions
+    panel.first
+
+    ## Plot
+    for (i in seq_series) {
+      graphics::lines(x = years, y = x[, i], col = col[i],
+                      lty = lty[i], lwd = lwd[i])
+    }
+
+    ## Evaluate post-plot and pre-axis expressions
+    panel.last
+
+    ## Construct Axis
+    if (axes) {
+      axis_year(x = years, side = 1, format = TRUE, calendar = calendar)
+      graphics::axis(side = 2)
+    }
+
+    ## Plot frame
+    if (frame.plot) {
+      graphics::box()
+    }
+
+    ## Add annotation
+    if (ann) {
+      xlab <- format(calendar)
+      ylab <- NULL
+      graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...)
+    }
+  }
+
+  invisible(x)
+}
+
+#' @export
+#' @rdname plot
+#' @aliases plot,TimeSeries,missing-method
+setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
+
+
+.plot_stacked <- function(x, calendar = getOption("chronos.calendar"),
+                          panel = graphics::lines, y_flip = TRUE, n_col = NULL,
+                          main = NULL, sub = NULL,
+                          ann = graphics::par("ann"), axes = TRUE,
+                          frame.plot = axes,
+                          panel.first = NULL, panel.last = NULL, ...) {
 
   panel <- match.fun(panel)
   n <- NCOL(x)
   n_seq <- seq_len(n)
-  n_col <- if (n > 4) 2 else 1
+  if (is.null(n_col)) n_col <- if (n > 4) 2 else 1
   n_row <- ceiling(n / n_col)
   ylabs <- colnames(x) %||% paste("Series", n_seq, sep = " ")
 
   ## Graphical parameters
   ## Save and restore
   old_par <- graphics::par(
-    mar = c(0, 5.1, 0, 2.1),
+    mar = c(0, 5.1, 0, if (y_flip) 5.1 else 2.1),
     oma = c(6, 0, 5, 0),
     mfcol = c(n_row, n_col)
   )
@@ -63,13 +140,14 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
 
     ## Construct Axis
     do_x <- i %% n_row == 0 || i == n
+    y_side <- if (i %% 2 || !y_flip) 2 else 4
     if (axes) {
       if (do_x) {
         axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
                   xpd = NA, cex.axis = cex.axis,
                   col.axis = col.axis, font.axis = font.axis)
       }
-      graphics::axis(side = 2, xpd = NA, cex.axis = cex.axis,
+      graphics::axis(side = y_side, xpd = NA, cex.axis = cex.axis,
                      col.axis = col.axis, font.axis = font.axis)
     }
 
@@ -85,7 +163,7 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }
-      graphics::mtext(ylabs[[i]], side = 2, line = 3, cex = cex.lab,
+      graphics::mtext(ylabs[[i]], side = y_side, line = 3, cex = cex.lab,
                       col = col.lab, font = font.lab)
     }
   }
@@ -96,14 +174,7 @@ plot.TimeSeries <- function(x, calendar = getOption("chronos.calendar"),
     graphics::mtext(main, side = 3, line = 3, cex = cex.main, font = font.main,
                     col = col.main)
   }
-
-  invisible(x)
 }
-
-#' @export
-#' @rdname plot
-#' @aliases plot,TimeSeries,missing-method
-setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
 # Axis =========================================================================
 #' @export

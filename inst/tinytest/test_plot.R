@@ -6,7 +6,7 @@ if (at_home()) {
   options(tinysnapshot_tol = 200) # pixels
   options(tinysnapshot_os = "Linux")
 
-  # Plot facets ================================================================
+  # Plot multiple ==============================================================
   X <- series(
     object = matrix(sin(1:300), nrow = 50, ncol = 6),
     time = seq(2000, by = 2, length.out = 50),
@@ -16,11 +16,15 @@ if (at_home()) {
   plot_facet_CE <- function() plot(X)
   expect_snapshot_plot(plot_facet_CE, "plot_facet_CE")
 
-  plot_facet_BP <- function() plot(X, calendar = calendar("BP"))
+  plot_facet_BP <- function() plot(X, calendar = BP(), flip = TRUE)
   expect_snapshot_plot(plot_facet_BP, "plot_facet_BP")
 
-  plot_facet_b2k <- function() plot(X, calendar = calendar("b2k"))
+  plot_facet_b2k <- function() plot(X, calendar = b2k(), ncol = 1)
   expect_snapshot_plot(plot_facet_b2k, "plot_facet_b2k")
+
+  # Plot single ================================================================
+  plot_single <- function() plot(X, type = "single", calendar = BP())
+  expect_snapshot_plot(plot_single, "plot_single")
 
   # Axis =======================================================================
   ## Vector of years expressed in ka BP

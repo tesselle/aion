@@ -528,11 +528,20 @@ NULL
 #' Plot Time Series
 #'
 #' @param x A [`TimeSeries-class`] object.
+#' @param type A [`character`] string specifying whether the series should be
+#'  plotted separately (with a common time axis) or on a single plot?
+#'  It must be one of "`multiple`" or "`single`". Any unambiguous substring can
+#'  be given.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
 #' @param panel A [`function`] in the form `function(x, y, ...)` which gives the
 #'  action to be carried out in each panel of the display. The default is
 #'  [graphics::lines()].
+#' @param flip A [`logical`] scalar: should the y-axis (ticks and numbering) be
+#'  flipped from side 2 (left) to 4 (right) from series to series when `type` is
+#'  "`multiple`"?
+#' @param ncol An [`integer`] specifying the number of columns to use when
+#'  `type` is "`multiple`". Defaults to 1 for up to 4 series, otherwise to 2.
 #' @param main A [`character`] string giving a main title for the plot.
 #' @param sub A [`character`] string giving a subtitle for the plot.
 #' @param ann A [`logical`] scalar: should the default annotation (title and x,

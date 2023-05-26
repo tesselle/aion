@@ -8,8 +8,11 @@
 \usage{
 \S4method{plot}{TimeSeries,missing}(
   x,
+  type = c("multiple", "single"),
   calendar = getOption("chronos.calendar"),
   panel = graphics::lines,
+  flip = FALSE,
+  ncol = NULL,
   main = NULL,
   sub = NULL,
   ann = graphics::par("ann"),
@@ -23,12 +26,24 @@
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
+\item{type}{A \code{\link{character}} string specifying whether the series should be
+plotted separately (with a common time axis) or on a single plot?
+It must be one of "\code{multiple}" or "\code{single}". Any unambiguous substring can
+be given.}
+
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
 
 \item{panel}{A \code{\link{function}} in the form \verb{function(x, y, ...)} which gives the
 action to be carried out in each panel of the display. The default is
 \code{\link[graphics:lines]{graphics::lines()}}.}
+
+\item{flip}{A \code{\link{logical}} scalar: should the y-axis (ticks and numbering) be
+flipped from side 2 (left) to 4 (right) from series to series when \code{type} is
+"\code{multiple}"?}
+
+\item{ncol}{An \code{\link{integer}} specifying the number of columns to use when
+\code{type} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
 
 \item{main}{A \code{\link{character}} string giving a main title for the plot.}
 
@@ -68,10 +83,13 @@ X <- series(
   calendar = BP()
 )
 
-## Plot
+## Multiple
 plot(X) # Default calendar
-plot(X, calendar = BP()) # BP
-plot(X, calendar = b2k()) # b2k
+plot(X, calendar = BP(), flip = TRUE) # BP
+plot(X, calendar = b2k(), ncol = 1) # b2k
+
+## Single
+plot(X, type = "single", calendar = BP(), col = rainbow(6)) # BP
 }
 \seealso{
 \code{\link[graphics:plot.default]{graphics::plot()}}
