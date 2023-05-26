@@ -34,6 +34,12 @@ Base R ships with a lot of functionality useful for time series, in particular i
 
 Once a time series is created with **chronos**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("chronos")`).
 
+**chronos** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages.
+
+```{r citation, echo=FALSE, comment=''}
+utils::citation("chronos")
+```
+
 ## Installation
 
 You can install the released version of **chronos** from [CRAN](https://CRAN.R-project.org) with:

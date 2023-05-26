@@ -1,5 +1,5 @@
 ---
-title: "Manual"
+title: "Introduction to chronos"
 author: "N. Frerebeau"
 date: "`r Sys.Date()`"
 output:
@@ -9,7 +9,7 @@ output:
     toc: true
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Manual}
+  %\VignetteIndexEntry{Introduction to chronos}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -76,22 +76,31 @@ The *rata die* vector provides the internal time representation of the **chronos
 
 # Time series
 
-A Time Series is a sequence of observation time and value pairs with strictly increasing observation times.
+A Time Series is a sequence of observation time and value pairs with strictly increasing observation times. It can be created from a numeric vector or matrix:
 
 ```{r time-series, fig.width=7, fig.height=5}
 ## Set seed for reproductibility
 set.seed(12345)
 
-## Create 6 time-series of 50 observations
-## Sampled every two years starting from 2000 BP
-X <- series(
-  object = matrix(rnorm(300), nrow = 50, ncol = 6),
-  time = seq(from = 2000, by = -2, length.out = 50),
-  calendar = calendar("BP")
-)
+## 6 x 50 observations...
+obs <- matrix(rnorm(300), nrow = 50, ncol = 6)
+
+## ...sampled every two years starting from 2000 BP
+spl <- seq(from = 2000, by = -2, length.out = 50)
+
+## Create time series
+(X <- series(object = obs, time = spl, calendar = BP()))
 
 ## Plot
 plot(X) # Default calendar
+```
+
+Time series terminal and sampling times can be retrieved and expressed according to different calendars:
+
+```{r}
+start(X, calendar = CE())
+end(X, calendar = CE())
+time(X, calendar = BP())
 ```
 
 Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).

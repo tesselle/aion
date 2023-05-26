@@ -37,6 +37,30 @@ Once a time series is created with **chronos**, any calendar can be used
 for printing or plotting data (defaults to Gregorian Common Era; see
 `vignette("chronos")`).
 
+**chronos** does not provide tools for temporal modeling. Instead, it
+offers a simple API that can be used by other specialized packages.
+
+    To cite chronos in publications use:
+
+      Frerebeau N (2023). _chronos: Archaeological Time Series_. Université
+      Bordeaux Montaigne, Pessac, France. R package version 0.0.0.9000,
+      <https://packages.tesselle.org/chronos/>.
+
+    Une entrée BibTeX pour les utilisateurs LaTeX est
+
+      @Manual{,
+        author = {Nicolas Frerebeau},
+        title = {{chronos: Archaeological Time Series}},
+        year = {2023},
+        organization = {Université Bordeaux Montaigne},
+        address = {Pessac, France},
+        note = {R package version 0.0.0.9000},
+        url = {https://packages.tesselle.org/chronos/},
+      }
+
+    This package is a part of the tesselle project
+    <https://www.tesselle.org>.
+
 ## Installation
 
 You can install the released version of **chronos** from
