@@ -19,9 +19,6 @@ reference:
 - title: Mutators
   contents:
   - has_concept("mutators")
-- title: Allen's Interval Algebra
-  contents:
-  - has_concept("Allen's intervals")
 - title: Datasets
   contents:
   - has_concept("datasets")

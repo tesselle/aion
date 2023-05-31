@@ -25,7 +25,6 @@ Imports:
     grDevices,
     methods
 Suggests: 
-    folio (>= 1.3.0),
     knitr,
     rmarkdown,
     rsvg,
@@ -41,7 +40,6 @@ RoxygenNote: 7.2.3
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
-    'allen.R'
     'calendar-gregorian.R'
     'calendar-julian.R'
     'calendar.R'
