@@ -26,6 +26,10 @@ if (at_home()) {
   plot_single <- function() plot(X, type = "single", calendar = BP())
   expect_snapshot_plot(plot_single, "plot_single")
 
+  # Image ======================================================================
+  plot_image <- function() image(X, calendar = BP())
+  expect_snapshot_plot(plot_image, "plot_image")
+
   # Axis =======================================================================
   ## Vector of years expressed in ka BP
   x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
@@ -47,5 +51,4 @@ if (at_home()) {
     chronos:::axis_year(side = 1, x = x, format = "Ma")
   }
   expect_snapshot_plot(axis_Ma, "axis_Ma")
-
 }

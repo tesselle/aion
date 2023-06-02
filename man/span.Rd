@@ -53,6 +53,7 @@ head(df)
 Other time series tools: 
 \code{\link{axis_year}()},
 \code{\link{data.frame}},
+\code{\link{image}()},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{start}()},

@@ -176,6 +176,47 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   }
 }
 
+# Image ========================================================================
+#' @export
+#' @method image TimeSeries
+image.TimeSeries <- function(x, calendar = getOption("chronos.calendar"), ...) {
+  ## Get data
+  n <- seq_len(NCOL(x))
+  samples <- colnames(x) %||% paste0("S1", n)
+  years <- x@time
+
+  ## Graphical parameters
+  cex.axis <- list(...)$cex.axis %||% graphics::par("cex.axis")
+  col.axis <- list(...)$col.axis %||% graphics::par("col.axis")
+  font.axis <- list(...)$font.axis %||% graphics::par("font.axis")
+
+  ## Save and restore
+  mar <- graphics::par("mar")
+  mar[2] <- inch2line(samples, cex = cex.axis) + 1
+  old_par <- graphics::par(mar = mar)
+  on.exit(graphics::par(old_par))
+
+  ## Plot
+  graphics::image(x = years, y = n, z = x@.Data,
+                  xlab = format(calendar), ylab = "",
+                  xaxt = "n", yaxt = "n", ...)
+
+  ## Construct Axis
+  axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
+            xpd = NA, cex.axis = cex.axis,
+            col.axis = col.axis, font.axis = font.axis)
+  graphics::axis(side = 2, at = n, labels = samples,
+                 xpd = NA, cex.axis = cex.axis, las = 1,
+                 col.axis = col.axis, font.axis = font.axis)
+
+  invisible(x)
+}
+
+#' @export
+#' @rdname image
+#' @aliases image,TimeSeries-method
+setMethod("image", c(x = "TimeSeries"), image.TimeSeries)
+
 # Axis =========================================================================
 #' @export
 #' @rdname axis_year

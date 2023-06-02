@@ -75,11 +75,15 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
-plot(X, type = "single", calendar = BP(), col = rainbow(6)) # BP
+plot(X, type = "single", col = rainbow(6)) # CE
+
+## Image
+image(X)
 }
 \seealso{
 Other time series tools: 
 \code{\link{data.frame}},
+\code{\link{image}()},
 \code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{span}()},
