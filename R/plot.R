@@ -6,7 +6,7 @@ NULL
 #' @export
 #' @method plot TimeSeries
 plot.TimeSeries <- function(x, type = c("multiple", "single"),
-                            calendar = getOption("chronos.calendar"),
+                            calendar = getOption("aion.calendar"),
                             panel = graphics::lines, flip = FALSE, ncol = NULL,
                             main = NULL, sub = NULL,
                             ann = graphics::par("ann"), axes = TRUE,
@@ -82,7 +82,7 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
 
-.plot_stacked <- function(x, calendar = getOption("chronos.calendar"),
+.plot_stacked <- function(x, calendar = getOption("aion.calendar"),
                           panel = graphics::lines, y_flip = TRUE, n_col = NULL,
                           main = NULL, sub = NULL,
                           ann = graphics::par("ann"), axes = TRUE,
@@ -179,7 +179,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 # Image ========================================================================
 #' @export
 #' @method image TimeSeries
-image.TimeSeries <- function(x, calendar = getOption("chronos.calendar"), ...) {
+image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
   ## Get data
   n <- seq_len(NCOL(x))
   samples <- colnames(x) %||% paste0("S1", n)
@@ -225,7 +225,7 @@ setMethod(
   f = "axis_year",
   signature = c(x = "RataDie"),
   definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("chronos.calendar"),
+                        labels = TRUE, calendar = getOption("aion.calendar"),
                         ...) {
 
     range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
@@ -261,7 +261,7 @@ setMethod(
   f = "axis_year",
   signature = c(x = "TimeSeries"),
   definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("chronos.calendar"),
+                        labels = TRUE, calendar = getOption("aion.calendar"),
                         ...) {
     x <- x@time
     methods::callGeneric(x, side = side, at = at, format = format,

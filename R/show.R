@@ -6,7 +6,7 @@
 setMethod(
   f = "pretty",
   signature = "RataDie",
-  definition = function(x, calendar = getOption("chronos.calendar"), ...) {
+  definition = function(x, calendar = getOption("aion.calendar"), ...) {
     x <- as_year(x, calendar = calendar)
     fixed(year = pretty(x, ...), calendar = calendar)
   }
@@ -32,7 +32,7 @@ setMethod(
   f = "format",
   signature = "RataDie",
   definition = function(x, format = c("a", "ka", "Ma", "Ga"), label = TRUE,
-                        calendar = getOption("chronos.calendar")) {
+                        calendar = getOption("aion.calendar")) {
     y <- as_year(x, calendar = calendar)
 
     ## Scale

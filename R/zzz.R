@@ -1,11 +1,11 @@
 .onLoad <- function(libname, pkgname) {
   op <- options()
-  op.chronos <- list(
-    chronos.precision = 1,
-    chronos.calendar = calendar("CE")
+  op.aion <- list(
+    aion.precision = 1,
+    aion.calendar = calendar("CE")
   )
-  toset <- !(names(op.chronos) %in% names(op))
-  if(any(toset)) options(op.chronos[toset])
+  toset <- !(names(op.aion) %in% names(op))
+  if(any(toset)) options(op.aion[toset])
 
   invisible()
 }

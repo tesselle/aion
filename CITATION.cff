@@ -4,10 +4,10 @@
 # -----------------------------------------------------------
  
 cff-version: 1.2.0
-message: 'To cite package "chronos" in publications use:'
+message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
-title: 'chronos: Archaeological Time Series'
+title: 'aion: Archaeological Time Series'
 version: 1.0.0
 abstract: A toolkit for archaeological time series. This package provides a system
   of classes and methods to represent and work with archaeological time series. Dates
@@ -27,7 +27,7 @@ authors:
   affiliation: Universität Bern
 preferred-citation:
   type: manual
-  title: 'chronos: Archaeological Time Series'
+  title: 'aion: Archaeological Time Series'
   authors:
   - family-names: Frerebeau
     given-names: Nicolas
@@ -43,11 +43,11 @@ preferred-citation:
   location:
     name: Pessac, France
   notes: R package version 1.0.0
-  url: https://packages.tesselle.org/chronos/
+  url: https://packages.tesselle.org/aion/
   institution:
     name: Université Bordeaux Montaigne
-repository-code: https://github.com/tesselle/chronos
-url: https://packages.tesselle.org/chronos/
+repository-code: https://github.com/tesselle/aion
+url: https://packages.tesselle.org/aion/
 contact:
 - family-names: Frerebeau
   given-names: Nicolas

@@ -14,14 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# chronos <img width=120px src="man/figures/logo.png" align="right" />
+# aion <img width=120px src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/tesselle/chronos/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/chronos/actions)
-[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/chronos)
-[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/chronos/badge/main)](https://www.codefactor.io/repository/github/tesselle/chronos/overview/main)
+[![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
+[![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
+[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
 
-[![r-universe](https://tesselle.r-universe.dev/badges/chronos)](https://tesselle.r-universe.dev){.pkgdown-devel}
+[![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev){.pkgdown-devel}
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 <!-- badges: end -->
@@ -30,36 +30,36 @@ knitr::opts_chunk$set(
 
 Base R ships with a lot of functionality useful for time series, in particular in the **stats** package. However, these features are not adapted to most archaeological time series. These are indeed defined for a given calendar era, they can involve dates very far in the past and the sampling of the observation time is (in most cases) not constant. 
 
-**chronos** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates. This allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
+**aion** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates. This allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
 
-Once a time series is created with **chronos**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("chronos")`).
+Once a time series is created with **aion**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("aion")`).
 
-**chronos** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages.
+**aion** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages.
 
 ```{r citation, echo=FALSE, comment=''}
-utils::citation("chronos")
+utils::citation("aion")
 ```
 
 ## Installation
 
-You can install the released version of **chronos** from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of **aion** from [CRAN](https://CRAN.R-project.org) with:
 
 ```{r cran-installation, eval=FALSE}
-install.packages("chronos")
+install.packages("aion")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ```{r gh-installation, eval=FALSE}
 # install.packages("remotes")
-remotes::install_github("tesselle/chronos")
+remotes::install_github("tesselle/aion")
 ```
 
 ## Usage
 
 ```{r packages-load}
 ## Load package
-library(chronos)
+library(aion)
 ```
 
 ```{r time-series, fig.width=7, fig.height=5}
@@ -84,6 +84,6 @@ plot(X) # Default calendar
 
 ## Contributing
 
-Please note that the **chronos** project is released with a [Contributor Code of Conduct](https://www.tesselle.org/conduct.html). By contributing to this project, you agree to abide by its terms.
+Please note that the **aion** project is released with a [Contributor Code of Conduct](https://www.tesselle.org/conduct.html). By contributing to this project, you agree to abide by its terms.
 
 ## References

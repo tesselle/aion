@@ -1,13 +1,13 @@
 bibentry(
   bibtype      = "Manual",
-  header       = "To cite chronos in publications use:",
+  header       = "To cite aion in publications use:",
   footer       = "This package is a part of the tesselle project <https://www.tesselle.org>.",
   author       = c(person("Nicolas", "Frerebeau", role = "aut"),
                    person("Joe", "Roe", role = "aut")),
-  title        = "{chronos: Archaeological Time Series}",
+  title        = "{aion: Archaeological Time Series}",
   year         = "2023",
   organization = "Université Bordeaux Montaigne",
   address      = "Pessac, France",
   note         = sprintf("R package version %s", meta$Version),
-  url          = "https://packages.tesselle.org/chronos/"
+  url          = "https://packages.tesselle.org/aion/"
 )

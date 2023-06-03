@@ -9,7 +9,7 @@
 \S4method{plot}{TimeSeries,missing}(
   x,
   type = c("multiple", "single"),
-  calendar = getOption("chronos.calendar"),
+  calendar = getOption("aion.calendar"),
   panel = graphics::lines,
   flip = FALSE,
   ncol = NULL,

@@ -13,7 +13,7 @@
   x,
   format = c("a", "ka", "Ma", "Ga"),
   label = TRUE,
-  calendar = getOption("chronos.calendar")
+  calendar = getOption("aion.calendar")
 )
 }
 \arguments{

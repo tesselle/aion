@@ -1,5 +1,5 @@
 ---
-title: "Introduction to chronos"
+title: "Introduction to aion"
 author: "N. Frerebeau"
 date: "`r Sys.Date()`"
 output:
@@ -9,7 +9,7 @@ output:
     toc: true
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Introduction to chronos}
+  %\VignetteIndexEntry{Introduction to aion}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,16 +22,16 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(chronos)
+library(aion)
 ```
 
 Base R ships with a lot of functionality useful for time series, in particular in the **stats** package. However, these features are not adapted to most archaeological time series. These are indeed defined for a given calendar era, they can involve dates very far in the past and the sampling of the observation time is (in most cases) not constant. 
 
-**chronos** provides a system of classes and methods to represent and work with such time-series.
+**aion** provides a system of classes and methods to represent and work with such time-series.
 
 # Vectors of dates
 
-In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **chronos** uses a different approach: it allows to create date vectors represented as *rata die* [@reingold2018], i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
+In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **aion** uses a different approach: it allows to create date vectors represented as *rata die* [@reingold2018], i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
 
 This makes it possible to get rid of a specific calendar and to make calculations easier. It is then possible to convert a vector of *rata die* into dates or (decimal) years of any calendar^[Only the Gregorian calendar (and its different eras) and the Julian calendar are currently supported. Others will be gradually implemented.].
 
@@ -72,7 +72,7 @@ format(rd) # Default calendar (Gregorian Common Era)
 format(rd, format = "ka", calendar = BP())
 ```
 
-The *rata die* vector provides the internal time representation of the **chronos** time-series (if you want to work with numeric vectors that represent year-based time scales, you may be interested in the [**era**](https://github.com/joeroe/era) package).
+The *rata die* vector provides the internal time representation of the **aion** time-series (if you want to work with numeric vectors that represent year-based time scales, you may be interested in the [**era**](https://github.com/joeroe/era) package).
 
 # Time series
 
@@ -103,6 +103,6 @@ end(X, calendar = CE())
 time(X, calendar = BP())
 ```
 
-Note that **chronos** uses the astronomical notation for Gregorian years (there *is* a year 0).
+Note that **aion** uses the astronomical notation for Gregorian years (there *is* a year 0).
 
 # References

@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# chronos <img width=120px src="man/figures/logo.png" align="right" />
+# aion <img width=120px src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/tesselle/chronos/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/chronos/actions)
-[![codecov](https://codecov.io/gh/tesselle/chronos/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/chronos)
-[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/chronos/badge/main)](https://www.codefactor.io/repository/github/tesselle/chronos/overview/main)
+[![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
+[![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
+[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
-src="https://tesselle.r-universe.dev/badges/chronos"
+src="https://tesselle.r-universe.dev/badges/aion"
 alt="r-universe" /></a>
 
 [![Project Status: WIP – Initial development is in progress, but there
@@ -26,36 +26,36 @@ adapted to most archaeological time series. These are indeed defined for
 a given calendar era, they can involve dates very far in the past and
 the sampling of the observation time is (in most cases) not constant.
 
-**chronos** provides a system of classes and methods to represent and
-work with such time-series. Dates are represented as *rata die*
-(Reingold and Dershowitz 2018), i.e. the number of days since 01-01-01
-(Gregorian), with negative values for earlier dates. This allows to
-represent dates independently of any calendar: it makes calculations and
-comparisons easier.
+**aion** provides a system of classes and methods to represent and work
+with such time-series. Dates are represented as *rata die* (Reingold and
+Dershowitz 2018), i.e. the number of days since 01-01-01 (Gregorian),
+with negative values for earlier dates. This allows to represent dates
+independently of any calendar: it makes calculations and comparisons
+easier.
 
-Once a time series is created with **chronos**, any calendar can be used
+Once a time series is created with **aion**, any calendar can be used
 for printing or plotting data (defaults to Gregorian Common Era; see
-`vignette("chronos")`).
+`vignette("aion")`).
 
-**chronos** does not provide tools for temporal modeling. Instead, it
+**aion** does not provide tools for temporal modeling. Instead, it
 offers a simple API that can be used by other specialized packages.
 
-    To cite chronos in publications use:
+    To cite aion in publications use:
 
-      Frerebeau N (2023). _chronos: Archaeological Time Series_. Université
-      Bordeaux Montaigne, Pessac, France. R package version 0.0.0.9000,
-      <https://packages.tesselle.org/chronos/>.
+      Frerebeau N, Roe J (2023). _aion: Archaeological Time Series_.
+      Université Bordeaux Montaigne, Pessac, France. R package version
+      1.0.0, <https://packages.tesselle.org/aion/>.
 
     Une entrée BibTeX pour les utilisateurs LaTeX est
 
       @Manual{,
-        author = {Nicolas Frerebeau},
-        title = {{chronos: Archaeological Time Series}},
+        author = {Nicolas Frerebeau and Joe Roe},
+        title = {{aion: Archaeological Time Series}},
         year = {2023},
         organization = {Université Bordeaux Montaigne},
         address = {Pessac, France},
-        note = {R package version 0.0.0.9000},
-        url = {https://packages.tesselle.org/chronos/},
+        note = {R package version 1.0.0},
+        url = {https://packages.tesselle.org/aion/},
       }
 
     This package is a part of the tesselle project
@@ -63,25 +63,25 @@ offers a simple API that can be used by other specialized packages.
 
 ## Installation
 
-You can install the released version of **chronos** from
+You can install the released version of **aion** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("chronos")
+install.packages("aion")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("tesselle/chronos")
+remotes::install_github("tesselle/aion")
 ```
 
 ## Usage
 
 ``` r
 ## Load package
-library(chronos)
+library(aion)
 ```
 
 ``` r
@@ -110,7 +110,7 @@ plot(X) # Default calendar
 
 ## Contributing
 
-Please note that the **chronos** project is released with a [Contributor
+Please note that the **aion** project is released with a [Contributor
 Code of Conduct](https://www.tesselle.org/conduct.html). By contributing
 to this project, you agree to abide by its terms.
 

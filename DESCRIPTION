@@ -1,4 +1,4 @@
-Package: chronos
+Package: aion
 Title: Archaeological Time Series
 Version: 1.0.0
 Authors@R: c(
@@ -17,9 +17,9 @@ Description: A toolkit for archaeological time series. This package
     Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a
     simple API that can be used by other specialized packages.
 License: GPL (>= 3)
-URL: https://packages.tesselle.org/chronos/,
-    https://github.com/tesselle/chronos
-BugReports: https://github.com/tesselle/chronos/issues
+URL: https://packages.tesselle.org/aion/,
+    https://github.com/tesselle/aion
+BugReports: https://github.com/tesselle/aion/issues
 Depends: 
     R (>= 3.3)
 Imports: 
@@ -43,11 +43,11 @@ RoxygenNote: 7.2.3
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
+    'aion-internal.R'
+    'aion-package.R'
     'calendar-gregorian.R'
     'calendar-julian.R'
     'calendar.R'
-    'chronos-internal.R'
-    'chronos-package.R'
     'coerce.R'
     'convert.R'
     'data.R'

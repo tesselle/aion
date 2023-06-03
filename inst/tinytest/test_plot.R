@@ -36,19 +36,19 @@ if (at_home()) {
 
   axis_default <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    chronos:::axis_year(side = 1, x = x)
+    aion:::axis_year(side = 1, x = x)
   }
   expect_snapshot_plot(axis_default, "axis_default")
 
   axis_ka <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    chronos:::axis_year(side = 1, x = x, format = "ka")
+    aion:::axis_year(side = 1, x = x, format = "ka")
   }
   expect_snapshot_plot(axis_ka, "axis_ka")
 
   axis_Ma <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    chronos:::axis_year(side = 1, x = x, format = "Ma")
+    aion:::axis_year(side = 1, x = x, format = "Ma")
   }
   expect_snapshot_plot(axis_Ma, "axis_Ma")
 }

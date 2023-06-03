@@ -1,3 +1,3 @@
-# chronos 1.0.0
+# aion 1.0.0
 
 * First release.

@@ -16,7 +16,7 @@ axis_year(x, ...)
   at = NULL,
   format = c("a", "ka", "Ma", "Ga"),
   labels = TRUE,
-  calendar = getOption("chronos.calendar"),
+  calendar = getOption("aion.calendar"),
   ...
 )
 
@@ -26,7 +26,7 @@ axis_year(x, ...)
   at = NULL,
   format = c("a", "ka", "Ma", "Ga"),
   labels = TRUE,
-  calendar = getOption("chronos.calendar"),
+  calendar = getOption("aion.calendar"),
   ...
 )
 }
