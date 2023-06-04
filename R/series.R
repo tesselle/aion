@@ -13,6 +13,9 @@ setMethod(
   f = "series",
   signature = c(object = "matrix", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
+    ## Validation
+    arkhe::assert_length(time, NROW(object))
+
     ## Set the names of the series
     if (!is.null(names))
       colnames(object) <- names

@@ -11,7 +11,7 @@ expect_identical(end(x, calendar = CE()), -1000)
 y <- fixed(seq(1000, 1090, by = 2), calendar = BCE())
 x <- series(rnorm(46), time = y)
 
-expect_identical(time(x), sort(y@.Data))
+expect_identical(as.numeric(x@time), sort(y@.Data))
 expect_identical(time(x, calendar = CE()), sort(as_year(y, calendar = CE())))
 expect_equal(round(frequency(x), 6), 0.001369)
 

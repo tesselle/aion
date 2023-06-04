@@ -37,7 +37,7 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
     graphics::plot.new()
 
     ## Set plotting coordinates
-    years <- x@time
+    years <- time(x, calendar = NULL)
     xlim <- range(years)
     ylim <- range(x)
     graphics::plot.window(xlim = xlim, ylim = ylim)
@@ -115,7 +115,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   font.main <- list(...)$font.main %||% graphics::par("font.main")
   col.main <- list(...)$col.main %||% graphics::par("col.main")
 
-  years <- x@time
+  years <- time(x, calendar = NULL)
   xlim <- range(years)
   for (i in n_seq) {
     xi <- x[, i, drop = TRUE]
@@ -183,7 +183,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
   ## Get data
   n <- seq_len(NCOL(x))
   samples <- colnames(x) %||% paste0("S1", n)
-  years <- x@time
+  years <- time(x, calendar = NULL)
 
   ## Graphical parameters
   cex.axis <- list(...)$cex.axis %||% graphics::par("cex.axis")
@@ -192,7 +192,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
 
   ## Save and restore
   mar <- graphics::par("mar")
-  mar[2] <- inch2line(samples, cex = cex.axis) + 1
+  mar[2] <- inch2line(samples, cex = cex.axis) + 0.5
   old_par <- graphics::par(mar = mar)
   on.exit(graphics::par(old_par))
 
@@ -201,7 +201,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
                   xlab = format(calendar), ylab = "",
                   xaxt = "n", yaxt = "n", ...)
 
-  ## Construct Axis
+  ## Construct axes
   axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
             xpd = NA, cex.axis = cex.axis,
             col.axis = col.axis, font.axis = font.axis)
@@ -263,7 +263,7 @@ setMethod(
   definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
                         labels = TRUE, calendar = getOption("aion.calendar"),
                         ...) {
-    x <- x@time
+    x <- time(x, calendar = NULL)
     methods::callGeneric(x, side = side, at = at, format = format,
                          labels = labels, calendar = calendar, ...)
   }

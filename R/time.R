@@ -36,7 +36,7 @@ setMethod(
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
     z <- x@time
-    if (is.null(calendar)) return(methods::as(z, "numeric", strict = TRUE))
+    if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }
 )
