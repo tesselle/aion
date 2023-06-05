@@ -85,11 +85,11 @@ setMethod(
   f = "show",
   signature = "TimeSeries",
   definition = function(object) {
-    n <- ncol(object)
+    n <- dim(object)
     start <- format(start(object))
     end <- format(end(object))
-    msg <- "%d time series observed between %s and %s r.d."
-    msg <- sprintf(msg, n, start, end)
+    msg <- "%d x %d x %d time series observed between %s and %s r.d."
+    msg <- sprintf(msg, n[1L], n[2L], n[3L], start, end)
     cat(msg, sep = "\n")
   }
 )

@@ -6,13 +6,16 @@
 \alias{image,TimeSeries-method}
 \title{Heat Map}
 \usage{
-\S4method{image}{TimeSeries}(x, calendar = getOption("aion.calendar"), ...)
+\S4method{image}{TimeSeries}(x, calendar = getOption("aion.calendar"), k = 1, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
+
+\item{k}{An \code{\link{integer}} specifying the slice of \code{x} along the third
+dimension to be plotted.}
 
 \item{...}{Further parameters to be passed to \code{\link[graphics:image]{graphics::image()}}.}
 }
@@ -28,7 +31,7 @@ Heat Map
 ## Sampled every two years starting from 2000 BP
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
-  time = seq(2000, by = 2, length.out = 50),
+  time = seq(2000, by = -2, length.out = 50),
   calendar = BP()
 )
 
@@ -38,10 +41,23 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
-plot(X, type = "single") # CE
+plot(X, facet = "single") # CE
 
 ## Image
 image(X)
+
+## Create 6 x 3 time-series of 50 observations
+## Sampled every two years starting from 2000 BP
+X <- series(
+  object = array(rnorm(900), dim = c(50, 6, 3)),
+  time = seq(2000, by = 2, length.out = 50),
+  calendar = BP()
+)
+plot(X, calendar = BP(), flip = TRUE) # BP
+plot(X, calendar = b2k(), ncol = 1) # b2k
+
+## Graphical parameters
+plot(X, type = "b", pch = 16, col = c("#004488", "#DDAA33", "#BB5566"))
 }
 \seealso{
 \code{\link[graphics:image]{graphics::image()}}

@@ -2,30 +2,27 @@
 #' @include AllGenerics.R
 NULL
 
-# TODO: si calendar est founir avec time -> mauvais dispatch!
-# Vérifier la classe de time
-
-# matrix =======================================================================
+# array ========================================================================
 #' @export
 #' @rdname series
-#' @aliases series,matrix,RataDie,missing-method
+#' @aliases series,array,RataDie,missing-method
 setMethod(
   f = "series",
-  signature = c(object = "matrix", time = "RataDie", calendar = "missing"),
+  signature = c(object = "array", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
     ## Validation
     arkhe::assert_length(time, NROW(object))
 
     ## Set the names of the series
     if (!is.null(names))
-      colnames(object) <- names
-    if (is.null(colnames(object)))
-      colnames(object) <- paste0("S", seq_len(ncol(object)))
+      dimnames(object)[[2L]] <- names
+    if (is.null(dimnames(object)[[2L]]))
+      dimnames(object)[[2L]] <- paste0("S", seq_len(dim(object)[2L]))
 
     ## Chronological order
     i <- order(time, decreasing = FALSE)
     time <- time[i]
-    object <- object[i, , drop = FALSE]
+    object <- object[i, , , drop = FALSE]
 
     .TimeSeries(object, time = time)
   }
@@ -33,10 +30,10 @@ setMethod(
 
 #' @export
 #' @rdname series
-#' @aliases series,matrix,numeric,TimeScale-method
+#' @aliases series,array,numeric,TimeScale-method
 setMethod(
   f = "series",
-  signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
+  signature = c(object = "array", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     if (methods::is(time, "RataDie")) {
       msg <- "%s is already expressed in rata die: %s is ignored."
@@ -48,6 +45,34 @@ setMethod(
   }
 )
 
+# matrix =======================================================================
+#' @export
+#' @rdname series
+#' @aliases series,matrix,numeric,TimeScale-method
+setMethod(
+  f = "series",
+  signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
+  definition = function(object, time, calendar, scale = 1, names = NULL) {
+    x <- array(object, dim = c(dim(object), 1))
+    colnames(x) <- colnames(object)
+    methods::callGeneric(object = x, time = time, calendar = calendar,
+                         scale = scale, names = names)
+  }
+)
+
+#' @export
+#' @rdname series
+#' @aliases series,matrix,RataDie,missing-method
+setMethod(
+  f = "series",
+  signature = c(object = "matrix", time = "RataDie", calendar = "missing"),
+  definition = function(object, time, names = NULL) {
+    x <- array(object, dim = c(dim(object), 1))
+    colnames(x) <- colnames(object)
+    methods::callGeneric(object = x, time = time, names = names)
+  }
+)
+
 # numeric ======================================================================
 #' @export
 #' @rdname series
@@ -56,7 +81,7 @@ setMethod(
   f = "series",
   signature = c(object = "numeric", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
-    object <- matrix(data = object, ncol = 1)
+    object <- array(data = object, dim = c(length(object), 1, 1))
     methods::callGeneric(object = object, time = time, calendar = calendar,
                          scale = scale, names = names)
   }
@@ -69,7 +94,7 @@ setMethod(
   f = "series",
   signature = c(object = "numeric", time = "RataDie", calendar = "missing"),
   definition = function(object, time, names = NULL) {
-    object <- matrix(data = object, ncol = 1)
+    object <- array(data = object, dim = c(length(object), 1, 1))
     methods::callGeneric(object = object, time = time, names = names)
   }
 )

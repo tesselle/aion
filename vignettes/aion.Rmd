@@ -107,7 +107,9 @@ The *rata die* vector provides the internal time representation of the **aion** 
 
 # Time series
 
-A Time Series is a sequence of observation time and value pairs with strictly increasing observation times. It can be created from a numeric vector or matrix:
+A time series is a sequence of observation time and value pairs with strictly increasing observation times. 
+
+A time series object is an $n \times m \times p$ array, with $n$ being the number of observations, $m$ being the number of series and with the $p$ columns of the third dimension containing extra variables for each series. It can be created from a numeric `vector`, `matrix` or `array`.
 
 ```{r}
 ## Set seed for reproductibility
@@ -151,7 +153,7 @@ plot(X) # Default calendar
 
 ```{r plot-single, fig.width=7, fig.height=3.5}
 ## Extract the first series
-Y <- X[, 1]
+Y <- X[, 1, ]
 
 ## Plot a single series
 plot(

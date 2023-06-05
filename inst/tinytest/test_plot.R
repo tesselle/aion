@@ -23,7 +23,7 @@ if (at_home()) {
   expect_snapshot_plot(plot_facet_b2k, "plot_facet_b2k")
 
   # Plot single ================================================================
-  plot_single <- function() plot(X, type = "single", calendar = BP(),
+  plot_single <- function() plot(X, facet = "single", calendar = BP(),
                                  col = rainbow(6))
   expect_snapshot_plot(plot_single, "plot_single")
 

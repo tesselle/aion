@@ -226,10 +226,15 @@ NULL
 #' TimeSeries
 #'
 #' An S4 class to represent time series.
-#' @slot .Data A `numeric` [`matrix`] giving the observed time-series values.
+#' @slot .Data A `numeric` [`array`] giving the observed time-series values.
 #' @slot time A [`RataDie-class`] object.
+#' @details
+#'  A time series object is an\eqn{n x m x p}{n \times m \times p} array, with
+#'  \eqn{n} being the number of observations, \eqn{m} being the number of series
+#'  and with the \eqn{p} columns of the third dimension containing extra
+#'  variables for each series.
 #' @note
-#'  This class inherits from [`matrix`].
+#'  This class inherits from [`array`].
 #' @author N. Frerebeau
 #' @family classes
 #' @family time classes
@@ -242,5 +247,5 @@ NULL
   slots = c(
     time = "RataDie"
   ),
-  contains = "matrix"
+  contains = "array"
 )

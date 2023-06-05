@@ -17,8 +17,13 @@
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{data.frame}} with an extra \code{time} column giving the (decimal) years at
-which the time series was sampled.
+A long \code{\link{data.frame}} with the following columns:
+\describe{
+\item{\code{time}}{The (decimal) years at which the time series was sampled.}
+\item{\code{series}}{The name of the time series.}
+\item{\code{variable}}{The name of the variables.}
+\item{\code{value}}{The observed value.}
+}
 }
 \description{
 Coerce to a Data Frame
@@ -30,21 +35,24 @@ Coerce to a Data Frame
 ## Sampled every years starting from 1029 BCE
 (X <- series(rnorm(30), time = 1029:1000, calendar = BCE()))
 
+## Terminal and sampling times (returns rata die)
 start(X)
 end(X)
 time(X)
+span(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 (Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
 
+## Terminal and sampling times (returns Gregorian Common Era years)
 start(Y, calendar = CE())
 end(Y, calendar = CE())
-span(Y, calendar = CE())
 time(Y, calendar = CE())
+span(Y, calendar = CE())
 
 ## Coerce to data frame
-df <- as.data.frame(Y, calendar = b2k())
+df <- as.data.frame(Y, calendar = BP())
 head(df)
 }
 \seealso{

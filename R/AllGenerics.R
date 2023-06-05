@@ -26,12 +26,12 @@ NULL
 #' Operators acting on objects to extract or replace parts.
 #' @param x An object from which to extract element(s) or in which to replace
 #'  element(s).
-#' @param i,j Indices specifying elements to extract or replace.
+#' @param i,j,k Indices specifying elements to extract or replace.
 #' @param drop A [`logical`] scalar: should the result be coerced to
 #'  the lowest possible dimension? This only works for extracting elements,
 #'  not for the replacement.
 # @param value A possible value for the element(s) of `x`.
-#' @param ... Currently not used.
+# @param ... Currently not used.
 #' @return
 #'  A subsetted object.
 # @example inst/examples/ex-subset.R
@@ -441,9 +441,9 @@ NULL
 # Time Series ==================================================================
 #' Create Time Series
 #'
-#' @param object A [`numeric`] `vector` or `matrix` of the observed time-series
-#'  values. A [`data.frame`] will be coerced to a `numeric` `matrix` via
-#'  [data.matrix()].
+#' @param object A [`numeric`] `vector`, `matrix` or `array` of the observed
+#'  time-series values.
+#'  A [`data.frame`] will be coerced to a `numeric` `matrix` via [data.matrix()].
 #' @param time A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
 #'  object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object specifying the calendar of
@@ -551,8 +551,13 @@ NULL
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @param ... Further parameters to be passed to [data.frame()].
 #' @return
-#'  A [`data.frame`] with an extra `time` column giving the (decimal) years at
-#'  which the time series was sampled.
+#'  A long [`data.frame`] with the following columns:
+#'  \describe{
+#'   \item{`time`}{The (decimal) years at which the time series was sampled.}
+#'   \item{`series`}{The name of the time series.}
+#'   \item{`variable`}{The name of the variables.}
+#'   \item{`value`}{The observed value.}
+#'  }
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -564,15 +569,15 @@ NULL
 #' Plot Time Series
 #'
 #' @param x A [`TimeSeries-class`] object.
-#' @param type A [`character`] string specifying whether the series should be
+#' @param facet A [`character`] string specifying whether the series should be
 #'  plotted separately (with a common time axis) or on a single plot?
 #'  It must be one of "`multiple`" or "`single`". Any unambiguous substring can
 #'  be given.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
-#' @param panel A [`function`] in the form `function(x, y, ...)` which gives the
-#'  action to be carried out in each panel of the display. The default is
-#'  [graphics::lines()].
+#' @param panel A [`function`] in the form `function(x, y, ...)`
+#'  which gives the action to be carried out in each panel of the display.
+#'  The default is [graphics::lines()].
 #' @param flip A [`logical`] scalar: should the y-axis (ticks and numbering) be
 #'  flipped from side 2 (left) to 4 (right) from series to series when `type` is
 #'  "`multiple`"?
@@ -609,6 +614,8 @@ NULL
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @param k An [`integer`] specifying the slice of `x` along the third
+#'  dimension to be plotted.
 #' @param ... Further parameters to be passed to [graphics::image()].
 #' @return
 #'  `image()` is called it for its side-effects: it results in a graphic

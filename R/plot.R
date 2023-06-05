@@ -5,7 +5,7 @@ NULL
 # Plot =========================================================================
 #' @export
 #' @method plot TimeSeries
-plot.TimeSeries <- function(x, type = c("multiple", "single"),
+plot.TimeSeries <- function(x, facet = c("multiple", "single"),
                             calendar = getOption("aion.calendar"),
                             panel = graphics::lines, flip = FALSE, ncol = NULL,
                             main = NULL, sub = NULL,
@@ -13,20 +13,20 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
                             frame.plot = axes,
                             panel.first = NULL, panel.last = NULL, ...) {
   ## Validation
-  type <- match.arg(type, several.ok = FALSE)
+  facet <- match.arg(facet, several.ok = FALSE)
 
   ## Save calendar for further use (e.g. year_axis() or year_grid())
   options(aion.last_calendar = calendar)
 
-  n_series <- NCOL(x)
+  n <- dim(x)[2L]
 
-  if (type == "multiple" && n_series > 1) {
+  if (facet == "multiple" && n > 1) {
     .plot_multiple(x, calendar = calendar, panel = panel, y_flip = flip,
                    n_col = ncol, main = main, sub = sub, ann = ann, axes = axes,
                    frame.plot = frame.plot, panel.first = panel.first,
                    panel.last = panel.last, ...)
   } else {
-    .plot_single(x, calendar = calendar, main = main, sub = sub,
+    .plot_single(x, calendar = calendar, panel = panel, main = main, sub = sub,
                  ann = ann, axes = axes,
                  frame.plot = frame.plot, panel.first = panel.first,
                  panel.last = panel.last, ...)
@@ -40,20 +40,22 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
 #' @aliases plot,TimeSeries,missing-method
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
-.plot_single <- function(x, calendar, main = NULL, sub = NULL,
+.plot_single <- function(x, calendar, panel = graphics::lines,
+                         main = NULL, sub = NULL,
                          ann = graphics::par("ann"), axes = TRUE,
                          frame.plot = axes,
                          panel.first = NULL, panel.last = NULL, ...) {
-  n_series <- NCOL(x)
-  seq_series <- seq_len(n_series)
+  n_series <- dim(x)[2L]
+  n_dim <- dim(x)[3L]
 
   ## Graphical parameters
-  col <- list(...)$col %||% graphics::par("col")
-  lty <- list(...)$lty %||% graphics::par("lty")
-  lwd <- list(...)$lwd %||% graphics::par("lwd")
-  if (length(col) != n_series) col <- rep(col, length.out = n_series)
-  if (length(lty) != n_series) lty <- rep(lty, length.out = n_series)
-  if (length(lwd) != n_series) lwd <- rep(lwd, length.out = n_series)
+  dots <- list(...)
+  col <- make_par(dots, "col", n = n_series)
+  bg <- make_par(dots, "bg", n = n_series)
+  pch <- make_par(dots, "pch", n = n_series)
+  cex <- make_par(dots, "cex", n = n_series)
+  lwd <- make_par(dots, "lwd", n = n_series)
+  lty <- make_par(dots, "lty", n = n_series)
 
   ## Open new window
   grDevices::dev.hold()
@@ -70,9 +72,13 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   panel.first
 
   ## Plot
-  for (i in seq_series) {
-    graphics::lines(x = years, y = x[, i], col = col[i],
-                    lty = lty[i], lwd = lwd[i])
+  for (j in seq_len(n_series)) {
+    for (k in seq_len(n_dim)) {
+      params <- c("col", "bg", "pch", "cex", "lwd", "lty")
+      dots[params] <- list(col[j], bg[j], pch[j], cex[j], lwd[j], lty[j])
+      args <- c(list(x = years, y = x[, j, k, drop = TRUE]), dots)
+      do.call(panel, args)
+    }
   }
 
   ## Evaluate post-plot and pre-axis expressions
@@ -105,8 +111,10 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
                            panel.first = NULL, panel.last = NULL, ...) {
 
   panel <- match.fun(panel)
-  n <- NCOL(x)
+  n <- dim(x)[2L]
+  m <- dim(x)[3L]
   n_seq <- seq_len(n)
+  m_seq <- seq_len(m)
   if (is.null(n_col)) n_col <- if (n > 4) 2 else 1
   n_row <- ceiling(n / n_col)
   ylabs <- colnames(x) %||% paste("Series", n_seq, sep = " ")
@@ -120,20 +128,28 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   )
   on.exit(graphics::par(old_par))
 
-  cex.lab <- list(...)$cex.lab %||% graphics::par("cex.lab")
-  col.lab <- list(...)$col.lab %||% graphics::par("col.lab")
-  font.lab <- list(...)$font.lab %||% graphics::par("font.lab")
-  cex.axis <- list(...)$cex.axis %||% graphics::par("cex.axis")
-  col.axis <- list(...)$col.axis %||% graphics::par("col.axis")
-  font.axis <- list(...)$font.axis %||% graphics::par("font.axis")
-  cex.main <- list(...)$cex.main %||% graphics::par("cex.main")
-  font.main <- list(...)$font.main %||% graphics::par("font.main")
-  col.main <- list(...)$col.main %||% graphics::par("col.main")
+  dots <- list(...)
+  col <- make_par(dots, "col", n = m)
+  pch <- make_par(dots, "pch", n = m)
+  bg <- make_par(dots, "bg", n = m)
+  cex <- make_par(dots, "cex", n = m)
+  lwd <- make_par(dots, "lwd", n = m)
+  lty <- make_par(dots, "lty", n = m)
+
+  cex.lab <- dots$cex.lab %||% graphics::par("cex.lab")
+  col.lab <- dots$col.lab %||% graphics::par("col.lab")
+  font.lab <- dots$font.lab %||% graphics::par("font.lab")
+  cex.axis <- dots$cex.axis %||% graphics::par("cex.axis")
+  col.axis <- dots$col.axis %||% graphics::par("col.axis")
+  font.axis <- dots$font.axis %||% graphics::par("font.axis")
+  cex.main <- dots$cex.main %||% graphics::par("cex.main")
+  font.main <- dots$font.main %||% graphics::par("font.main")
+  col.main <- dots$col.main %||% graphics::par("col.main")
 
   years <- time(x, calendar = NULL)
   xlim <- range(years)
-  for (i in n_seq) {
-    xi <- x[, i, drop = TRUE]
+  for (j in n_seq) {
+    xi <- x[, j, , drop = FALSE]
 
     ## Open new window
     grDevices::dev.hold()
@@ -148,14 +164,19 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     panel.first
 
     ## Plot
-    panel(x = years, y = xi, ...)
+    for (k in m_seq) {
+      params <- c("col", "bg", "pch", "cex", "lwd", "lty")
+      dots[params] <- list(col[k], bg[k], pch[k], cex[k], lwd[k], lty[k])
+      args <- c(list(x = years, y = x[, j, k, drop = TRUE]), dots)
+      do.call(panel, args)
+    }
 
     ## Evaluate post-plot and pre-axis expressions
     panel.last
 
     ## Construct Axis
-    do_x <- i %% n_row == 0 || i == n
-    y_side <- if (i %% 2 || !y_flip) 2 else 4
+    do_x <- j %% n_row == 0 || j == n
+    y_side <- if (j %% 2 || !y_flip) 2 else 4
     if (axes) {
       if (do_x) {
         year_axis(x = years, side = 1, format = TRUE, calendar = calendar,
@@ -178,7 +199,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }
-      graphics::mtext(ylabs[[i]], side = y_side, line = 3, cex = cex.lab,
+      graphics::mtext(ylabs[[j]], side = y_side, line = 3, cex = cex.lab,
                       col = col.lab, font = font.lab)
     }
   }
@@ -194,7 +215,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 # Image ========================================================================
 #' @export
 #' @method image TimeSeries
-image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
+image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ...) {
   ## Save calendar for further use (e.g. year_axis() or year_grid())
   options(aion.last_calendar = calendar)
 
@@ -215,7 +236,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
   on.exit(graphics::par(old_par))
 
   ## Plot
-  graphics::image(x = years, y = n, z = x@.Data,
+  graphics::image(x = years, y = n, z = x[, , k, drop = TRUE],
                   xlab = format(calendar), ylab = "",
                   xaxt = "n", yaxt = "n", ...)
 

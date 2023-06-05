@@ -39,5 +39,5 @@ X <- series(
   calendar = calendar("BP")
 )
 df <- as.data.frame(X, calendar = b2k())
-expect_equal(ncol(df), ncol(X) + 1)
-expect_equal(df$time, time(X, calendar = b2k()))
+expect_equal(ncol(df), 4)
+expect_equal(df$time, rep(time(X, calendar = b2k()), 6))

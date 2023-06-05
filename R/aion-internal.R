@@ -4,6 +4,12 @@
   if (!is.null(x) && length(x) != 0) x else y
 }
 
+make_par <- function(params, x, n = 0) {
+  p <- params[[x]] %||% graphics::par()[[x]]
+  if (n > 0) p <- rep(p, length.out = n)
+  p
+}
+
 #' Plotting Dimensions of Character Strings
 #'
 #' Convert string length in inch to number of (margin) lines.#'

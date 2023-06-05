@@ -8,16 +8,22 @@
 \description{
 An S4 class to represent time series.
 }
+\details{
+A time series object is an\eqn{n x m x p}{n \times m \times p} array, with
+\eqn{n} being the number of observations, \eqn{m} being the number of series
+and with the \eqn{p} columns of the third dimension containing extra
+variables for each series.
+}
 \section{Slots}{
 
 \describe{
-\item{\code{.Data}}{A \code{numeric} \code{\link{matrix}} giving the observed time-series values.}
+\item{\code{.Data}}{A \code{numeric} \code{\link{array}} giving the observed time-series values.}
 
 \item{\code{time}}{A \code{\linkS4class{RataDie}} object.}
 }}
 
 \note{
-This class inherits from \code{\link{matrix}}.
+This class inherits from \code{\link{array}}.
 }
 \seealso{
 Other classes: 

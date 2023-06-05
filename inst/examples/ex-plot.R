@@ -2,7 +2,7 @@
 ## Sampled every two years starting from 2000 BP
 X <- series(
   object = matrix(rnorm(300), nrow = 50, ncol = 6),
-  time = seq(2000, by = 2, length.out = 50),
+  time = seq(2000, by = -2, length.out = 50),
   calendar = BP()
 )
 
@@ -12,7 +12,20 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
-plot(X, type = "single") # CE
+plot(X, facet = "single") # CE
 
 ## Image
 image(X)
+
+## Create 6 x 3 time-series of 50 observations
+## Sampled every two years starting from 2000 BP
+X <- series(
+  object = array(rnorm(900), dim = c(50, 6, 3)),
+  time = seq(2000, by = 2, length.out = 50),
+  calendar = BP()
+)
+plot(X, calendar = BP(), flip = TRUE) # BP
+plot(X, calendar = b2k(), ncol = 1) # b2k
+
+## Graphical parameters
+plot(X, type = "b", pch = 16, col = c("#004488", "#DDAA33", "#BB5566"))

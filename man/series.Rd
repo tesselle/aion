@@ -4,8 +4,10 @@
 \name{series}
 \alias{series}
 \alias{series-method}
-\alias{series,matrix,RataDie,missing-method}
+\alias{series,array,RataDie,missing-method}
+\alias{series,array,numeric,TimeScale-method}
 \alias{series,matrix,numeric,TimeScale-method}
+\alias{series,matrix,RataDie,missing-method}
 \alias{series,numeric,numeric,TimeScale-method}
 \alias{series,numeric,RataDie,missing-method}
 \alias{series,data.frame,numeric,TimeScale-method}
@@ -14,9 +16,13 @@
 \usage{
 series(object, time, calendar, ...)
 
-\S4method{series}{matrix,RataDie,missing}(object, time, names = NULL)
+\S4method{series}{array,RataDie,missing}(object, time, names = NULL)
+
+\S4method{series}{array,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
 
 \S4method{series}{matrix,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
+
+\S4method{series}{matrix,RataDie,missing}(object, time, names = NULL)
 
 \S4method{series}{numeric,numeric,TimeScale}(object, time, calendar, scale = 1, names = NULL)
 
@@ -27,9 +33,9 @@ series(object, time, calendar, ...)
 \S4method{series}{data.frame,RataDie,missing}(object, time, names = NULL)
 }
 \arguments{
-\item{object}{A \code{\link{numeric}} \code{vector} or \code{matrix} of the observed time-series
-values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via
-\code{\link[=data.matrix]{data.matrix()}}.}
+\item{object}{A \code{\link{numeric}} \code{vector}, \code{matrix} or \code{array} of the observed
+time-series values.
+A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via \code{\link[=data.matrix]{data.matrix()}}.}
 
 \item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{RataDie}}
 object (see \code{\link[=fixed]{fixed()}}).}
@@ -62,21 +68,24 @@ Data will be sorted in chronological order.
 ## Sampled every years starting from 1029 BCE
 (X <- series(rnorm(30), time = 1029:1000, calendar = BCE()))
 
+## Terminal and sampling times (returns rata die)
 start(X)
 end(X)
 time(X)
+span(X)
 
 ## Multivariate
 ## Sampled every century starting from 1000 CE
 (Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
 
+## Terminal and sampling times (returns Gregorian Common Era years)
 start(Y, calendar = CE())
 end(Y, calendar = CE())
-span(Y, calendar = CE())
 time(Y, calendar = CE())
+span(Y, calendar = CE())
 
 ## Coerce to data frame
-df <- as.data.frame(Y, calendar = b2k())
+df <- as.data.frame(Y, calendar = BP())
 head(df)
 }
 \seealso{

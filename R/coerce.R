@@ -16,7 +16,16 @@ setMethod(
 #' @export
 #' @method as.data.frame TimeSeries
 as.data.frame.TimeSeries <- function(x, ..., calendar = NULL) {
-  data.frame(time = time(x, calendar = calendar), x@.Data, ...)
+  ## Build a long data frame
+  z <- as.data.frame.table(x, base = list("T", "S", LETTERS))
+
+  ## Add sampling times
+  z[[1]] <- time(x, calendar = calendar)
+
+  ## Fix colnames
+  colnames(z) <- c("time", "series", "variable", "value")
+
+  z
 }
 
 #' @export

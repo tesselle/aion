@@ -4,7 +4,7 @@ x <- series(matrix(rnorm(300), 100, 3), time = 1000:1099, calendar = CE())
 y1 <- window(x, start = 374009, end = 383140)
 expect_identical(start(y1), 374009)
 expect_identical(end(y1), 383140)
-expect_identical(dim(y1), c(26L, 3L))
+expect_identical(dim(y1), c(26L, 3L, 1L))
 
 y2 <- window(x, start = NULL, end = 383140)
 expect_identical(start(y2), start(x))
