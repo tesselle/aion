@@ -544,6 +544,23 @@ setGeneric(
 #' @rdname window
 NULL
 
+#' Coerce to a Data Frame
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Further parameters to be passed to [data.frame()].
+#' @return
+#'  A [`data.frame`] with an extra `time` column giving the (decimal) years at
+#'  which the time series was sampled.
+#' @example inst/examples/ex-series.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time series tools
+#' @name data.frame
+#' @rdname data.frame
+NULL
+
 #' Plot Time Series
 #'
 #' @param x A [`TimeSeries-class`] object.
@@ -563,8 +580,8 @@ NULL
 #'  `type` is "`multiple`". Defaults to 1 for up to 4 series, otherwise to 2.
 #' @param main A [`character`] string giving a main title for the plot.
 #' @param sub A [`character`] string giving a subtitle for the plot.
-#' @param ann A [`logical`] scalar: should the default annotation (title and x,
-#'  y and z axis labels) appear on the plot?
+#' @param ann A [`logical`] scalar: should the default annotation (title and x
+#'  and y axis labels) appear on the plot?
 #' @param axes A [`logical`] scalar: should axes be drawn on the plot?
 #' @param frame.plot A [`logical`] scalar: should a box be drawn around the
 #'  plot?
@@ -582,9 +599,27 @@ NULL
 #' @seealso [graphics::plot()]
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family plotting tools
 #' @name plot
 #' @rdname plot
+NULL
+
+#' Heat Map
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param ... Further parameters to be passed to [graphics::image()].
+#' @return
+#'  `image()` is called it for its side-effects: it results in a graphic
+#'  being displayed. Invisibly returns `x`.
+#' @example inst/examples/ex-plot.R
+#' @seealso [graphics::image()]
+#' @author N. Frerebeau
+#' @docType methods
+#' @family plotting tools
+#' @name image
+#' @rdname image
 NULL
 
 #' Time Series Plotting Functions
@@ -606,48 +641,37 @@ NULL
 #' @param ... Further parameters to be passed to [graphics::axis()].
 #'  (e.g. [graphical parameters][graphics::par]).
 #' @return
-#'  `axis_year()` is called it for its side-effects. Invisibly returns `x`.
-#' @example inst/examples/ex-plot.R
+#'  `year_axis()` is called it for its side-effects. Invisibly returns `x`.
+#' @example inst/examples/ex-grid.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
-#' @aliases axis_year-method
+#' @family plotting tools
+#' @aliases year_axis-method
 setGeneric(
-  name = "axis_year",
-  def = function(x, ...) standardGeneric("axis_year")
+  name = "year_axis",
+  def = function(x, ...) standardGeneric("year_axis")
 )
 
-#' Coerce to a Data Frame
+#' Add Grid to a Plot
 #'
-#' @param x A [`TimeSeries-class`] object.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
-#' @param ... Further parameters to be passed to [data.frame()].
-#' @return
-#'  A [`data.frame`] with an extra `time` column giving the (decimal) years at
-#'  which the time series was sampled.
-#' @example inst/examples/ex-series.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family time series tools
-#' @name data.frame
-#' @rdname data.frame
-NULL
-
-#' Heat Map
-#'
-#' @param x A [`TimeSeries-class`] object.
+#' @param nx,ny A [`numeric`] value giving the number of cells of the grid in
+#'  `x` and `y` direction. When `NULL`, as per default, the grid aligns with the
+#'  tick marks on the corresponding default axis (i.e., tickmarks as computed by
+#'  [year_axis()]). When `NA`, no grid lines are drawn in the corresponding
+#'  direction.
+#' @param col A [`character`] string specifying the color of the grid lines.
+#' @param lty A [`character`] string or numeric value specifying the line type
+#'  of the grid lines.
+#' @param lwd A non-negative [`numeric`] value specifying the line width of the
+#'  grid lines.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
-#' @param ... Further parameters to be passed to [graphics::image()].
 #' @return
-#'  `image()` is called it for its side-effects: it results in a graphic
-#'  being displayed. Invisibly returns `x`.
-#' @example inst/examples/ex-plot.R
-#' @seealso [graphics::image()]
+#'  `year_grid()` is called it for its side-effects.
+#' @example inst/examples/ex-grid.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
-#' @name image
-#' @rdname image
+#' @family plotting tools
+#' @name year_grid
+#' @rdname year_grid
 NULL

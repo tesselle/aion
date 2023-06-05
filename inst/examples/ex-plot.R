@@ -12,7 +12,7 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
-plot(X, type = "single", col = rainbow(6)) # CE
+plot(X, type = "single") # CE
 
 ## Image
 image(X)

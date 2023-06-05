@@ -23,32 +23,36 @@ if (at_home()) {
   expect_snapshot_plot(plot_facet_b2k, "plot_facet_b2k")
 
   # Plot single ================================================================
-  plot_single <- function() plot(X, type = "single", calendar = BP())
+  plot_single <- function() plot(X, type = "single", calendar = BP(),
+                                 col = rainbow(6))
   expect_snapshot_plot(plot_single, "plot_single")
 
   # Image ======================================================================
   plot_image <- function() image(X, calendar = BP())
   expect_snapshot_plot(plot_image, "plot_image")
 
-  # Axis =======================================================================
+  # Axis and grid ==============================================================
   ## Vector of years expressed in ka BP
-  x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
+  x <- fixed(c(30, 35, 40), calendar = BP(), scale = 1000)
 
   axis_default <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    aion:::axis_year(side = 1, x = x)
+    year_axis(side = 1, x = x, calendar = CE())
+    year_grid(calendar = CE())
   }
   expect_snapshot_plot(axis_default, "axis_default")
 
   axis_ka <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    aion:::axis_year(side = 1, x = x, format = "ka")
+    year_axis(side = 1, x = x, format = "ka", calendar = CE())
+    year_grid(6, NA, calendar = CE())
   }
   expect_snapshot_plot(axis_ka, "axis_ka")
 
   axis_Ma <- function() {
     plot(NA, xlim = range(x), ylim = c(0, 1), xaxt = "n")
-    aion:::axis_year(side = 1, x = x, format = "Ma")
+    year_axis(side = 1, x = x, format = "Ma", calendar = CE())
+    year_grid(NA, 6, calendar = CE())
   }
   expect_snapshot_plot(axis_Ma, "axis_Ma")
 }

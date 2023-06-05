@@ -49,8 +49,8 @@ flipped from side 2 (left) to 4 (right) from series to series when \code{type} i
 
 \item{sub}{A \code{\link{character}} string giving a subtitle for the plot.}
 
-\item{ann}{A \code{\link{logical}} scalar: should the default annotation (title and x,
-y and z axis labels) appear on the plot?}
+\item{ann}{A \code{\link{logical}} scalar: should the default annotation (title and x
+and y axis labels) appear on the plot?}
 
 \item{axes}{A \code{\link{logical}} scalar: should axes be drawn on the plot?}
 
@@ -89,7 +89,7 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
-plot(X, type = "single", col = rainbow(6)) # CE
+plot(X, type = "single") # CE
 
 ## Image
 image(X)
@@ -97,17 +97,12 @@ image(X)
 \seealso{
 \code{\link[graphics:plot.default]{graphics::plot()}}
 
-Other time series tools: 
-\code{\link{axis_year}()},
-\code{\link{data.frame}},
+Other plotting tools: 
 \code{\link{image}()},
-\code{\link{series}()},
-\code{\link{span}()},
-\code{\link{start}()},
-\code{\link{time}()},
-\code{\link{window}()}
+\code{\link{year_axis}()},
+\code{\link{year_grid}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{plotting tools}

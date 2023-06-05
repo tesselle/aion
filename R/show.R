@@ -7,6 +7,8 @@ setMethod(
   f = "pretty",
   signature = "RataDie",
   definition = function(x, calendar = getOption("aion.calendar"), ...) {
+    if (is.null(calendar)) return(pretty(as.numeric(x), ...))
+
     x <- as_year(x, calendar = calendar)
     fixed(year = pretty(x, ...), calendar = calendar)
   }
@@ -33,6 +35,8 @@ setMethod(
   signature = "RataDie",
   definition = function(x, format = c("a", "ka", "Ma", "Ga"), label = TRUE,
                         calendar = getOption("aion.calendar")) {
+    if (is.null(calendar)) return(format(as.numeric(x)))
+
     y <- as_year(x, calendar = calendar)
 
     ## Scale

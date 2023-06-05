@@ -49,9 +49,6 @@ head(df)
 }
 \seealso{
 Other time series tools: 
-\code{\link{axis_year}()},
-\code{\link{image}()},
-\code{\link{plot}()},
 \code{\link{series}()},
 \code{\link{span}()},
 \code{\link{start}()},

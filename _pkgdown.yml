@@ -16,6 +16,9 @@ reference:
 - title: Time Series
   contents:
   - has_concept("time series tools")
+- title: Plotting Tools
+  contents:
+  - has_concept("plotting tools")
 - title: Mutators
   contents:
   - has_concept("mutators")

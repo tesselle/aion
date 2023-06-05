@@ -81,10 +81,7 @@ head(df)
 }
 \seealso{
 Other time series tools: 
-\code{\link{axis_year}()},
 \code{\link{data.frame}},
-\code{\link{image}()},
-\code{\link{plot}()},
 \code{\link{span}()},
 \code{\link{start}()},
 \code{\link{time}()},

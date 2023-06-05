@@ -25,11 +25,18 @@ setMethod(
   function(x, i, j, ..., drop = FALSE) {
     z <- methods::callNextMethod() # Method for `matrix`
 
-    if (is.null(dim(z)) || isTRUE(drop)) return(z)
+    if (isTRUE(drop)) return(z)
+    if (is.null(dim(z))) z <- matrix(z, ncol = 1)
 
     time <- x@time
     if (!missing(i)) {
+      if (is.character(i)) i <- match(i, rownames(x))
+      rownames(z) <- rownames(x)[i]
       time <- time[i]
+    }
+    if (!missing(j)) {
+      if (is.character(j)) j <- match(j, colnames(x))
+      colnames(z) <- colnames(x)[j]
     }
     methods::initialize(x, z, time = time)
   }

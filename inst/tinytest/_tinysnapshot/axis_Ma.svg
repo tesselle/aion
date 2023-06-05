@@ -51,4 +51,19 @@
 <text x='383.52' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.60px' lengthAdjust='spacingAndGlyphs'>-0.03 Ma</text>
 <text x='460.32' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='60.24px' lengthAdjust='spacingAndGlyphs'>-0.028 Ma</text>
 </g>
+<defs>
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDQzMC41Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='371.52' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDQzMC41Ng==)'>
+<line x1='59.04' y1='485.60' x2='473.76' y2='485.60' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='416.80' x2='473.76' y2='416.80' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='348.00' x2='473.76' y2='348.00' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='279.20' x2='473.76' y2='279.20' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='210.40' x2='473.76' y2='210.40' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='141.60' x2='473.76' y2='141.60' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='72.80' x2='473.76' y2='72.80' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+<line x1='59.04' y1='4.00' x2='473.76' y2='4.00' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
+</g>
 </svg>

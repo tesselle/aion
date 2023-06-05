@@ -14,63 +14,22 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
                             panel.first = NULL, panel.last = NULL, ...) {
   ## Validation
   type <- match.arg(type, several.ok = FALSE)
-  n_series <- NCOL(x)
-  seq_series <- seq_len(n_series)
 
-  ## Graphical parameters
-  col <- list(...)$col %||% c("grey")
-  lty <- list(...)$lty %||% graphics::par("lty")
-  lwd <- list(...)$lwd %||% graphics::par("lwd")
-  if (length(col) != n_series) col <- rep(col, length.out = n_series)
-  if (length(lty) != n_series) lty <- rep(lty, length.out = n_series)
-  if (length(lwd) != n_series) lwd <- rep(lwd, length.out = n_series)
+  ## Save calendar for further use (e.g. year_axis() or year_grid())
+  options(aion.last_calendar = calendar)
+
+  n_series <- NCOL(x)
 
   if (type == "multiple" && n_series > 1) {
-    .plot_stacked(x, calendar = calendar, panel = panel, y_flip = flip,
-                  n_col = ncol, main = main, sub = sub, ann = ann, axes = axes,
-                  frame.plot = frame.plot, panel.first = panel.first,
-                  panel.last = panel.last, ...)
+    .plot_multiple(x, calendar = calendar, panel = panel, y_flip = flip,
+                   n_col = ncol, main = main, sub = sub, ann = ann, axes = axes,
+                   frame.plot = frame.plot, panel.first = panel.first,
+                   panel.last = panel.last, ...)
   } else {
-    ## Open new window
-    grDevices::dev.hold()
-    on.exit(grDevices::dev.flush(), add = TRUE)
-    graphics::plot.new()
-
-    ## Set plotting coordinates
-    years <- time(x, calendar = NULL)
-    xlim <- range(years)
-    ylim <- range(x)
-    graphics::plot.window(xlim = xlim, ylim = ylim)
-
-    ## Evaluate pre-plot expressions
-    panel.first
-
-    ## Plot
-    for (i in seq_series) {
-      graphics::lines(x = years, y = x[, i], col = col[i],
-                      lty = lty[i], lwd = lwd[i])
-    }
-
-    ## Evaluate post-plot and pre-axis expressions
-    panel.last
-
-    ## Construct Axis
-    if (axes) {
-      axis_year(x = years, side = 1, format = TRUE, calendar = calendar)
-      graphics::axis(side = 2)
-    }
-
-    ## Plot frame
-    if (frame.plot) {
-      graphics::box()
-    }
-
-    ## Add annotation
-    if (ann) {
-      xlab <- format(calendar)
-      ylab <- NULL
-      graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...)
-    }
+    .plot_single(x, calendar = calendar, main = main, sub = sub,
+                 ann = ann, axes = axes,
+                 frame.plot = frame.plot, panel.first = panel.first,
+                 panel.last = panel.last, ...)
   }
 
   invisible(x)
@@ -81,13 +40,69 @@ plot.TimeSeries <- function(x, type = c("multiple", "single"),
 #' @aliases plot,TimeSeries,missing-method
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
+.plot_single <- function(x, calendar, main = NULL, sub = NULL,
+                         ann = graphics::par("ann"), axes = TRUE,
+                         frame.plot = axes,
+                         panel.first = NULL, panel.last = NULL, ...) {
+  n_series <- NCOL(x)
+  seq_series <- seq_len(n_series)
 
-.plot_stacked <- function(x, calendar = getOption("aion.calendar"),
-                          panel = graphics::lines, y_flip = TRUE, n_col = NULL,
-                          main = NULL, sub = NULL,
-                          ann = graphics::par("ann"), axes = TRUE,
-                          frame.plot = axes,
-                          panel.first = NULL, panel.last = NULL, ...) {
+  ## Graphical parameters
+  col <- list(...)$col %||% graphics::par("col")
+  lty <- list(...)$lty %||% graphics::par("lty")
+  lwd <- list(...)$lwd %||% graphics::par("lwd")
+  if (length(col) != n_series) col <- rep(col, length.out = n_series)
+  if (length(lty) != n_series) lty <- rep(lty, length.out = n_series)
+  if (length(lwd) != n_series) lwd <- rep(lwd, length.out = n_series)
+
+  ## Open new window
+  grDevices::dev.hold()
+  on.exit(grDevices::dev.flush(), add = TRUE)
+  graphics::plot.new()
+
+  ## Set plotting coordinates
+  years <- time(x, calendar = NULL)
+  xlim <- range(years)
+  ylim <- range(x)
+  graphics::plot.window(xlim = xlim, ylim = ylim)
+
+  ## Evaluate pre-plot expressions
+  panel.first
+
+  ## Plot
+  for (i in seq_series) {
+    graphics::lines(x = years, y = x[, i], col = col[i],
+                    lty = lty[i], lwd = lwd[i])
+  }
+
+  ## Evaluate post-plot and pre-axis expressions
+  panel.last
+
+  ## Construct Axis
+  if (axes) {
+    year_axis(x = years, side = 1, format = TRUE, calendar = calendar)
+    graphics::axis(side = 2)
+  }
+
+  ## Plot frame
+  if (frame.plot) {
+    graphics::box()
+  }
+
+  ## Add annotation
+  if (ann) {
+    xlab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+    ylab <- NULL
+    graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...)
+  }
+}
+
+.plot_multiple <- function(x, calendar, panel = graphics::lines,
+                           y_flip = TRUE, n_col = NULL,
+                           main = NULL, sub = NULL,
+                           ann = graphics::par("ann"), axes = TRUE,
+                           frame.plot = axes,
+                           panel.first = NULL, panel.last = NULL, ...) {
 
   panel <- match.fun(panel)
   n <- NCOL(x)
@@ -133,7 +148,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     panel.first
 
     ## Plot
-    panel(x = years, y = x[, i], ...)
+    panel(x = years, y = xi, ...)
 
     ## Evaluate post-plot and pre-axis expressions
     panel.last
@@ -143,7 +158,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     y_side <- if (i %% 2 || !y_flip) 2 else 4
     if (axes) {
       if (do_x) {
-        axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
+        year_axis(x = years, side = 1, format = TRUE, calendar = calendar,
                   xpd = NA, cex.axis = cex.axis,
                   col.axis = col.axis, font.axis = font.axis)
       }
@@ -159,7 +174,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     ## Add annotation
     if (ann) {
       if (do_x) {
-        xlab <- format(calendar)
+        xlab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }
@@ -180,6 +195,9 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' @export
 #' @method image TimeSeries
 image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
+  ## Save calendar for further use (e.g. year_axis() or year_grid())
+  options(aion.last_calendar = calendar)
+
   ## Get data
   n <- seq_len(NCOL(x))
   samples <- colnames(x) %||% paste0("S1", n)
@@ -202,7 +220,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), ...) {
                   xaxt = "n", yaxt = "n", ...)
 
   ## Construct axes
-  axis_year(x = years, side = 1, format = TRUE, calendar = calendar,
+  year_axis(x = years, side = 1, format = TRUE, calendar = calendar,
             xpd = NA, cex.axis = cex.axis,
             col.axis = col.axis, font.axis = font.axis)
   graphics::axis(side = 2, at = n, labels = samples,
@@ -219,13 +237,13 @@ setMethod("image", c(x = "TimeSeries"), image.TimeSeries)
 
 # Axis =========================================================================
 #' @export
-#' @rdname axis_year
-#' @aliases axis_year,RataDie-method
+#' @rdname year_axis
+#' @aliases year_axis,RataDie-method
 setMethod(
-  f = "axis_year",
+  f = "year_axis",
   signature = c(x = "RataDie"),
   definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("aion.calendar"),
+                        labels = TRUE, calendar = getOption("aion.last_calendar"),
                         ...) {
 
     range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
@@ -255,16 +273,46 @@ setMethod(
 )
 
 #' @export
-#' @rdname axis_year
-#' @aliases axis_year,TimeSeries-method
+#' @rdname year_axis
+#' @aliases year_axis,TimeSeries-method
 setMethod(
-  f = "axis_year",
+  f = "year_axis",
   signature = c(x = "TimeSeries"),
   definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("aion.calendar"),
+                        labels = TRUE, calendar = getOption("aion.last_calendar"),
                         ...) {
     x <- time(x, calendar = NULL)
     methods::callGeneric(x, side = side, at = at, format = format,
                          labels = labels, calendar = calendar, ...)
   }
 )
+
+# Grid =========================================================================
+#' @export
+#' @rdname year_grid
+year_grid <- function(nx = NULL, ny = NULL, col = "lightgray", lty = "dotted",
+                      lwd = graphics::par("lwd"),
+                      calendar = getOption("aion.last_calendar")) {
+
+  if (is.null(nx) || (!is.na(nx) && nx >= 1)) {
+    if (is.null(nx)) {
+      U <- graphics::par("xaxp")
+      nx <- U[3L]
+    } else {
+      U <- graphics::par("usr")
+    }
+    at <- pretty(as_fixed(c(U[1L], U[2L])), calendar = calendar, n = nx)
+    graphics::abline(v = at, col = col, lty = lty, lwd = lwd)
+  }
+  if (is.null(ny) || (!is.na(ny) && ny >= 1)) {
+    if (is.null(ny)) {
+      ax <- graphics::par("yaxp")
+      at <- graphics::axTicks(2, axp = ax)
+    }
+    else {
+      U <- graphics::par("usr")
+      at <- pretty(c(U[3L], U[4L]), n = ny)
+    }
+    graphics::abline(h = at, col = col, lty = lty, lwd = lwd)
+  }
+}
