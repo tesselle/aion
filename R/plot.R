@@ -81,7 +81,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   ## Construct Axis
   if (axes) {
     year_axis(x = years, side = 1, format = TRUE, calendar = calendar)
-    graphics::axis(side = 2)
+    graphics::axis(side = 2, las = 1)
   }
 
   ## Plot frame
@@ -163,7 +163,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
                   col.axis = col.axis, font.axis = font.axis)
       }
       graphics::axis(side = y_side, xpd = NA, cex.axis = cex.axis,
-                     col.axis = col.axis, font.axis = font.axis)
+                     col.axis = col.axis, font.axis = font.axis, las = 1)
     }
 
     ## Plot frame
