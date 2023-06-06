@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "aion",
-  "description": "A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as \"rata die\" and can be converted to (virtualy) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
+  "description": "A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as \"rata die\" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
   "name": "aion: Archaeological Time Series",
   "relatedLink": "https://packages.tesselle.org/aion/",
   "codeRepository": "https://github.com/tesselle/aion",
@@ -159,7 +159,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "390.969KB",
+  "fileSize": "407.81KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

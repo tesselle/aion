@@ -9,7 +9,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as "rata die" and can be converted to (virtualy) any calendar defined by Reingold and Dershowitz (2018) \doi{10.1017/9781107415058}. This packages offers a simple API that can be used by other specialized packages.
+A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as "rata die" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) \doi{10.1017/9781107415058}. This packages offers a simple API that can be used by other specialized packages.
 }
 \details{
 \tabular{ll}{
