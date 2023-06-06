@@ -167,7 +167,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     for (k in m_seq) {
       params <- c("col", "bg", "pch", "cex", "lwd", "lty")
       dots[params] <- list(col[k], bg[k], pch[k], cex[k], lwd[k], lty[k])
-      args <- c(list(x = years, y = x[, j = j, k = k, drop = TRUE]), dots)
+      args <- c(list(x = years, y = xi[, , k = k, drop = TRUE]), dots)
       do.call(panel, args)
     }
 
@@ -237,7 +237,6 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
 
   ## Plot
   z <- x[, , k = k, drop = TRUE]
-  if (is.null(dim(z))) z <- matrix(z, ncol = 1)
   graphics::image(x = years, y = n, z = z,
                   xlab = format(calendar), ylab = "",
                   xaxt = "n", yaxt = "n", ...)

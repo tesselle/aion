@@ -23,31 +23,16 @@ setMethod(
   f = "[",
   signature = c(x = "TimeSeries"),
   function(x, i, j, k, drop = FALSE) {
-    z <- methods::callNextMethod() # Method for `array`
-
-    if (isTRUE(drop)) return(z)
-    if (is.null(dim(z))) z <- array(z, dim = c(length(z), 1, 1))
-    if (length(dim(z)) == 2) {
-      n <- dim(z)[1L]
-      m <- if (!missing(j)) length(j) else dim(x)[2L]
-      p <- if (!missing(k)) length(k) else dim(x)[3L]
-      z <- array(z, dim = c(n, m, p))
-    }
-
+    z <- x@.Data
     time <- x@time
+
+    z <- z[i, j, k, drop = drop]
     if (!missing(i)) {
-      if (is.character(i)) i <- match(i, dimnames(x)[[1L]])
-      if (!is.null(dimnames(x)[[1L]])) dimnames(z)[[1L]] <- dimnames(x)[[1L]][i]
+      if (is.character(i)) i <- match(i, dimnames(x)[1L])
       time <- time[i]
     }
-    if (!missing(j)) {
-      if (is.character(j)) j <- match(j, dimnames(x)[[2L]])
-      if (!is.null(dimnames(x)[[2L]])) dimnames(z)[[2L]] <- dimnames(x)[[2L]][j]
-    }
-    if (!missing(k)) {
-      if (is.character(k)) k <- match(k, dimnames(x)[[3L]])
-      if (!is.null(dimnames(x)[[3L]])) dimnames(z)[[3L]] <- dimnames(x)[[3L]][k]
-    }
+
+    if (isTRUE(drop)) return(z)
     methods::initialize(x, z, time = time)
   }
 )
