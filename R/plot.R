@@ -76,7 +76,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     for (k in seq_len(n_dim)) {
       params <- c("col", "bg", "pch", "cex", "lwd", "lty")
       dots[params] <- list(col[j], bg[j], pch[j], cex[j], lwd[j], lty[j])
-      args <- c(list(x = years, y = x[, j, k, drop = TRUE]), dots)
+      args <- c(list(x = years, y = x[, j = j, k = k, drop = TRUE]), dots)
       do.call(panel, args)
     }
   }
@@ -99,7 +99,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   if (ann) {
     xlab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
     ylab <- NULL
-    graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...)
+    graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
   }
 }
 
@@ -136,15 +136,15 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   lwd <- make_par(dots, "lwd", n = m)
   lty <- make_par(dots, "lty", n = m)
 
-  cex.lab <- dots$cex.lab %||% graphics::par("cex.lab")
-  col.lab <- dots$col.lab %||% graphics::par("col.lab")
-  font.lab <- dots$font.lab %||% graphics::par("font.lab")
-  cex.axis <- dots$cex.axis %||% graphics::par("cex.axis")
-  col.axis <- dots$col.axis %||% graphics::par("col.axis")
-  font.axis <- dots$font.axis %||% graphics::par("font.axis")
-  cex.main <- dots$cex.main %||% graphics::par("cex.main")
-  font.main <- dots$font.main %||% graphics::par("font.main")
-  col.main <- dots$col.main %||% graphics::par("col.main")
+  cex.lab <- make_par(dots, "cex.lab")
+  col.lab <- make_par(dots, "col.lab")
+  font.lab <- make_par(dots, "font.lab")
+  cex.axis <- make_par(dots, "cex.axis")
+  col.axis <- make_par(dots, "col.axis")
+  font.axis <- make_par(dots, "font.axis")
+  cex.main <- make_par(dots, "cex.main")
+  font.main <- make_par(dots, "font.main")
+  col.main <- make_par(dots, "col.main")
 
   years <- time(x, calendar = NULL)
   xlim <- range(years)
@@ -167,7 +167,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     for (k in m_seq) {
       params <- c("col", "bg", "pch", "cex", "lwd", "lty")
       dots[params] <- list(col[k], bg[k], pch[k], cex[k], lwd[k], lty[k])
-      args <- c(list(x = years, y = x[, j, k, drop = TRUE]), dots)
+      args <- c(list(x = years, y = x[, j = j, k = k, drop = TRUE]), dots)
       do.call(panel, args)
     }
 
@@ -236,7 +236,9 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
   on.exit(graphics::par(old_par))
 
   ## Plot
-  graphics::image(x = years, y = n, z = x[, , k, drop = TRUE],
+  z <- x[, , k = k, drop = TRUE]
+  if (is.null(dim(z))) z <- matrix(z, ncol = 1)
+  graphics::image(x = years, y = n, z = z,
                   xlab = format(calendar), ylab = "",
                   xaxt = "n", yaxt = "n", ...)
 
