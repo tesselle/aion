@@ -159,9 +159,9 @@ Y <- X[, 1, ]
 plot(
   Y,
   calendar = b2k(), # b2k time scale
-  panel.first = year_grid() # Add a grid
+  panel.first = graphics::grid() # Add a grid
 )
-year_axis(Y, side = 3, calendar = CE()) # Add a secondary time axis
+year_axis(side = 3, calendar = CE()) # Add a secondary time axis
 mtext(format(CE()), side = 3, line = 3) # Add secondary axis title
 ```
 

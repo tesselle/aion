@@ -20,7 +20,7 @@ dimension to be plotted.}
 \item{...}{Further parameters to be passed to \code{\link[graphics:image]{graphics::image()}}.}
 }
 \value{
-\code{image()} is called it for its side-effects: it results in a graphic
+\code{image()} is called for its side-effects: it results in a graphic
 being displayed. Invisibly returns \code{x}.
 }
 \description{
@@ -42,9 +42,10 @@ plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
 plot(X, facet = "single") # CE
+plot(X, facet = "single", calendar = BP()) # BP
 
 ## Image
-image(X)
+image(X, calendar = CE())
 
 ## Create 6 x 3 time-series of 50 observations
 ## Sampled every two years starting from 2000 BP
@@ -57,15 +58,16 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Graphical parameters
+plot(X, lwd = c(1, 2, 3), col = c("#004488", "#DDAA33", "#BB5566"))
 plot(X, type = "b", pch = 16, col = c("#004488", "#DDAA33", "#BB5566"))
+plot(X, type = "p", pch = c(16, 17, 18), cex = c(1, 2, 3))
 }
 \seealso{
 \code{\link[graphics:image]{graphics::image()}}
 
 Other plotting tools: 
 \code{\link{plot}()},
-\code{\link{year_axis}()},
-\code{\link{year_grid}()}
+\code{\link{year_axis}()}
 }
 \author{
 N. Frerebeau

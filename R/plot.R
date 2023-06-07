@@ -15,7 +15,7 @@ plot.TimeSeries <- function(x, facet = c("multiple", "single"),
   ## Validation
   facet <- match.arg(facet, several.ok = FALSE)
 
-  ## Save calendar for further use (e.g. year_axis() or year_grid())
+  ## Save calendar for further use, e.g. year_axis()
   options(aion.last_calendar = calendar)
 
   n <- dim(x)[2L]
@@ -40,7 +40,37 @@ plot.TimeSeries <- function(x, facet = c("multiple", "single"),
 #' @aliases plot,TimeSeries,missing-method
 setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
+#' Single Panel Plot
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param panel A [`function`] in the form `function(x, y, ...)`
+#'  which gives the action to be carried out in each panel of the display.
+#'  The default is [graphics::lines()].
+#' @param xlim,ylim A length-two [`numeric`] vector specifying the the x and y
+#'  limits.
+#' @param main A [`character`] string giving a main title for the plot.
+#' @param sub A [`character`] string giving a subtitle for the plot.
+#' @param ann A [`logical`] scalar: should the default annotation (title and x
+#'  and y axis labels) appear on the plot?
+#' @param axes A [`logical`] scalar: should axes be drawn on the plot?
+#' @param frame.plot A [`logical`] scalar: should a box be drawn around the
+#'  plot?
+#' @param panel.first An an `expression` to be evaluated after the plot axes are
+#'  set up but before any plotting takes place. This can be useful for drawing
+#'  background grids.
+#' @param panel.last An `expression` to be evaluated after plotting has taken
+#'  place but before the axes, title and box are added.
+#' @param ... Further parameters to be passed to `panel`
+#'  (e.g. [graphical parameters][graphics::par]).
+#' @return
+#'  Called for its side-effects: it results in a graphic being displayed.
+#'  Invisibly returns `x`.
+#' @keywords internal
+#' @noRd
 .plot_single <- function(x, calendar, panel = graphics::lines,
+                         xlim = NULL, ylim = NULL,
                          main = NULL, sub = NULL,
                          ann = graphics::par("ann"), axes = TRUE,
                          frame.plot = axes,
@@ -50,12 +80,12 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   ## Graphical parameters
   dots <- list(...)
-  col <- make_par(dots, "col", n = n_series)
-  bg <- make_par(dots, "bg", n = n_series)
-  pch <- make_par(dots, "pch", n = n_series)
-  cex <- make_par(dots, "cex", n = n_series)
-  lwd <- make_par(dots, "lwd", n = n_series)
-  lty <- make_par(dots, "lty", n = n_series)
+  col <- make_par(dots, "col", n = n_dim)
+  bg <- make_par(dots, "bg", n = n_dim)
+  pch <- make_par(dots, "pch", n = n_dim)
+  cex <- make_par(dots, "cex", n = n_dim)
+  lwd <- make_par(dots, "lwd", n = n_dim)
+  lty <- make_par(dots, "lty", n = n_dim)
 
   ## Open new window
   grDevices::dev.hold()
@@ -63,9 +93,9 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   graphics::plot.new()
 
   ## Set plotting coordinates
-  years <- time(x, calendar = NULL)
-  xlim <- range(years)
-  ylim <- range(x)
+  years <- time(x, calendar = calendar)
+  xlim <- xlim %||% xlim(x, calendar = calendar)
+  ylim <- ylim %||% range(x)
   graphics::plot.window(xlim = xlim, ylim = ylim)
 
   ## Evaluate pre-plot expressions
@@ -74,8 +104,9 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   ## Plot
   for (j in seq_len(n_series)) {
     for (k in seq_len(n_dim)) {
-      params <- c("col", "bg", "pch", "cex", "lwd", "lty")
-      dots[params] <- list(col[j], bg[j], pch[j], cex[j], lwd[j], lty[j])
+      params <- list(col = col[k], bg = bg[k], pch = pch[k],
+                     cex = cex[k], lwd = lwd[k], lty = lty[k])
+      dots <- utils::modifyList(dots, params)
       args <- c(list(x = years, y = x[, j = j, k = k, drop = TRUE]), dots)
       do.call(panel, args)
     }
@@ -86,7 +117,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   ## Construct Axis
   if (axes) {
-    year_axis(x = years, side = 1, format = TRUE, calendar = calendar)
+    year_axis(side = 1, format = TRUE, calendar = calendar)
     graphics::axis(side = 2, las = 1)
   }
 
@@ -101,8 +132,41 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     ylab <- NULL
     graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
   }
+
+  invisible(x)
 }
 
+#' Multiple Panels Plot
+#'
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]).
+#' @param panel A [`function`] in the form `function(x, y, ...)`
+#'  which gives the action to be carried out in each panel of the display.
+#'  The default is [graphics::lines()].
+#' @param y_flip A [`logical`] scalar: should the y-axis (ticks and numbering)
+#'  be flipped from side 2 (left) to 4 (right) from series to series?
+#' @param ncol An [`integer`] specifying the number of columns to use.
+#'  Defaults to 1 for up to 4 series, otherwise to 2.
+#' @param main A [`character`] string giving a main title for the plot.
+#' @param sub A [`character`] string giving a subtitle for the plot.
+#' @param ann A [`logical`] scalar: should the default annotation (title and x
+#'  and y axis labels) appear on the plot?
+#' @param axes A [`logical`] scalar: should axes be drawn on the plot?
+#' @param frame.plot A [`logical`] scalar: should a box be drawn around the
+#'  plot?
+#' @param panel.first An an `expression` to be evaluated after the plot axes are
+#'  set up but before any plotting takes place. This can be useful for drawing
+#'  background grids.
+#' @param panel.last An `expression` to be evaluated after plotting has taken
+#'  place but before the axes, title and box are added.
+#' @param ... Further parameters to be passed to `panel`
+#'  (e.g. [graphical parameters][graphics::par]).
+#' @return
+#'  Called for its side-effects: it results in a graphic being displayed.
+#'  Invisibly returns `x`.
+#' @keywords internal
+#' @noRd
 .plot_multiple <- function(x, calendar, panel = graphics::lines,
                            y_flip = TRUE, n_col = NULL,
                            main = NULL, sub = NULL,
@@ -129,13 +193,6 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   on.exit(graphics::par(old_par))
 
   dots <- list(...)
-  col <- make_par(dots, "col", n = m)
-  pch <- make_par(dots, "pch", n = m)
-  bg <- make_par(dots, "bg", n = m)
-  cex <- make_par(dots, "cex", n = m)
-  lwd <- make_par(dots, "lwd", n = m)
-  lty <- make_par(dots, "lty", n = m)
-
   cex.lab <- make_par(dots, "cex.lab")
   col.lab <- make_par(dots, "col.lab")
   font.lab <- make_par(dots, "font.lab")
@@ -146,40 +203,23 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   font.main <- make_par(dots, "font.main")
   col.main <- make_par(dots, "col.main")
 
-  years <- time(x, calendar = NULL)
-  xlim <- range(years)
+  years <- time(x, calendar = calendar)
+  xlim <- xlim(x, calendar = calendar)
   for (j in n_seq) {
-    xi <- x[, j, , drop = FALSE]
-
-    ## Open new window
-    grDevices::dev.hold()
-    on.exit(grDevices::dev.flush(), add = TRUE)
-    graphics::plot.new()
-
-    ## Set plotting coordinates
-    ylim <- range(xi)
-    graphics::plot.window(xlim = xlim, ylim = ylim)
-
-    ## Evaluate pre-plot expressions
-    panel.first
-
     ## Plot
-    for (k in m_seq) {
-      params <- c("col", "bg", "pch", "cex", "lwd", "lty")
-      dots[params] <- list(col[k], bg[k], pch[k], cex[k], lwd[k], lty[k])
-      args <- c(list(x = years, y = xi[, , k = k, drop = TRUE]), dots)
-      do.call(panel, args)
-    }
-
-    ## Evaluate post-plot and pre-axis expressions
-    panel.last
+    xj <- x[, j, , drop = FALSE]
+    .plot_single(xj, calendar = calendar, panel = panel,
+                 xlim = xlim, ylim = NULL,
+                 main = NULL, sub = NULL, ann = FALSE, axes = FALSE,
+                 frame.plot = frame.plot,
+                 panel.first = panel.first, panel.last = panel.last, ...)
 
     ## Construct Axis
     do_x <- j %% n_row == 0 || j == n
     y_side <- if (j %% 2 || !y_flip) 2 else 4
     if (axes) {
       if (do_x) {
-        year_axis(x = years, side = 1, format = TRUE, calendar = calendar,
+        year_axis(side = 1, format = TRUE, calendar = calendar,
                   xpd = NA, cex.axis = cex.axis,
                   col.axis = col.axis, font.axis = font.axis)
       }
@@ -210,13 +250,30 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     graphics::mtext(main, side = 3, line = 3, cex = cex.main, font = font.main,
                     col = col.main)
   }
+
+  invisible(x)
+}
+
+#' Compute x Limits
+#'
+#' Computes x limits for a time series according to a given calendar.
+#' This ensures that the x axis is always in chronological order.
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object.
+#' @return A length-two [`numeric`] vector.
+#' @keywords internal
+#' @noRd
+xlim <- function(x, calendar) {
+  x <- range(time(x, calendar = NULL))
+  if (is.null(calendar)) return(x)
+  as_year(x, calendar = calendar)
 }
 
 # Image ========================================================================
 #' @export
 #' @method image TimeSeries
 image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ...) {
-  ## Save calendar for further use (e.g. year_axis() or year_grid())
+  ## Save calendar for further use, e.g. year_axis()
   options(aion.last_calendar = calendar)
 
   ## Get data
@@ -242,11 +299,12 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
                   xaxt = "n", yaxt = "n", ...)
 
   ## Construct axes
-  year_axis(x = years, side = 1, format = TRUE, calendar = calendar,
-            xpd = NA, cex.axis = cex.axis,
-            col.axis = col.axis, font.axis = font.axis)
+  at <- as_fixed(graphics::axTicks(side = 1))
+  at <- pretty(at, calendar = calendar)
+  lab <- format(at, label = FALSE, calendar = calendar)
+  graphics::axis(side = 1, at = at, labels = lab)
   graphics::axis(side = 2, at = n, labels = samples,
-                 xpd = NA, cex.axis = cex.axis, las = 1,
+                 cex.axis = cex.axis, las = 1,
                  col.axis = col.axis, font.axis = font.axis)
 
   invisible(x)
@@ -260,81 +318,31 @@ setMethod("image", c(x = "TimeSeries"), image.TimeSeries)
 # Axis =========================================================================
 #' @export
 #' @rdname year_axis
-#' @aliases year_axis,RataDie-method
-setMethod(
-  f = "year_axis",
-  signature = c(x = "RataDie"),
-  definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("aion.last_calendar"),
-                        ...) {
+year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
+                      labels = TRUE, calendar = getOption("aion.last_calendar"),
+                      ...) {
+  no_at <- missing(at) || is.null(at) || !is.numeric(at)
+  if (no_at) at <- graphics::axTicks(side = side)
 
-    range <- sort(graphics::par("usr")[if (side %% 2) 1L:2L else 3L:4L])
-    range[1L] <- ceiling(range[1L])
-    range[2L] <- floor(range[2L])
-
-    has_at <- !missing(at) && !is.null(at)
-    if (has_at && is.numeric(at)) {
-      x <- fixed(year = at, calendar = calendar)
-    }
-
-    x <- pretty(x, calendar = calendar)
-    keep <- x >= range[1L] & x <= range[2L]
-    x <- x[keep]
-
-    if (!is.logical(labels))
-      labels <- labels[keep]
-    else if (isTRUE(labels))
-      labels <- format(x, format = format, label = FALSE, calendar = calendar)
-    else if (isFALSE(labels))
-      labels <- rep("", length(x))
-
-    graphics::axis(side, at = x, labels = labels, ...)
-
-    invisible(x)
-  }
-)
-
-#' @export
-#' @rdname year_axis
-#' @aliases year_axis,TimeSeries-method
-setMethod(
-  f = "year_axis",
-  signature = c(x = "TimeSeries"),
-  definition = function(x, side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                        labels = TRUE, calendar = getOption("aion.last_calendar"),
-                        ...) {
-    x <- time(x, calendar = NULL)
-    methods::callGeneric(x, side = side, at = at, format = format,
-                         labels = labels, calendar = calendar, ...)
-  }
-)
-
-# Grid =========================================================================
-#' @export
-#' @rdname year_grid
-year_grid <- function(nx = NULL, ny = NULL, col = "lightgray", lty = "dotted",
-                      lwd = graphics::par("lwd"),
-                      calendar = getOption("aion.last_calendar")) {
-
-  if (is.null(nx) || (!is.na(nx) && nx >= 1)) {
-    if (is.null(nx)) {
-      U <- graphics::par("xaxp")
-      nx <- U[3L]
+  if (!is.logical(labels)) {
+    labels <- labels[keep]
+  } else if (isTRUE(labels)) {
+    last_calendar <- getOption("aion.last_calendar")
+    ## If last_calendar is NULL, then the last plot was expressed in rata die
+    if (is.null(last_calendar)) {
+      at <- as_fixed(at)
     } else {
-      U <- graphics::par("usr")
+      at <- fixed(at, calendar = last_calendar)
     }
-    at <- pretty(as_fixed(c(U[1L], U[2L])), calendar = calendar, n = nx)
-    graphics::abline(v = at, col = col, lty = lty, lwd = lwd)
+    if (!is.null(calendar)) {
+      at <- pretty(at, calendar = calendar)
+      labels <- format(at, format = format, label = FALSE, calendar = calendar)
+      if (!is.null(last_calendar)) at <- as_year(at, calendar = last_calendar)
+    }
+  } else if (isFALSE(labels)) {
+    labels <- rep("", length(at))
   }
-  if (is.null(ny) || (!is.na(ny) && ny >= 1)) {
-    if (is.null(ny)) {
-      ax <- graphics::par("yaxp")
-      at <- graphics::axTicks(2, axp = ax)
-    }
-    else {
-      U <- graphics::par("usr")
-      at <- pretty(c(U[3L], U[4L]), n = ny)
-    }
-    graphics::abline(h = at, col = col, lty = lty, lwd = lwd)
-  }
+
+  graphics::axis(side, at = as.numeric(at), labels = labels, ...)
 }
+

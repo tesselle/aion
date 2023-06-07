@@ -579,10 +579,10 @@ NULL
 #'  which gives the action to be carried out in each panel of the display.
 #'  The default is [graphics::lines()].
 #' @param flip A [`logical`] scalar: should the y-axis (ticks and numbering) be
-#'  flipped from side 2 (left) to 4 (right) from series to series when `type` is
-#'  "`multiple`"?
+#'  flipped from side 2 (left) to 4 (right) from series to series when `facet`
+#'  is "`multiple`"?
 #' @param ncol An [`integer`] specifying the number of columns to use when
-#'  `type` is "`multiple`". Defaults to 1 for up to 4 series, otherwise to 2.
+#'  `facet` is "`multiple`". Defaults to 1 for up to 4 series, otherwise to 2.
 #' @param main A [`character`] string giving a main title for the plot.
 #' @param sub A [`character`] string giving a subtitle for the plot.
 #' @param ann A [`logical`] scalar: should the default annotation (title and x
@@ -598,7 +598,7 @@ NULL
 #' @param ... Further parameters to be passed to `panel`
 #'  (e.g. [graphical parameters][graphics::par]).
 #' @return
-#'  `plot()` is called it for its side-effects: it results in a graphic
+#'  `plot()` is called for its side-effects: it results in a graphic
 #'  being displayed. Invisibly returns `x`.
 #' @example inst/examples/ex-plot.R
 #' @seealso [graphics::plot()]
@@ -618,7 +618,7 @@ NULL
 #'  dimension to be plotted.
 #' @param ... Further parameters to be passed to [graphics::image()].
 #' @return
-#'  `image()` is called it for its side-effects: it results in a graphic
+#'  `image()` is called for its side-effects: it results in a graphic
 #'  being displayed. Invisibly returns `x`.
 #' @example inst/examples/ex-plot.R
 #' @seealso [graphics::image()]
@@ -631,7 +631,6 @@ NULL
 
 #' Time Series Plotting Functions
 #'
-#' @param x A [`TimeSeries-class`] object.
 #' @param side An [`integer`] specifying which side of the plot the axis is to
 #'  be drawn on. The axis is placed as follows: 1=below, 2=left, 3=above and
 #'  4=right.
@@ -648,37 +647,11 @@ NULL
 #' @param ... Further parameters to be passed to [graphics::axis()].
 #'  (e.g. [graphical parameters][graphics::par]).
 #' @return
-#'  `year_axis()` is called it for its side-effects. Invisibly returns `x`.
-#' @example inst/examples/ex-grid.R
+#'  `year_axis()` is called it for its side-effects.
+#' @example inst/examples/ex-axis.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family plotting tools
-#' @aliases year_axis-method
-setGeneric(
-  name = "year_axis",
-  def = function(x, ...) standardGeneric("year_axis")
-)
-
-#' Add Grid to a Plot
-#'
-#' @param nx,ny A [`numeric`] value giving the number of cells of the grid in
-#'  `x` and `y` direction. When `NULL`, as per default, the grid aligns with the
-#'  tick marks on the corresponding default axis (i.e., tickmarks as computed by
-#'  [year_axis()]). When `NA`, no grid lines are drawn in the corresponding
-#'  direction.
-#' @param col A [`character`] string specifying the color of the grid lines.
-#' @param lty A [`character`] string or numeric value specifying the line type
-#'  of the grid lines.
-#' @param lwd A non-negative [`numeric`] value specifying the line width of the
-#'  grid lines.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]).
-#' @return
-#'  `year_grid()` is called it for its side-effects.
-#' @example inst/examples/ex-grid.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family plotting tools
-#' @name year_grid
-#' @rdname year_grid
+#' @name year_axis
+#' @rdname year_axis
 NULL

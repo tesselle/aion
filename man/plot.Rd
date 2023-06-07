@@ -39,11 +39,11 @@ which gives the action to be carried out in each panel of the display.
 The default is \code{\link[graphics:lines]{graphics::lines()}}.}
 
 \item{flip}{A \code{\link{logical}} scalar: should the y-axis (ticks and numbering) be
-flipped from side 2 (left) to 4 (right) from series to series when \code{type} is
-"\code{multiple}"?}
+flipped from side 2 (left) to 4 (right) from series to series when \code{facet}
+is "\code{multiple}"?}
 
 \item{ncol}{An \code{\link{integer}} specifying the number of columns to use when
-\code{type} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
+\code{facet} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
 
 \item{main}{A \code{\link{character}} string giving a main title for the plot.}
 
@@ -68,7 +68,7 @@ place but before the axes, title and box are added.}
 (e.g. \link[graphics:par]{graphical parameters}).}
 }
 \value{
-\code{plot()} is called it for its side-effects: it results in a graphic
+\code{plot()} is called for its side-effects: it results in a graphic
 being displayed. Invisibly returns \code{x}.
 }
 \description{
@@ -90,9 +90,10 @@ plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Single
 plot(X, facet = "single") # CE
+plot(X, facet = "single", calendar = BP()) # BP
 
 ## Image
-image(X)
+image(X, calendar = CE())
 
 ## Create 6 x 3 time-series of 50 observations
 ## Sampled every two years starting from 2000 BP
@@ -105,15 +106,16 @@ plot(X, calendar = BP(), flip = TRUE) # BP
 plot(X, calendar = b2k(), ncol = 1) # b2k
 
 ## Graphical parameters
+plot(X, lwd = c(1, 2, 3), col = c("#004488", "#DDAA33", "#BB5566"))
 plot(X, type = "b", pch = 16, col = c("#004488", "#DDAA33", "#BB5566"))
+plot(X, type = "p", pch = c(16, 17, 18), cex = c(1, 2, 3))
 }
 \seealso{
 \code{\link[graphics:plot.default]{graphics::plot()}}
 
 Other plotting tools: 
 \code{\link{image}()},
-\code{\link{year_axis}()},
-\code{\link{year_grid}()}
+\code{\link{year_axis}()}
 }
 \author{
 N. Frerebeau
