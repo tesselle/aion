@@ -15,9 +15,6 @@ plot(X, calendar = b2k(), ncol = 1) # b2k
 plot(X, facet = "single") # CE
 plot(X, facet = "single", calendar = BP()) # BP
 
-## Image
-image(X, calendar = CE())
-
 ## Create 6 x 3 time-series of 50 observations
 ## Sampled every two years starting from 2000 BP
 X <- series(

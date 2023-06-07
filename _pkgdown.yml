@@ -22,6 +22,19 @@ reference:
 - title: Mutators
   contents:
   - has_concept("mutators")
+- title: Classes
+  contents:
+  - has_concept("classes")
 - title: Datasets
   contents:
   - has_concept("datasets")
+
+navbar:
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Extending aion
+        href: articles/extending.html
+      - text: Bibliography
+        href: articles/bibliography.html

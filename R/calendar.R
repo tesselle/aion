@@ -52,7 +52,6 @@ CE <- function(...) calendar("CE")
 J <- function(...) calendar("julian")
 
 # Mutators =====================================================================
-calendar_fixed <- function(object) object@fixed
 calendar_year <- function(object) object@year
 
 ## Getters ---------------------------------------------------------------------
@@ -94,6 +93,15 @@ setMethod(
   f = "calendar_epoch",
   signature = "TimeScale",
   definition = function(object) object@epoch
+)
+
+#' @export
+#' @rdname calendar_get
+#' @aliases calendar_fixed,TimeScale-method
+setMethod(
+  f = "calendar_fixed",
+  signature = "TimeScale",
+  definition = function(object) object@fixed
 )
 
 #' @export

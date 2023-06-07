@@ -9,7 +9,7 @@
 An S4 class to represent time series.
 }
 \details{
-A time series object is an\eqn{n x m x p}{n \times m \times p} array, with
+A time series object is an \eqn{n x m x p}{n \times m \times p} array, with
 \eqn{n} being the number of observations, \eqn{m} being the number of series
 and with the \eqn{p} columns of the third dimension containing extra
 variables for each series.

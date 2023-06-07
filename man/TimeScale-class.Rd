@@ -17,7 +17,11 @@ the time scale.}
 \item{\code{name}}{A \code{\link{character}} string specifying the name of the time scale.}
 
 \item{\code{epoch}}{A \code{\link{numeric}} value specifying the epoch year from which
-years are counted (in Gregorian astronomical years).}
+years are counted (starting date of the calendar, in years). Allows to
+define multiple era of a calendar.}
+
+\item{\code{fixed}}{A \code{\link{numeric}} value specifying the reference date of the calendar
+(in \emph{rata die}).}
 
 \item{\code{direction}}{An \code{\link{integer}} specifying if years are counted backwards
 (\code{-1}) or forwards (\code{1}) from \code{epoch}.}
@@ -48,4 +52,3 @@ N. Frerebeau
 }
 \concept{calendar classes}
 \concept{classes}
-\keyword{internal}

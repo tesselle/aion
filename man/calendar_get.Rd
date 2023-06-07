@@ -11,12 +11,15 @@
 \alias{calendar_unit-method}
 \alias{calendar_epoch}
 \alias{calendar_epoch-method}
+\alias{calendar_fixed}
+\alias{calendar_fixed-method}
 \alias{calendar_direction}
 \alias{calendar_direction-method}
 \alias{calendar_label,TimeScale-method}
 \alias{calendar_name,TimeScale-method}
 \alias{calendar_unit,TimeScale-method}
 \alias{calendar_epoch,TimeScale-method}
+\alias{calendar_fixed,TimeScale-method}
 \alias{calendar_direction,TimeScale-method}
 \title{Calendar Parameters}
 \usage{
@@ -28,6 +31,8 @@ calendar_unit(object)
 
 calendar_epoch(object)
 
+calendar_fixed(object)
+
 calendar_direction(object)
 
 \S4method{calendar_label}{TimeScale}(object)
@@ -37,6 +42,8 @@ calendar_direction(object)
 \S4method{calendar_unit}{TimeScale}(object)
 
 \S4method{calendar_epoch}{TimeScale}(object)
+
+\S4method{calendar_fixed}{TimeScale}(object)
 
 \S4method{calendar_direction}{TimeScale}(object)
 }
@@ -51,8 +58,11 @@ abbreviated label of the time scale.
 the time scale.
 \item \code{calendar_unit()} returns a \code{\link{character}} string specifying the name of
 the calendar.
-\item \code{calendar_epoch()} returns length-one \code{\link{numeric}} vector specifying the
-epoch year from which years are counted (in Gregorian years).
+\item \code{calendar_fixed()} returns a length-one \code{\link{numeric}} vector specifying the
+reference date of the calendar (in \emph{rata die}).
+\item \code{calendar_epoch()} returns a length-one \code{\link{numeric}} vector specifying the
+epoch year from which years are counted (starting date of the calendar,
+in years).
 \item \code{calendar_direction()} returns a length-one \code{\link{integer}} vector specifying
 if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
 \code{epoch}. Only the \link[=sign]{sign} of \code{calendar_direction()} is relevant.

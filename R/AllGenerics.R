@@ -141,8 +141,11 @@ setGeneric(
 #'     the time scale.
 #'  * `calendar_unit()` returns a [`character`] string specifying the name of
 #'     the calendar.
-#'  * `calendar_epoch()` returns length-one [`numeric`] vector specifying the
-#'     epoch year from which years are counted (in Gregorian years).
+#'  * `calendar_fixed()` returns a length-one [`numeric`] vector specifying the
+#'     reference date of the calendar (in *rata die*).
+#'  * `calendar_epoch()` returns a length-one [`numeric`] vector specifying the
+#'     epoch year from which years are counted (starting date of the calendar,
+#'     in years).
 #'  * `calendar_direction()` returns a length-one [`integer`] vector specifying
 #'     if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
 #'     `epoch`. Only the [sign][sign()] of `calendar_direction()` is relevant.
@@ -180,6 +183,13 @@ setGeneric(
 setGeneric(
   name = "calendar_epoch",
   def = function(object) standardGeneric("calendar_epoch")
+)
+
+#' @rdname calendar_get
+#' @aliases calendar_fixed-method
+setGeneric(
+  name = "calendar_fixed",
+  def = function(object) standardGeneric("calendar_fixed")
 )
 
 #' @rdname calendar_get
@@ -620,7 +630,7 @@ NULL
 #' @return
 #'  `image()` is called for its side-effects: it results in a graphic
 #'  being displayed. Invisibly returns `x`.
-#' @example inst/examples/ex-plot.R
+#' @example inst/examples/ex-image.R
 #' @seealso [graphics::image()]
 #' @author N. Frerebeau
 #' @docType methods

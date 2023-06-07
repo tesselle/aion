@@ -1,0 +1,146 @@
+---
+title: "Extending aion"
+author: "N. Frerebeau"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    number_sections: yes
+    fig_caption: yes
+    toc: true
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{Extending aion}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(aion)
+```
+
+**aion** offers a simple API that can be extended and used by other specialized packages.
+
+# Calendars and Dates
+
+The following example is used to build a simple solar calendar with 365 days each year and no leap-year rule. This is the ancient Egyptian calendar. You will find full details of the calculations and detailed explanations in @reingold2018 (p. 29).
+
+You can define additional calendars by creating S4 classes that inherit from the `TimeScale` class exported by **aion**:
+
+```{r}
+## Egyptian calendar
+E <- setClass(
+  Class = "EgyptianCalendar",
+  prototype = list(
+    name = "Egyptian",
+    fixed = -272787,
+    direction = 1L,
+    year = 365
+  ),
+  contains = "TimeScale"
+)
+```
+
+Once the calendar has been defined, you need to build methods for converting *rata die* to and from this calendar:
+
+```{r}
+## Convert Egyptian dates to rata die
+## NB: this method MUST return a RataDie object
+setMethod(
+  f = "fixed",
+  signature = c(
+    year = "numeric",
+    month = "numeric",
+    day = "numeric", 
+    calendar = "EgyptianCalendar"
+  ),
+  definition = function(year, month, day, calendar) {
+    rd <- calendar_fixed(calendar) + 
+      365 * (year - 1) + 
+      30 * (month - 1) + 
+      day - 1
+    
+    as_fixed(rd)
+  }
+)
+
+## Convert rata die to Egyptian dates
+## NB: this method MUST return a data.frame
+setMethod(
+  f = "as_date",
+  signature = c(object = "numeric", calendar = "EgyptianCalendar"),
+  definition = function(object, calendar) {
+    day <- object - calendar_fixed(calendar)
+    year <- day %/% 365 + 1
+    month <- (day %% 365) %/% 30 + 1
+    day <- day - 365 * (year - 1) - 30 * (month - 1) + 1
+    
+    data.frame(year = year, month = month, day = day)
+  }
+)
+
+## Convert rata die to Egyptian years
+setMethod(
+  f = "as_year",
+  signature = c(object = "numeric", calendar = "EgyptianCalendar"),
+  definition = function(object, calendar, ...) {
+    (object - calendar_fixed(calendar)) %/% 365 + 1
+  }
+)
+```
+
+Now you can use your calendar:
+
+```{r}
+## Create a calendar object
+cal <- E()
+
+## Convert 161/7/15 in rata die
+fixed(
+  year = 161,
+  month = 7,
+  day = 15, 
+  calendar = cal
+)
+
+## Convert -214193 r.d. to an Egyptian date
+as_date(-214193, calendar = cal)
+```
+
+The definition of new calendars, combined with the Julian and Gregorian calendars already included in **aion**, allows you to build conversion tools:
+
+```{r}
+## Build a conversion function from Gregorian CE years to Egyptian years
+Gregorian_to_Egyptian <- convert(CE(), E())
+
+## Convert 2023 (Gregorian) to the Egyptian calendar
+Gregorian_to_Egyptian(2023)
+```
+
+# Time Series
+
+A time series object is simply an $n \times m \times p$ `array`, with $n$ being the number of observations, $m$ being the number of series and with the $p$ columns of the third dimension containing extra variables for each series. This `array` comes with an extra `time` slot that store the observations times expressed in *rata die*. You can create classes that inherits from the `TimeSeries` class.
+
+As an example, you can create a class that represent the results of the calibration of radiocarbon dates (this code comes from the [**ananke**](https://packages.tesselle.org/ananke/) package):
+
+```{r}
+.CalibratedAges <- setClass(
+  Class = "CalibratedAges",
+  slots = c(
+    ages = "numeric",     # Stores the radiocarbon ages to be calibrated
+    errors = "numeric",   # Store the standard deviation of the radiocarbon ages
+    curves = "character"  # Store the name of the calibration curve
+  ),
+  contains = "TimeSeries"
+)
+```
+
+All methods defined in **aion** can then be used on objects belonging to this new class (e.g. `plot()`).
+
+# References

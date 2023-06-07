@@ -9,7 +9,10 @@ NULL
 #'  the time scale.
 #' @slot name A [`character`] string specifying the name of the time scale.
 #' @slot epoch A [`numeric`] value specifying the epoch year from which
-#'  years are counted (in Gregorian astronomical years).
+#'  years are counted (starting date of the calendar, in years). Allows to
+#'  define multiple era of a calendar.
+#' @slot fixed A [`numeric`] value specifying the reference date of the calendar
+#'  (in *rata die*).
 #' @slot direction An [`integer`] specifying if years are counted backwards
 #'  (`-1`) or forwards (`1`) from `epoch`.
 #' @slot year A [`numeric`] value giving the average length of the year in
@@ -19,7 +22,7 @@ NULL
 #' @family calendar classes
 #' @docType class
 #' @aliases TimeScale-class
-#' @keywords internal
+#' @exportClass TimeScale
 .TimeScale <- setClass(
   Class = "TimeScale",
   slots = c(
@@ -229,7 +232,7 @@ NULL
 #' @slot .Data A `numeric` [`array`] giving the observed time-series values.
 #' @slot time A [`RataDie-class`] object.
 #' @details
-#'  A time series object is an\eqn{n x m x p}{n \times m \times p} array, with
+#'  A time series object is an \eqn{n x m x p}{n \times m \times p} array, with
 #'  \eqn{n} being the number of observations, \eqn{m} being the number of series
 #'  and with the \eqn{p} columns of the third dimension containing extra
 #'  variables for each series.
