@@ -8,6 +8,7 @@ NULL
 plot.TimeSeries <- function(x, facet = c("multiple", "single"),
                             calendar = getOption("aion.calendar"),
                             panel = graphics::lines, flip = FALSE, ncol = NULL,
+                            xlab = NULL, ylab = NULL,
                             main = NULL, sub = NULL,
                             ann = graphics::par("ann"), axes = TRUE,
                             frame.plot = axes,
@@ -22,11 +23,14 @@ plot.TimeSeries <- function(x, facet = c("multiple", "single"),
 
   if (facet == "multiple" && n > 1) {
     .plot_multiple(x, calendar = calendar, panel = panel, y_flip = flip,
-                   n_col = ncol, main = main, sub = sub, ann = ann, axes = axes,
+                   n_col = ncol, xlab = xlab, ylab = ylab,
+                   main = main, sub = sub, ann = ann, axes = axes,
                    frame.plot = frame.plot, panel.first = panel.first,
                    panel.last = panel.last, ...)
   } else {
-    .plot_single(x, calendar = calendar, panel = panel, main = main, sub = sub,
+    .plot_single(x, calendar = calendar, panel = panel,
+                 xlab = xlab, ylab = ylab,
+                 main = main, sub = sub,
                  ann = ann, axes = axes,
                  frame.plot = frame.plot, panel.first = panel.first,
                  panel.last = panel.last, ...)
@@ -70,6 +74,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' @keywords internal
 #' @noRd
 .plot_single <- function(x, calendar, panel = graphics::lines,
+                         xlab = NULL, ylab = NULL,
                          xlim = NULL, ylim = NULL,
                          main = NULL, sub = NULL,
                          ann = graphics::par("ann"), axes = TRUE,
@@ -128,8 +133,9 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   ## Add annotation
   if (ann) {
-    xlab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
-    ylab <- NULL
+    cal_lab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+    xlab <- xlab %||% cal_lab
+    # ylab <- NULL
     graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
   }
 
@@ -169,6 +175,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' @noRd
 .plot_multiple <- function(x, calendar, panel = graphics::lines,
                            y_flip = TRUE, n_col = NULL,
+                           xlab = NULL, ylab = NULL,
                            main = NULL, sub = NULL,
                            ann = graphics::par("ann"), axes = TRUE,
                            frame.plot = axes,
@@ -181,7 +188,6 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   m_seq <- seq_len(m)
   if (is.null(n_col)) n_col <- if (n > 4) 2 else 1
   n_row <- ceiling(n / n_col)
-  ylabs <- colnames(x) %||% paste("Series", n_seq, sep = " ")
 
   ## Graphical parameters
   ## Save and restore
@@ -205,6 +211,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   years <- time(x, calendar = calendar)
   xlim <- xlim(x, calendar = calendar)
+  ylabs <- ylab %||% colnames(x) %||% paste("Series", n_seq, sep = " ")
   for (j in n_seq) {
     ## Plot
     xj <- x[, j, , drop = FALSE]
@@ -235,7 +242,8 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
     ## Add annotation
     if (ann) {
       if (do_x) {
-        xlab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+        cal_lab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+        xlab <- xlab %||% cal_lab
         graphics::mtext(xlab, side = 1, line = 3, cex = cex.lab, col = col.lab,
                         font = font.lab)
       }

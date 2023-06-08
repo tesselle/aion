@@ -593,6 +593,7 @@ NULL
 #'  is "`multiple`"?
 #' @param ncol An [`integer`] specifying the number of columns to use when
 #'  `facet` is "`multiple`". Defaults to 1 for up to 4 series, otherwise to 2.
+#' @param xlab,ylab A [`character`] vector giving the x and y axis labels.
 #' @param main A [`character`] string giving a main title for the plot.
 #' @param sub A [`character`] string giving a subtitle for the plot.
 #' @param ann A [`logical`] scalar: should the default annotation (title and x

@@ -13,6 +13,8 @@
   panel = graphics::lines,
   flip = FALSE,
   ncol = NULL,
+  xlab = NULL,
+  ylab = NULL,
   main = NULL,
   sub = NULL,
   ann = graphics::par("ann"),
@@ -44,6 +46,8 @@ is "\code{multiple}"?}
 
 \item{ncol}{An \code{\link{integer}} specifying the number of columns to use when
 \code{facet} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
+
+\item{xlab, ylab}{A \code{\link{character}} vector giving the x and y axis labels.}
 
 \item{main}{A \code{\link{character}} string giving a main title for the plot.}
 

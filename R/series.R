@@ -54,6 +54,7 @@ setMethod(
   signature = c(object = "matrix", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     x <- array(object, dim = c(dim(object), 1))
+    rownames(x) <- rownames(object)
     colnames(x) <- colnames(object)
     methods::callGeneric(object = x, time = time, calendar = calendar,
                          scale = scale, names = names)

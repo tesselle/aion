@@ -3,15 +3,13 @@
 \docType{methods}
 \name{subset}
 \alias{subset}
-\alias{[,RataDie,ANY,ANY,ANY-method}
 \alias{[,RataDie-method}
-\alias{[,TimeSeries,ANY,ANY,ANY-method}
 \alias{[,TimeSeries-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
-\S4method{[}{RataDie,ANY,ANY,ANY}(x, i)
+\S4method{[}{RataDie}(x, i)
 
-\S4method{[}{TimeSeries,ANY,ANY,ANY}(x, i, j, k, drop = FALSE)
+\S4method{[}{TimeSeries}(x, i, j, k, drop = FALSE)
 }
 \arguments{
 \item{x}{An object from which to extract element(s) or in which to replace
