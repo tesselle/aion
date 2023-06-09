@@ -24,7 +24,7 @@ x <- matrix(rnorm(300), 100, 3)
 rd <- fixed(year = 1000:1099, calendar = calendar("BCE"))
 
 X <- series(x, time = rd)
-expect_equal(as.numeric(X@time), sort(rd@.Data))
+expect_equal(as.numeric(X@.Time), sort(rd@.Data))
 
 i <- sample(100)
 Y <- series(x[i, ], time = rd[i]) # Reorder

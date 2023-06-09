@@ -17,9 +17,10 @@ variables for each series.
 \section{Slots}{
 
 \describe{
-\item{\code{.Data}}{A \code{numeric} \code{\link{array}} giving the observed time-series values.}
+\item{\code{.Data}}{A \eqn{n x m x p}{n \times m \times p} \code{numeric} \code{\link{array}}
+giving the observed time-series values.}
 
-\item{\code{time}}{A \code{\linkS4class{RataDie}} object.}
+\item{\code{.Time}}{A length-\eqn{n} \code{\linkS4class{RataDie}} object.}
 }}
 
 \note{
@@ -46,4 +47,3 @@ N. Frerebeau
 }
 \concept{classes}
 \concept{time classes}
-\keyword{internal}

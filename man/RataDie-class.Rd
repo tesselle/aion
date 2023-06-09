@@ -45,4 +45,3 @@ N. Frerebeau
 }
 \concept{classes}
 \concept{time classes}
-\keyword{internal}

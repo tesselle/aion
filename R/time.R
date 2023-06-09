@@ -9,7 +9,7 @@ setMethod(
   f = "start",
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
-    z <- min(x@time)
+    z <- min(x@.Time)
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }
@@ -22,7 +22,7 @@ setMethod(
   f = "end",
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
-    z <- max(x@time)
+    z <- max(x@.Time)
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }
@@ -35,7 +35,7 @@ setMethod(
   f = "time",
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
-    z <- x@time
+    z <- x@.Time
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }
@@ -57,7 +57,7 @@ setMethod(
   f = "span",
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
-    z <- max(x@time) - min(x@time)
+    z <- max(x@.Time) - min(x@.Time)
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }

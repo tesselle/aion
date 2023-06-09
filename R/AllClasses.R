@@ -218,7 +218,6 @@ NULL
 #' @family time classes
 #' @docType class
 #' @aliases RataDie-class
-#' @keywords internal
 #' @exportClass RataDie
 .RataDie <- setClass(
   Class = "RataDie",
@@ -229,8 +228,9 @@ NULL
 #' TimeSeries
 #'
 #' An S4 class to represent time series.
-#' @slot .Data A `numeric` [`array`] giving the observed time-series values.
-#' @slot time A [`RataDie-class`] object.
+#' @slot .Data A \eqn{n x m x p}{n \times m \times p} `numeric` [`array`]
+#'  giving the observed time-series values.
+#' @slot .Time A length-\eqn{n} [`RataDie-class`] object.
 #' @details
 #'  A time series object is an \eqn{n x m x p}{n \times m \times p} array, with
 #'  \eqn{n} being the number of observations, \eqn{m} being the number of series
@@ -243,12 +243,11 @@ NULL
 #' @family time classes
 #' @docType class
 #' @aliases TimeSeries-class
-#' @keywords internal
 #' @exportClass TimeSeries
 .TimeSeries <- setClass(
   Class = "TimeSeries",
   slots = c(
-    time = "RataDie"
+    .Time = "RataDie"
   ),
   contains = "array"
 )

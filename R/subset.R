@@ -24,7 +24,7 @@ setMethod(
   signature = c(x = "TimeSeries"),
   function(x, i, j, k, drop = FALSE) {
     z <- x@.Data
-    time <- x@time
+    time <- x@.Time
 
     z <- z[i, j, k, drop = drop]
     if (!missing(i)) {
@@ -33,7 +33,7 @@ setMethod(
     }
 
     if (isTRUE(drop)) return(z)
-    methods::initialize(x, z, time = time)
+    methods::initialize(x, z, .Time = time)
   }
 )
 

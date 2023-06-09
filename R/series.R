@@ -24,7 +24,7 @@ setMethod(
     time <- time[i]
     object <- object[i, , , drop = FALSE]
 
-    .TimeSeries(object, time = time)
+    .TimeSeries(object, .Time = time)
   }
 )
 

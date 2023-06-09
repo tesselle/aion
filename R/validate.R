@@ -41,7 +41,7 @@ setValidity(
   Class = "TimeSeries",
   method = function(object) {
     ## Get data
-    time <- object@time
+    time <- object@.Time
     m <- nrow(object)
 
     ## Validate
