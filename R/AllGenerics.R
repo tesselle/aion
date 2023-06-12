@@ -655,6 +655,8 @@ NULL
 #'  the tickpoints.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @param current_calendar A [`TimeScale-class`] object specifying the calendar
+#'  used by the last call to [plot()].
 #' @param ... Further parameters to be passed to [graphics::axis()].
 #'  (e.g. [graphical parameters][graphics::par]).
 #' @return

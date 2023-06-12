@@ -222,16 +222,20 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
                  panel.first = panel.first, panel.last = panel.last, ...)
 
     ## Construct Axis
-    do_x <- j %% n_row == 0 || j == n
+    xaxt <- make_par(dots, "xaxt")
+    yaxt <- make_par(dots, "yaxt")
+    do_x <- (j %% n_row == 0 || j == n)
     y_side <- if (j %% 2 || !y_flip) 2 else 4
     if (axes) {
-      if (do_x) {
+      if (do_x && xaxt != "n") {
         year_axis(side = 1, format = TRUE, calendar = calendar,
                   xpd = NA, cex.axis = cex.axis,
                   col.axis = col.axis, font.axis = font.axis)
       }
-      graphics::axis(side = y_side, xpd = NA, cex.axis = cex.axis,
-                     col.axis = col.axis, font.axis = font.axis, las = 1)
+      if (yaxt != "n") {
+        graphics::axis(side = y_side, xpd = NA, cex.axis = cex.axis,
+                       col.axis = col.axis, font.axis = font.axis, las = 1)
+      }
     }
 
     ## Plot frame
@@ -328,6 +332,7 @@ setMethod("image", c(x = "TimeSeries"), image.TimeSeries)
 #' @rdname year_axis
 year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
                       labels = TRUE, calendar = getOption("aion.last_calendar"),
+                      current_calendar = getOption("aion.last_calendar"),
                       ...) {
   no_at <- missing(at) || is.null(at) || !is.numeric(at)
   if (no_at) at <- graphics::axTicks(side = side)
@@ -335,17 +340,16 @@ year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
   if (!is.logical(labels)) {
     labels <- labels[keep]
   } else if (isTRUE(labels)) {
-    last_calendar <- getOption("aion.last_calendar")
     ## If last_calendar is NULL, then the last plot was expressed in rata die
-    if (is.null(last_calendar)) {
+    if (is.null(current_calendar)) {
       at <- as_fixed(at)
     } else {
-      at <- fixed(at, calendar = last_calendar)
+      at <- fixed(at, calendar = current_calendar)
     }
     if (!is.null(calendar)) {
       at <- pretty(at, calendar = calendar)
       labels <- format(at, format = format, label = FALSE, calendar = calendar)
-      if (!is.null(last_calendar)) at <- as_year(at, calendar = last_calendar)
+      if (!is.null(current_calendar)) at <- as_year(at, calendar = current_calendar)
     }
   } else if (isFALSE(labels)) {
     labels <- rep("", length(at))

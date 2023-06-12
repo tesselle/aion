@@ -11,6 +11,7 @@ year_axis(
   format = c("a", "ka", "Ma", "Ga"),
   labels = TRUE,
   calendar = getOption("aion.last_calendar"),
+  current_calendar = getOption("aion.last_calendar"),
   ...
 )
 }
@@ -32,6 +33,9 @@ the tickpoints.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
+
+\item{current_calendar}{A \code{\linkS4class{TimeScale}} object specifying the calendar
+used by the last call to \code{\link[=plot]{plot()}}.}
 
 \item{...}{Further parameters to be passed to \code{\link[graphics:axis]{graphics::axis()}}.
 (e.g. \link[graphics:par]{graphical parameters}).}
