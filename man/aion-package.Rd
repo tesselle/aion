@@ -17,6 +17,7 @@ A toolkit for archaeological time series. This package provides a system of clas
 \strong{Type:} \tab Package \cr
 \strong{Version:} \tab 1.0.0 \cr
 \strong{License:} \tab GPL-3 \cr
+\strong{Zenodo:} \tab \doi{10.5281/zenodo.8032278} \cr
 }
 }
 \section{Package options}{

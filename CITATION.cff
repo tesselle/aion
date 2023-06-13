@@ -8,7 +8,8 @@ message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aion: Archaeological Time Series'
-version: 1.0.0
+version: 1.0.0.9000
+doi: 10.5281/zenodo.8032278
 abstract: A toolkit for archaeological time series. This package provides a system
   of classes and methods to represent and work with archaeological time series. Dates
   are represented as "rata die" and can be converted to (virtually) any calendar defined
@@ -42,8 +43,9 @@ preferred-citation:
   year: '2023'
   location:
     name: Pessac, France
-  notes: R package version 1.0.0
+  notes: R package version 1.0.0.9000
   url: https://packages.tesselle.org/aion/
+  doi: 10.5281/zenodo.8032278
   institution:
     name: Université Bordeaux Montaigne
 repository-code: https://github.com/tesselle/aion
@@ -238,3 +240,10 @@ references:
     email: mark.vanderloo@gmail.com
     orcid: https://orcid.org/0000-0002-9807-4686
   year: '2023'
+identifiers:
+- description: The concept DOI.
+  type: doi
+  value: 10.5281/zenodo.8032278
+- description: The versioned DOI for version 1.0.0.
+  type: doi
+  value: 10.5281/zenodo.8032279

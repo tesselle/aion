@@ -8,14 +8,27 @@
 [![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
 [![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
+[![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/aion"
 alt="r-universe" /></a>
+<a href="https://cran.r-project.org/package=aion"
+class="pkgdown-release"><img
+src="http://www.r-pkg.org/badges/version/aion" alt="CRAN Version" /></a>
+<a href="https://cran.r-project.org/web/checks/check_results_aion.html"
+class="pkgdown-release"><img
+src="https://badges.cranchecks.info/worst/aion.svg"
+alt="CRAN checks" /></a>
+<a href="https://cran.r-project.org/package=aion"
+class="pkgdown-release"><img src="http://cranlogs.r-pkg.org/badges/aion"
+alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
 <!-- badges: end -->
 
 ## Overview
@@ -43,8 +56,9 @@ offers a simple API that can be used by other specialized packages.
     To cite aion in publications use:
 
       Frerebeau N, Roe J (2023). _aion: Archaeological Time Series_.
-      Université Bordeaux Montaigne, Pessac, France. R package version
-      1.0.0, <https://packages.tesselle.org/aion/>.
+      Université Bordeaux Montaigne, Pessac, France.
+      doi:10.5281/zenodo.8032278 <https://doi.org/10.5281/zenodo.8032278>,
+      R package version 1.0.0, <https://packages.tesselle.org/aion/>.
 
     Une entrée BibTeX pour les utilisateurs LaTeX est
 
@@ -56,6 +70,7 @@ offers a simple API that can be used by other specialized packages.
         address = {Pessac, France},
         note = {R package version 1.0.0},
         url = {https://packages.tesselle.org/aion/},
+        doi = {10.5281/zenodo.8032278},
       }
 
     This package is a part of the tesselle project

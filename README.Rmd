@@ -20,10 +20,16 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
 [![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
+[![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev){.pkgdown-devel}
+[![CRAN Version](http://www.r-pkg.org/badges/version/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
+[![CRAN checks](https://badges.cranchecks.info/worst/aion.svg)](https://cran.r-project.org/web/checks/check_results_aion.html){.pkgdown-release}
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
 <!-- badges: end -->
 
 ## Overview

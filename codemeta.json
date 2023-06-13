@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/tesselle/aion",
   "issueTracker": "https://github.com/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0",
+  "version": "1.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -159,7 +159,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "459.568KB",
+  "fileSize": "460.549KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -177,13 +177,16 @@
         }
       ],
       "name": "{aion: Archaeological Time Series}",
+      "identifier": "10.5281/zenodo.8032278",
       "url": "https://packages.tesselle.org/aion/",
-      "description": "R package version 1.0.0"
+      "description": "R package version 1.0.0.9000",
+      "@id": "https://doi.org/10.5281/zenodo.8032278",
+      "sameAs": "https://doi.org/10.5281/zenodo.8032278"
     }
   ],
   "releaseNotes": "https://github.com/tesselle/aion/blob/master/NEWS.md",
   "readme": "https://github.com/tesselle/aion/blob/main/README.md",
   "contIntegration": ["https://github.com/tesselle/aion/actions", "https://app.codecov.io/gh/tesselle/aion"],
-  "developmentStatus": "https://www.repostatus.org/#wip",
+  "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["archaeological-science", "archaeology", "r-package", "chronology", "time-series"]
 }
