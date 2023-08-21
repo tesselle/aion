@@ -34,8 +34,8 @@ series(object, time, calendar, ...)
 }
 \arguments{
 \item{object}{A \code{\link{numeric}} \code{vector}, \code{matrix} or \code{array} of the observed
-time-series values.
-A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix} via \code{\link[=data.matrix]{data.matrix()}}.}
+time-series values. A \code{\link{data.frame}} will be coerced to a \code{numeric} \code{matrix}
+via \code{\link[=data.matrix]{data.matrix()}}.}
 
 \item{time}{A \code{\link{numeric}} vector of (decimal) years or a \code{\linkS4class{RataDie}}
 object (see \code{\link[=fixed]{fixed()}}).}

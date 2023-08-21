@@ -452,8 +452,8 @@ NULL
 #' Create Time Series
 #'
 #' @param object A [`numeric`] `vector`, `matrix` or `array` of the observed
-#'  time-series values.
-#'  A [`data.frame`] will be coerced to a `numeric` `matrix` via [data.matrix()].
+#'  time-series values. A [`data.frame`] will be coerced to a `numeric` `matrix`
+#'  via [data.matrix()].
 #' @param time A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
 #'  object (see [fixed()]).
 #' @param calendar A [`TimeScale-class`] object specifying the calendar of

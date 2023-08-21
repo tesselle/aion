@@ -100,7 +100,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   ## Set plotting coordinates
   years <- time(x, calendar = calendar)
   xlim <- xlim %||% xlim(x, calendar = calendar)
-  ylim <- ylim %||% range(x)
+  ylim <- ylim %||% range(x, na.rm = TRUE)
   graphics::plot.window(xlim = xlim, ylim = ylim)
 
   ## Evaluate pre-plot expressions
@@ -152,6 +152,8 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #'  The default is [graphics::lines()].
 #' @param y_flip A [`logical`] scalar: should the y-axis (ticks and numbering)
 #'  be flipped from side 2 (left) to 4 (right) from series to series?
+#' @param y_fixed A [`logical`] scalar: should the y-scale be shared across
+#'  all series?
 #' @param ncol An [`integer`] specifying the number of columns to use.
 #'  Defaults to 1 for up to 4 series, otherwise to 2.
 #' @param main A [`character`] string giving a main title for the plot.
@@ -174,7 +176,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' @keywords internal
 #' @noRd
 .plot_multiple <- function(x, calendar, panel = graphics::lines,
-                           y_flip = TRUE, n_col = NULL,
+                           y_flip = TRUE, y_fixed = FALSE, n_col = NULL,
                            xlab = NULL, ylab = NULL,
                            main = NULL, sub = NULL,
                            ann = graphics::par("ann"), axes = TRUE,
@@ -211,12 +213,13 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   years <- time(x, calendar = calendar)
   xlim <- xlim(x, calendar = calendar)
+  ylim <- if (y_fixed) range(x, na.rm = TRUE) else NULL
   ylabs <- ylab %||% colnames(x) %||% paste("Series", n_seq, sep = " ")
   for (j in n_seq) {
     ## Plot
     xj <- x[, j, , drop = FALSE]
     .plot_single(xj, calendar = calendar, panel = panel,
-                 xlim = xlim, ylim = NULL,
+                 xlim = xlim, ylim = ylim,
                  main = NULL, sub = NULL, ann = FALSE, axes = FALSE,
                  frame.plot = frame.plot,
                  panel.first = panel.first, panel.last = panel.last, ...)
@@ -357,4 +360,3 @@ year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
 
   graphics::axis(side, at = as.numeric(at), labels = labels, ...)
 }
-
