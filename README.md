@@ -58,7 +58,7 @@ offers a simple API that can be used by other specialized packages.
       Frerebeau N, Roe J (2023). _aion: Archaeological Time Series_.
       Université Bordeaux Montaigne, Pessac, France.
       doi:10.5281/zenodo.8032278 <https://doi.org/10.5281/zenodo.8032278>,
-      R package version 1.0.0, <https://packages.tesselle.org/aion/>.
+      R package version 1.0.1, <https://packages.tesselle.org/aion/>.
 
     Une entrée BibTeX pour les utilisateurs LaTeX est
 
@@ -68,7 +68,7 @@ offers a simple API that can be used by other specialized packages.
         year = {2023},
         organization = {Université Bordeaux Montaigne},
         address = {Pessac, France},
-        note = {R package version 1.0.0},
+        note = {R package version 1.0.1},
         url = {https://packages.tesselle.org/aion/},
         doi = {10.5281/zenodo.8032278},
       }

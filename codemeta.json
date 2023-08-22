@@ -4,17 +4,23 @@
   "identifier": "aion",
   "description": "A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as \"rata die\" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
   "name": "aion: Archaeological Time Series",
-  "relatedLink": "https://packages.tesselle.org/aion/",
+  "relatedLink": ["https://packages.tesselle.org/aion/", "https://CRAN.R-project.org/package=aion"],
   "codeRepository": "https://github.com/tesselle/aion",
   "issueTracker": "https://github.com/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0.9000",
+  "version": "1.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -134,6 +140,7 @@
       "@type": "SoftwareApplication",
       "identifier": "arkhe",
       "name": "arkhe",
+      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -159,7 +166,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "460.549KB",
+  "fileSize": "460.79KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -179,7 +186,7 @@
       "name": "{aion: Archaeological Time Series}",
       "identifier": "10.5281/zenodo.8032278",
       "url": "https://packages.tesselle.org/aion/",
-      "description": "R package version 1.0.0.9000",
+      "description": "R package version 1.0.1",
       "@id": "https://doi.org/10.5281/zenodo.8032278",
       "sameAs": "https://doi.org/10.5281/zenodo.8032278"
     }
