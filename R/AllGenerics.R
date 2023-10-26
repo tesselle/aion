@@ -396,7 +396,7 @@ setGeneric(
 #' Date Conversion to Character
 #'
 #' @param x A [`RataDie-class`] object.
-#' @param format A [`character`] string specifying the prefix.
+#' @param prefix A [`character`] string specifying the prefix.
 #'  It should be one of "`a`", "`ka`", "`Ma`" or "`Ga`".
 #'  If `TRUE`, a good guess for an appropriate format is made.
 #' @param label A [`logical`] scalar: should the label of the calendar be

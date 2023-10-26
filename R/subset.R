@@ -27,12 +27,13 @@ setMethod(
     time <- x@.Time
 
     z <- z[i, j, k, drop = drop]
+    if (isTRUE(drop)) return(z)
+
     if (!missing(i)) {
       if (is.character(i)) i <- match(i, dimnames(x)[1L])
       time <- time[i]
     }
 
-    if (isTRUE(drop)) return(z)
     methods::initialize(x, z, .Time = time)
   }
 )

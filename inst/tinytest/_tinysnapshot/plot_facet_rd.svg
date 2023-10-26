@@ -43,7 +43,6 @@
 <text x='38.97' y='116.97' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='86.15' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='55.33' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,180.67 232.04,180.67 232.04,47.52 48.47,47.52 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,114.10) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S1</text>
 </g>
 <defs>
@@ -67,7 +66,6 @@
 <text x='38.97' y='250.12' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='219.29' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='188.45' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,313.82 232.04,313.82 232.04,180.67 48.47,180.67 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,247.25) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S2</text>
 </g>
 <defs>
@@ -104,7 +102,6 @@
 <text x='38.97' y='383.29' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='352.43' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='321.56' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,446.98 232.04,446.98 232.04,313.82 48.47,313.82 ' style='stroke-width: 0.75;' />
 <text x='117.00' y='482.92' style='font-size: 12.00px; font-style: italic; font-family: "Arial";' textLength='46.51px' lengthAdjust='spacingAndGlyphs'>rata die</text>
 <text transform='translate(18.06,380.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S3</text>
 </g>
@@ -129,7 +126,6 @@
 <text x='290.97' y='117.00' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='290.97' y='86.10' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='290.97' y='55.20' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='300.47,180.67 484.04,180.67 484.04,47.52 300.47,47.52 ' style='stroke-width: 0.75;' />
 <text transform='translate(270.06,114.10) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S4</text>
 </g>
 <defs>
@@ -153,7 +149,6 @@
 <text x='290.97' y='250.14' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='290.97' y='219.28' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='290.97' y='188.41' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='300.47,313.82 484.04,313.82 484.04,180.67 300.47,180.67 ' style='stroke-width: 0.75;' />
 <text transform='translate(270.06,247.25) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S5</text>
 </g>
 <defs>
@@ -190,7 +185,6 @@
 <text x='290.97' y='383.27' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='290.97' y='352.44' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='290.97' y='321.61' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='300.47,446.98 484.04,446.98 484.04,313.82 300.47,313.82 ' style='stroke-width: 0.75;' />
 <text x='369.00' y='482.92' style='font-size: 12.00px; font-style: italic; font-family: "Arial";' textLength='46.51px' lengthAdjust='spacingAndGlyphs'>rata die</text>
 <text transform='translate(270.06,380.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S6</text>
 </g>

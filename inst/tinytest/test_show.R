@@ -5,10 +5,10 @@ expect_identical(format(J()), "Julian years")
 x <- fixed(c(30, 35, 40), calendar = calendar("BP"), scale = 1000)
 
 expect_identical(format(x), c("-28050 CE", "-33050 CE", "-38050 CE"))
-expect_identical(format(x, format = "ka"), c("-28.05 ka CE", "-33.05 ka CE", "-38.05 ka CE"))
-expect_identical(format(x, format = "Ma"), c("-0.02805 Ma CE", "-0.03305 Ma CE", "-0.03805 Ma CE"))
-expect_identical(format(x, format = "Ga"), c("-2.805e-05 Ga CE", "-3.305e-05 Ga CE", "-3.805e-05 Ga CE"))
-expect_identical(format(x, format = TRUE), c("-28.05 ka CE", "-33.05 ka CE", "-38.05 ka CE"))
+expect_identical(format(x, prefix = "ka"), c("-28.05 ka CE", "-33.05 ka CE", "-38.05 ka CE"))
+expect_identical(format(x, prefix = "Ma"), c("-0.02805 Ma CE", "-0.03305 Ma CE", "-0.03805 Ma CE"))
+expect_identical(format(x, prefix = "Ga"), c("-2.805e-05 Ga CE", "-3.305e-05 Ga CE", "-3.805e-05 Ga CE"))
+expect_identical(format(x, prefix = TRUE), c("-28.05 ka CE", "-33.05 ka CE", "-38.05 ka CE"))
 
 # Show =========================================================================
 if (at_home()) {

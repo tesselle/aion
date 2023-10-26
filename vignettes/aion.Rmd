@@ -100,7 +100,7 @@ as_year(rd, calendar = calendar("b2k")) # Before 2000
 
 ```{r}
 format(rd) # Default calendar (Gregorian Common Era)
-format(rd, format = "ka", calendar = calendar("BP"))
+format(rd, prefix = "ka", calendar = calendar("BP"))
 ```
 
 The *rata die* vector provides the internal time representation of the **aion** time-series (if you want to work with numeric vectors that represent year-based time scales, you may be interested in the [**era**](https://github.com/joeroe/era) package).

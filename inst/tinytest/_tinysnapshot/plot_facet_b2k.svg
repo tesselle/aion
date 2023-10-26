@@ -43,7 +43,6 @@
 <text x='38.97' y='83.69' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='68.27' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='52.86' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,114.10 484.04,114.10 484.04,47.52 48.47,47.52 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,80.81) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S1</text>
 </g>
 <defs>
@@ -67,7 +66,6 @@
 <text x='38.97' y='150.26' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='134.84' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='119.43' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,180.67 484.04,180.67 484.04,114.10 48.47,114.10 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,147.38) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S2</text>
 </g>
 <defs>
@@ -91,7 +89,6 @@
 <text x='38.97' y='216.85' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='201.41' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='185.98' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,247.25 484.04,247.25 484.04,180.67 48.47,180.67 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,213.96) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S3</text>
 </g>
 <defs>
@@ -115,7 +112,6 @@
 <text x='38.97' y='283.43' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='267.98' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='252.53' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,313.82 484.04,313.82 484.04,247.25 48.47,247.25 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,280.54) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S4</text>
 </g>
 <defs>
@@ -139,7 +135,6 @@
 <text x='38.97' y='350.00' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='334.57' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='319.13' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,380.40 484.04,380.40 484.04,313.82 48.47,313.82 ' style='stroke-width: 0.75;' />
 <text transform='translate(18.06,347.11) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S5</text>
 </g>
 <defs>
@@ -174,7 +169,6 @@
 <text x='38.97' y='416.56' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.0</text>
 <text x='38.97' y='401.15' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>0.5</text>
 <text x='38.97' y='385.73' text-anchor='end' style='font-size: 7.92px; font-family: "Arial";' textLength='12.58px' lengthAdjust='spacingAndGlyphs'>1.0</text>
-<polygon points='48.47,446.98 484.04,446.98 484.04,380.40 48.47,380.40 ' style='stroke-width: 0.75;' />
 <text x='266.26' y='483.09' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='122.43px' lengthAdjust='spacingAndGlyphs'>Gregorian years b2k</text>
 <text transform='translate(18.06,413.69) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='15.26px' lengthAdjust='spacingAndGlyphs'>S6</text>
 </g>

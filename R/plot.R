@@ -241,11 +241,6 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
       }
     }
 
-    ## Plot frame
-    if (frame.plot) {
-      graphics::box()
-    }
-
     ## Add annotation
     if (ann) {
       if (do_x) {
@@ -351,7 +346,7 @@ year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
     }
     if (!is.null(calendar)) {
       at <- pretty(at, calendar = calendar)
-      labels <- format(at, format = format, label = FALSE, calendar = calendar)
+      labels <- format(at, prefix = format, label = FALSE, calendar = calendar)
       if (!is.null(current_calendar)) at <- as_year(at, calendar = current_calendar)
     }
   } else if (isFALSE(labels)) {

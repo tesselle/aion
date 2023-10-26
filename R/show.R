@@ -33,26 +33,26 @@ setMethod(
 setMethod(
   f = "format",
   signature = "RataDie",
-  definition = function(x, format = c("a", "ka", "Ma", "Ga"), label = TRUE,
+  definition = function(x, prefix = c("a", "ka", "Ma", "Ga"), label = TRUE,
                         calendar = getOption("aion.calendar")) {
     if (is.null(calendar)) return(format(as.numeric(x)))
 
     y <- as_year(x, calendar = calendar)
 
     ## Scale
-    if (isTRUE(format)) {
+    if (isTRUE(prefix)) {
       power <- 10^floor(log10(abs(mean(y, na.rm = TRUE))))
-      if (format < 10^4) format <- "a"
-      if (power >= 10^4 && power < 10^6) format <- "ka"
-      if (power >= 10^6 && power < 10^9) format <- "Ma"
-      if (power >= 10^9) format <- "Ga"
+      if (prefix < 10^4) prefix <- "a"
+      if (power >= 10^4 && power < 10^6) prefix <- "ka"
+      if (power >= 10^6 && power < 10^9) prefix <- "Ma"
+      if (power >= 10^9) prefix <- "Ga"
     }
-    format <- match.arg(format, several.ok = FALSE)
-    power <- switch (format, ka = 10^3, Ma = 10^6, Ga = 10^9, 1)
+    prefix <- match.arg(prefix, several.ok = FALSE)
+    power <- switch (prefix, ka = 10^3, Ma = 10^6, Ga = 10^9, 1)
 
-    format <- if (power > 1) sprintf(" %s", format) else ""
+    prefix <- if (power > 1) sprintf(" %s", prefix) else ""
     label <- if (isTRUE(label)) sprintf(" %s", calendar_label(calendar)) else ""
-    sprintf("%g%s%s", y / power, format, label)
+    sprintf("%g%s%s", y / power, prefix, label)
   }
 )
 

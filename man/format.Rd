@@ -11,7 +11,7 @@
 
 \S4method{format}{RataDie}(
   x,
-  format = c("a", "ka", "Ma", "Ga"),
+  prefix = c("a", "ka", "Ma", "Ga"),
   label = TRUE,
   calendar = getOption("aion.calendar")
 )
@@ -19,7 +19,7 @@
 \arguments{
 \item{x}{A \code{\linkS4class{RataDie}} object.}
 
-\item{format}{A \code{\link{character}} string specifying the prefix.
+\item{prefix}{A \code{\link{character}} string specifying the prefix.
 It should be one of "\code{a}", "\code{ka}", "\code{Ma}" or "\code{Ga}".
 If \code{TRUE}, a good guess for an appropriate format is made.}
 
