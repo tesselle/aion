@@ -27,6 +27,12 @@ library(aion)
 
 **aion** offers a simple API that can be extended and used by other specialized packages.
 
+The following packages rely on **aion**:
+
+* [**ananke**](https://github.com/tesselle/ananke) (quantitative chronology in archaeology).
+* [**kairos**](https://github.com/tesselle/kairos) v2.0 (analysis of chronological patterns from archaeological count data).
+* [**ArchaeoPhases**](https://github.com/ArchaeoStat/ArchaeoPhases) v2.0 (post-processing of MCMC simulations for chronological modelling).
+
 # Calendars and Dates
 
 The following example is used to build a simple solar calendar with 365 days each year and no leap-year rule. This is the ancient Egyptian calendar. You will find full details of the calculations and detailed explanations in @reingold2018 (p. 29).
