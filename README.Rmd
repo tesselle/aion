@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
 
-[![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev){.pkgdown-devel}
+[![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev/aion){.pkgdown-devel}
 [![CRAN Version](http://www.r-pkg.org/badges/version/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
 [![CRAN checks](https://badges.cranchecks.info/worst/aion.svg)](https://cran.r-project.org/web/checks/check_results_aion.html){.pkgdown-release}
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}

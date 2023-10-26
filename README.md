@@ -10,7 +10,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
 
-<a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
+<a href="https://tesselle.r-universe.dev/aion"
+class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/aion"
 alt="r-universe" /></a>
 <a href="https://cran.r-project.org/package=aion"
@@ -58,7 +59,7 @@ offers a simple API that can be used by other specialized packages.
       Frerebeau N, Roe J (2023). _aion: Archaeological Time Series_.
       Université Bordeaux Montaigne, Pessac, France.
       doi:10.5281/zenodo.8032278 <https://doi.org/10.5281/zenodo.8032278>,
-      R package version 1.0.1, <https://packages.tesselle.org/aion/>.
+      R package version 1.0.2, <https://packages.tesselle.org/aion/>.
 
     Une entrée BibTeX pour les utilisateurs LaTeX est
 
@@ -68,7 +69,7 @@ offers a simple API that can be used by other specialized packages.
         year = {2023},
         organization = {Université Bordeaux Montaigne},
         address = {Pessac, France},
-        note = {R package version 1.0.1},
+        note = {R package version 1.0.2},
         url = {https://packages.tesselle.org/aion/},
         doi = {10.5281/zenodo.8032278},
       }
