@@ -8,40 +8,35 @@ authors:
   - name: Nicolas Frerebeau
     orcid: 0000-0001-5759-4944
     affiliation: 1
-  - name: Joe Roe
-    orcid: 0000-0002-1011-1244
-    affiliation: 2
 affiliations:
- - name: Archéosciences Bordeaux (UMR 6034 - CNRS, Université Bordeaux Montaigne)
+ - name: UMR 6034 Archéosciences Bordeaux (CNRS, Université Bordeaux Montaigne, Université de Bordeaux, EPHE)
    index: 1
- - name: Institute for Archaeological Sciences, University of Bern
-   index: 2
 date: 7 June 2023
 bibliography: paper.bib
 ---
 
 # Summary
 
-Numerous R packages have been developped to describe, analyze, and model 
+Numerous R packages have been developed to describe, analyze, and model 
 temporal data in the context of archaeological studies in the broadest sense. 
 These packages encompass various functionalities, including handling radiocarbon 
-data (e.g., 'Bchron' by @R-Bchron or 'rcarbon' by @R-rcarbon), Optically 
-Stimulated Luminescence dating ('Luminescence' by @R-Luminescence), Bayesian 
-chronological modeling ('ArchaeoPhases' by @R-ArchaeoPhases), 
-using paleoenvironmental proxies (e.g., 'shoredate' by @R-shoredate), or other 
-temporal data (e.g., 'kairos' by @R-kairos). This multitude of packages 
+data (e.g., `Bchron` by @R-Bchron or `rcarbon` by @R-rcarbon), Optically 
+Stimulated Luminescence dating (`Luminescence` by @R-Luminescence), Bayesian 
+chronological modeling (`ArchaeoPhases` by @R-ArchaeoPhases), 
+using paleoenvironmental proxies (e.g., `shoredate` by @R-shoredate), or other 
+temporal data (e.g., `kairos` by @R-kairos). This multitude of packages 
 underscores the significance of computational approaches in archaeology 
 [@schmidt2020]. However, it also presents a major challenge as each package 
 employs its own representation of temporal information. Consequently, exchanging 
 data between different packages within the same data workflow becomes even more 
-arduous. 'aion' is designed to provide a consistent framework for representing 
+arduous. `aion` is designed to provide a consistent framework for representing 
 archaeological time series.
 
 # Statement of need
 
 R ships with a lot of functionality useful for time series, in particular 
-in the base `stats` [@R-stats], or in the `zoo` [@R-zoo] packages. However, 
-these features are not adapted to most archaeological time series. 
+in the base `stats` [@R-stats], or in the `zoo` [@R-zoo] packages[^1]. 
+However, these features are not adapted to most archaeological time series. 
 Archaeological data is typically collected through field excavations or 
 surveys, resulting in irregularly spaced observation times. Although several 
 packages can handle irregular time series, the way they represent dates means 
@@ -53,7 +48,7 @@ in the past.
 time series. This package does not provide tools for temporal analysis or 
 modeling. Instead, it offers a system of classes and methods to represent and 
 work with archaeological time series. This API can be extended and used by other 
-specialized packages.
+specialized packages (see `kairos` v2.0 as an example).
 
 # Functionality
 
@@ -77,4 +72,12 @@ are available. `aion` natively supports both Julian and Gregorian calendars
 (with the most common eras for the latter, e.g. Before 2000, Before Present, 
 (Before) Common Era...) and allows to create custom calendars.
 
+# Acknowledgements
+
+The inspiration for this package comes from the `era` package by Joe Roe. 
+`era` [@R-era] provides a consistent representation of year-based time scales 
+as a numeric vector with an associated era.
+
 # References
+
+[^1]: See the CRAN Task View about time series analysis: <https://cran.r-project.org/view=TimeSeries>.
