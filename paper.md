@@ -59,12 +59,19 @@ different approach: it allows to create date vectors represented as *rata die*
 This allows to represent dates independently of any calendar and makes 
 calculations and comparisons easier.
 
+The *rata die* vector provides the internal time representation of the `aion` 
+time series (note that the `era` [@R-era] package allows to work with numeric 
+vectors that represent year-based time scales). The `fixed()` function allows to 
+create such a vector from dates that can then be converted back into dates 
+(or years) of a particular calendar.
+
 In `aion` a time series is represented by an S4 class that inherits from the 
-base array. A time series object is an $n \times m \times p$ array, with $n$ 
-being the number of observations, $m$ being the number of series and with the 
-$p$ columns of the third dimension containing extra variables for each series. 
-This array comes with an extra `time` slot that store the observations times 
-expressed in *rata die*.
+base `array`. A time series object can be created with the `series()` function
+that returns an $n \times m \times p$ array, with $n$ being the number of 
+observations, $m$ being the number of series and with the $p$ columns of the 
+third dimension containing extra variables for each series. This array comes 
+with an extra `time` slot that store the observations times expressed in 
+*rata die*. It be created with the `series()` function.
 
 All output produced by `aion` can be formatted with (virtually) any calendar, 
 as long as the calendar has been defined and the associated conversion methods 
@@ -74,9 +81,7 @@ are available. `aion` natively supports both Julian and Gregorian calendars
 
 # Acknowledgements
 
-The inspiration for this package comes from the `era` package by Joe Roe. 
-`era` [@R-era] provides a consistent representation of year-based time scales 
-as a numeric vector with an associated era.
+The inspiration for this package comes from the `era` package by Joe Roe.
 
 # References
 
