@@ -61,7 +61,7 @@ offers a simple API that can be used by other specialized packages.
       doi:10.5281/zenodo.8032278 <https://doi.org/10.5281/zenodo.8032278>,
       R package version 1.0.2, <https://packages.tesselle.org/aion/>.
 
-    Une entrée BibTeX pour les utilisateurs LaTeX est
+    A BibTeX entry for LaTeX users is
 
       @Manual{,
         author = {Nicolas Frerebeau and Joe Roe},
