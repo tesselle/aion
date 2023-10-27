@@ -298,7 +298,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
 
   ## Save and restore
   mar <- graphics::par("mar")
-  mar[2] <- inch2line(samples, cex = cex.axis) + 0.5
+  mar[2] <- arkhe::inch2line(samples, cex = cex.axis) + 0.5
   old_par <- graphics::par(mar = mar)
   on.exit(graphics::par(old_par))
 
