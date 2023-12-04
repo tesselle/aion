@@ -3,14 +3,14 @@ title: "Introduction to aion"
 author: "N. Frerebeau"
 date: "`r Sys.Date()`"
 output:
-  rmarkdown::html_vignette:
-    number_sections: yes
-    fig_caption: yes
-    toc: true
+  markdown::html_format:
+    options:
+      toc: true
+      number_sections: true
 bibliography: bibliography.bib
 vignette: >
   %\VignetteIndexEntry{Introduction to aion}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -66,7 +66,7 @@ getOption("aion.calendar")
 
 # Vectors of dates
 
-In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **aion** uses a different approach: it allows to create date vectors represented as *rata die* [@reingold2018], i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
+In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **aion** uses a different approach: it allows to create date vectors represented as *rata die* (Reingold and Dershowitz 2018), i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
 
 This makes it possible to get rid of a specific calendar and to make calculations easier. It is then possible to convert a vector of *rata die* into dates or (decimal) years of any calendar.
 
@@ -168,3 +168,5 @@ mtext(format(CE()), side = 3, line = 3) # Add secondary axis title
 Note that **aion** uses the astronomical notation for Gregorian years (there *is* a year 0).
 
 # References
+
+Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.

@@ -3,14 +3,14 @@ title: "Extending aion"
 author: "N. Frerebeau"
 date: "`r Sys.Date()`"
 output:
-  rmarkdown::html_vignette:
-    number_sections: yes
-    fig_caption: yes
-    toc: true
+  markdown::html_format:
+    options:
+      toc: true
+      number_sections: true
 bibliography: bibliography.bib
 vignette: >
   %\VignetteIndexEntry{Extending aion}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -35,7 +35,7 @@ The following packages rely on **aion**:
 
 # Calendars and Dates
 
-The following example is used to build a simple solar calendar with 365 days each year and no leap-year rule. This is the ancient Egyptian calendar. You will find full details of the calculations and detailed explanations in @reingold2018 (p. 29).
+The following example is used to build a simple solar calendar with 365 days each year and no leap-year rule. This is the ancient Egyptian calendar. You will find full details of the calculations and detailed explanations in Reingold and Dershowitz (2018, p. 29).
 
 You can define additional calendars by creating S4 classes that inherit from the `TimeScale` class exported by **aion**:
 
@@ -150,3 +150,5 @@ As an example, you can create a class that represent the results of the calibrat
 All methods defined in **aion** can then be used on objects belonging to this new class (e.g. `plot()`).
 
 # References
+
+Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.
