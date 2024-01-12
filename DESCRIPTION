@@ -7,7 +7,7 @@ Authors@R: c(
     person("Joe", "Roe", , "joseph.roe@iaw.unibe.ch", role = "aut",
            comment = c(ORCID = "0000-0002-1011-1244", affiliation = "Universität Bern")),
     person("Brice", "Lebrun", , "brice.lebrun@u-bordeaux-montaigne.fr", role = "ctb",
-           comment = c(ORCID = "0000-0001-7503-8685")),
+           comment = c(ORCID = "0000-0001-7503-8685", "Logo designer")),
     person("Université Bordeaux Montaigne", role = "fnd"),
     person("CNRS", role = "fnd")
   )
