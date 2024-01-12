@@ -601,7 +601,7 @@ NULL
 #' @param axes A [`logical`] scalar: should axes be drawn on the plot?
 #' @param frame.plot A [`logical`] scalar: should a box be drawn around the
 #'  plot?
-#' @param panel.first An an `expression` to be evaluated after the plot axes are
+#' @param panel.first An `expression` to be evaluated after the plot axes are
 #'  set up but before any plotting takes place. This can be useful for drawing
 #'  background grids.
 #' @param panel.last An `expression` to be evaluated after plotting has taken
