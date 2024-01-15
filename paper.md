@@ -9,8 +9,8 @@ authors:
     orcid: 0000-0001-5759-4944
     affiliation: 1
 affiliations:
- - name: UMR 6034 Archéosciences Bordeaux (CNRS, Université Bordeaux Montaigne, Université de Bordeaux, EPHE)
-   index: 1
+  - name: UMR 6034 Archéosciences Bordeaux (CNRS, Université Bordeaux Montaigne, Université de Bordeaux, EPHE)
+    index: 1
 date: 7 June 2023
 bibliography: paper.bib
 ---
@@ -81,7 +81,7 @@ are available. `aion` natively supports both Julian and Gregorian calendars
 
 # Acknowledgements
 
-The inspiration for this package comes from the `era` package by Joe Roe.
+The author would like to thank Brice Lebrun for creating the package logo. Joe Roe also deserves a special mention for the development of the `era` [@R-era] package, which inspired the present work.
 
 # References
 
