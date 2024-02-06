@@ -17,38 +17,39 @@ bibliography: paper.bib
 
 # Summary
 
-Numerous R packages have been developed to describe, analyze, and model 
-temporal data in the context of archaeological studies in the broadest sense. 
-These packages encompass various functionalities, including handling radiocarbon 
-data (e.g., `Bchron` by @R-Bchron or `rcarbon` by @R-rcarbon), Optically 
-Stimulated Luminescence dating (`Luminescence` by @R-Luminescence), Bayesian 
-chronological modeling (`ArchaeoPhases` by @R-ArchaeoPhases), 
-using paleoenvironmental proxies (e.g., `shoredate` by @R-shoredate), or other 
-temporal data (e.g., `kairos` by @R-kairos). This multitude of packages 
-underscores the significance of computational approaches in archaeology 
-[@schmidt2020]. However, it also presents a major challenge as each package 
-employs its own representation of temporal information. Consequently, exchanging 
-data between different packages within the same data workflow becomes even more 
-arduous. `aion` is designed to provide a consistent framework for representing 
-archaeological time series.
+`aion` is designed to provide a consistent framework for representing 
+archaeological time series that can extend very far in the past.
+`aion` provides a system of classes and methods to represent and work
+with such time series. This package does not provide tools for temporal analysis 
+or modeling. Instead, it offers a system of classes and methods to represent and 
+work with archaeological time series. This API can be extended and used by other 
+specialized packages (see `kairos` v2.0 as an example).
 
 # Statement of need
 
 R ships with a lot of functionality useful for time series, in particular 
 in the base `stats` [@R-stats], or in the `zoo` [@R-zoo] packages[^1]. 
 However, these features are not adapted to most archaeological time series. 
+At the same time, numerous R packages have been developed to describe, analyze, 
+and model temporal data in the context of archaeological studies in the broadest 
+sense. These packages encompass various functionalities, including handling 
+radiocarbon data (e.g., `Bchron` by @R-Bchron or `rcarbon` by @R-rcarbon), 
+Optically Stimulated Luminescence dating (`Luminescence` by @R-Luminescence), 
+Bayesian chronological modeling (`ArchaeoPhases` by @R-ArchaeoPhases), 
+using paleoenvironmental proxies (e.g., `shoredate` by @R-shoredate), or other 
+temporal data (e.g., `kairos` by @R-kairos). This multitude of packages 
+underscores the significance of computational approaches in archaeology 
+[@schmidt2020]. However, it also presents a major challenge as each package 
+employs its own representation of temporal information. Consequently, exchanging 
+data between different packages within the same data workflow becomes even more 
+arduous.
+
 Archaeological data is typically collected through field excavations or 
 surveys, resulting in irregularly spaced observation times. Although several 
 packages can handle irregular time series, the way they represent dates means 
 they cannot easily be used for archaeological series. These are indeed defined 
 for a given calendar era and more importantly they can involve dates very far 
 in the past.
-
-`aion` provides a system of classes and methods to represent and work with such 
-time series. This package does not provide tools for temporal analysis or 
-modeling. Instead, it offers a system of classes and methods to represent and 
-work with archaeological time series. This API can be extended and used by other 
-specialized packages (see `kairos` v2.0 as an example).
 
 # Functionality
 
@@ -81,7 +82,9 @@ are available. `aion` natively supports both Julian and Gregorian calendars
 
 # Acknowledgements
 
-The author would like to thank Brice Lebrun for creating the package logo. Joe Roe also deserves a special mention for the development of the `era` [@R-era] package, which inspired the present work.
+The author would like to thank Brice Lebrun for creating the package logo. 
+Joe Roe also deserves a special mention for the development of the `era` 
+[@R-era] package, which inspired the present work.
 
 # References
 
