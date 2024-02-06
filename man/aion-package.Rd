@@ -3,7 +3,6 @@
 \docType{package}
 \name{aion-package}
 \alias{aion-package}
-\alias{_PACKAGE}
 \alias{aion}
 \title{aion: Archaeological Time Series}
 \description{
