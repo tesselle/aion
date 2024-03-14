@@ -32,8 +32,8 @@ J()
 \code{\link[=calendar]{calendar()}}
 
 Other calendar tools: 
-\code{\link{calendar_get}},
 \code{\link{calendar}()},
+\code{\link{calendar_get}},
 \code{\link{convert}()},
 \code{\link{gregorian}},
 \code{\link{is}()}

@@ -43,8 +43,8 @@ AD_to_BP(1950)
 }
 \seealso{
 Other calendar tools: 
-\code{\link{calendar_get}},
 \code{\link{calendar}()},
+\code{\link{calendar_get}},
 \code{\link{gregorian}},
 \code{\link{is}()},
 \code{\link{julian}()}

@@ -52,9 +52,9 @@ Other fixed date tools:
 \code{\link{as_date}()},
 \code{\link{as_fixed}()},
 \code{\link{as_year}()},
+\code{\link{fixed}()},
 \code{\link{fixed_gregorian}},
 \code{\link{fixed_julian}},
-\code{\link{fixed}()},
 \code{\link{format}()},
 \code{\link{pretty}()}
 }

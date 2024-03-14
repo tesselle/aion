@@ -60,9 +60,9 @@ Other fixed date tools:
 \code{\link{as_decimal}()},
 \code{\link{as_fixed}()},
 \code{\link{as_year}()},
+\code{\link{fixed}()},
 \code{\link{fixed_gregorian}},
 \code{\link{fixed_julian}},
-\code{\link{fixed}()},
 \code{\link{pretty}()}
 }
 \author{
