@@ -66,7 +66,7 @@ getOption("aion.calendar")
 
 # Vectors of dates
 
-In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **aion** uses a different approach: it allows to create date vectors represented as *rata die* (Reingold and Dershowitz 2018), i.e. as number of days since 01-01-01 (Gregorian)^[It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.].
+In base R, dates are represented by default as the number of days since 1970-01-01 (Gregorian), with negative values for earlier dates (see `help(Date)`). **aion** uses a different approach: it allows to create date vectors represented as *rata die* (Reingold and Dershowitz 2018), i.e. as number of days since 01-01-01 (Gregorian)[^1].
 
 This makes it possible to get rid of a specific calendar and to make calculations easier. It is then possible to convert a vector of *rata die* into dates or (decimal) years of any calendar.
 
@@ -112,17 +112,21 @@ A time series is a sequence of observation time and value pairs with strictly in
 A time series object is an $n \times m \times p$ array, with $n$ being the number of observations, $m$ being the number of series and with the $p$ columns of the third dimension containing extra variables for each series. It can be created from a numeric `vector`, `matrix` or `array`.
 
 ```{r}
-## Set seed for reproductibility
-set.seed(12345)
+## Get ceramic counts (data from Husi 2022)
+data("loire", package = "folio")
 
-## 6 x 50 observations...
-obs <- matrix(rnorm(300), nrow = 50, ncol = 6)
+## Keep only variables whose total is at least 600
+keep <- c("01f", "01k", "01L", "08e", "08t", "09b", "15i", "15q")
 
-## ...sampled every two years starting from 2000 BP
-spl <- seq(from = 2000, by = -2, length.out = 50)
+## Get time midpoints
+mid <- rowMeans(loire[, c("lower", "upper")])
 
-## Create time series
-(X <- series(object = obs, time = spl, calendar = BP()))
+## Create time-series
+(X <- series(
+  object = loire[, keep],
+  time = mid,
+  calendar = calendar("AD")
+))
 ```
 
 Time series terminal and sampling times can be retrieved and expressed according to different calendars (**remember that outputs are expressed in _rata die_ by default**):
@@ -147,8 +151,11 @@ time(X, calendar = BP())
 Plot one or more time series:
 
 ```{r plot-multiple, fig.width=7, fig.height=5}
-## Multiple plot
-plot(X) # Default calendar
+## Multiple plot (default calendar)
+plot(
+  x = X, 
+  type = "h" # histogram like vertical lines
+)
 ```
 
 ```{r plot-single, fig.width=7, fig.height=3.5}
@@ -158,6 +165,7 @@ Y <- X[, 1, ]
 ## Plot a single series
 plot(
   Y,
+  type = "h", # histogram like vertical lines
   calendar = b2k(), # b2k time scale
   panel.first = graphics::grid() # Add a grid
 )
@@ -170,3 +178,5 @@ Note that **aion** uses the astronomical notation for Gregorian years (there *is
 # References
 
 Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.
+
+[^1]: It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.

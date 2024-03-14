@@ -100,20 +100,30 @@ remotes::install_github("tesselle/aion")
 library(aion)
 ```
 
-``` r
-## Set seed for reproductibility
-set.seed(12345)
+Time-series of ceramic counts:
 
-## Create 6 time-series of 50 observations
-## Sampled every two years starting from 2000 BP
+``` r
+## Get ceramic counts (data from Husi 2022)
+data("loire", package = "folio")
+
+## Keep only variables whose total is at least 600
+keep <- c("01f", "01k", "01L", "08e", "08t", "09b", "15i", "15q")
+
+## Get time midpoints
+mid <- rowMeans(loire[, c("lower", "upper")])
+
+## Create time-series
 X <- series(
-  object = matrix(rnorm(300), nrow = 50, ncol = 6),
-  time = seq(from = 2000, by = -2, length.out = 50),
-  calendar = calendar("BP")
+  object = loire[, keep],
+  time = mid,
+  calendar = calendar("AD")
 )
 
-## Plot
-plot(X) # Default calendar
+## Plot (default calendar)
+plot(
+  x = X, 
+  type = "h" # histogram like vertical lines
+)
 ```
 
 ![](man/figures/README-time-series-1.png)<!-- -->

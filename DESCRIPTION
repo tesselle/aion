@@ -30,6 +30,7 @@ Imports:
     grDevices,
     methods
 Suggests: 
+    folio (>= 1.4.0),
     knitr,
     markdown,
     rsvg,
