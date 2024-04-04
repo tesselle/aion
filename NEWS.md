@@ -1,4 +1,5 @@
-# aion 1.0.2.9000
+# aion 1.0.3
+* Published in the *Journal of Open Source Software*.
 
 # aion 1.0.2
 ## Bugfixes & changes

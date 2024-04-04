@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# CITATION file created with {cffr} R package, v1.0.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -8,13 +8,13 @@ message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aion: Archaeological Time Series'
-version: 1.0.2
+version: 1.0.3
 doi: 10.5281/zenodo.8032278
 abstract: A toolkit for archaeological time series. This package provides a system
   of classes and methods to represent and work with archaeological time series. Dates
   are represented as "rata die" and can be converted to (virtually) any calendar defined
-  by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers
-  a simple API that can be used by other specialized packages.
+  by Reingold and Dershowitz (2018) <https://doi.org/10.1017/9781107415058>. This
+  packages offers a simple API that can be used by other specialized packages.
 authors:
 - family-names: Frerebeau
   given-names: Nicolas
@@ -40,14 +40,13 @@ preferred-citation:
     email: joseph.roe@iaw.unibe.ch
     orcid: https://orcid.org/0000-0002-1011-1244
     affiliation: Universität Bern
-  year: '2023'
-  location:
-    name: Pessac, France
-  notes: R package version 1.0.2
-  url: https://packages.tesselle.org/aion/
-  doi: 10.5281/zenodo.8032278
+  year: '2024'
   institution:
     name: Université Bordeaux Montaigne
+    address: Pessac, France
+  notes: R package version 1.0.3
+  url: https://packages.tesselle.org/aion/
+  doi: 10.5281/zenodo.8032278
 repository: https://CRAN.R-project.org/package=aion
 repository-code: https://github.com/tesselle/aion
 url: https://packages.tesselle.org/aion/
@@ -70,11 +69,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
   version: '>= 3.3'
 - type: software
   title: arkhe
@@ -88,41 +86,52 @@ references:
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
     affiliation: Université Bordeaux Montaigne
-  year: '2023'
-  version: '>= 1.3.0'
+  year: '2024'
+  version: '>= 1.6.0'
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: grDevices
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: methods
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: folio
+  abstract: 'folio: Datasets for Teaching Archaeology and Paleontology'
+  notes: Suggests
+  url: https://packages.tesselle.org/folio/
+  repository: https://CRAN.R-project.org/package=folio
+  authors:
+  - family-names: Frerebeau
+    given-names: Nicolas
+    email: nicolas.frerebeau@u-bordeaux-montaigne.fr
+    orcid: https://orcid.org/0000-0001-5759-4944
+    affiliation: Université Bordeaux Montaigne
+  year: '2024'
+  version: '>= 1.4.0'
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -134,50 +143,23 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2023'
+  year: '2024'
 - type: software
-  title: rmarkdown
-  abstract: 'rmarkdown: Dynamic Documents for R'
+  title: markdown
+  abstract: 'markdown: Render Markdown with ''commonmark'''
   notes: Suggests
-  url: https://pkgs.rstudio.com/rmarkdown/
-  repository: https://CRAN.R-project.org/package=rmarkdown
+  url: https://github.com/rstudio/markdown
+  repository: https://CRAN.R-project.org/package=markdown
   authors:
-  - family-names: Allaire
-    given-names: JJ
-    email: jj@posit.co
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  - family-names: Dervieux
-    given-names: Christophe
-    email: cderv@posit.co
-    orcid: https://orcid.org/0000-0003-4474-2498
-  - family-names: McPherson
-    given-names: Jonathan
-    email: jonathan@posit.co
-  - family-names: Luraschi
-    given-names: Javier
-  - family-names: Ushey
-    given-names: Kevin
-    email: kevin@posit.co
-  - family-names: Atkins
-    given-names: Aron
-    email: aron@posit.co
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  - family-names: Cheng
-    given-names: Joe
-    email: joe@posit.co
-  - family-names: Chang
-    given-names: Winston
-    email: winston@posit.co
-  - family-names: Iannone
-    given-names: Richard
-    email: rich@posit.co
-    orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2023'
+  - family-names: Allaire
+    given-names: JJ
+  - family-names: Horner
+    given-names: Jeffrey
+  year: '2024'
 - type: software
   title: rsvg
   abstract: 'rsvg: Render SVG Images into PDF, PNG, (Encapsulated) PostScript, or
@@ -190,7 +172,7 @@ references:
     given-names: Jeroen
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2023'
+  year: '2024'
 - type: software
   title: svglite
   abstract: 'svglite: An ''SVG'' Graphics Device'
@@ -217,7 +199,7 @@ references:
   - family-names: Lise
     given-names: Vaudor
     email: lise.vaudor@ens-lyon.fr
-  year: '2023'
+  year: '2024'
 - type: software
   title: tinysnapshot
   abstract: 'tinysnapshot: Snapshots for Unit Tests using the ''tinytest'' Framework'
@@ -229,7 +211,7 @@ references:
     given-names: Vincent
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
-  year: '2023'
+  year: '2024'
 - type: software
   title: tinytest
   abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
@@ -237,11 +219,12 @@ references:
   url: https://github.com/markvanderloo/tinytest
   repository: https://CRAN.R-project.org/package=tinytest
   authors:
-  - family-names: van der Loo
+  - family-names: Loo
     given-names: Mark
+    name-particle: van der
     email: mark.vanderloo@gmail.com
     orcid: https://orcid.org/0000-0002-9807-4686
-  year: '2023'
+  year: '2024'
 identifiers:
 - description: The concept DOI.
   type: doi
@@ -255,3 +238,6 @@ identifiers:
 - description: The versioned DOI for version 1.0.2.
   type: doi
   value: 10.5281/zenodo.10046426
+- description: The Software Heritage identifier for version 1.0.2.
+  type: swh
+  value: swh:1:rel:10b21ffbf3914a6a084766e8f704388582408a6e

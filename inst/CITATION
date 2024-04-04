@@ -5,7 +5,7 @@ bibentry(
   author       = c(person("Nicolas", "Frerebeau", role = "aut"),
                    person("Joe", "Roe", role = "aut")),
   title        = "{aion: Archaeological Time Series}",
-  year         = "2023",
+  year         = "2024",
   organization = "Université Bordeaux Montaigne",
   address      = "Pessac, France",
   note         = sprintf("R package version %s", meta$Version),
