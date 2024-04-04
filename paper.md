@@ -9,7 +9,7 @@ authors:
     orcid: 0000-0001-5759-4944
     affiliation: 1
 affiliations:
-  - name: UMR 6034 Archéosciences Bordeaux (CNRS, Université Bordeaux Montaigne, Université de Bordeaux, EPHE)
+  - name: UMR 6034 Archéosciences Bordeaux, Maison de l'Archéologie, Université Bordeaux Montaigne, 33607 Pessac cedex, France
     index: 1
 date: 7 June 2023
 bibliography: paper.bib
