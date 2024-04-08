@@ -33,11 +33,11 @@ However, these features are not adapted to most archaeological time series.
 At the same time, numerous R packages have been developed to describe, analyze, 
 and model temporal data in the context of archaeological studies in the broadest 
 sense. These packages encompass various functionalities, including handling 
-radiocarbon data (e.g., `Bchron` by @R-Bchron or `rcarbon` by @R-rcarbon), 
-Optically Stimulated Luminescence dating (`Luminescence` by @R-Luminescence), 
-Bayesian chronological modeling (`ArchaeoPhases` by @R-ArchaeoPhases), 
-using paleoenvironmental proxies (e.g., `shoredate` by @R-shoredate), or other 
-temporal data (e.g., `kairos` by @R-kairos). This multitude of packages 
+radiocarbon data [e.g., `Bchron` by @R-Bchron; `rcarbon` by @R-rcarbon], 
+Optically Stimulated Luminescence dating [`Luminescence` by @R-Luminescence], 
+Bayesian chronological modeling [`ArchaeoPhases` by @R-ArchaeoPhases], 
+using paleoenvironmental proxies [e.g., `shoredate` by @R-shoredate], or other 
+temporal data [e.g., `kairos` by @R-kairos]. This multitude of packages 
 underscores the significance of computational approaches in archaeology 
 [@schmidt2020]. However, it also presents a major challenge as each package 
 employs its own representation of temporal information. Consequently, exchanging 
