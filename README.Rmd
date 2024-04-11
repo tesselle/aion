@@ -30,7 +30,8 @@ Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
+[![DOI Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
+[![DOI JOSS](https://joss.theoj.org/papers/10.21105/joss.06210/status.svg)](https://doi.org/10.21105/joss.06210)
 <!-- badges: end -->
 
 ## Overview
@@ -43,8 +44,11 @@ Once a time series is created with **aion**, any calendar can be used for printi
 
 **aion** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages.
 
-```{r citation, echo=FALSE, comment=''}
-utils::citation("aion")
+---
+
+```{r citation, echo=FALSE, comment='', results='asis'}
+cite <- utils::citation("aion")
+print(cite, bibtex = FALSE)
 ```
 
 ## Installation

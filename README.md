@@ -29,7 +29,10 @@ alt="CRAN Downloads" /></a>
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
+[![DOI
+Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.8032278.svg)](https://doi.org/10.5281/zenodo.8032278)
+[![DOI
+JOSS](https://joss.theoj.org/papers/10.21105/joss.06210/status.svg)](https://doi.org/10.21105/joss.06210)
 <!-- badges: end -->
 
 ## Overview
@@ -54,28 +57,21 @@ for printing or plotting data (defaults to Gregorian Common Era; see
 **aion** does not provide tools for temporal modeling. Instead, it
 offers a simple API that can be used by other specialized packages.
 
-    To cite aion in publications use:
+------------------------------------------------------------------------
 
-      Frerebeau N, Roe J (2024). _aion: Archaeological Time Series_.
-      Université Bordeaux Montaigne, Pessac, France.
-      doi:10.5281/zenodo.8032278 <https://doi.org/10.5281/zenodo.8032278>,
-      R package version 1.0.3, <https://packages.tesselle.org/aion/>.
+To cite aion in publications use:
 
-    A BibTeX entry for LaTeX users is
+Frerebeau N (2024). “aion: An R Package to Represent Archaeological Time
+Series.” *Journal of Open Source Software*, *9*(96).
+<doi:10.21105/joss.06210> <https://doi.org/10.21105/joss.06210>.
 
-      @Manual{,
-        author = {Nicolas Frerebeau and Joe Roe},
-        title = {{aion: Archaeological Time Series}},
-        year = {2024},
-        organization = {Université Bordeaux Montaigne},
-        address = {Pessac, France},
-        note = {R package version 1.0.3},
-        url = {https://packages.tesselle.org/aion/},
-        doi = {10.5281/zenodo.8032278},
-      }
+Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
+Université Bordeaux Montaigne, Pessac, France.
+<doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
+package version 1.0.3, <https://packages.tesselle.org/aion/>.
 
-    This package is a part of the tesselle project
-    <https://www.tesselle.org>.
+This package is a part of the tesselle project
+<https://www.tesselle.org>.
 
 ## Installation
 

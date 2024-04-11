@@ -238,6 +238,9 @@ identifiers:
 - description: The versioned DOI for version 1.0.2.
   type: doi
   value: 10.5281/zenodo.10046426
+- description: The versioned DOI for version 1.0.3.
+  type: doi
+  value: 10.5281/zenodo.10926190
 - description: The Software Heritage identifier for version 1.0.2.
   type: swh
   value: swh:1:rel:10b21ffbf3914a6a084766e8f704388582408a6e
