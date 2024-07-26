@@ -21,7 +21,7 @@ Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
 [![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
 [![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
-[![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
+[![Dependencies](https://tinyverse.netlify.app/badge/aion)](https://cran.r-project.org/package=aion)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev/aion){.pkgdown-devel}
 [![CRAN Version](http://www.r-pkg.org/badges/version/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
@@ -68,7 +68,7 @@ remotes::install_github("tesselle/aion")
 
 ## Usage
 
-```{r packages-load}
+```{r load}
 ## Load package
 library(aion)
 ```

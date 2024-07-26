@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/tesselle/aion/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/aion/actions)
 [![codecov](https://codecov.io/gh/tesselle/aion/branch/main/graph/badge.svg?token=UgoOXsZW86)](https://app.codecov.io/gh/tesselle/aion)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/aion/badge/main)](https://www.codefactor.io/repository/github/tesselle/aion/overview/main)
-[![Dependencies](https://tinyverse.netlify.com/badge/aion)](https://cran.r-project.org/package=aion)
+[![Dependencies](https://tinyverse.netlify.app/badge/aion)](https://cran.r-project.org/package=aion)
 
 <a href="https://tesselle.r-universe.dev/aion"
 class="pkgdown-devel"><img
@@ -68,7 +68,7 @@ Series.” *Journal of Open Source Software*, *9*(96).
 Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
 Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
-package version 1.0.3, <https://packages.tesselle.org/aion/>.
+package version 1.0.2, <https://packages.tesselle.org/aion/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -138,7 +138,8 @@ to this project, you agree to abide by its terms.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-reingold2018" class="csl-entry">
 
