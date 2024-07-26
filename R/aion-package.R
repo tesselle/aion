@@ -2,7 +2,7 @@
 #'  \tabular{ll}{
 #'   **Package:** \tab aion \cr
 #'   **Type:** \tab Package \cr
-#'   **Version:** \tab 1.0.3 \cr
+#'   **Version:** \tab 1.0.4 \cr
 #'   **License:** \tab GPL-3 \cr
 #'   **Zenodo:** \tab \doi{10.5281/zenodo.8032278} \cr
 #'  }
