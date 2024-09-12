@@ -26,7 +26,7 @@
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{numeric}} vector.
+A \code{\link{numeric}} vector of decimal years (if \code{calendar} is not \code{NULL}).
 }
 \description{
 Get the times the first and last observations were taken.
@@ -60,6 +60,7 @@ head(df)
 }
 \seealso{
 Other tools: 
+\code{\link{overlap}()},
 \code{\link{span}()},
 \code{\link{time}()},
 \code{\link{window}()}

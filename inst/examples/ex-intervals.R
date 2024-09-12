@@ -9,3 +9,6 @@ int <- intervals(
 
 ## Plot intervals
 plot(int) # Default calendar
+
+## Overlap
+overlap(int)

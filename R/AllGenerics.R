@@ -548,7 +548,7 @@ setGeneric(
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @return
-#'  A [`numeric`] vector.
+#'  A [`numeric`] vector of decimal years (if `calendar` is not `NULL`).
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -567,7 +567,7 @@ NULL
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @return
-#'  A [`numeric`] vector.
+#'  A [`numeric`] vector of decimal years (if `calendar` is not `NULL`).
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -576,25 +576,6 @@ NULL
 #' @name time
 #' @rdname time
 NULL
-
-#' Durations
-#'
-#' Get the duration of time series or intervals.
-#' @param x A [`TimeSeries-class`] object.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
-#' @param ... Currently not used.
-#' @return
-#'  A [`numeric`] vector.
-#' @example inst/examples/ex-series.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family tools
-#' @aliases span-method
-setGeneric(
-  name = "span",
-  def = function(x, ...) standardGeneric("span")
-)
 
 #' Time Windows
 #'
@@ -615,6 +596,48 @@ setGeneric(
 #' @name window
 #' @rdname window
 NULL
+
+#' Durations
+#'
+#' Get the duration of time series or intervals.
+#' @param x A [`TimeSeries-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Currently not used.
+#' @return
+#'  A [`numeric`] vector of years (if `calendar` is not `NULL`).
+#' @example inst/examples/ex-series.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family tools
+#' @aliases span-method
+setGeneric(
+  name = "span",
+  def = function(x, ...) standardGeneric("span")
+)
+
+#' Time Overlap
+#'
+#' Computes the length of overlap of time intervals.
+#' @param x A [`TimeIntervals-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Currently not used.
+#' @details
+#'  The overlap of two time intervals is a difference between the minimum value
+#'  of the two upper boundaries and the maximum value of the two lower
+#'  boundaries, plus 1.
+#' @return
+#'  A [`numeric`] vector of years (if `calendar` is not `NULL`).
+#' @example inst/examples/ex-intervals.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family tools
+#' @aliases overlap-method
+setGeneric(
+  name = "overlap",
+  def = function(x, ...) standardGeneric("overlap")
+)
 
 # Plot =========================================================================
 #' Plot Time Series and Time Intervals

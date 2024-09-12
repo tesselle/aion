@@ -57,6 +57,7 @@ Collate:
     'intervals.R'
     'mutators.R'
     'operators.R'
+    'overlap.R'
     'plot.R'
     'series.R'
     'show.R'

@@ -20,7 +20,7 @@
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{numeric}} vector.
+A \code{\link{numeric}} vector of decimal years (if \code{calendar} is not \code{NULL}).
 }
 \description{
 Get the sampling times:
@@ -58,6 +58,7 @@ head(df)
 }
 \seealso{
 Other tools: 
+\code{\link{overlap}()},
 \code{\link{span}()},
 \code{\link{start}()},
 \code{\link{window}()}

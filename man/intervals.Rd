@@ -51,6 +51,9 @@ int <- intervals(
 
 ## Plot intervals
 plot(int) # Default calendar
+
+## Overlap
+overlap(int)
 }
 \author{
 N. Frerebeau

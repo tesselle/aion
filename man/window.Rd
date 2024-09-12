@@ -35,6 +35,7 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 }
 \seealso{
 Other tools: 
+\code{\link{overlap}()},
 \code{\link{span}()},
 \code{\link{start}()},
 \code{\link{time}()}

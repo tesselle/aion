@@ -23,7 +23,7 @@ span(x, ...)
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{numeric}} vector.
+A \code{\link{numeric}} vector of years (if \code{calendar} is not \code{NULL}).
 }
 \description{
 Get the duration of time series or intervals.
@@ -57,6 +57,7 @@ head(df)
 }
 \seealso{
 Other tools: 
+\code{\link{overlap}()},
 \code{\link{start}()},
 \code{\link{time}()},
 \code{\link{window}()}
