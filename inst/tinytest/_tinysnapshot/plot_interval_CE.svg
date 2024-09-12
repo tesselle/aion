@@ -56,22 +56,6 @@
 <text x='266.40' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='30.56px' lengthAdjust='spacingAndGlyphs'>1000</text>
 <text x='343.20' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='30.56px' lengthAdjust='spacingAndGlyphs'>1200</text>
 <text x='420.00' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='30.56px' lengthAdjust='spacingAndGlyphs'>1400</text>
-<line x1='59.04' y1='416.80' x2='59.04' y2='72.80' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='416.80' x2='51.84' y2='416.80' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='392.23' x2='51.84' y2='392.23' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='367.66' x2='51.84' y2='367.66' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='343.09' x2='51.84' y2='343.09' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='318.51' x2='51.84' y2='318.51' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='293.94' x2='51.84' y2='293.94' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='269.37' x2='51.84' y2='269.37' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='244.80' x2='51.84' y2='244.80' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='220.23' x2='51.84' y2='220.23' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='195.66' x2='51.84' y2='195.66' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='171.09' x2='51.84' y2='171.09' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='146.51' x2='51.84' y2='146.51' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='121.94' x2='51.84' y2='121.94' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='97.37' x2='51.84' y2='97.37' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='72.80' x2='51.84' y2='72.80' style='stroke-width: 0.75;' />
 <text x='44.64' y='421.17' text-anchor='end' style='font-size: 12.00px; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>I6</text>
 <text x='44.64' y='396.60' text-anchor='end' style='font-size: 12.00px; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>I1</text>
 <text x='44.64' y='372.03' text-anchor='end' style='font-size: 12.00px; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>I2</text>

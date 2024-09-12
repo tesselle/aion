@@ -58,7 +58,8 @@ plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
   ## Construct Axis
   if (axes) {
     year_axis(side = 1, format = TRUE, calendar = calendar)
-    graphics::axis(side = 2, at = seq_len(n), labels = names(int), las = 1)
+    graphics::axis(side = 2, at = seq_len(n), labels = names(int),
+                   lty = 0, las = 1)
   }
 
   ## Plot frame
