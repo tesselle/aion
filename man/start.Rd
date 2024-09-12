@@ -6,12 +6,18 @@
 \alias{start-method}
 \alias{end-method}
 \alias{start,TimeSeries-method}
+\alias{start,TimeIntervals-method}
 \alias{end,TimeSeries-method}
-\title{Terminal Times of Time Series}
+\alias{end,TimeIntervals-method}
+\title{Terminal Times}
 \usage{
 \S4method{start}{TimeSeries}(x, calendar = NULL)
 
+\S4method{start}{TimeIntervals}(x, calendar = NULL)
+
 \S4method{end}{TimeSeries}(x, calendar = NULL)
+
+\S4method{end}{TimeIntervals}(x, calendar = NULL)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
@@ -53,9 +59,7 @@ df <- as.data.frame(Y, calendar = BP())
 head(df)
 }
 \seealso{
-Other time series tools: 
-\code{\link{data.frame}},
-\code{\link{series}()},
+Other tools: 
 \code{\link{span}()},
 \code{\link{time}()},
 \code{\link{window}()}
@@ -63,4 +67,4 @@ Other time series tools:
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{tools}

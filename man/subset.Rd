@@ -27,6 +27,11 @@ A subsetted object.
 \description{
 Operators acting on objects to extract or replace parts.
 }
+\seealso{
+Other mutators: 
+\code{\link{as.data.frame}()},
+\code{\link{labels}()}
+}
 \author{
 N. Frerebeau
 }

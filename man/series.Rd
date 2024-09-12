@@ -88,15 +88,7 @@ span(Y, calendar = CE())
 df <- as.data.frame(Y, calendar = BP())
 head(df)
 }
-\seealso{
-Other time series tools: 
-\code{\link{data.frame}},
-\code{\link{span}()},
-\code{\link{start}()},
-\code{\link{time}()},
-\code{\link{window}()}
-}
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{time series}

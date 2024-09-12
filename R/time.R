@@ -17,12 +17,38 @@ setMethod(
 
 #' @export
 #' @rdname start
+#' @aliases start,TimeIntervals-method
+setMethod(
+  f = "start",
+  signature = "TimeIntervals",
+  definition = function(x, calendar = NULL) {
+    z <- x@.Start
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
+)
+
+#' @export
+#' @rdname start
 #' @aliases end,TimeSeries-method
 setMethod(
   f = "end",
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
     z <- max(x@.Time)
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
+)
+
+#' @export
+#' @rdname start
+#' @aliases end,TimeIntervals-method
+setMethod(
+  f = "end",
+  signature = "TimeIntervals",
+  definition = function(x, calendar = NULL) {
+    z <- x@.End
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }
@@ -58,6 +84,19 @@ setMethod(
   signature = "TimeSeries",
   definition = function(x, calendar = NULL) {
     z <- max(x@.Time) - min(x@.Time)
+    if (is.null(calendar)) return(z)
+    as_year(z, calendar = calendar, decimal = TRUE)
+  }
+)
+
+#' @export
+#' @rdname span
+#' @aliases span,TimeIntervals-method
+setMethod(
+  f = "span",
+  signature = "TimeIntervals",
+  definition = function(x, calendar = NULL) {
+    z <- x@.End - x@.Start
     if (is.null(calendar)) return(z)
     as_year(z, calendar = calendar, decimal = TRUE)
   }

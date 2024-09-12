@@ -29,6 +29,35 @@ as.data.frame.TimeSeries <- function(x, ..., calendar = NULL) {
 }
 
 #' @export
-#' @rdname data.frame
+#' @describeIn as.data.frame Returns a long [`data.frame`] with the following columns:
+#'  \describe{
+#'   \item{`time`}{The (decimal) years at which the time series was sampled.}
+#'   \item{`series`}{The name of the time series.}
+#'   \item{`variable`}{The name of the variables.}
+#'   \item{`value`}{The observed value.}
+#'  }
 #' @aliases as.data.frame,TimeSeries-method
 setMethod("as.data.frame", "TimeSeries", as.data.frame.TimeSeries)
+
+#' @export
+#' @method as.data.frame TimeIntervals
+as.data.frame.TimeIntervals <- function(x, ..., calendar = NULL) {
+  ## Build a data frame
+  z <- data.frame(
+    label = labels(x),
+    start = start(x, calendar = calendar),
+    end = end(x, calendar = calendar)
+  )
+
+  z
+}
+
+#' @export
+#' @describeIn as.data.frame Returns a [`data.frame`] with the following columns:
+#'  \describe{
+#'   \item{`label`}{The name of the intervals.}
+#'   \item{`start`}{The start time of the intervals, in (decimal) years.}
+#'   \item{`end`}{The end time of the intervals, in (decimal) years.}
+#'  }
+#' @aliases as.data.frame,TimeIntervals-method
+setMethod("as.data.frame", "TimeIntervals", as.data.frame.TimeIntervals)

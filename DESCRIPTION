@@ -54,6 +54,7 @@ Collate:
     'coerce.R'
     'convert.R'
     'data.R'
+    'intervals.R'
     'mutators.R'
     'operators.R'
     'plot.R'

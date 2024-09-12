@@ -20,6 +20,20 @@ NULL
 # @aliases get set
 # NULL
 
+#' Labels
+#'
+#' Find a suitable set of labels from an object.
+#' @param object An object.
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family mutators
+#' @name labels
+#' @rdname labels
+NULL
+
 ## Subset ----------------------------------------------------------------------
 #' Extract or Replace Parts of an Object
 #'
@@ -40,6 +54,23 @@ NULL
 #' @family mutators
 #' @name subset
 #' @rdname subset
+NULL
+
+## Coerce ----------------------------------------------------------------------
+#' Coerce to a Data Frame
+#'
+#' @param x A [`TimeSeries-class`] or a [`TimeIntervals-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Further parameters to be passed to [data.frame()].
+#' @return
+#'  A [`data.frame`].
+#' @example inst/examples/ex-series.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family mutators
+#' @name as.data.frame
+#' @rdname as.data.frame
 NULL
 
 # Calendars ====================================================================
@@ -471,7 +502,7 @@ NULL
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family time series
 #' @aliases series-method
 setGeneric(
   name = "series",
@@ -479,7 +510,36 @@ setGeneric(
   valueClass = "TimeSeries"
 )
 
-#' Terminal Times of Time Series
+# Time Intervals ===============================================================
+#' Create Time Intervals
+#'
+#' @param start A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
+#'  object (see [fixed()]) giving the beginning of the time intervals.
+#' @param end A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
+#'  object (see [fixed()]) giving the end of the time intervals.
+#' @param calendar A [`TimeScale-class`] object specifying the calendar of
+#'  `time` (see [calendar()]). If missing, `time` must be a [`RataDie-class`]
+#'  object.
+#' @param scale A length-one [`numeric`] vector specifying the number of years
+#'  represented by one unit. It should be a power of 10 (i.e. 1000 means ka).
+#' @param names A [`character`] string specifying the names of the time
+#'  series.
+#' @param ... Currently not used.
+#' @return
+#'  A [`TimeIntervals-class`] object.
+#' @example inst/examples/ex-intervals.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family time intervals
+#' @aliases intervals-method
+setGeneric(
+  name = "intervals",
+  def = function(start, end, calendar, ...) standardGeneric("intervals"),
+  valueClass = "TimeIntervals"
+)
+
+# Tools ========================================================================
+#' Terminal Times
 #'
 #' Get the times the first and last observations were taken.
 #' @param x A [`TimeSeries-class`] object.
@@ -490,13 +550,13 @@ setGeneric(
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family tools
 #' @aliases start-method end-method
 #' @name start
 #' @rdname start
 NULL
 
-#' Sampling Times of Time Series
+#' Sampling Times
 #'
 #' Get the sampling times:
 #' * `time()` creates the vector of times at which a time series was sampled.
@@ -509,15 +569,15 @@ NULL
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family tools
 #' @aliases time-method frequency-method
 #' @name time
 #' @rdname time
 NULL
 
-#' Duration of Time Series
+#' Durations
 #'
-#' Get the duration.
+#' Get the duration of time series or intervals.
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
@@ -527,14 +587,14 @@ NULL
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family tools
 #' @aliases span-method
 setGeneric(
   name = "span",
   def = function(x, ...) standardGeneric("span")
 )
 
-#' Time Series Windows
+#' Time Windows
 #'
 #' Extracts the subset of the object `x` observed between the times `start` and
 #' `end` (expressed in *rata die*).
@@ -548,43 +608,26 @@ setGeneric(
 #' @example inst/examples/ex-window.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family time series tools
+#' @family tools
 #' @aliases window-method
 #' @name window
 #' @rdname window
 NULL
 
-#' Coerce to a Data Frame
+# Plot =========================================================================
+#' Plot Time Series and Time Intervals
 #'
-#' @param x A [`TimeSeries-class`] object.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
-#' @param ... Further parameters to be passed to [data.frame()].
-#' @return
-#'  A long [`data.frame`] with the following columns:
-#'  \describe{
-#'   \item{`time`}{The (decimal) years at which the time series was sampled.}
-#'   \item{`series`}{The name of the time series.}
-#'   \item{`variable`}{The name of the variables.}
-#'   \item{`value`}{The observed value.}
-#'  }
-#' @example inst/examples/ex-series.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family time series tools
-#' @name data.frame
-#' @rdname data.frame
-NULL
-
-#' Plot Time Series
-#'
-#' @param x A [`TimeSeries-class`] object.
+#' @param x A [`TimeSeries-class`] or a [`TimeIntervals-class`] object.
 #' @param facet A [`character`] string specifying whether the series should be
 #'  plotted separately (with a common time axis) or on a single plot?
 #'  It must be one of "`multiple`" or "`single`". Any unambiguous substring can
 #'  be given.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @param sort A [`logical`] scalar: should the data be sorted in chronological
+#'  order?
+#' @param decreasing A [`logical`] scalar: should the sort order be decreasing?
+#'  Only used if `sort` is `TRUE`.
 #' @param panel A [`function`] in the form `function(x, y, ...)`
 #'  which gives the action to be carried out in each panel of the display.
 #'  The default is [graphics::lines()].

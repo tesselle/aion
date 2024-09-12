@@ -4,6 +4,84 @@ NULL
 
 # Plot =========================================================================
 #' @export
+#' @method plot TimeIntervals
+plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
+                               sort = TRUE, decreasing = FALSE,
+                               xlab = NULL, ylab = NULL,
+                               main = NULL, sub = NULL,
+                               ann = graphics::par("ann"), axes = TRUE,
+                               frame.plot = axes,
+                               panel.first = NULL, panel.last = NULL, ...) {
+  ## Save calendar for further use, e.g. year_axis()
+  options(aion.last_calendar = calendar)
+
+  ## Get data
+  lab <- labels(x)
+  if (sort) {
+    mid <- start(x)
+    lvl <- unique(lab[order(mid, decreasing = decreasing)])
+  } else {
+    lvl <- unique(lab)
+  }
+  f <- factor(x = lab, levels = lvl, ordered = TRUE)
+  int <- split(x = as.data.frame(x, calendar = calendar), f = f)
+  n <- length(int)
+
+  ## Graphical parameters
+  dots <- list(...)
+  col <- make_par(dots, "col", n)
+  lwd <- make_par(dots, "lwd", n)
+  lty <- make_par(dots, "lty", n)
+
+  ## Open new window
+  grDevices::dev.hold()
+  on.exit(grDevices::dev.flush(), add = TRUE)
+  graphics::plot.new()
+
+  ## Set plotting coordinates
+  xlim <- xlim(x, calendar = calendar)
+  ylim <- c(1, n)
+  graphics::plot.window(xlim = xlim, ylim = ylim)
+
+  ## Evaluate pre-plot expressions
+  panel.first
+
+  ## Plot
+  for (i in seq_len(n)) {
+    graphics::segments(x0 = int[[i]]$start, x1 = int[[i]]$end, y0 = i, y1 = i,
+                       col = col[[i]], lty = lty[[i]], lwd = lwd[[i]], lend = 1)
+  }
+
+  ## Evaluate post-plot and pre-axis expressions
+  panel.last
+
+  ## Construct Axis
+  if (axes) {
+    year_axis(side = 1, format = TRUE, calendar = calendar)
+    graphics::axis(side = 2, at = seq_len(n), labels = names(int), las = 1)
+  }
+
+  ## Plot frame
+  if (frame.plot) {
+    graphics::box()
+  }
+
+  ## Add annotation
+  if (ann) {
+    cal_lab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+    xlab <- xlab %||% cal_lab
+    graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
+  }
+
+  invisible(x)
+}
+
+#' @export
+#' @rdname plot
+#' @aliases plot,TimeIntervals,missing-method
+setMethod("plot", c(x = "TimeIntervals", y = "missing"), plot.TimeIntervals)
+
+#' @export
 #' @method plot TimeSeries
 plot.TimeSeries <- function(x, facet = c("multiple", "single"),
                             calendar = getOption("aion.calendar"),
@@ -214,7 +292,7 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
   years <- time(x, calendar = calendar)
   xlim <- xlim(x, calendar = calendar)
   ylim <- if (y_fixed) range(x, na.rm = TRUE) else NULL
-  ylabs <- ylab %||% colnames(x) %||% paste("Series", n_seq, sep = " ")
+  ylabs <- ylab %||% labels(x) %||% paste("Series", n_seq, sep = " ")
   for (j in n_seq) {
     ## Plot
     xj <- x[, j, , drop = FALSE]
@@ -274,7 +352,9 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' @keywords internal
 #' @noRd
 xlim <- function(x, calendar) {
-  x <- range(time(x, calendar = NULL))
+  if (methods::is(x, "TimeSeries")) x <- time(x, calendar = NULL)
+  if (methods::is(x, "TimeIntervals")) x <- c(start(x, calendar = NULL), end(x, calendar = NULL))
+  x <- range(x)
   if (is.null(calendar)) return(x)
   as_year(x, calendar = calendar)
 }
@@ -288,7 +368,7 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
 
   ## Get data
   n <- seq_len(NCOL(x))
-  samples <- colnames(x) %||% paste0("S1", n)
+  samples <- labels(x) %||% paste0("S1", n)
   years <- time(x, calendar = NULL)
 
   ## Graphical parameters

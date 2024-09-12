@@ -251,3 +251,28 @@ NULL
   ),
   contains = "array"
 )
+
+# Time Intervals ===============================================================
+#' TimeIntervals
+#'
+#' An S4 class to represent time intervals.
+#' @slot .Id A [`character`] vector specifying the identifier/name of intervals.
+#'  Duplicated values are interpreted as disjoint intervals referring to the
+#'  same event.
+#' @slot .Start A [`RataDie-class`] object giving the start time of the
+#'  intervals.
+#' @slot .End A [`RataDie-class`] object giving the end time of the intervals.
+#' @author N. Frerebeau
+#' @family classes
+#' @family time classes
+#' @docType class
+#' @aliases TimeIntervals-class
+#' @exportClass TimeIntervals
+.TimeIntervals <- setClass(
+  Class = "TimeIntervals",
+  slots = c(
+    .Id = "character",
+    .Start = "RataDie",
+    .End = "RataDie"
+  )
+)

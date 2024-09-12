@@ -36,11 +36,13 @@ Other classes:
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{RataDie-class}},
+\code{\link{TimeIntervals-class}},
 \code{\link{TimeScale-class}},
 \code{\link{b2k-class}}
 
 Other time classes: 
-\code{\link{RataDie-class}}
+\code{\link{RataDie-class}},
+\code{\link{TimeIntervals-class}}
 }
 \author{
 N. Frerebeau

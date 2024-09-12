@@ -3,9 +3,27 @@
 \docType{methods}
 \name{plot}
 \alias{plot}
+\alias{plot,TimeIntervals,missing-method}
 \alias{plot,TimeSeries,missing-method}
-\title{Plot Time Series}
+\title{Plot Time Series and Time Intervals}
 \usage{
+\S4method{plot}{TimeIntervals,missing}(
+  x,
+  calendar = getOption("aion.calendar"),
+  sort = TRUE,
+  decreasing = FALSE,
+  xlab = NULL,
+  ylab = NULL,
+  main = NULL,
+  sub = NULL,
+  ann = graphics::par("ann"),
+  axes = TRUE,
+  frame.plot = axes,
+  panel.first = NULL,
+  panel.last = NULL,
+  ...
+)
+
 \S4method{plot}{TimeSeries,missing}(
   x,
   facet = c("multiple", "single"),
@@ -26,26 +44,16 @@
 )
 }
 \arguments{
-\item{x}{A \code{\linkS4class{TimeSeries}} object.}
-
-\item{facet}{A \code{\link{character}} string specifying whether the series should be
-plotted separately (with a common time axis) or on a single plot?
-It must be one of "\code{multiple}" or "\code{single}". Any unambiguous substring can
-be given.}
+\item{x}{A \code{\linkS4class{TimeSeries}} or a \code{\linkS4class{TimeIntervals}} object.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
 
-\item{panel}{A \code{\link{function}} in the form \verb{function(x, y, ...)}
-which gives the action to be carried out in each panel of the display.
-The default is \code{\link[graphics:lines]{graphics::lines()}}.}
+\item{sort}{A \code{\link{logical}} scalar: should the data be sorted in chronological
+order?}
 
-\item{flip}{A \code{\link{logical}} scalar: should the y-axis (ticks and numbering) be
-flipped from side 2 (left) to 4 (right) from series to series when \code{facet}
-is "\code{multiple}"?}
-
-\item{ncol}{An \code{\link{integer}} specifying the number of columns to use when
-\code{facet} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
+\item{decreasing}{A \code{\link{logical}} scalar: should the sort order be decreasing?
+Only used if \code{sort} is \code{TRUE}.}
 
 \item{xlab, ylab}{A \code{\link{character}} vector giving the x and y axis labels.}
 
@@ -70,13 +78,29 @@ place but before the axes, title and box are added.}
 
 \item{...}{Further parameters to be passed to \code{panel}
 (e.g. \link[graphics:par]{graphical parameters}).}
+
+\item{facet}{A \code{\link{character}} string specifying whether the series should be
+plotted separately (with a common time axis) or on a single plot?
+It must be one of "\code{multiple}" or "\code{single}". Any unambiguous substring can
+be given.}
+
+\item{panel}{A \code{\link{function}} in the form \verb{function(x, y, ...)}
+which gives the action to be carried out in each panel of the display.
+The default is \code{\link[graphics:lines]{graphics::lines()}}.}
+
+\item{flip}{A \code{\link{logical}} scalar: should the y-axis (ticks and numbering) be
+flipped from side 2 (left) to 4 (right) from series to series when \code{facet}
+is "\code{multiple}"?}
+
+\item{ncol}{An \code{\link{integer}} specifying the number of columns to use when
+\code{facet} is "\code{multiple}". Defaults to 1 for up to 4 series, otherwise to 2.}
 }
 \value{
 \code{plot()} is called for its side-effects: it results in a graphic
 being displayed. Invisibly returns \code{x}.
 }
 \description{
-Plot Time Series
+Plot Time Series and Time Intervals
 }
 \examples{
 ## Create 6 time-series of 50 observations

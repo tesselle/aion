@@ -10,9 +10,13 @@ reference:
 - title: Rata Die
   contents:
   - has_concept("fixed date tools")
-- title: Time Series
+- title: Time Series and Time Intervals
   contents:
-  - has_concept("time series tools")
+  - has_concept("time series")
+  - has_concept("time intervals")
+- title: Tools
+  contents:
+  - has_concept("tools")
 - title: Plotting Tools
   contents:
   - has_concept("plotting tools")

@@ -1,4 +1,6 @@
 # aion 1.0.4.9000
+## New classes and methods
+* Add support for time intervals.
 
 # aion 1.0.4
 * Post publication CRAN release.

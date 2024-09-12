@@ -1,8 +1,8 @@
 # HELPERS
 
-make_par <- function(params, x, n = 0) {
+make_par <- function(params, x, n = 1) {
   p <- params[[x]] %||% graphics::par()[[x]]
-  if (n > 0) p <- rep(p, length.out = n)
+  if (length(p) == 1 && n > 1) p <- rep(p, length.out = n)
   p
 }
 

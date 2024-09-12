@@ -5,7 +5,7 @@
 \alias{window}
 \alias{window-method}
 \alias{window,TimeSeries-method}
-\title{Time Series Windows}
+\title{Time Windows}
 \usage{
 \S4method{window}{TimeSeries}(x, start = NULL, end = NULL)
 }
@@ -34,9 +34,7 @@ Extracts the subset of the object \code{x} observed between the times \code{star
 (y <- window(x, start = 374009, end = 383140))
 }
 \seealso{
-Other time series tools: 
-\code{\link{data.frame}},
-\code{\link{series}()},
+Other tools: 
 \code{\link{span}()},
 \code{\link{start}()},
 \code{\link{time}()}
@@ -44,4 +42,4 @@ Other time series tools:
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{tools}

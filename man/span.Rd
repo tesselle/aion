@@ -5,11 +5,14 @@
 \alias{span}
 \alias{span-method}
 \alias{span,TimeSeries-method}
-\title{Duration of Time Series}
+\alias{span,TimeIntervals-method}
+\title{Durations}
 \usage{
 span(x, ...)
 
 \S4method{span}{TimeSeries}(x, calendar = NULL)
+
+\S4method{span}{TimeIntervals}(x, calendar = NULL)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
@@ -23,7 +26,7 @@ span(x, ...)
 A \code{\link{numeric}} vector.
 }
 \description{
-Get the duration.
+Get the duration of time series or intervals.
 }
 \examples{
 ## Create time-series of 20 observations
@@ -53,9 +56,7 @@ df <- as.data.frame(Y, calendar = BP())
 head(df)
 }
 \seealso{
-Other time series tools: 
-\code{\link{data.frame}},
-\code{\link{series}()},
+Other tools: 
 \code{\link{start}()},
 \code{\link{time}()},
 \code{\link{window}()}
@@ -63,4 +64,4 @@ Other time series tools:
 \author{
 N. Frerebeau
 }
-\concept{time series tools}
+\concept{tools}
