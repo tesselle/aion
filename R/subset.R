@@ -18,6 +18,20 @@ setMethod(
 
 #' @export
 #' @rdname subset
+#' @aliases [,TimeIntervals-method
+setMethod(
+  f = "[",
+  signature = c(x = "TimeIntervals"),
+  function(x, i) {
+    id <- x@.Id[i]
+    start <- x@.Start[i]
+    end <- x@.End[i]
+    methods::initialize(x, .Id = id, .Start = start, .End = end)
+  }
+)
+
+#' @export
+#' @rdname subset
 #' @aliases [,TimeSeries-method
 setMethod(
   f = "[",

@@ -4,10 +4,13 @@
 \name{subset}
 \alias{subset}
 \alias{[,RataDie-method}
+\alias{[,TimeIntervals-method}
 \alias{[,TimeSeries-method}
 \title{Extract or Replace Parts of an Object}
 \usage{
 \S4method{[}{RataDie}(x, i)
+
+\S4method{[}{TimeIntervals}(x, i)
 
 \S4method{[}{TimeSeries}(x, i, j, k, drop = FALSE)
 }
