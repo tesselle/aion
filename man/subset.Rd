@@ -30,7 +30,8 @@ Operators acting on objects to extract or replace parts.
 \seealso{
 Other mutators: 
 \code{\link{as.data.frame}()},
-\code{\link{labels}()}
+\code{\link{labels}()},
+\code{\link{length}()}
 }
 \author{
 N. Frerebeau

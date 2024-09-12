@@ -18,3 +18,11 @@ labels.TimeIntervals <- function(object, ...) object@.Id
 #' @rdname labels
 #' @aliases labels,TimeIntervals-method
 setMethod("labels", "TimeIntervals", labels.TimeIntervals)
+
+#' @export
+#' @method length TimeIntervals
+length.TimeIntervals <- function(x) length(x@.Id)
+
+#' @rdname length
+#' @aliases length,TimeIntervals-method
+setMethod("length", "TimeIntervals", length.TimeIntervals)

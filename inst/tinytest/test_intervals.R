@@ -5,6 +5,7 @@ upper <- c(750, 825, 1250, 1275, 1325, 700, 1300, 1325,
            1400, 1500, 1300, 1375, 1500, 1325, 1425)
 
 x <- intervals(start = lower, end = upper, calendar = CE())
+expect_identical(length(x), 15L)
 
 # Terminal times ===============================================================
 expect_identical(start(x, calendar = CE()), lower)

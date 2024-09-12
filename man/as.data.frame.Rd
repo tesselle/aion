@@ -73,6 +73,7 @@ head(df)
 \seealso{
 Other mutators: 
 \code{\link{labels}()},
+\code{\link{length}()},
 \code{\link{subset}()}
 }
 \author{

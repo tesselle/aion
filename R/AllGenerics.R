@@ -23,7 +23,7 @@ NULL
 #' Labels
 #'
 #' Find a suitable set of labels from an object.
-#' @param object An object.
+#' @param object An \R object.
 #' @param ... Currently not used.
 #' @return
 #'  A [`character`] vector.
@@ -32,6 +32,19 @@ NULL
 #' @family mutators
 #' @name labels
 #' @rdname labels
+NULL
+
+#' Length
+#'
+#' Get the length of an object.
+#' @param x An \R object.
+#' @return
+#'  A length-one [`integer`] vector.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family mutators
+#' @name length
+#' @rdname length
 NULL
 
 ## Subset ----------------------------------------------------------------------

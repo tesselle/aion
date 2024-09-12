@@ -12,7 +12,7 @@
 \S4method{labels}{TimeIntervals}(object, ...)
 }
 \arguments{
-\item{object}{An object.}
+\item{object}{An \R object.}
 
 \item{...}{Currently not used.}
 }
@@ -25,6 +25,7 @@ Find a suitable set of labels from an object.
 \seealso{
 Other mutators: 
 \code{\link{as.data.frame}()},
+\code{\link{length}()},
 \code{\link{subset}()}
 }
 \author{

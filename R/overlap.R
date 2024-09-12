@@ -12,7 +12,7 @@ setMethod(
     labels <- labels(x)
     lower <- start(x)
     upper <- end(x)
-    m <- length(lower)
+    m <- length(x)
 
     ## Compute overlap
     cbn <- utils::combn(seq_len(m), 2)
