@@ -24,9 +24,9 @@ Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
 [![Dependencies](https://tinyverse.netlify.app/badge/aion)](https://cran.r-project.org/package=aion)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/aion)](https://tesselle.r-universe.dev/aion){.pkgdown-devel}
-[![CRAN Version](http://www.r-pkg.org/badges/version/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
+[![CRAN Version](https://www.r-pkg.org/badges/version/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
 [![CRAN checks](https://badges.cranchecks.info/worst/aion.svg)](https://cran.r-project.org/web/checks/check_results_aion.html){.pkgdown-release}
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/aion)](https://cran.r-project.org/package=aion){.pkgdown-release}
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -38,7 +38,7 @@ Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
 
 Base R ships with a lot of functionality useful for time series, in particular in the **stats** package. However, these features are not adapted to most archaeological time series. These are indeed defined for a given calendar era, they can involve dates very far in the past and the sampling of the observation time is (in most cases) not constant. 
 
-**aion** provides a system of classes and methods to represent and work with such time-series. Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates. This allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
+**aion** provides a system of classes and methods to represent and work with such time-series (and time intervals). Dates are represented as *rata die* [@reingold2018], i.e. the number of days since 01-01-01 (Gregorian), with negative values for earlier dates. This allows to represent dates independently of any calendar: it makes calculations and comparisons easier.
 
 Once a time series is created with **aion**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("aion")`).
 
@@ -99,9 +99,24 @@ plot(
 )
 ```
 
+Plot time ranges:
+
+```{r time-intervals, fig.width=7, fig.height=7}
+## Create time intervals
+Y <- intervals(
+  start = loire$lower,
+  end = loire$upper,
+  names = rownames(loire),
+  calendar = calendar("AD")
+)
+
+## Plot (default calendar)
+plot(x = Y)
+```
+
 ## Related Works
 
-* [**era**](https://github.com/joeroe/era): provides a consistent representation of year-based time scales as a numeric vector with an associated era.
+* [**era**](https://github.com/joeroe/era) provides a consistent representation of year-based time scales as a numeric vector with an associated era.
 
 ## Contributing
 

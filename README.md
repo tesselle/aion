@@ -16,14 +16,15 @@ src="https://tesselle.r-universe.dev/badges/aion"
 alt="r-universe" /></a>
 <a href="https://cran.r-project.org/package=aion"
 class="pkgdown-release"><img
-src="http://www.r-pkg.org/badges/version/aion" alt="CRAN Version" /></a>
+src="https://www.r-pkg.org/badges/version/aion"
+alt="CRAN Version" /></a>
 <a href="https://cran.r-project.org/web/checks/check_results_aion.html"
 class="pkgdown-release"><img
 src="https://badges.cranchecks.info/worst/aion.svg"
 alt="CRAN checks" /></a>
 <a href="https://cran.r-project.org/package=aion"
-class="pkgdown-release"><img src="http://cranlogs.r-pkg.org/badges/aion"
-alt="CRAN Downloads" /></a>
+class="pkgdown-release"><img
+src="https://cranlogs.r-pkg.org/badges/aion" alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
@@ -44,11 +45,11 @@ a given calendar era, they can involve dates very far in the past and
 the sampling of the observation time is (in most cases) not constant.
 
 **aion** provides a system of classes and methods to represent and work
-with such time-series. Dates are represented as *rata die* (Reingold and
-Dershowitz 2018), i.e. the number of days since 01-01-01 (Gregorian),
-with negative values for earlier dates. This allows to represent dates
-independently of any calendar: it makes calculations and comparisons
-easier.
+with such time-series (and time intervals). Dates are represented as
+*rata die* (Reingold and Dershowitz 2018), i.e. the number of days since
+01-01-01 (Gregorian), with negative values for earlier dates. This
+allows to represent dates independently of any calendar: it makes
+calculations and comparisons easier.
 
 Once a time series is created with **aion**, any calendar can be used
 for printing or plotting data (defaults to Gregorian Common Era; see
@@ -68,7 +69,7 @@ Series.” *Journal of Open Source Software*, *9*(96).
 Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
 Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
-package version 1.0.4, <https://packages.tesselle.org/aion/>.
+package version 1.0.4.9000, <https://packages.tesselle.org/aion/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -124,9 +125,26 @@ plot(
 
 ![](man/figures/README-time-series-1.png)<!-- -->
 
+Plot time ranges:
+
+``` r
+## Create time intervals
+Y <- intervals(
+  start = loire$lower,
+  end = loire$upper,
+  names = rownames(loire),
+  calendar = calendar("AD")
+)
+
+## Plot (default calendar)
+plot(x = Y)
+```
+
+![](man/figures/README-time-intervals-1.png)<!-- -->
+
 ## Related Works
 
-- [**era**](https://github.com/joeroe/era): provides a consistent
+- [**era**](https://github.com/joeroe/era) provides a consistent
   representation of year-based time scales as a numeric vector with an
   associated era.
 
