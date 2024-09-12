@@ -68,7 +68,7 @@ setMethod(
 setMethod(
   f = "as_year",
   signature = c(object = "numeric", calendar = "GregorianCalendar"),
-  definition = function(object, calendar, decimal = TRUE) {
+  definition = function(object, calendar, decimal = TRUE, shift = TRUE, ...) {
     d0 <- object - calendar_fixed(calendar)
     n400 <- d0 %/% 146097
     d1 <- d0 %% 146097
@@ -81,18 +81,21 @@ setMethod(
     year <- 400 * n400 + 100 * n100 + 4 * n4 + n1
     year <- ifelse(n100 == 4 | n1 == 4, year, year + 1)
 
-    year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
+    if (isTRUE(shift)) {
+      ## Shift origin
+      year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
 
-    if (isTRUE(decimal)) {
-      ## Year length in days
-      start <- fixed(year, 01, 01, calendar = calendar)
-      end <- fixed(year, 12, 31, calendar = calendar)
-      total <- end - start + 1
+      if (isTRUE(decimal)) {
+        ## Year length in days
+        start <- fixed(year, 01, 01, calendar = calendar)
+        end <- fixed(year, 12, 31, calendar = calendar)
+        total <- end - start + 1
 
-      ## Elapsed time
-      sofar <- object - start
+        ## Elapsed time
+        sofar <- object - start
 
-      year <- year + sofar / total
+        year <- year + sofar / total
+      }
     }
 
     year

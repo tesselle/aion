@@ -48,7 +48,7 @@ setMethod(
 setMethod(
   f = "as_year",
   signature = c(object = "numeric", calendar = "JulianCalendar"),
-  definition = function(object, calendar) {
+  definition = function(object, calendar, ...) {
     d0 <- object - calendar_fixed(calendar)
     year <- (4 * d0 + 1464) %/% 1461
 

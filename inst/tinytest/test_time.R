@@ -20,4 +20,5 @@ y <- fixed(c(1900, 1950), calendar = CE())
 x <- series(rnorm(2), time = y)
 
 expect_identical(span(x), 18262)
-expect_identical(round(span(x, calendar = CE())), 1950 - 1900 + 1)
+expect_identical(span(x, calendar = CE()), 1950 - 1900)
+expect_identical(span(x, calendar = CE()), span(x, calendar = BP()))

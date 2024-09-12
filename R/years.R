@@ -9,7 +9,7 @@ setMethod(
   f = "as_decimal",
   signature = c(year = "numeric", month = "numeric", day = "numeric", calendar = "TimeScale"),
   definition = function(year, month, day, calendar) {
-    ## Switch origin
+    ## Shift origin
     year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
 
     ## Year length in days

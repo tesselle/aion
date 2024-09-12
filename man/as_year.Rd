@@ -11,9 +11,9 @@
 \usage{
 as_year(object, calendar, ...)
 
-\S4method{as_year}{numeric,GregorianCalendar}(object, calendar, decimal = TRUE)
+\S4method{as_year}{numeric,GregorianCalendar}(object, calendar, decimal = TRUE, shift = TRUE, ...)
 
-\S4method{as_year}{numeric,JulianCalendar}(object, calendar)
+\S4method{as_year}{numeric,JulianCalendar}(object, calendar, ...)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{RataDie}} object (see \code{\link[=fixed]{fixed()}}).}
@@ -25,6 +25,9 @@ as_year(object, calendar, ...)
 
 \item{decimal}{A \code{\link{logical}} scalar: should decimal years be returned?
 If \code{FALSE}, the decimal part is dropped.}
+
+\item{shift}{A \code{\link{logical}} scalar: should years be shifted according to the
+\link[=calendar_epoch]{calendar epoch}?}
 }
 \value{
 A \code{\link{numeric}} vector of (decimal) years.

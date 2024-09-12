@@ -60,6 +60,7 @@ Collate:
     'plot.R'
     'series.R'
     'show.R'
+    'span.R'
     'subset.R'
     'time.R'
     'validate.R'

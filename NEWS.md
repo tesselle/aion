@@ -2,6 +2,9 @@
 ## New classes and methods
 * Add support for time intervals.
 
+## Bugfixes & changes
+* Fix a bug in `span()`: if a calendar was specified, the result was shifted according to the calendar epoch.
+
 # aion 1.0.4
 * Post publication CRAN release.
 

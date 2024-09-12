@@ -322,6 +322,8 @@ setGeneric(
 #'  (see [calendar()]).
 #' @param decimal A [`logical`] scalar: should decimal years be returned?
 #'  If `FALSE`, the decimal part is dropped.
+#' @param shift A [`logical`] scalar: should years be shifted according to the
+#'  [calendar epoch][calendar_epoch()]?
 #' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector of (decimal) years.
