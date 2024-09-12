@@ -10,8 +10,11 @@ setMethod(
   signature = c(start = "RataDie", end = "RataDie", calendar = "missing"),
   definition = function(start, end, names = NULL) {
     ## Set the names
-    if (is.null(names)) names <- paste0("I", seq_len(length(start)))
-    else names <- as.character(names)
+    if (is.null(names)) {
+      names <- paste0("I", seq_len(length(start)))
+    } else {
+      names <- as.character(names)
+    }
 
     .TimeIntervals(.Id = names, .Start = start, .End = end)
   }
@@ -40,6 +43,7 @@ setMethod(
       end <- fixed(end, calendar = calendar, scale = scale)
     }
 
+    names <- names %||% names(start) %||% names(end)
     methods::callGeneric(start = start, end = end, names = names)
   }
 )

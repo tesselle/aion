@@ -43,13 +43,11 @@ setMethod("as.data.frame", "TimeSeries", as.data.frame.TimeSeries)
 #' @method as.data.frame TimeIntervals
 as.data.frame.TimeIntervals <- function(x, ..., calendar = NULL) {
   ## Build a data frame
-  z <- data.frame(
+  data.frame(
     label = labels(x),
     start = start(x, calendar = calendar),
     end = end(x, calendar = calendar)
   )
-
-  z
 }
 
 #' @export
