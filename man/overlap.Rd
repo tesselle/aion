@@ -20,7 +20,7 @@ overlap(x, ...)
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{numeric}} vector of years (if \code{calendar} is not \code{NULL}).
+A symmetric \code{numeric} \code{\link{matrix}} of years.
 }
 \description{
 Computes the length of overlap of time intervals.

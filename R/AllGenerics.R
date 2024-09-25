@@ -618,7 +618,7 @@ NULL
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @param ... Currently not used.
 #' @return
-#'  A [`numeric`] vector of years (if `calendar` is not `NULL`).
+#'  A [`numeric`] vector of years.
 #' @example inst/examples/ex-series.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -641,7 +641,7 @@ setGeneric(
 #'  of the two upper boundaries and the maximum value of the two lower
 #'  boundaries, plus 1.
 #' @return
-#'  A [`numeric`] vector of years (if `calendar` is not `NULL`).
+#'  A symmetric `numeric` [`matrix`] of years.
 #' @example inst/examples/ex-intervals.R
 #' @author N. Frerebeau
 #' @docType methods

@@ -23,7 +23,7 @@ span(x, ...)
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
 }
 \value{
-A \code{\link{numeric}} vector of years (if \code{calendar} is not \code{NULL}).
+A \code{\link{numeric}} vector of years.
 }
 \description{
 Get the duration of time series or intervals.
