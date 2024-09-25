@@ -7,6 +7,13 @@ upper <- c(750, 825, 1250, 1275, 1325, 700, 1300, 1325,
 x <- intervals(start = lower, end = upper, calendar = CE())
 expect_identical(length(x), 15L)
 
+expect_error(intervals(start = upper, end = lower, calendar = CE()), "is younger than")
+
+lower_rd <- fixed(lower, calendar = CE())
+upper_rd <- fixed(upper, calendar = CE())
+expect_silent(intervals(start = lower_rd, end = upper_rd))
+expect_warning(intervals(start = lower_rd, end = upper_rd, calendar = CE()))
+
 # Terminal times ===============================================================
 expect_identical(start(x, calendar = CE()), lower)
 expect_identical(end(x, calendar = CE()), upper)
