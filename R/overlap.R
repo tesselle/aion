@@ -10,8 +10,8 @@ setMethod(
   signature = "TimeIntervals",
   definition = function(x, calendar = NULL) {
     labels <- labels(x)
-    lower <- start(x)
-    upper <- end(x)
+    lower <- start(x, calendar = calendar) * calendar_direction(calendar)
+    upper <- end(x, calendar = calendar) * calendar_direction(calendar)
     m <- length(x)
 
     ## Compute overlap
@@ -21,11 +21,6 @@ setMethod(
       MARGIN = 2,
       FUN = function(x) max(0, min(upper[x]) - max(lower[x]) + 1)
     )
-
-    ## Convert to calendar years
-    if (!is.null(calendar)) {
-      index <- as_year(index, calendar = calendar, shift = FALSE)
-    }
 
     ## Matrix of results
     mtx <- matrix(data = 0, nrow = m, ncol = m, dimnames = list(labels, labels))

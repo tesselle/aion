@@ -335,8 +335,6 @@ setGeneric(
 #'  (see [calendar()]).
 #' @param decimal A [`logical`] scalar: should decimal years be returned?
 #'  If `FALSE`, the decimal part is dropped.
-#' @param shift A [`logical`] scalar: should years be shifted according to the
-#'  [calendar epoch][calendar_epoch()]?
 #' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector of (decimal) years.
@@ -528,6 +526,7 @@ setGeneric(
 # Time Intervals ===============================================================
 #' Create Time Intervals
 #'
+#' An Interval is elapsed time in seconds between two specific years.
 #' @param start A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
 #'  object (see [fixed()]) giving the beginning of the time intervals.
 #' @param end A [`numeric`] vector of (decimal) years or a [`RataDie-class`]
@@ -610,16 +609,16 @@ NULL
 #' @rdname window
 NULL
 
-#' Durations
+#' Duration
 #'
 #' Get the duration of time series or intervals.
-#' @param x A [`TimeSeries-class`] object.
+#' @param x A [`TimeSeries-class`] or a [`TimeIntervals-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
 #' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector of years.
-#' @example inst/examples/ex-series.R
+#' @example inst/examples/ex-duration.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family tools

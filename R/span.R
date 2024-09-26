@@ -7,11 +7,10 @@ NULL
 #' @aliases span,TimeSeries-method
 setMethod(
   f = "span",
-  signature = "TimeSeries",
+  signature = c(x = "TimeSeries"),
   definition = function(x, calendar = NULL) {
-    z <- max(x@.Time) - min(x@.Time)
-    if (is.null(calendar)) return(unclass(z))
-    as_year(z, calendar = calendar, shift = FALSE)
+    z <- end(x, calendar = calendar) - start(x, calendar = calendar)
+    unclass(z) * calendar_direction(calendar)
   }
 )
 
@@ -20,10 +19,9 @@ setMethod(
 #' @aliases span,TimeIntervals-method
 setMethod(
   f = "span",
-  signature = "TimeIntervals",
+  signature = c(x = "TimeIntervals"),
   definition = function(x, calendar = NULL) {
-    z <- x@.End - x@.Start
-    if (is.null(calendar)) return(unclass(z))
-    as_year(z, calendar = calendar, shift = FALSE)
+    z <- end(x, calendar = calendar) - start(x, calendar = calendar)
+    unclass(z) * calendar_direction(calendar)
   }
 )

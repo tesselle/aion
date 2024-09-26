@@ -37,7 +37,7 @@ represented by one unit. It should be a power of 10 (i.e. 1000 means ka).}
 A \code{\linkS4class{TimeIntervals}} object.
 }
 \description{
-Create Time Intervals
+An Interval is elapsed time in seconds between two specific years.
 }
 \examples{
 ## Create time intervals
@@ -53,7 +53,7 @@ int <- intervals(
 plot(int) # Default calendar
 
 ## Overlap
-overlap(int)
+overlap(int, calendar = CE())
 }
 \author{
 N. Frerebeau

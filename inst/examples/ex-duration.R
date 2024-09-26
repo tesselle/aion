@@ -7,8 +7,5 @@ int <- intervals(
   calendar = CE()
 )
 
-## Plot intervals
-plot(int) # Default calendar
-
-## Overlap
-overlap(int, calendar = CE())
+## Get time durations
+span(int, calendar = CE())

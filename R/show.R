@@ -93,3 +93,16 @@ setMethod(
     cat(msg, sep = "\n")
   }
 )
+
+setMethod(
+  f = "show",
+  signature = "TimeIntervals",
+  definition = function(object) {
+    n <- length(object)
+    start <- format(min(start(object)))
+    end <- format(max(end(object)))
+    msg <- "%d time intervals observed between %s and %s r.d."
+    msg <- sprintf(msg, n, start, end)
+    cat(msg, sep = "\n")
+  }
+)

@@ -112,3 +112,12 @@ setMethod(
   signature = "TimeScale",
   definition = function(object) sign(object@direction)
 )
+
+#' @export
+#' @rdname calendar_get
+#' @aliases calendar_direction,NULL-method
+setMethod(
+  f = "calendar_direction",
+  signature = "NULL",
+  definition = function(object) 1L
+)

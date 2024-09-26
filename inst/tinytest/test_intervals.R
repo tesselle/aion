@@ -19,6 +19,7 @@ expect_identical(start(x, calendar = CE()), lower)
 expect_identical(end(x, calendar = CE()), upper)
 
 # Duration =====================================================================
+expect_identical(span(x, calendar = CE()), upper - lower)
 expect_identical(span(x, calendar = CE()), span(x, calendar = BP()))
 
 # Overlap ======================================================================

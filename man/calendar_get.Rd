@@ -21,6 +21,7 @@
 \alias{calendar_epoch,TimeScale-method}
 \alias{calendar_fixed,TimeScale-method}
 \alias{calendar_direction,TimeScale-method}
+\alias{calendar_direction,NULL-method}
 \title{Calendar Parameters}
 \usage{
 calendar_label(object)
@@ -46,6 +47,8 @@ calendar_direction(object)
 \S4method{calendar_fixed}{TimeScale}(object)
 
 \S4method{calendar_direction}{TimeScale}(object)
+
+\S4method{calendar_direction}{NULL}(object)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{TimeScale}} object.}

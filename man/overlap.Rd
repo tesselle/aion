@@ -44,7 +44,7 @@ int <- intervals(
 plot(int) # Default calendar
 
 ## Overlap
-overlap(int)
+overlap(int, calendar = CE())
 }
 \seealso{
 Other tools: 

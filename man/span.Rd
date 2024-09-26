@@ -6,7 +6,7 @@
 \alias{span-method}
 \alias{span,TimeSeries-method}
 \alias{span,TimeIntervals-method}
-\title{Durations}
+\title{Duration}
 \usage{
 span(x, ...)
 
@@ -15,7 +15,7 @@ span(x, ...)
 \S4method{span}{TimeIntervals}(x, calendar = NULL)
 }
 \arguments{
-\item{x}{A \code{\linkS4class{TimeSeries}} object.}
+\item{x}{A \code{\linkS4class{TimeSeries}} or a \code{\linkS4class{TimeIntervals}} object.}
 
 \item{...}{Currently not used.}
 
@@ -29,31 +29,17 @@ A \code{\link{numeric}} vector of years.
 Get the duration of time series or intervals.
 }
 \examples{
-## Create time-series of 20 observations
+## Create time intervals
+int <- intervals(
+  start = c(625, 700, 1200, 1225, 1250, 500, 1000, 1200,
+            1325, 1375, 1200, 1300, 1375, 1275, 1325),
+  end = c(750, 825, 1250, 1275, 1325, 700, 1300, 1325,
+          1400, 1500, 1300, 1375, 1500, 1325, 1425),
+  calendar = CE()
+)
 
-## Univariate
-## Sampled every years starting from 1029 BCE
-(X <- series(rnorm(30), time = 1029:1000, calendar = BCE()))
-
-## Terminal and sampling times (returns rata die)
-start(X)
-end(X)
-time(X)
-span(X)
-
-## Multivariate
-## Sampled every century starting from 1000 CE
-(Y <- series(matrix(rnorm(90), 30, 3), time = 1000:1029, calendar = CE()))
-
-## Terminal and sampling times (returns Gregorian Common Era years)
-start(Y, calendar = CE())
-end(Y, calendar = CE())
-time(Y, calendar = CE())
-span(Y, calendar = CE())
-
-## Coerce to data frame
-df <- as.data.frame(Y, calendar = BP())
-head(df)
+## Get time durations
+span(int, calendar = CE())
 }
 \seealso{
 Other tools: 
