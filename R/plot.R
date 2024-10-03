@@ -39,7 +39,7 @@ plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
   graphics::plot.new()
 
   ## Set plotting coordinates
-  xlim <- xlim(x, calendar = calendar)
+  xlim <- xlim(x, calendar = calendar, finite = TRUE)
   ylim <- c(1, n)
   graphics::plot.window(xlim = xlim, ylim = ylim)
 
@@ -48,7 +48,15 @@ plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
 
   ## Plot
   for (i in seq_len(n)) {
-    graphics::segments(x0 = int[[i]]$start, x1 = int[[i]]$end, y0 = i, y1 = i,
+    x0 <- int[[i]]$start
+    x1 <- int[[i]]$end
+
+    ## Fix infinite boundaries
+    x0[is.infinite(x0)] <- graphics::par("usr")[[1L]]
+    x1[is.infinite(x1)] <- graphics::par("usr")[[2L]]
+
+    ## Draw segments
+    graphics::segments(x0 = x0, x1 = x1, y0 = i, y1 = i,
                        col = col[[i]], lty = lty[[i]], lwd = lwd[[i]], lend = 1)
   }
 
@@ -349,13 +357,14 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 #' This ensures that the x axis is always in chronological order.
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object.
+#' @param finite A [`logical`] scalar: should non-finite elements be omitted?
 #' @return A length-two [`numeric`] vector.
 #' @keywords internal
 #' @noRd
-xlim <- function(x, calendar) {
+xlim <- function(x, calendar, finite = FALSE) {
   if (methods::is(x, "TimeSeries")) x <- time(x, calendar = NULL)
   if (methods::is(x, "TimeIntervals")) x <- c(start(x, calendar = NULL), end(x, calendar = NULL))
-  x <- range(x)
+  x <- range(x, finite = finite)
   if (is.null(calendar)) return(x)
   as_year(x, calendar = calendar)
 }

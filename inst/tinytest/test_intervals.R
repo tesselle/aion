@@ -25,6 +25,14 @@ expect_identical(span(x, calendar = CE()), span(x, calendar = BP()))
 # Overlap ======================================================================
 expect_identical(overlap(x, calendar = CE()), overlap(x, calendar = BP()))
 
+# Inf boundaries ===============================================================
+y <- intervals(start = c(50, -Inf, -Inf), end = c(Inf, 50, Inf), calendar = CE())
+expect_identical(span(y, calendar = CE()), c(Inf, Inf, Inf))
+expect_equivalent(
+  overlap(y, calendar = CE()),
+  matrix(c(Inf, 1, Inf, 1, Inf, Inf, Inf, Inf, Inf), ncol = 3)
+)
+
 # Plot =========================================================================
 if (at_home()) {
   using("tinysnapshot")
@@ -39,4 +47,7 @@ if (at_home()) {
 
   plot_interval_CE <- function() plot(x, calendar = CE())
   expect_snapshot_plot(plot_interval_CE, "plot_interval_CE")
+
+  plot_interval_Inf <- function() plot(y, calendar = CE())
+  expect_snapshot_plot(plot_interval_Inf, "plot_interval_Inf")
 }

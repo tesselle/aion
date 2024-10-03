@@ -16,6 +16,9 @@ setMethod(
     ## There is no year 0 on the Julian calendar
     year[year <= 0] <- year[year <= 0] - 1
 
+    ## Fix infinite values
+    year[is.infinite(object)] <- object[is.infinite(object)]
+
     unclass(year)
   }
 )
@@ -80,6 +83,9 @@ setMethod(
       year <- year + sofar / total
     }
 
+    ## Fix infinite values
+    year[is.infinite(object)] <- object[is.infinite(object)]
+
     year
   }
 )
@@ -106,5 +112,29 @@ setMethod(
       month = as.numeric(month),
       day = as.numeric(day)
     )
+  }
+)
+
+# Decimal years ================================================================
+#' @export
+#' @rdname as_decimal
+#' @aliases as_decimal,numeric,numeric,numeric,TimeScale-method
+setMethod(
+  f = "as_decimal",
+  signature = c(year = "numeric", month = "numeric", day = "numeric", calendar = "TimeScale"),
+  definition = function(year, month, day, calendar) {
+    ## Shift origin
+    year <- (year - calendar_epoch(calendar)) * calendar_direction(calendar)
+
+    ## Year length in days
+    start <- fixed(year, 01, 01, calendar = calendar)
+    end <- fixed(year, 12, 31, calendar = calendar)
+    total <- end - start + 1
+
+    ## Elapsed time
+    date <- fixed(year, month, day, calendar = calendar)
+    sofar <- date - start
+
+    unclass(year + sofar / total)
   }
 )

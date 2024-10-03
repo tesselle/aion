@@ -5,6 +5,11 @@ X <- series(x, time = seq(100, 109, 0.1), calendar = calendar("BCE"), scale = 10
 Y <- series(x, fixed(1000:1090, calendar = calendar("BCE")))
 expect_identical(X, Y)
 
+expect_error(
+  series(rnorm(3), fixed(c(50, Inf, 250), calendar = calendar("CE"))),
+  "must not contain infinite values"
+)
+
 # Create from matrix ===========================================================
 x <- matrix(rnorm(300), 100, 3)
 

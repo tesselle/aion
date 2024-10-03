@@ -47,7 +47,8 @@ setValidity(
     ## Validate
     cnd <- list(
       arkhe::validate(arkhe::assert_type(object, "numeric")),
-      arkhe::validate(arkhe::assert_length(time, m))
+      arkhe::validate(arkhe::assert_length(time, m)),
+      arkhe::validate(arkhe::assert_infinite(time))
     )
 
     ## Return conditions, if any

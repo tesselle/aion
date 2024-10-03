@@ -15,7 +15,7 @@ setMethod(
 
     rd <- fixed(year, 01, 01, calendar = calendar)
 
-    is_leap <- is_gregorian_leap_year(year)
+    is_leap <- which(is_gregorian_leap_year(year))
     rd[is_leap] <- ceiling(rd[is_leap]) # WHY ???
     rd
   }
@@ -52,6 +52,9 @@ setMethod(
       correction +                       # Correct for 28- or 29-day Feb
       day                                # Days so far this month.
 
+    ## Fix infinite values
+    rd[is.infinite(year)] <- year[is.infinite(year)]
+
     .RataDie(rd)
   }
 )
@@ -66,7 +69,7 @@ setMethod(
   definition = function(year, month, day, calendar) {
     ## Correct for 28- or 29-day Feb
     correction <- rep(-2, length(year))
-    correction[is_julian_leap_year(year)] <- -1
+    correction[which(is_julian_leap_year(year))] <- -1
     correction[month <= 2] <- 0
 
     ## There is no year 0 on the Julian calendar
@@ -78,6 +81,9 @@ setMethod(
       (367 * month - 362) %/% 12 +       # Days in prior months this year assuming 30-day Feb
       correction +                       # Correct for 28- or 29-day Feb
       day                                # Days so far this month.
+
+    ## Fix infinite values
+    rd[is.infinite(year)] <- year[is.infinite(year)]
 
     .RataDie(rd)
   }
