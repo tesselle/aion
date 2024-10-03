@@ -23,7 +23,7 @@ setMethod(
     )
 
     ## Matrix of results
-    mtx <- matrix(data = 0, nrow = m, ncol = m, dimnames = list(labels, labels))
+    mtx <- matrix(data = upper - lower, nrow = m, ncol = m, dimnames = list(labels, labels))
     mtx[lower.tri(mtx, diag = FALSE)] <- index
     mtx <- t(mtx)
     mtx[lower.tri(mtx, diag = FALSE)] <- index
