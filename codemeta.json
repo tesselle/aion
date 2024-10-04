@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "aion",
-  "description": "A toolkit for archaeological time series. This package provides a system of classes and methods to represent and work with archaeological time series. Dates are represented as \"rata die\" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
+  "description": "A toolkit for archaeological time series and time intervals. This package provides a system of classes and methods to represent and work with archaeological time series and time intervals. Dates are represented as \"rata die\" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
   "name": "aion: Archaeological Time Series",
   "relatedLink": ["https://packages.tesselle.org/aion/", "https://CRAN.R-project.org/package=aion"],
   "codeRepository": "https://github.com/tesselle/aion",
   "issueTracker": "https://github.com/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -163,7 +163,7 @@
       "@type": "SoftwareApplication",
       "identifier": "arkhe",
       "name": "arkhe",
-      "version": ">= 1.6.0",
+      "version": ">= 1.7.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -187,9 +187,14 @@
       "identifier": "methods",
       "name": "methods"
     },
+    "6": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "441.308KB",
+  "fileSize": "495.986KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -234,7 +239,7 @@
       "name": "{aion: Archaeological Time Series}",
       "identifier": "10.5281/zenodo.8032278",
       "url": "https://packages.tesselle.org/aion/",
-      "description": "R package version 1.0.4",
+      "description": "R package version 1.1.0",
       "@id": "https://doi.org/10.5281/zenodo.8032278",
       "sameAs": "https://doi.org/10.5281/zenodo.8032278"
     }

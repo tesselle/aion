@@ -56,7 +56,9 @@ for printing or plotting data (defaults to Gregorian Common Era; see
 `vignette("aion")`).
 
 **aion** does not provide tools for temporal modeling. Instead, it
-offers a simple API that can be used by other specialized packages.
+offers a simple API that can be used by other specialized packages (see
+[**kairos**](https://packages.tesselle.org/kairos/) or
+[**ananke**](https://packages.tesselle.org/ananke/)).
 
 ------------------------------------------------------------------------
 
@@ -69,7 +71,7 @@ Series.” *Journal of Open Source Software*, *9*(96).
 Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
 Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
-package version 1.0.4.9000, <https://packages.tesselle.org/aion/>.
+package version 1.1.0, <https://packages.tesselle.org/aion/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -113,7 +115,7 @@ mid <- rowMeans(loire[, c("lower", "upper")])
 X <- series(
   object = loire[, keep],
   time = mid,
-  calendar = calendar("AD")
+  calendar = AD()
 )
 
 ## Plot (default calendar)
@@ -133,7 +135,7 @@ Y <- intervals(
   start = loire$lower,
   end = loire$upper,
   names = rownames(loire),
-  calendar = calendar("AD")
+  calendar = AD()
 )
 
 ## Plot (default calendar)

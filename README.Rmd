@@ -42,7 +42,7 @@ Base R ships with a lot of functionality useful for time series, in particular i
 
 Once a time series is created with **aion**, any calendar can be used for printing or plotting data (defaults to Gregorian Common Era; see `vignette("aion")`).
 
-**aion** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages.
+**aion** does not provide tools for temporal modeling. Instead, it offers a simple API that can be used by other specialized packages (see [**kairos**](https://packages.tesselle.org/kairos/) or [**ananke**](https://packages.tesselle.org/ananke/)).
 
 ---
 
@@ -89,7 +89,7 @@ mid <- rowMeans(loire[, c("lower", "upper")])
 X <- series(
   object = loire[, keep],
   time = mid,
-  calendar = calendar("AD")
+  calendar = AD()
 )
 
 ## Plot (default calendar)
@@ -107,7 +107,7 @@ Y <- intervals(
   start = loire$lower,
   end = loire$upper,
   names = rownames(loire),
-  calendar = calendar("AD")
+  calendar = AD()
 )
 
 ## Plot (default calendar)

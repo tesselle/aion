@@ -1,17 +1,16 @@
 Package: aion
 Title: Archaeological Time Series
-Version: 1.0.4.9000
+Version: 1.1.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-5759-4944", affiliation = "Université Bordeaux Montaigne")),
+           comment = c(ORCID = "0000-0001-5759-4944")),
     person("Joe", "Roe", , "joseph.roe@iaw.unibe.ch", role = "aut",
-           comment = c(ORCID = "0000-0002-1011-1244", affiliation = "Universität Bern")),
+           comment = c(ORCID = "0000-0002-1011-1244")),
     person("Brice", "Lebrun", , "brice.lebrun@u-bordeaux-montaigne.fr", role = "ctb",
            comment = c(ORCID = "0000-0001-7503-8685", "Logo designer")),
     person("Université Bordeaux Montaigne", role = "fnd"),
     person("CNRS", role = "fnd")
   )
-Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: A toolkit for archaeological time series and time intervals.
     This package provides a system of classes and methods to represent and
     work with archaeological time series and time intervals. Dates are
@@ -25,10 +24,11 @@ BugReports: https://github.com/tesselle/aion/issues
 Depends: 
     R (>= 3.3)
 Imports: 
-    arkhe (>= 1.6.0),
+    arkhe (>= 1.7.0),
     graphics,
     grDevices,
-    methods
+    methods,
+    utils
 Suggests: 
     folio (>= 1.4.0),
     knitr,

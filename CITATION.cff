@@ -8,7 +8,7 @@ message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aion: Archaeological Time Series'
-version: 1.0.4
+version: 1.1.0
 doi: 10.21105/joss.06210
 identifiers:
 - description: The concept DOI.
@@ -29,25 +29,26 @@ identifiers:
 - description: The versioned DOI for version 1.0.4.
   type: doi
   value: 10.5281/zenodo.12951290
+- description: The CRAN DOI
+  type: doi
+  value: 10.32614/cran.package.aion
 - description: The Software Heritage identifier for version 1.0.2.
   type: swh
   value: swh:1:rel:10b21ffbf3914a6a084766e8f704388582408a6e
-abstract: A toolkit for archaeological time series. This package provides a system
-  of classes and methods to represent and work with archaeological time series. Dates
-  are represented as "rata die" and can be converted to (virtually) any calendar defined
-  by Reingold and Dershowitz (2018) <https://doi.org/10.1017/9781107415058>. This
-  packages offers a simple API that can be used by other specialized packages.
+abstract: A toolkit for archaeological time series and time intervals. This package
+  provides a system of classes and methods to represent and work with archaeological
+  time series and time intervals. Dates are represented as "rata die" and can be converted
+  to (virtually) any calendar defined by Reingold and Dershowitz (2018) <https://doi.org/10.1017/9781107415058>.
+  This packages offers a simple API that can be used by other specialized packages.
 authors:
 - family-names: Frerebeau
   given-names: Nicolas
   email: nicolas.frerebeau@u-bordeaux-montaigne.fr
   orcid: https://orcid.org/0000-0001-5759-4944
-  affiliation: Université Bordeaux Montaigne
 - family-names: Roe
   given-names: Joe
   email: joseph.roe@iaw.unibe.ch
   orcid: https://orcid.org/0000-0002-1011-1244
-  affiliation: Universität Bern
 preferred-citation:
   type: article
   title: 'aion: An R Package to Represent Archaeological Time Series'
@@ -56,7 +57,6 @@ preferred-citation:
     given-names: Nicolas
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
-    affiliation: Université Bordeaux Montaigne
   year: '2024'
   journal: Journal of Open Source Software
   volume: '9'
@@ -70,7 +70,6 @@ contact:
   given-names: Nicolas
   email: nicolas.frerebeau@u-bordeaux-montaigne.fr
   orcid: https://orcid.org/0000-0001-5759-4944
-  affiliation: Université Bordeaux Montaigne
 keywords:
 - time series
 - r package
@@ -89,7 +88,7 @@ references:
   institution:
     name: Université Bordeaux Montaigne
     address: Pessac, France
-  notes: R package version 1.0.4
+  notes: R package version 1.1.0
   url: https://packages.tesselle.org/aion/
   doi: 10.5281/zenodo.8032278
 - type: software
@@ -117,7 +116,7 @@ references:
     affiliation: Université Bordeaux Montaigne
   year: '2024'
   doi: 10.32614/CRAN.package.arkhe
-  version: '>= 1.6.0'
+  version: '>= 1.7.0'
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -128,7 +127,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.graphics
 - type: software
   title: grDevices
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -139,7 +137,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.grDevices
 - type: software
   title: methods
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -150,7 +147,16 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.methods
+- type: software
+  title: utils
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: folio
   abstract: 'folio: Datasets for Teaching Archaeology and Paleontology'
