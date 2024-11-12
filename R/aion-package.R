@@ -40,6 +40,6 @@
 "_PACKAGE"
 
 #' @import arkhe
-#' @importFrom methods Arith as callGeneric callNextMethod is new setGeneric
-#' setMethod setValidity .valueClassTest
+#' @import methods
+#' @importFrom stats end frequency start time window
 NULL

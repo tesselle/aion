@@ -28,6 +28,7 @@ Imports:
     graphics,
     grDevices,
     methods,
+    stats,
     utils
 Suggests: 
     folio (>= 1.4.0),
