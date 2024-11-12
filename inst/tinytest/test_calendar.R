@@ -1,3 +1,6 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+options(aion.calendar = calendar("CE"))
+
 # Unknown calendar =============================================================
 expect_error(calendar("XXX"), "Unknown calendar")
 

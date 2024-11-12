@@ -6,6 +6,9 @@ if (at_home()) {
   options(tinysnapshot_tol = 200) # pixels
   options(tinysnapshot_os = "Linux")
 
+  Sys.setenv(LANGUAGE = "en") # Force locale
+  options(aion.calendar = calendar("CE"))
+
   # Plot multiple ==============================================================
   X <- series(
     object = matrix(sin(1:300), nrow = 50, ncol = 6),

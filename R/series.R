@@ -40,7 +40,7 @@ setMethod(
   signature = c(object = "array", time = "numeric", calendar = "TimeScale"),
   definition = function(object, time, calendar, scale = 1, names = NULL) {
     if (methods::is(time, "RataDie")) {
-      msg <- "%s is already expressed in rata die: %s is ignored."
+      msg <- tr_("%s is already expressed in rata die: %s is ignored.")
       warning(sprintf(msg, sQuote("time"), sQuote("calendar")), call. = FALSE)
     } else {
       time <- fixed(time, calendar = calendar, scale = scale)

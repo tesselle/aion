@@ -1,3 +1,6 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+options(aion.calendar = calendar("CE"))
+
 # Format =======================================================================
 expect_identical(format(CE()), "Gregorian years CE")
 expect_identical(format(J()), "Julian years")

@@ -1,5 +1,10 @@
 # HELPERS
 
+## https://michaelchirico.github.io/potools/articles/developers.html
+tr_ <- function(...) {
+  enc2utf8(gettext(paste0(...), domain = "R-aion"))
+}
+
 make_par <- function(params, x, n = 1) {
   p <- params[[x]] %||% graphics::par()[[x]]
   if (length(p) == 1 && n > 1) p <- rep(p, length.out = n)

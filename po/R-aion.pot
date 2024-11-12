@@ -1,0 +1,103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: aion 1.1.0.9000\n"
+"POT-Creation-Date: 2024-11-12 14:09+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: calendar.R:21
+msgid "Unknown calendar: %s"
+msgstr ""
+
+#: calendar.R:30
+msgid "BP"
+msgstr ""
+
+#: calendar.R:31
+msgid "Before Present"
+msgstr ""
+
+#: calendar.R:41
+msgid "b2k"
+msgstr ""
+
+#: calendar.R:42
+msgid "Before 2000"
+msgstr ""
+
+#: calendar.R:52
+msgid "BC"
+msgstr ""
+
+#: calendar.R:53
+msgid "Before Christ"
+msgstr ""
+
+#: calendar.R:62
+msgid "BCE"
+msgstr ""
+
+#: calendar.R:63
+msgid "Before Common Era"
+msgstr ""
+
+#: calendar.R:72
+msgid "AD"
+msgstr ""
+
+#: calendar.R:73
+msgid "Anno Domini"
+msgstr ""
+
+#: calendar.R:81
+msgid "CE"
+msgstr ""
+
+#: calendar.R:82
+msgid "Common Era"
+msgstr ""
+
+#: calendar.R:135
+msgid "Gregorian years"
+msgstr ""
+
+#: calendar.R:136
+msgid "Julian years"
+msgstr ""
+
+#: calendar.R:137
+msgid "Undefined"
+msgstr ""
+
+#: intervals.R:44 series.R:43
+msgid "%s is already expressed in rata die: %s is ignored."
+msgstr ""
+
+#: show.R:67
+msgid "%s%s counted forwards from %g."
+msgstr ""
+
+#: show.R:69
+msgid "%s%s counted backwards from %g."
+msgstr ""
+
+#: show.R:80
+msgid "Rata die: number of days since 01-01-01 (Gregorian)."
+msgstr ""
+
+#: show.R:93
+msgid "%d x %d x %d time series observed between %s and %s r.d."
+msgstr ""
+
+#: show.R:106
+msgid "%d time intervals observed between %s and %s r.d."
+msgstr ""
+
+#: validate.R:87
+msgid "%s is later than %s."
+msgstr ""

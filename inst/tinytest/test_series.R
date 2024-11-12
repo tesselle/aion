@@ -1,3 +1,6 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+options(aion.calendar = calendar("CE"))
+
 # Create from vector ===========================================================
 x <- rnorm(91)
 

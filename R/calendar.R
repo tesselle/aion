@@ -27,8 +27,8 @@ setMethod(
 #' @describeIn gregorian Gregorian BP era.
 BP <- function(...) {
   .GregorianCalendar(
-    label = "BP",
-    name = "Before Present",
+    label = tr_("BP"),
+    name = tr_("Before Present"),
     epoch = 1950,
     direction = -1L
   )
@@ -38,8 +38,8 @@ BP <- function(...) {
 #' @describeIn gregorian Gregorian b2k era.
 b2k <- function(...) {
   .GregorianCalendar(
-    label = "b2k",
-    name = "Before 2000",
+    label = tr_("b2k"),
+    name = tr_("Before 2000"),
     epoch = 2000,
     direction = -1L
   )
@@ -49,8 +49,8 @@ b2k <- function(...) {
 #' @describeIn gregorian Gregorian BC era.
 BC <- function(...) {
   .GregorianCalendar(
-    label = "BC",
-    name = "Before Christ",
+    label = tr_("BC"),
+    name = tr_("Before Christ"),
     direction = -1L
   )
 }
@@ -59,8 +59,8 @@ BC <- function(...) {
 #' @describeIn gregorian Gregorian BCE era.
 BCE <- function(...) {
   .GregorianCalendar(
-    label = "BCE",
-    name = "Before Common Era",
+    label = tr_("BCE"),
+    name = tr_("Before Common Era"),
     direction = -1L
   )
 }
@@ -69,8 +69,8 @@ BCE <- function(...) {
 #' @describeIn gregorian Gregorian AD era.
 AD <- function(...) {
   .GregorianCalendar(
-    label = "AD",
-    name = "Anno Domini"
+    label = tr_("AD"),
+    name = tr_("Anno Domini")
   )
 }
 
@@ -78,8 +78,8 @@ AD <- function(...) {
 #' @describeIn gregorian Gregorian CE era.
 CE <- function(...) {
   .GregorianCalendar(
-    label = "CE",
-    name = "Common Era"
+    label = tr_("CE"),
+    name = tr_("Common Era")
   )
 }
 
@@ -87,8 +87,8 @@ CE <- function(...) {
 # @describeIn gregorian Gregorian AUC era.
 # AUC <- function(...) {
 #   .GregorianCalendar(
-#     label = "AUC",
-#     name = "Ab urbe condita",
+#     label = tr_("AUC"),
+#     name = tr_("Ab urbe condita"),
 #     epoch = 753,
 #     direction = 1
 #   )
@@ -132,9 +132,9 @@ setMethod(
   f = "calendar_unit",
   signature = "TimeScale",
   definition = function(object) {
-    if (is_gregorian(object)) return("Gregorian")
-    if (is_julian(object)) return("Julian")
-    return("Undefined")
+    if (is_gregorian(object)) return(tr_("Gregorian years"))
+    if (is_julian(object)) return(tr_("Julian years"))
+    return(tr_("Undefined"))
   }
 )
 

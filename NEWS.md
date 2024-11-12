@@ -1,4 +1,6 @@
 # aion 1.1.0.9000
+## Enhancements
+* Translate into French.
 
 # aion 1.1.0
 ## New classes and methods

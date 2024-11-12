@@ -1,3 +1,6 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+options(aion.calendar = calendar("CE"))
+
 # Create =======================================================================
 lower <- c(625, 700, 1200, 1225, 1250, 500, 1000, 1200,
            1325, 1375, 1200, 1300, 1375, 1275, 1325)
@@ -7,7 +10,7 @@ upper <- c(750, 825, 1250, 1275, 1325, 700, 1300, 1325,
 x <- intervals(start = lower, end = upper, calendar = CE())
 expect_identical(length(x), 15L)
 
-expect_error(intervals(start = upper, end = lower, calendar = CE()), "is younger than")
+expect_error(intervals(start = upper, end = lower, calendar = CE()), "is later than")
 
 lower_rd <- fixed(lower, calendar = CE())
 upper_rd <- fixed(upper, calendar = CE())

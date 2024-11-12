@@ -41,7 +41,7 @@ setMethod(
 
     ## End
     if (methods::is(end, "RataDie")) {
-      msg <- "%s is already expressed in rata die: %s is ignored."
+      msg <- tr_("%s is already expressed in rata die: %s is ignored.")
       warning(sprintf(msg, sQuote("end"), sQuote("calendar")), call. = FALSE)
     } else {
       end <- fixed(end, calendar = calendar, scale = scale)

@@ -84,7 +84,7 @@ assert_ordered <- function(start, end) {
   arg_start <- deparse(substitute(start))
   arg_end <- deparse(substitute(end))
   if (any(start > end)) {
-    msg <- sprintf("%s is younger than %s.", sQuote(arg_start), sQuote(arg_end))
+    msg <- sprintf(tr_("%s is later than %s."), sQuote(arg_start), sQuote(arg_end))
     stop(msg)
   }
   invisible(NULL)
