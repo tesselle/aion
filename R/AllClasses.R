@@ -43,10 +43,9 @@ NULL
 #' @author N. Frerebeau
 #' @family classes
 #' @family calendar classes
-#' @family gregorian era classes
 #' @docType class
 #' @aliases GregorianCalendar-class
-#' @keywords internal
+#' @exportClass GregorianCalendar
 .GregorianCalendar <- setClass(
   Class = "GregorianCalendar",
   prototype = list(
@@ -67,7 +66,7 @@ NULL
 #' @family calendar classes
 #' @docType class
 #' @aliases JulianCalendar-class
-#' @keywords internal
+#' @exportClass JulianCalendar
 .JulianCalendar <- setClass(
   Class = "JulianCalendar",
   prototype = list(

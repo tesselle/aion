@@ -3,75 +3,77 @@
 NULL
 
 #' @export
+#' @method start TimeSeries
+start.TimeSeries <- function(x, calendar = NULL, ...) {
+  z <- min(x@.Time)
+  if (is.null(calendar)) return(z)
+  as_year(z, calendar = calendar, decimal = TRUE)
+}
+
+#' @export
 #' @rdname start
 #' @aliases start,TimeSeries-method
-setMethod(
-  f = "start",
-  signature = "TimeSeries",
-  definition = function(x, calendar = NULL) {
-    z <- min(x@.Time)
-    if (is.null(calendar)) return(z)
-    as_year(z, calendar = calendar, decimal = TRUE)
-  }
-)
+setMethod("start", "TimeSeries", start.TimeSeries)
+
+#' @export
+#' @method start TimeIntervals
+start.TimeIntervals <- function(x, calendar = NULL, ...) {
+  z <- x@.Start
+  if (is.null(calendar)) return(z)
+  as_year(z, calendar = calendar, decimal = TRUE)
+}
 
 #' @export
 #' @rdname start
 #' @aliases start,TimeIntervals-method
-setMethod(
-  f = "start",
-  signature = "TimeIntervals",
-  definition = function(x, calendar = NULL) {
-    z <- x@.Start
-    if (is.null(calendar)) return(z)
-    as_year(z, calendar = calendar, decimal = TRUE)
-  }
-)
+setMethod("start", "TimeIntervals", start.TimeIntervals)
+
+#' @export
+#' @method end TimeSeries
+end.TimeSeries <- function(x, calendar = NULL, ...) {
+  z <- max(x@.Time)
+  if (is.null(calendar)) return(z)
+  as_year(z, calendar = calendar, decimal = TRUE)
+}
 
 #' @export
 #' @rdname start
 #' @aliases end,TimeSeries-method
-setMethod(
-  f = "end",
-  signature = "TimeSeries",
-  definition = function(x, calendar = NULL) {
-    z <- max(x@.Time)
-    if (is.null(calendar)) return(z)
-    as_year(z, calendar = calendar, decimal = TRUE)
-  }
-)
+setMethod("end", "TimeSeries", end.TimeSeries)
+
+#' @export
+#' @method end TimeIntervals
+end.TimeIntervals <- function(x, calendar = NULL, ...) {
+  z <- x@.End
+  if (is.null(calendar)) return(z)
+  as_year(z, calendar = calendar, decimal = TRUE)
+}
 
 #' @export
 #' @rdname start
 #' @aliases end,TimeIntervals-method
-setMethod(
-  f = "end",
-  signature = "TimeIntervals",
-  definition = function(x, calendar = NULL) {
-    z <- x@.End
-    if (is.null(calendar)) return(z)
-    as_year(z, calendar = calendar, decimal = TRUE)
-  }
-)
+setMethod("end", "TimeIntervals", end.TimeIntervals)
+
+#' @export
+#' @method time TimeSeries
+time.TimeSeries <- function(x, calendar = NULL, ...) {
+  z <- x@.Time
+  if (is.null(calendar)) return(z)
+  as_year(z, calendar = calendar, decimal = TRUE)
+}
 
 #' @export
 #' @rdname time
 #' @aliases time,TimeSeries-method
-setMethod(
-  f = "time",
-  signature = "TimeSeries",
-  definition = function(x, calendar = NULL) {
-    z <- x@.Time
-    if (is.null(calendar)) return(z)
-    as_year(z, calendar = calendar, decimal = TRUE)
-  }
-)
+setMethod("time", "TimeSeries", time.TimeSeries)
+
+#' @export
+#' @method frequency TimeSeries
+frequency.TimeSeries <- function(x, ...) {
+  mean(abs(1 / diff(time(x))))
+}
 
 #' @export
 #' @rdname time
 #' @aliases frequency,TimeSeries-method
-setMethod(
-  f = "frequency",
-  signature = "TimeSeries",
-  definition = function(x) mean(abs(1 / diff(time(x))))
-)
+setMethod("frequency", "TimeSeries", frequency.TimeSeries)

@@ -24,7 +24,7 @@ setMethod(
 )
 
 #' @export
-#' @describeIn gregorian Gregorian BP era.
+#' @rdname gregorian
 BP <- function(...) {
   .GregorianCalendar(
     label = tr_("BP"),
@@ -35,7 +35,7 @@ BP <- function(...) {
 }
 
 #' @export
-#' @describeIn gregorian Gregorian b2k era.
+#' @rdname gregorian
 b2k <- function(...) {
   .GregorianCalendar(
     label = tr_("b2k"),
@@ -46,7 +46,7 @@ b2k <- function(...) {
 }
 
 #' @export
-#' @describeIn gregorian Gregorian BC era.
+#' @rdname gregorian
 BC <- function(...) {
   .GregorianCalendar(
     label = tr_("BC"),
@@ -56,7 +56,7 @@ BC <- function(...) {
 }
 
 #' @export
-#' @describeIn gregorian Gregorian BCE era.
+#' @rdname gregorian
 BCE <- function(...) {
   .GregorianCalendar(
     label = tr_("BCE"),
@@ -66,7 +66,7 @@ BCE <- function(...) {
 }
 
 #' @export
-#' @describeIn gregorian Gregorian AD era.
+#' @rdname gregorian
 AD <- function(...) {
   .GregorianCalendar(
     label = tr_("AD"),
@@ -75,7 +75,7 @@ AD <- function(...) {
 }
 
 #' @export
-#' @describeIn gregorian Gregorian CE era.
+#' @rdname gregorian
 CE <- function(...) {
   .GregorianCalendar(
     label = tr_("CE"),
@@ -84,7 +84,7 @@ CE <- function(...) {
 }
 
 # @export
-# @describeIn gregorian Gregorian AUC era.
+# @rdname gregorian
 # AUC <- function(...) {
 #   .GregorianCalendar(
 #     label = tr_("AUC"),
@@ -104,7 +104,10 @@ J <- function(...) {
 }
 
 # Mutators =====================================================================
-calendar_year <- function(object) object@year
+calendar_year <- function(object) {
+  if (is.null(object)) return(NULL)
+  object@year
+}
 
 ## Getters ---------------------------------------------------------------------
 #' @export

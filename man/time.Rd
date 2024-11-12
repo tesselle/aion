@@ -9,15 +9,17 @@
 \alias{frequency,TimeSeries-method}
 \title{Sampling Times}
 \usage{
-\S4method{time}{TimeSeries}(x, calendar = NULL)
+\S4method{time}{TimeSeries}(x, calendar = NULL, ...)
 
-\S4method{frequency}{TimeSeries}(x)
+\S4method{frequency}{TimeSeries}(x, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
+
+\item{...}{Currently not used.}
 }
 \value{
 A \code{\link{numeric}} vector of decimal years (if \code{calendar} is not \code{NULL}).

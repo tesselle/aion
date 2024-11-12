@@ -7,17 +7,20 @@
 \alias{format,RataDie-method}
 \title{Date Conversion to Character}
 \usage{
-\S4method{format}{TimeScale}(x)
+\S4method{format}{TimeScale}(x, ...)
 
 \S4method{format}{RataDie}(
   x,
   prefix = c("a", "ka", "Ma", "Ga"),
   label = TRUE,
-  calendar = getOption("aion.calendar")
+  calendar = getOption("aion.calendar"),
+  ...
 )
 }
 \arguments{
 \item{x}{A \code{\linkS4class{RataDie}} object.}
+
+\item{...}{Currently not used.}
 
 \item{prefix}{A \code{\link{character}} string specifying the prefix.
 It should be one of "\code{a}", "\code{ka}", "\code{Ma}" or "\code{Ga}".

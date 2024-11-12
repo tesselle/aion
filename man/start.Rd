@@ -11,19 +11,21 @@
 \alias{end,TimeIntervals-method}
 \title{Terminal Times}
 \usage{
-\S4method{start}{TimeSeries}(x, calendar = NULL)
+\S4method{start}{TimeSeries}(x, calendar = NULL, ...)
 
-\S4method{start}{TimeIntervals}(x, calendar = NULL)
+\S4method{start}{TimeIntervals}(x, calendar = NULL, ...)
 
-\S4method{end}{TimeSeries}(x, calendar = NULL)
+\S4method{end}{TimeSeries}(x, calendar = NULL, ...)
 
-\S4method{end}{TimeIntervals}(x, calendar = NULL)
+\S4method{end}{TimeIntervals}(x, calendar = NULL, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
+
+\item{...}{Currently not used.}
 }
 \value{
 A \code{\link{numeric}} vector of decimal years (if \code{calendar} is not \code{NULL}).

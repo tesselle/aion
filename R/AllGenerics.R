@@ -447,6 +447,7 @@ setGeneric(
 #'  displayed?
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @param ... Currently not used.
 #' @return
 #'  A [`character`] vector representing the date.
 #' @example inst/examples/ex-fixed.R
@@ -559,6 +560,7 @@ setGeneric(
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector of decimal years (if `calendar` is not `NULL`).
 #' @example inst/examples/ex-series.R
@@ -578,6 +580,7 @@ NULL
 #' @param x A [`TimeSeries-class`] object.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param ... Currently not used.
 #' @return
 #'  A [`numeric`] vector of decimal years (if `calendar` is not `NULL`).
 #' @example inst/examples/ex-series.R
@@ -598,6 +601,7 @@ NULL
 #'  period of interest.
 #' @param end A length-one [`numeric`] vector specifying the end time of the
 #'  period of interest.
+#' @param ... Currently not used.
 #' @return
 #'  A [`TimeSeries-class`] object.
 #' @example inst/examples/ex-window.R

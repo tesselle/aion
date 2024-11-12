@@ -7,7 +7,7 @@
 \alias{window,TimeSeries-method}
 \title{Time Windows}
 \usage{
-\S4method{window}{TimeSeries}(x, start = NULL, end = NULL)
+\S4method{window}{TimeSeries}(x, start = NULL, end = NULL, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}
@@ -17,6 +17,8 @@ period of interest.}
 
 \item{end}{A length-one \code{\link{numeric}} vector specifying the end time of the
 period of interest.}
+
+\item{...}{Currently not used.}
 }
 \value{
 A \code{\linkS4class{TimeSeries}} object.

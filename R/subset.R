@@ -54,17 +54,17 @@ setMethod(
 
 # Window =======================================================================
 #' @export
+#' @method window TimeSeries
+window.TimeSeries <- function(x, start = NULL, end = NULL, ...) {
+  if (is.null(start)) start <- start(x)
+  if (is.null(end)) end <- end(x)
+  years <- time(x)
+
+  i <- which(years >= start & years <= end)
+  x[i, , , drop = FALSE]
+}
+
+#' @export
 #' @rdname window
 #' @aliases window,TimeSeries-method
-setMethod(
-  f = "window",
-  signature = "TimeSeries",
-  definition = function(x, start = NULL, end = NULL) {
-    if (is.null(start)) start <- start(x)
-    if (is.null(end)) end <- end(x)
-    years <- time(x)
-
-    i <- which(years >= start & years <= end)
-    x[i, , , drop = FALSE]
-  }
-)
+setMethod("window", "TimeSeries", window.TimeSeries)

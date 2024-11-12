@@ -25,5 +25,3 @@ N. Frerebeau
 }
 \concept{calendar classes}
 \concept{classes}
-\concept{gregorian era classes}
-\keyword{internal}
