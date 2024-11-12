@@ -16,12 +16,12 @@ setValidity(
 
     ## Validate
     cnd <- list(
-      arkhe::validate(arkhe::assert_scalar(label, "character")),
-      arkhe::validate(arkhe::assert_scalar(name, "character")),
-      arkhe::validate(arkhe::assert_scalar(epoch, "numeric")),
-      arkhe::validate(arkhe::assert_scalar(fixed, "numeric")),
-      arkhe::validate(arkhe::assert_scalar(direction, "integer")),
-      arkhe::validate(arkhe::assert_scalar(year, "numeric"))
+      arkhe::validate(arkhe::assert_length(label, 1)),
+      arkhe::validate(arkhe::assert_length(name, 1)),
+      arkhe::validate(arkhe::assert_length(epoch, 1)),
+      arkhe::validate(arkhe::assert_length(fixed, 1)),
+      arkhe::validate(arkhe::assert_length(direction, 1)),
+      arkhe::validate(arkhe::assert_length(year, 1))
     )
 
     ## Return conditions, if any

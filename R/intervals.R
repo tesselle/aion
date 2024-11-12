@@ -9,12 +9,16 @@ setMethod(
   f = "intervals",
   signature = c(start = "RataDie", end = "RataDie", calendar = "missing"),
   definition = function(start, end, names = NULL) {
+    n <- length(start)
+    arkhe::assert_length(end, n)
+
     ## Set the names
     if (is.null(names)) {
-      names <- paste0("I", seq_len(length(start)))
+      names <- paste0("I", seq_len(n))
     } else {
       names <- as.character(names)
     }
+    arkhe::assert_length(names, n)
 
     .TimeIntervals(.Id = names, .Start = start, .End = end)
   }

@@ -14,10 +14,14 @@ setMethod(
     arkhe::assert_length(time, NROW(object))
 
     ## Set the names of the series
-    if (!is.null(names))
+    n <- dim(object)[2L]
+    if (!is.null(names)) {
+      arkhe::assert_length(names, n)
       dimnames(object)[[2L]] <- names
-    if (is.null(dimnames(object)[[2L]]))
-      dimnames(object)[[2L]] <- paste0("S", seq_len(dim(object)[2L]))
+    }
+    if (is.null(dimnames(object)[[2L]])) {
+      dimnames(object)[[2L]] <- paste0("S", seq_len(n))
+    }
 
     ## Chronological order
     i <- order(time, decreasing = FALSE)
