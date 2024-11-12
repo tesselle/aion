@@ -45,7 +45,7 @@ NULL
 #' @family calendar classes
 #' @docType class
 #' @aliases GregorianCalendar-class
-#' @exportClass GregorianCalendar
+#' @keywords internal
 .GregorianCalendar <- setClass(
   Class = "GregorianCalendar",
   prototype = list(
@@ -66,7 +66,7 @@ NULL
 #' @family calendar classes
 #' @docType class
 #' @aliases JulianCalendar-class
-#' @exportClass JulianCalendar
+#' @keywords internal
 .JulianCalendar <- setClass(
   Class = "JulianCalendar",
   prototype = list(
