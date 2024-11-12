@@ -11,45 +11,97 @@ setMethod(
   definition = function(object) {
     switch (
       tolower(object),
-      bp = .BP(),
-      b2k = .b2k(),
-      bc = .BC(),
-      bce = .BCE(),
-      ad = .AD(),
-      ce = .CE(),
-      julian = .JulianCalendar(),
-      stop(sprintf("Unknown calendar: %s", object), call. = FALSE)
+      bp = BP(),
+      b2k = b2k(),
+      bc = BC(),
+      bce = BCE(),
+      ad = AD(),
+      ce = CE(),
+      julian = J(),
+      stop(sprintf(tr_("Unknown calendar: %s"), object), call. = FALSE)
     )
   }
 )
 
 #' @export
-#' @rdname gregorian
-BP <- function(...) calendar("BP")
+#' @describeIn gregorian Gregorian BP era.
+BP <- function(...) {
+  .GregorianCalendar(
+    label = "BP",
+    name = "Before Present",
+    epoch = 1950,
+    direction = -1L
+  )
+}
 
 #' @export
-#' @rdname gregorian
-b2k <- function(...) calendar("b2k")
+#' @describeIn gregorian Gregorian b2k era.
+b2k <- function(...) {
+  .GregorianCalendar(
+    label = "b2k",
+    name = "Before 2000",
+    epoch = 2000,
+    direction = -1L
+  )
+}
 
 #' @export
-#' @rdname gregorian
-BC <- function(...) calendar("BC")
+#' @describeIn gregorian Gregorian BC era.
+BC <- function(...) {
+  .GregorianCalendar(
+    label = "BC",
+    name = "Before Christ",
+    direction = -1L
+  )
+}
 
 #' @export
-#' @rdname gregorian
-BCE <- function(...) calendar("BCE")
+#' @describeIn gregorian Gregorian BCE era.
+BCE <- function(...) {
+  .GregorianCalendar(
+    label = "BCE",
+    name = "Before Common Era",
+    direction = -1L
+  )
+}
 
 #' @export
-#' @rdname gregorian
-AD <- function(...) calendar("AD")
+#' @describeIn gregorian Gregorian AD era.
+AD <- function(...) {
+  .GregorianCalendar(
+    label = "AD",
+    name = "Anno Domini"
+  )
+}
 
 #' @export
-#' @rdname gregorian
-CE <- function(...) calendar("CE")
+#' @describeIn gregorian Gregorian CE era.
+CE <- function(...) {
+  .GregorianCalendar(
+    label = "CE",
+    name = "Common Era"
+  )
+}
+
+# @export
+# @describeIn gregorian Gregorian AUC era.
+# AUC <- function(...) {
+#   .GregorianCalendar(
+#     label = "AUC",
+#     name = "Ab urbe condita",
+#     epoch = 753,
+#     direction = 1
+#   )
+# }
 
 #' @export
 #' @rdname julian
-J <- function(...) calendar("julian")
+J <- function(...) {
+  .JulianCalendar(
+    label = "",
+    name = ""
+  )
+}
 
 # Mutators =====================================================================
 calendar_year <- function(object) object@year

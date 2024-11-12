@@ -32,6 +32,21 @@ A \code{\linkS4class{GregorianCalendar}} object.
 \description{
 Gregorian Calendar
 }
+\section{Functions}{
+\itemize{
+\item \code{BP()}: Gregorian BP era.
+
+\item \code{b2k()}: Gregorian b2k era.
+
+\item \code{BC()}: Gregorian BC era.
+
+\item \code{BCE()}: Gregorian BCE era.
+
+\item \code{AD()}: Gregorian AD era.
+
+\item \code{CE()}: Gregorian CE era.
+
+}}
 \examples{
 ## Define time scales
 calendar("BP")

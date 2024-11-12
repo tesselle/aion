@@ -32,17 +32,11 @@ solar days.}
 
 \seealso{
 Other classes: 
-\code{\link{AD-class}},
-\code{\link{BC-class}},
-\code{\link{BCE-class}},
-\code{\link{BP-class}},
-\code{\link{CE-class}},
 \code{\link{GregorianCalendar-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{RataDie-class}},
 \code{\link{TimeIntervals-class}},
-\code{\link{TimeSeries-class}},
-\code{\link{b2k-class}}
+\code{\link{TimeSeries-class}}
 
 Other calendar classes: 
 \code{\link{GregorianCalendar-class}},

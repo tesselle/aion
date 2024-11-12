@@ -10,29 +10,15 @@ An S4 class to represent a Gregorian calendar.
 }
 \seealso{
 Other classes: 
-\code{\link{AD-class}},
-\code{\link{BC-class}},
-\code{\link{BCE-class}},
-\code{\link{BP-class}},
-\code{\link{CE-class}},
 \code{\link{JulianCalendar-class}},
 \code{\link{RataDie-class}},
 \code{\link{TimeIntervals-class}},
 \code{\link{TimeScale-class}},
-\code{\link{TimeSeries-class}},
-\code{\link{b2k-class}}
+\code{\link{TimeSeries-class}}
 
 Other calendar classes: 
 \code{\link{JulianCalendar-class}},
 \code{\link{TimeScale-class}}
-
-Other gregorian era classes: 
-\code{\link{AD-class}},
-\code{\link{BC-class}},
-\code{\link{BCE-class}},
-\code{\link{BP-class}},
-\code{\link{CE-class}},
-\code{\link{b2k-class}}
 }
 \author{
 N. Frerebeau
