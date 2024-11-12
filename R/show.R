@@ -58,8 +58,13 @@ setMethod(
   f = "show",
   signature = "TimeScale",
   definition = function(object) {
+    cal_name <- calendar_name(object)
+    cal_label <- calendar_label(object)
+    has_name <- length(cal_name) == 1 && cal_name != ""
+    has_label <- length(cal_label) == 1 && cal_label != ""
+
     era <- ""
-    if (calendar_name(object) != "" && calendar_label(object) != "") {
+    if (has_name && has_label) {
       era <- sprintf("%s (%s): ", calendar_name(object), calendar_label(object))
     }
 
