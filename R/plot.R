@@ -414,34 +414,3 @@ image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ..
 #' @rdname image
 #' @aliases image,TimeSeries-method
 setMethod("image", c(x = "TimeSeries"), image.TimeSeries)
-
-# Axis =========================================================================
-#' @export
-#' @rdname year_axis
-year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                      labels = TRUE, calendar = getOption("aion.last_calendar"),
-                      current_calendar = getOption("aion.last_calendar"),
-                      ...) {
-  no_at <- missing(at) || is.null(at) || !is.numeric(at)
-  if (no_at) at <- graphics::axTicks(side = side)
-
-  if (!is.logical(labels)) {
-    labels <- labels[keep]
-  } else if (isTRUE(labels)) {
-    ## If last_calendar is NULL, then the last plot was expressed in rata die
-    if (is.null(current_calendar)) {
-      at <- as_fixed(at)
-    } else {
-      at <- fixed(at, calendar = current_calendar)
-    }
-    if (!is.null(calendar)) {
-      at <- pretty(at, calendar = calendar)
-      labels <- format(at, prefix = format, label = FALSE, calendar = calendar)
-      if (!is.null(current_calendar)) at <- as_year(at, calendar = current_calendar)
-    }
-  } else if (isFALSE(labels)) {
-    labels <- rep("", length(at))
-  }
-
-  graphics::axis(side, at = as.numeric(at), labels = labels, ...)
-}

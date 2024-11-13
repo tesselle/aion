@@ -6,7 +6,7 @@ if (at_home()) {
   options(tinysnapshot_tol = 200) # pixels
   options(tinysnapshot_os = "Linux")
 
-  Sys.setenv(LANGUAGE = "en") # Force locale
+  Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
   options(aion.calendar = calendar("CE"))
 
   # Plot multiple ==============================================================

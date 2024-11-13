@@ -2,6 +2,9 @@
 ## Enhancements
 * Translate into French.
 
+## Bugfixes & changes
+* Remove year zero ticks in plots (Julian calendar).
+
 # aion 1.1.0
 ## New classes and methods
 * Add support for time intervals.
