@@ -59,7 +59,7 @@ calendar_direction(object)
 abbreviated label of the time scale.
 \item \code{calendar_name()} returns a \code{\link{character}} string specifying the name of
 the time scale.
-\item \code{calendar_unit()} returns a \code{\link{character}} string specifying the name of
+\item \code{calendar_unit()} returns a \code{\link{character}} string specifying the unit of
 the calendar.
 \item \code{calendar_fixed()} returns a length-one \code{\link{numeric}} vector specifying the
 reference date of the calendar (in \emph{rata die}).

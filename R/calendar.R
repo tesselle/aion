@@ -83,17 +83,6 @@ CE <- function(...) {
   )
 }
 
-# @export
-# @rdname gregorian
-# AUC <- function(...) {
-#   .GregorianCalendar(
-#     label = tr_("AUC"),
-#     name = tr_("Ab urbe condita"),
-#     epoch = 753,
-#     direction = 1
-#   )
-# }
-
 #' @export
 #' @rdname julian
 J <- function(...) {

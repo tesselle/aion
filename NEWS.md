@@ -5,6 +5,9 @@
 ## Bugfixes & changes
 * Remove year zero ticks in plots (Julian calendar).
 
+## Internals
+* Epochs of the Gregorian era are no longer represented as subclasses, but as instances of the `GregorianCalendar` class.
+
 # aion 1.1.0
 ## New classes and methods
 * Add support for time intervals.

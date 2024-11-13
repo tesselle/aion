@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(aion)
+library(methods)
 ```
 
 **aion** offers a simple API that can be extended and used by other specialized packages.
@@ -32,6 +33,25 @@ The following packages rely on **aion**:
 * [**ananke**](https://github.com/tesselle/ananke) (quantitative chronology in archaeology).
 * [**kairos**](https://github.com/tesselle/kairos) v2.0 (analysis of chronological patterns from archaeological count data).
 * [**ArchaeoPhases**](https://github.com/ArchaeoStat/ArchaeoPhases) v2.0 (post-processing of MCMC simulations for chronological modelling).
+
+# Epochs
+
+An epoch is an instant in time chosen as the origin of a particular calendar era. With **aion**, you can work with different Gregorian calendar epochs: `BC()`, `BCE()`, `AD()`, `CE()`, `BP()`, `b2k()`. 
+
+It is also possible to create objects representing specific periods of the Gregorian calendar. Simply create a `GregorianCalendar` class object:
+
+```{r}
+## Years since 753 BC (the traditional founding of Rome)
+AUC <- new(
+  Class = "GregorianCalendar",
+  label = "AUC",               # Abbreviated label
+  name = "Ab urbe condita",    # Name of the time scale
+  epoch = 753,                 # Epoch from which years are counted
+  direction = 1L               # Count years forwards from epoch
+)
+
+AUC
+```
 
 # Calendars and Dates
 

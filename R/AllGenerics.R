@@ -183,7 +183,7 @@ setGeneric(
 #'     abbreviated label of the time scale.
 #'  * `calendar_name()` returns a [`character`] string specifying the name of
 #'     the time scale.
-#'  * `calendar_unit()` returns a [`character`] string specifying the name of
+#'  * `calendar_unit()` returns a [`character`] string specifying the unit of
 #'     the calendar.
 #'  * `calendar_fixed()` returns a length-one [`numeric`] vector specifying the
 #'     reference date of the calendar (in *rata die*).
