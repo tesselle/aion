@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/tesselle/aion",
   "issueTracker": "https://github.com/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -163,7 +163,7 @@
       "@type": "SoftwareApplication",
       "identifier": "arkhe",
       "name": "arkhe",
-      "version": ">= 1.7.0",
+      "version": ">= 1.8.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -189,12 +189,17 @@
     },
     "6": {
       "@type": "SoftwareApplication",
+      "identifier": "stats",
+      "name": "stats"
+    },
+    "7": {
+      "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
     "SystemRequirements": null
   },
-  "fileSize": "495.986KB",
+  "fileSize": "520.025KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -239,7 +244,7 @@
       "name": "{aion: Archaeological Time Series}",
       "identifier": "10.5281/zenodo.8032278",
       "url": "https://packages.tesselle.org/aion/",
-      "description": "R package version 1.1.0",
+      "description": "R package version 1.2.0",
       "@id": "https://doi.org/10.5281/zenodo.8032278",
       "sameAs": "https://doi.org/10.5281/zenodo.8032278"
     }

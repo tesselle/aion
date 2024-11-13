@@ -1,4 +1,4 @@
-# aion 1.1.0.9000
+# aion 1.2.0
 ## Enhancements
 * Translate into French.
 

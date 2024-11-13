@@ -8,7 +8,7 @@ message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aion: Archaeological Time Series'
-version: 1.1.0
+version: 1.2.0
 doi: 10.21105/joss.06210
 identifiers:
 - description: The concept DOI.
@@ -91,7 +91,7 @@ references:
   institution:
     name: Université Bordeaux Montaigne
     address: Pessac, France
-  notes: R package version 1.1.0
+  notes: R package version 1.2.0
   url: https://packages.tesselle.org/aion/
   doi: 10.5281/zenodo.8032278
 - type: software
@@ -116,10 +116,9 @@ references:
     given-names: Nicolas
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
-    affiliation: Université Bordeaux Montaigne
   year: '2024'
   doi: 10.32614/CRAN.package.arkhe
-  version: '>= 1.7.0'
+  version: '>= 1.8.0'
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -142,6 +141,16 @@ references:
   year: '2024'
 - type: software
   title: methods
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+- type: software
+  title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
