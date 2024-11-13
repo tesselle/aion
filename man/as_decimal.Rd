@@ -4,12 +4,15 @@
 \name{as_decimal}
 \alias{as_decimal}
 \alias{as_decimal-method}
-\alias{as_decimal,numeric,numeric,numeric,TimeScale-method}
+\alias{as_decimal,numeric,numeric,numeric,GregorianCalendar-method}
+\alias{as_decimal,numeric,numeric,numeric,JulianCalendar-method}
 \title{Converts a Date to a Decimal of its Year}
 \usage{
 as_decimal(year, month, day, calendar)
 
-\S4method{as_decimal}{numeric,numeric,numeric,TimeScale}(year, month, day, calendar)
+\S4method{as_decimal}{numeric,numeric,numeric,GregorianCalendar}(year, month, day, calendar)
+
+\S4method{as_decimal}{numeric,numeric,numeric,JulianCalendar}(year, month, day, calendar)
 }
 \arguments{
 \item{year}{A \code{\link{numeric}} vector of years. If \code{month} and \code{day} are missing,

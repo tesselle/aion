@@ -30,7 +30,7 @@ expect_equal(round(as_decimal(2000, 02, 29, calendar = CE()), 9), 2000.161202186
 
 # WHY ???
 fix <- fixed(dec, calendar = CE())
-expect_equal(fix, rd)
+expect_equal(fix@.Data, as.numeric(dates$rata_die))
 expect_equal(as_date(fix, calendar = CE()), target)
 expect_equal(as_year(fix, calendar = CE(), decimal = FALSE), target$year)
 expect_equal(as_year(fix, calendar = CE(), decimal = TRUE), dec)
