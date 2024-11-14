@@ -38,7 +38,7 @@ The following packages rely on **aion**:
 
 An epoch is an instant in time chosen as the origin of a particular calendar era. With **aion**, you can work with different Gregorian calendar epochs: `BC()`, `BCE()`, `AD()`, `CE()`, `BP()`, `b2k()`. 
 
-It is also possible to create objects representing specific periods of the Gregorian calendar. Simply create a `GregorianCalendar` class object:
+It is also possible to create objects representing specific epochs of the Gregorian calendar. Simply create a `GregorianCalendar` class object:
 
 ```{r}
 ## Years since 753 BC (the traditional founding of Rome)
