@@ -1,4 +1,6 @@
 # aion 1.2.0.9000
+## New classes and methods
+* Add `calendar_year()` to get the average length of the year of a calendar (in solar days).
 
 # aion 1.2.0
 ## Enhancements

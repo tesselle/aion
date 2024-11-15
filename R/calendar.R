@@ -93,11 +93,6 @@ J <- function(...) {
 }
 
 # Mutators =====================================================================
-calendar_year <- function(object) {
-  if (is.null(object)) return(NULL)
-  object@year
-}
-
 ## Getters ---------------------------------------------------------------------
 #' @export
 #' @rdname calendar_get
@@ -164,4 +159,13 @@ setMethod(
   f = "calendar_direction",
   signature = "NULL",
   definition = function(object) 1L
+)
+
+#' @export
+#' @rdname calendar_get
+#' @aliases calendar_year,TimeScale-method
+setMethod(
+  f = "calendar_year",
+  signature = "TimeScale",
+  definition = function(object) object@year
 )

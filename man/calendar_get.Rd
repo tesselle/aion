@@ -15,6 +15,8 @@
 \alias{calendar_fixed-method}
 \alias{calendar_direction}
 \alias{calendar_direction-method}
+\alias{calendar_year}
+\alias{calendar_year-method}
 \alias{calendar_label,TimeScale-method}
 \alias{calendar_name,TimeScale-method}
 \alias{calendar_unit,TimeScale-method}
@@ -22,6 +24,7 @@
 \alias{calendar_fixed,TimeScale-method}
 \alias{calendar_direction,TimeScale-method}
 \alias{calendar_direction,NULL-method}
+\alias{calendar_year,TimeScale-method}
 \title{Calendar Parameters}
 \usage{
 calendar_label(object)
@@ -36,6 +39,8 @@ calendar_fixed(object)
 
 calendar_direction(object)
 
+calendar_year(object)
+
 \S4method{calendar_label}{TimeScale}(object)
 
 \S4method{calendar_name}{TimeScale}(object)
@@ -49,26 +54,30 @@ calendar_direction(object)
 \S4method{calendar_direction}{TimeScale}(object)
 
 \S4method{calendar_direction}{NULL}(object)
+
+\S4method{calendar_year}{TimeScale}(object)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{TimeScale}} object.}
 }
 \value{
 \itemize{
-\item \code{calendar_label()} returns a \code{\link{character}} string specifying the
+\item \code{calendar_label()} returns a \code{\link{character}} string giving the
 abbreviated label of the time scale.
-\item \code{calendar_name()} returns a \code{\link{character}} string specifying the name of
+\item \code{calendar_name()} returns a \code{\link{character}} string giving the name of
 the time scale.
-\item \code{calendar_unit()} returns a \code{\link{character}} string specifying the unit of
+\item \code{calendar_unit()} returns a \code{\link{character}} string giving the unit of
 the calendar.
-\item \code{calendar_fixed()} returns a length-one \code{\link{numeric}} vector specifying the
+\item \code{calendar_fixed()} returns a length-one \code{\link{numeric}} vector giving the
 reference date of the calendar (in \emph{rata die}).
-\item \code{calendar_epoch()} returns a length-one \code{\link{numeric}} vector specifying the
+\item \code{calendar_epoch()} returns a length-one \code{\link{numeric}} vector giving the
 epoch year from which years are counted (starting date of the calendar,
 in years).
 \item \code{calendar_direction()} returns a length-one \code{\link{integer}} vector specifying
 if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
 \code{epoch}. Only the \link[=sign]{sign} of \code{calendar_direction()} is relevant.
+\item \code{calendar_year()} returns a length-one \code{\link{numeric}} vector giving the
+average length of the year in solar days.
 }
 }
 \description{

@@ -179,20 +179,22 @@ setGeneric(
 #'
 #' @param object A [`TimeScale-class`] object.
 #' @return
-#'  * `calendar_label()` returns a [`character`] string specifying the
+#'  * `calendar_label()` returns a [`character`] string giving the
 #'     abbreviated label of the time scale.
-#'  * `calendar_name()` returns a [`character`] string specifying the name of
+#'  * `calendar_name()` returns a [`character`] string giving the name of
 #'     the time scale.
-#'  * `calendar_unit()` returns a [`character`] string specifying the unit of
+#'  * `calendar_unit()` returns a [`character`] string giving the unit of
 #'     the calendar.
-#'  * `calendar_fixed()` returns a length-one [`numeric`] vector specifying the
+#'  * `calendar_fixed()` returns a length-one [`numeric`] vector giving the
 #'     reference date of the calendar (in *rata die*).
-#'  * `calendar_epoch()` returns a length-one [`numeric`] vector specifying the
+#'  * `calendar_epoch()` returns a length-one [`numeric`] vector giving the
 #'     epoch year from which years are counted (starting date of the calendar,
 #'     in years).
 #'  * `calendar_direction()` returns a length-one [`integer`] vector specifying
 #'     if years are counted backwards (\eqn{-1}) or forwards (\eqn{1}) from
 #'     `epoch`. Only the [sign][sign()] of `calendar_direction()` is relevant.
+#'  * `calendar_year()` returns a length-one [`numeric`] vector giving the
+#'     average length of the year in solar days.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -241,6 +243,13 @@ setGeneric(
 setGeneric(
   name = "calendar_direction",
   def = function(object) standardGeneric("calendar_direction")
+)
+
+#' @rdname calendar_get
+#' @aliases calendar_year-method
+setGeneric(
+  name = "calendar_year",
+  def = function(object) standardGeneric("calendar_year")
 )
 
 # @rdname calendar_get

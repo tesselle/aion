@@ -15,7 +15,8 @@ expect_identical(calendar_label(G), "BP")
 expect_identical(calendar_name(G), "Before Present")
 expect_identical(calendar_epoch(G), 1950)
 expect_identical(calendar_direction(G), -1)
-expect_identical(aion:::calendar_fixed(G), 1) # Inherited from GregorianCalendar
+expect_identical(calendar_fixed(G), 1)
+expect_identical(calendar_year(G), 365.2425)
 
 # Julian calendar ==============================================================
 J <- calendar("julian")
@@ -28,4 +29,5 @@ expect_identical(calendar_label(J), "")
 expect_identical(calendar_name(J), "")
 expect_identical(calendar_epoch(J), 1)
 expect_identical(calendar_direction(J), 1)
-expect_identical(aion:::calendar_fixed(J), -1)
+expect_identical(calendar_fixed(J), -1)
+expect_identical(calendar_year(J), 365.25)
