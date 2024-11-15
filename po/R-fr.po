@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2024-11-13 12:04+0100\n"
+"POT-Creation-Date: 2024-11-15 17:08+0100\n"
 "PO-Revision-Date: 2024-11-12 13:24+0100\n"
 "Last-Translator: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne."
 "fr>\n"
@@ -68,15 +68,15 @@ msgstr "è. c."
 msgid "Common Era"
 msgstr "Ère commune"
 
-#: calendar.R:138
+#: calendar.R:122
 msgid "Gregorian years"
 msgstr "Années grégoriennes"
 
-#: calendar.R:139
+#: calendar.R:123
 msgid "Julian years"
 msgstr "Années juliennes"
 
-#: calendar.R:140
+#: calendar.R:124
 msgid "Undefined"
 msgstr "Non défini"
 
@@ -85,25 +85,29 @@ msgid "%s is already expressed in rata die: %s is ignored."
 msgstr "%s est déjà exprimé en rata die : %s est ignoré."
 
 #: show.R:19
-msgid "%s%s counted forwards from %g."
-msgstr "%s%s comptées à partir de %g."
+msgid "%s%s counted forwards from %g"
+msgstr "%s%s comptées à partir de %g"
 
 #: show.R:21
-msgid "%s%s counted backwards from %g."
-msgstr "%s%s comptées à rebours à partir de %g."
+msgid "%s%s counted backwards from %g"
+msgstr "%s%s comptées à rebours à partir de %g"
 
 #: show.R:32
-msgid "Rata die: number of days since 01-01-01 (Gregorian)."
-msgstr "Rata die : nombre de jours depuis le 01-01-01 (grégorien)."
-
-#: show.R:45
-msgid "%d x %d x %d time series observed between %s and %s r.d."
-msgstr "%d x %d x %d séries temporelles observées entre %s et %s r.d."
-
-#: show.R:58
-msgid "%d time intervals observed between %s and %s r.d."
-msgstr "%d intervalles de temps observés entre %s et %s r.d."
+msgid "Rata die: number of days since 01-01-01 (Gregorian)"
+msgstr "Rata die : nombre de jours depuis le 01-01-01 (grégorien)"
 
 #: validate.R:87
 msgid "%s is later than %s."
 msgstr "%s est postérieur à %s."
+
+#: show.R:46
+msgid "%d x %d x %d time series observed between %s and %s"
+msgid_plural "%d x %d x %d time series observed between %s and %s"
+msgstr[0] "%d x %d x %d série chronologique observée entre %s et %s"
+msgstr[1] "%d x %d x %d séries chronologiques observées entre %s et %s"
+
+#: show.R:60
+msgid "%d time interval observed between %s and %s"
+msgid_plural "%d time intervals observed between %s and %s"
+msgstr[0] "%d intervalle de temps observé entre %s et %s"
+msgstr[1] "%d intervalles de temps observés entre %s et %s"

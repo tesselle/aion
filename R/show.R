@@ -16,9 +16,9 @@ setMethod(
     }
 
     if (calendar_direction(object) > 0) {
-      msg <- tr_("%s%s counted forwards from %g.")
+      msg <- tr_("%s%s counted forwards from %g")
     } else {
-      msg <- tr_("%s%s counted backwards from %g.")
+      msg <- tr_("%s%s counted backwards from %g")
     }
     msg <- sprintf(msg, era, calendar_unit(object), calendar_epoch(object))
     cat(trimws(msg), sep = "\n")
@@ -29,7 +29,7 @@ setMethod(
   f = "show",
   signature = "RataDie",
   definition = function(object) {
-    msg <- tr_("Rata die: number of days since 01-01-01 (Gregorian).")
+    msg <- tr_("Rata die: number of days since 01-01-01 (Gregorian)")
     cat(msg, sep = "\n")
     methods::callGeneric(object@.Data)
   }
@@ -40,10 +40,12 @@ setMethod(
   signature = "TimeSeries",
   definition = function(object) {
     n <- dim(object)
-    start <- format(start(object))
-    end <- format(end(object))
-    msg <- tr_("%d x %d x %d time series observed between %s and %s r.d.")
-    msg <- sprintf(msg, n[1L], n[2L], n[3L], start, end)
+    k <- n[[2]] + n[[3]] - 1
+    start <- format(as_fixed(start(object)))
+    end <- format(as_fixed(end(object)))
+    msg <- ngettext(k, "%d x %d x %d time series observed between %s and %s",
+                    "%d x %d x %d time series observed between %s and %s")
+    msg <- sprintf(msg, n[[1L]], n[[2L]], n[[3L]], start, end)
     cat(msg, sep = "\n")
   }
 )
@@ -53,9 +55,10 @@ setMethod(
   signature = "TimeIntervals",
   definition = function(object) {
     n <- length(object)
-    start <- format(min(start(object)))
-    end <- format(max(end(object)))
-    msg <- tr_("%d time intervals observed between %s and %s r.d.")
+    start <- format(as_fixed(min(start(object))))
+    end <- format(as_fixed(max(end(object))))
+    msg <- ngettext(n, "%d time interval observed between %s and %s",
+                    "%d time intervals observed between %s and %s")
     msg <- sprintf(msg, n, start, end)
     cat(msg, sep = "\n")
   }

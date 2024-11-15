@@ -1,2 +1,2 @@
-Rata die: number of days since 01-01-01 (Gregorian).
+Rata die: number of days since 01-01-01 (Gregorian)
 [1] -128199   10958  391175  210015  412359

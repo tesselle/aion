@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2024-11-13 12:04+0100\n"
+"Project-Id-Version: aion 1.2.0.9000\n"
+"POT-Creation-Date: 2024-11-15 17:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,6 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: calendar-julian.R:45
 msgid "There is no year zero in the Julian calendar."
@@ -66,15 +67,15 @@ msgstr ""
 msgid "Common Era"
 msgstr ""
 
-#: calendar.R:138
+#: calendar.R:122
 msgid "Gregorian years"
 msgstr ""
 
-#: calendar.R:139
+#: calendar.R:123
 msgid "Julian years"
 msgstr ""
 
-#: calendar.R:140
+#: calendar.R:124
 msgid "Undefined"
 msgstr ""
 
@@ -83,25 +84,29 @@ msgid "%s is already expressed in rata die: %s is ignored."
 msgstr ""
 
 #: show.R:19
-msgid "%s%s counted forwards from %g."
+msgid "%s%s counted forwards from %g"
 msgstr ""
 
 #: show.R:21
-msgid "%s%s counted backwards from %g."
+msgid "%s%s counted backwards from %g"
 msgstr ""
 
 #: show.R:32
-msgid "Rata die: number of days since 01-01-01 (Gregorian)."
-msgstr ""
-
-#: show.R:45
-msgid "%d x %d x %d time series observed between %s and %s r.d."
-msgstr ""
-
-#: show.R:58
-msgid "%d time intervals observed between %s and %s r.d."
+msgid "Rata die: number of days since 01-01-01 (Gregorian)"
 msgstr ""
 
 #: validate.R:87
 msgid "%s is later than %s."
 msgstr ""
+
+#: show.R:46
+msgid "%d x %d x %d time series observed between %s and %s"
+msgid_plural "%d x %d x %d time series observed between %s and %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: show.R:60
+msgid "%d time interval observed between %s and %s"
+msgid_plural "%d time intervals observed between %s and %s"
+msgstr[0] ""
+msgstr[1] ""
