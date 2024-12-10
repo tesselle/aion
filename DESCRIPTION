@@ -1,6 +1,6 @@
 Package: aion
 Title: Archaeological Time Series
-Version: 1.2.0.9000
+Version: 1.3.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944")),
@@ -24,14 +24,14 @@ BugReports: https://github.com/tesselle/aion/issues
 Depends: 
     R (>= 3.3)
 Imports: 
-    arkhe (>= 1.8.0),
+    arkhe (>= 1.9.0),
     graphics,
     grDevices,
     methods,
     stats,
     utils
 Suggests: 
-    folio (>= 1.4.0),
+    folio (>= 1.5.0),
     knitr,
     markdown,
     rsvg,

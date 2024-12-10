@@ -14,14 +14,14 @@ A toolkit for archaeological time series and time intervals. This package provid
 \tabular{ll}{
 \strong{Package:} \tab aion \cr
 \strong{Type:} \tab Package \cr
-\strong{Version:} \tab 1.2.0 \cr
+\strong{Version:} \tab 1.3.0 \cr
 \strong{License:} \tab GPL-3 \cr
 \strong{Zenodo:} \tab \doi{10.5281/zenodo.8032278} \cr
 }
 }
 \section{Package options}{
 
-\code{aion} uses the following \code{\link[=options]{options()}} to configure behaviour:
+\pkg{aion} uses the following \code{\link[=options]{options()}} to configure behaviour:
 \itemize{
 \item \code{aion.precision}: an \code{\link{integer}} indicating the number of decimal
 places (defaults to \code{NA}).
