@@ -6,7 +6,7 @@
 \alias{pretty,RataDie-method}
 \title{Pretty Breakpoints}
 \usage{
-\S4method{pretty}{RataDie}(x, calendar = getOption("aion.calendar"), ...)
+\S4method{pretty}{RataDie}(x, calendar = get_calendar(), ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{RataDie}} object.}

@@ -6,8 +6,7 @@ if (at_home()) {
   options(tinysnapshot_tol = 200) # pixels
   options(tinysnapshot_os = "Linux")
 
-  Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
-  options(aion.calendar = calendar("CE"))
+  Sys.setenv(LANGUAGE = "en") # Force locale
 
   # Plot multiple ==============================================================
   X <- series(

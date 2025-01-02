@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2024-11-15 17:08+0100\n"
+"POT-Creation-Date: 2025-01-03 01:09+0100\n"
 "PO-Revision-Date: 2024-11-12 13:24+0100\n"
 "Last-Translator: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne."
 "fr>\n"
@@ -68,15 +68,19 @@ msgstr "è. c."
 msgid "Common Era"
 msgstr "Ère commune"
 
-#: calendar.R:122
+#: calendar.R:105
+msgid "Default calendar is invalid."
+msgstr "Le calendrier par défaut est invalide."
+
+#: calendar.R:162
 msgid "Gregorian years"
 msgstr "Années grégoriennes"
 
-#: calendar.R:123
+#: calendar.R:163
 msgid "Julian years"
 msgstr "Années juliennes"
 
-#: calendar.R:124
+#: calendar.R:164
 msgid "Undefined"
 msgstr "Non défini"
 

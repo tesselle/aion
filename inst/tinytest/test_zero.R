@@ -1,5 +1,4 @@
-Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
-options(aion.calendar = calendar("CE"))
+Sys.setenv(LANGUAGE = "en") # Force locale
 
 # Year zero ====================================================================
 ## Julian calendar -------------------------------------------------------------

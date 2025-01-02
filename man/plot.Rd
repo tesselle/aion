@@ -9,7 +9,7 @@
 \usage{
 \S4method{plot}{TimeIntervals,missing}(
   x,
-  calendar = getOption("aion.calendar"),
+  calendar = get_calendar(),
   sort = TRUE,
   decreasing = FALSE,
   xlab = NULL,
@@ -27,7 +27,7 @@
 \S4method{plot}{TimeSeries,missing}(
   x,
   facet = c("multiple", "single"),
-  calendar = getOption("aion.calendar"),
+  calendar = get_calendar(),
   panel = graphics::lines,
   flip = FALSE,
   ncol = NULL,

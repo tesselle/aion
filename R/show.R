@@ -12,7 +12,7 @@ setMethod(
 
     era <- ""
     if (has_name && has_label) {
-      era <- sprintf("%s (%s): ", calendar_name(object), calendar_label(object))
+      era <- sprintf("%s (%s): ", cal_name, cal_label)
     }
 
     if (calendar_direction(object) > 0) {

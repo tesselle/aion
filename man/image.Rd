@@ -6,7 +6,7 @@
 \alias{image,TimeSeries-method}
 \title{Heat Map}
 \usage{
-\S4method{image}{TimeSeries}(x, calendar = getOption("aion.calendar"), k = 1, ...)
+\S4method{image}{TimeSeries}(x, calendar = get_calendar(), k = 1, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeSeries}} object.}

@@ -1,4 +1,6 @@
 # aion 1.3.0.9000
+## New classes and methods
+* Add `get_calendar()` and `set_calendar()` to get and set the default calendar.
 
 # aion 1.3.0
 ## New classes and methods

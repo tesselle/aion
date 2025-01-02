@@ -98,6 +98,7 @@ J()
 Other calendar tools: 
 \code{\link{calendar}()},
 \code{\link{convert}()},
+\code{\link{get_calendar}()},
 \code{\link{gregorian}},
 \code{\link{is}()},
 \code{\link{julian}()}

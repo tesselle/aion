@@ -9,10 +9,8 @@
 #'
 #' @section Package options:
 #'  \pkg{aion} uses the following [options()] to configure behaviour:
-#'  * `aion.precision`: an [`integer`] indicating the number of decimal
-#'    places (defaults to `NA`).
-#'  * `aion.calendar`: a [`TimeScale-class`] object (default calendar for
-#'    printing).
+#'  * `aion.calendar`: a function that returns a [`TimeScale-class`] object
+#'    specifying the default calendar (see [get_calendar()]).
 #'
 #' @author
 #'  **Full list of authors and contributors** (alphabetic order):

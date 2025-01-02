@@ -23,10 +23,8 @@ A toolkit for archaeological time series and time intervals. This package provid
 
 \pkg{aion} uses the following \code{\link[=options]{options()}} to configure behaviour:
 \itemize{
-\item \code{aion.precision}: an \code{\link{integer}} indicating the number of decimal
-places (defaults to \code{NA}).
-\item \code{aion.calendar}: a \code{\linkS4class{TimeScale}} object (default calendar for
-printing).
+\item \code{aion.calendar}: a function that returns a \code{\linkS4class{TimeScale}} object
+specifying the default calendar (see \code{\link[=get_calendar]{get_calendar()}}).
 }
 }
 

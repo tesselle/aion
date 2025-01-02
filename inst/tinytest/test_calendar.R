@@ -1,5 +1,14 @@
 Sys.setenv(LANGUAGE = "en") # Force locale
-options(aion.calendar = calendar("CE"))
+
+# Default calendar =============================================================
+expect_identical(get_calendar(), CE())
+expect_identical(set_calendar("BCE"), BCE())
+expect_identical(get_calendar(), BCE())
+expect_identical(set_calendar(), CE()) # Reset
+
+options("aion.calendar" = BCE())
+expect_error(get_calendar())
+options("aion.calendar" = NULL)
 
 # Unknown calendar =============================================================
 expect_error(calendar("XXX"), "Unknown calendar")

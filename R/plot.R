@@ -5,7 +5,7 @@ NULL
 # Plot =========================================================================
 #' @export
 #' @method plot TimeIntervals
-plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
+plot.TimeIntervals <- function(x, calendar = get_calendar(),
                                sort = TRUE, decreasing = FALSE,
                                xlab = NULL, ylab = NULL,
                                main = NULL, sub = NULL,
@@ -77,7 +77,11 @@ plot.TimeIntervals <- function(x, calendar = getOption("aion.calendar"),
 
   ## Add annotation
   if (ann) {
-    cal_lab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+    if (is.null(calendar)) {
+      cal_lab <- expression(italic("rata die"))
+    } else {
+      cal_lab <- format(calendar)
+    }
     xlab <- xlab %||% cal_lab
     graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
   }
@@ -93,7 +97,7 @@ setMethod("plot", c(x = "TimeIntervals", y = "missing"), plot.TimeIntervals)
 #' @export
 #' @method plot TimeSeries
 plot.TimeSeries <- function(x, facet = c("multiple", "single"),
-                            calendar = getOption("aion.calendar"),
+                            calendar = get_calendar(),
                             panel = graphics::lines, flip = FALSE, ncol = NULL,
                             xlab = NULL, ylab = NULL,
                             main = NULL, sub = NULL,
@@ -220,9 +224,12 @@ setMethod("plot", c(x = "TimeSeries", y = "missing"), plot.TimeSeries)
 
   ## Add annotation
   if (ann) {
-    cal_lab <- if (is.null(calendar)) expression(italic("rata die")) else format(calendar)
+    if (is.null(calendar)) {
+      cal_lab <- expression(italic("rata die"))
+    } else {
+      cal_lab <- format(calendar)
+    }
     xlab <- xlab %||% cal_lab
-    # ylab <- NULL
     graphics::title(main = main, sub = sub, xlab = xlab, ylab = ylab)
   }
 
@@ -372,7 +379,7 @@ xlim <- function(x, calendar, finite = FALSE) {
 # Image ========================================================================
 #' @export
 #' @method image TimeSeries
-image.TimeSeries <- function(x, calendar = getOption("aion.calendar"), k = 1, ...) {
+image.TimeSeries <- function(x, calendar = get_calendar(), k = 1, ...) {
   ## Save calendar for further use, e.g. year_axis()
   options(aion.last_calendar = calendar)
 

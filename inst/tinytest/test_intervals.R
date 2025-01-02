@@ -1,5 +1,4 @@
-Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
-options(aion.calendar = calendar("CE"))
+Sys.setenv(LANGUAGE = "en") # Force locale
 
 # Create =======================================================================
 lower <- c(625, 700, 1200, 1225, 1250, 500, 1000, 1200,

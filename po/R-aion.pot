@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: aion 1.2.0.9000\n"
-"POT-Creation-Date: 2024-11-15 17:08+0100\n"
+"Project-Id-Version: aion 1.3.0.9000\n"
+"POT-Creation-Date: 2025-01-03 01:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,15 +67,19 @@ msgstr ""
 msgid "Common Era"
 msgstr ""
 
-#: calendar.R:122
+#: calendar.R:105
+msgid "Default calendar is invalid."
+msgstr ""
+
+#: calendar.R:162
 msgid "Gregorian years"
 msgstr ""
 
-#: calendar.R:123
+#: calendar.R:163
 msgid "Julian years"
 msgstr ""
 
-#: calendar.R:124
+#: calendar.R:164
 msgid "Undefined"
 msgstr ""
 

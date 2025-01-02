@@ -35,6 +35,7 @@ Other calendar tools:
 \code{\link{calendar}()},
 \code{\link{calendar_get}},
 \code{\link{convert}()},
+\code{\link{get_calendar}()},
 \code{\link{gregorian}},
 \code{\link{is}()}
 }

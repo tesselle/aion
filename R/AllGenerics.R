@@ -90,8 +90,7 @@ NULL
 #' Calendar
 #'
 #' @param object A [`character`] string specifying the abbreviated label of
-#'  the time scale (see details) or an object from which to extract the time
-#'  scale.
+#'  the time scale (see details).
 #' @details
 #'  The following time scales are available:
 #'
@@ -147,6 +146,33 @@ NULL
 #' @name julian
 #' @rdname julian
 NULL
+
+#' Get or Set the Default Calendar
+#'
+#' @param object A [`character`] string specifying the abbreviated label of
+#'  the time scale (see [calendar()]) or an object from which to extract the
+#'  time scale.
+#' @param ... Currently not used.
+#' @return
+#'  A [`TimeScale-class`] object.
+#' @example inst/examples/ex-calendar.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family calendar tools
+#' @aliases get_calendar-method
+setGeneric(
+  name = "get_calendar",
+  def = function(...) standardGeneric("get_calendar"),
+  valueClass = "TimeScale"
+)
+
+#' @rdname get_calendar
+#' @aliases set_calendar-method
+setGeneric(
+  name = "set_calendar",
+  def = function(object) standardGeneric("set_calendar"),
+  valueClass = "TimeScale"
+)
 
 #' Is an Object a Calendar?
 #'
