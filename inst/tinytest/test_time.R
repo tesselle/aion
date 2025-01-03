@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 # Terminal times ===============================================================
 y <- fixed(1000:1099, calendar = BCE())
 x <- series(rnorm(100), time = y)

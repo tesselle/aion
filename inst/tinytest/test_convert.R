@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 ## Make conversion functions
 BP_to_AD <- convert("BP", "AD")
 AD_to_BP <- convert("AD", "BP")

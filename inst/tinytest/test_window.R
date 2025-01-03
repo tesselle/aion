@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 x <- series(matrix(rnorm(300), 100, 3), time = 1000:1099, calendar = CE())
 
 ## Subset between 1025 and 1050 CE

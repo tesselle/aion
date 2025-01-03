@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 # RataDie ======================================================================
 x <- fixed(c(-350, 31, 1072, 576, 1130), calendar = CE())
 

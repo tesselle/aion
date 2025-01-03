@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 rd <- fixed(
   year = dates$julian_year,
   month = dates$julian_month,

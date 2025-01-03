@@ -1,3 +1,5 @@
+Sys.setenv(LANGUAGE = "en") # Force locale
+
 rd <- fixed(
   year = dates$gregorian_year,
   month = dates$gregorian_month,
