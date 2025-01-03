@@ -174,33 +174,6 @@ setGeneric(
   valueClass = "TimeScale"
 )
 
-#' Is an Object a Calendar?
-#'
-#' Test inheritance relationships between an object and a calendar class.
-#' @param object Any \R object.
-#' @return
-#'  A [`logical`] vector.
-#' @author N. Frerebeau
-#' @docType methods
-#' @family calendar tools
-#' @name is
-#' @rdname is
-NULL
-
-#' @rdname is
-#' @aliases is_gregorian-method
-setGeneric(
-  name = "is_gregorian",
-  def = function(object) standardGeneric("is_gregorian")
-)
-
-#' @rdname is
-#' @aliases is_julian-method
-setGeneric(
-  name = "is_julian",
-  def = function(object) standardGeneric("is_julian")
-)
-
 #' Calendar Parameters
 #'
 #' @param object A [`TimeScale-class`] object.

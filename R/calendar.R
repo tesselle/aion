@@ -132,6 +132,33 @@ setMethod(
   }
 )
 
+# Predicates ===================================================================
+#' Is an Object a Calendar?
+#'
+#' Test inheritance relationships between an object and a calendar class.
+#' @param object Any \R object.
+#' @return
+#'  A [`logical`] scalar.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family calendar tools
+#' @export
+is_calendar <- function(object) {
+  methods::is(object, "TimeScale")
+}
+
+#' @export
+#' @rdname is_calendar
+is_gregorian <- function(object) {
+  methods::is(object, "GregorianCalendar")
+}
+
+#' @export
+#' @rdname is_calendar
+is_julian <- function(object) {
+  methods::is(object, "JulianCalendar")
+}
+
 # Mutators =====================================================================
 ## Getters ---------------------------------------------------------------------
 #' @export

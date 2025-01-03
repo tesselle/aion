@@ -16,6 +16,7 @@ expect_error(calendar("XXX"), "Unknown calendar")
 # Gregorian calendar ===========================================================
 G <- calendar("BP")
 
+expect_true(is_calendar(G))
 expect_true(is_gregorian(G))
 expect_false(is_julian(G))
 
@@ -30,6 +31,7 @@ expect_identical(calendar_year(G), 365.2425)
 # Julian calendar ==============================================================
 J <- calendar("julian")
 
+expect_true(is_calendar(J))
 expect_true(is_julian(J))
 expect_false(is_gregorian(J))
 

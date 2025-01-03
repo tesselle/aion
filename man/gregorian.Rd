@@ -51,7 +51,7 @@ Other calendar tools:
 \code{\link{calendar_get}},
 \code{\link{convert}()},
 \code{\link{get_calendar}()},
-\code{\link{is}()},
+\code{\link{is_calendar}()},
 \code{\link{julian}()}
 }
 \author{

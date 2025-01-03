@@ -2,18 +2,6 @@
 #' @include AllGenerics.R
 NULL
 
-# Gregorian calendar ===========================================================
-#' @export
-#' @rdname is
-#' @aliases is_gregorian,ANY-method
-setMethod(
-  f = "is_gregorian",
-  signature = "ANY",
-  definition = function(object) {
-    methods::is(object, "GregorianCalendar")
-  }
-)
-
 # Fixed from Gregorian =========================================================
 #' @export
 #' @rdname fixed
