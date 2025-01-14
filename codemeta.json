@@ -213,6 +213,7 @@
       ],
       "name": "{aion: An R Package to Represent Archaeological Time Series}",
       "identifier": "10.21105/joss.06210",
+      "pagination": "6210",
       "@id": "https://doi.org/10.21105/joss.06210",
       "sameAs": "https://doi.org/10.21105/joss.06210",
       "isPartOf": {

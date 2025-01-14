@@ -65,7 +65,7 @@ offers a simple API that can be used by other specialized packages (see
 To cite aion in publications use:
 
 Frerebeau N (2024). “aion: An R Package to Represent Archaeological Time
-Series.” *Journal of Open Source Software*, *9*(96).
+Series.” *Journal of Open Source Software*, *9*(96), 6210.
 <doi:10.21105/joss.06210> <https://doi.org/10.21105/joss.06210>.
 
 Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
