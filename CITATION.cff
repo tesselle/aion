@@ -73,7 +73,7 @@ preferred-citation:
   doi: 10.21105/joss.06210
   start: '6210'
 repository: https://CRAN.R-project.org/package=aion
-repository-code: https://github.com/tesselle/aion
+repository-code: https://codeberg.org/tesselle/aion
 url: https://packages.tesselle.org/aion/
 contact:
 - family-names: Frerebeau

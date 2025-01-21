@@ -32,8 +32,8 @@ specifying the default calendar (see \code{\link[=get_calendar]{get_calendar()}}
 Useful links:
 \itemize{
   \item \url{https://packages.tesselle.org/aion/}
-  \item \url{https://github.com/tesselle/aion}
-  \item Report bugs at \url{https://github.com/tesselle/aion/issues}
+  \item \url{https://codeberg.org/tesselle/aion}
+  \item Report bugs at \url{https://codeberg.org/tesselle/aion/issues}
 }
 
 }

@@ -6,7 +6,7 @@
   "name": "aion: Archaeological Time Series",
   "relatedLink": ["https://packages.tesselle.org/aion/", "https://CRAN.R-project.org/package=aion"],
   "codeRepository": "https://github.com/tesselle/aion",
-  "issueTracker": "https://github.com/tesselle/aion/issues",
+  "issueTracker": "https://codeberg.org/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "1.3.0",
   "programmingLanguage": {
