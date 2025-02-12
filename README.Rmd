@@ -130,3 +130,49 @@ Languages currently available are English (`en`) and French (`fr`).
 Please note that the **aion** project is released with a [Contributor Code of Conduct](https://www.tesselle.org/conduct.html). By contributing to this project, you agree to abide by its terms.
 
 ## References
+
+```{r metadata, include=FALSE}
+## Update codemeta.json
+codemetar::write_codemeta(verbose = FALSE)
+
+## Update CITATION.cff
+cff_keys <- list(
+  identifiers = list(
+    list(description = "The concept DOI.",
+         type = "doi",
+         value = "10.5281/zenodo.8032278"),
+    list(description = "The versioned DOI for version 1.0.0.",
+         type = "doi",
+         value = "10.5281/zenodo.8032279"),
+    list(description = "The versioned DOI for version 1.0.1.",
+         type = "doi",
+         value = "10.5281/zenodo.8273276"),
+    list(description = "The versioned DOI for version 1.0.2.",
+         type = "doi",
+         value = "10.5281/zenodo.10046426"),
+    list(description = "The versioned DOI for version 1.0.3.",
+         type = "doi",
+         value = "10.5281/zenodo.10926190"),
+    list(description = "The versioned DOI for version 1.0.4.",
+         type = "doi",
+         value = "10.5281/zenodo.12951290"),
+    list(description = "The versioned DOI for version 1.1.0.",
+         type = "doi",
+         value = "10.5281/zenodo.13891247"),
+    list(description = "The versioned DOI for version 1.2.0.",
+         type = "doi",
+         value = "10.5281/zenodo.14144087"),
+    list(description = "The versioned DOI for version 1.3.0.",
+         type = "doi",
+         value = "10.5281/zenodo.14356506"),
+    list(description = "The CRAN DOI",
+         type = "doi",
+         value = "10.32614/cran.package.aion"),
+    list(description = "The Software Heritage identifier for version 1.0.2.",
+         type = "swh",
+         value = "swh:1:rel:10b21ffbf3914a6a084766e8f704388582408a6e")
+  )
+)
+cff <- cffr::cff_create("DESCRIPTION", keys = cff_keys)
+if (cffr::cff_validate(cff)) cffr::cff_write(cff, outfile = "CITATION.cff")
+```

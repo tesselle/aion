@@ -81,10 +81,10 @@ contact:
   email: nicolas.frerebeau@u-bordeaux-montaigne.fr
   orcid: https://orcid.org/0000-0001-5759-4944
 keywords:
-- time series
-- r package
+- time-series
+- r-package
 - archaeology
-- archaeological science
+- archaeological-science
 - chronology
 references:
 - type: manual

@@ -5,7 +5,7 @@
   "description": "A toolkit for archaeological time series and time intervals. This package provides a system of classes and methods to represent and work with archaeological time series and time intervals. Dates are represented as \"rata die\" and can be converted to (virtually) any calendar defined by Reingold and Dershowitz (2018) <doi:10.1017/9781107415058>. This packages offers a simple API that can be used by other specialized packages.",
   "name": "aion: Archaeological Time Series",
   "relatedLink": ["https://packages.tesselle.org/aion/", "https://CRAN.R-project.org/package=aion"],
-  "codeRepository": "https://github.com/tesselle/aion",
+  "codeRepository": "https://codeberg.org/tesselle/aion",
   "issueTracker": "https://codeberg.org/tesselle/aion/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "1.3.0",
@@ -199,7 +199,10 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "521.735KB",
+  "applicationCategory": "ArchaeologicalScience",
+  "isPartOf": "https://www.tesselle.org",
+  "keywords": ["time-series", "r-package", "archaeology", "archaeological-science", "chronology", "r-package"],
+  "fileSize": "525.131KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -250,9 +253,5 @@
       "sameAs": "https://doi.org/10.5281/zenodo.8032278"
     }
   ],
-  "releaseNotes": "https://github.com/tesselle/aion/blob/master/NEWS.md",
-  "readme": "https://github.com/tesselle/aion/blob/main/README.md",
-  "contIntegration": ["https://github.com/tesselle/aion/actions", "https://app.codecov.io/gh/tesselle/aion"],
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["archaeological-science", "archaeology", "r-package", "chronology", "time-series"]
+  "developmentStatus": "https://www.repostatus.org/#active"
 }
