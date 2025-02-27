@@ -1,11 +1,11 @@
 Package: aion
 Title: Archaeological Time Series
-Version: 1.3.0.9000
+Version: 1.4.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-5759-4944", ROR = "03pbgwk21")),
+           comment = c(ORCID = "0000-0001-5759-4944")),
     person("Joe", "Roe", , "joseph.roe@iaw.unibe.ch", role = "aut",
-           comment = c(ORCID = "0000-0002-1011-1244", ROR = "02k7v4d05")),
+           comment = c(ORCID = "0000-0002-1011-1244")),
     person("Brice", "Lebrun", role = "art",
            comment = c(ORCID = "0000-0001-7503-8685", "Logo designer")),
     person("Université Bordeaux Montaigne", role = "fnd",
@@ -27,7 +27,7 @@ BugReports: https://codeberg.org/tesselle/aion/issues
 Depends: 
     R (>= 3.3)
 Imports: 
-    arkhe (>= 1.9.0),
+    arkhe (>= 1.10.0),
     graphics,
     grDevices,
     methods,
@@ -35,6 +35,7 @@ Imports:
     utils
 Suggests: 
     folio (>= 1.5.0),
+    igraph,
     knitr,
     markdown,
     rsvg,
@@ -64,6 +65,7 @@ Collate:
     'convert.R'
     'data.R'
     'format.R'
+    'graph.R'
     'intervals.R'
     'mutators.R'
     'operators.R'

@@ -65,10 +65,10 @@ Frerebeau N (2024). “aion: An R Package to Represent Archaeological Time
 Series.” *Journal of Open Source Software*, *9*(96), 6210.
 <doi:10.21105/joss.06210> <https://doi.org/10.21105/joss.06210>.
 
-Frerebeau N, Roe J (2024). *aion: Archaeological Time Series*.
+Frerebeau N, Roe J (2025). *aion: Archaeological Time Series*.
 Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
-package version 1.3.0, <https://packages.tesselle.org/aion/>.
+package version 1.4.0, <https://packages.tesselle.org/aion/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.

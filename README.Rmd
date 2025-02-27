@@ -167,10 +167,7 @@ cff_keys <- list(
          value = "10.5281/zenodo.14356506"),
     list(description = "The CRAN DOI",
          type = "doi",
-         value = "10.32614/cran.package.aion"),
-    list(description = "The Software Heritage identifier for version 1.0.2.",
-         type = "swh",
-         value = "swh:1:rel:10b21ffbf3914a6a084766e8f704388582408a6e")
+         value = "10.32614/cran.package.aion")
   )
 )
 cff <- cffr::cff_create("DESCRIPTION", keys = cff_keys)

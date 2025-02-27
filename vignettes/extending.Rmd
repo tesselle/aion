@@ -30,8 +30,8 @@ library(methods)
 
 The following packages rely on **aion**:
 
-* [**ananke**](https://github.com/tesselle/ananke) (quantitative chronology in archaeology).
-* [**kairos**](https://github.com/tesselle/kairos) v2.0 (analysis of chronological patterns from archaeological count data).
+* [**ananke**](https://packages.tesselle.org/ananke/) (quantitative chronology in archaeology).
+* [**kairos**](https://packages.tesselle.org/kairos/) v2.0 (analysis of chronological patterns from archaeological count data).
 * [**ArchaeoPhases**](https://github.com/ArchaeoStat/ArchaeoPhases) v2.0 (post-processing of MCMC simulations for chronological modelling).
 
 # Epochs
