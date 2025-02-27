@@ -43,7 +43,6 @@ span(int, calendar = CE())
 }
 \seealso{
 Other tools: 
-\code{\link{overlap}()},
 \code{\link{start}()},
 \code{\link{time}()},
 \code{\link{window}()}

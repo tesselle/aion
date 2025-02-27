@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2025-01-03 01:09+0100\n"
+"POT-Creation-Date: 2025-02-27 00:33+0100\n"
 "PO-Revision-Date: 2025-02-06 11:08+0000\n"
 "Last-Translator: nfrerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>\n"
 "Language-Team: French <https://translate.codeberg.org/projects/tesselle/aion/"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.9.2\n"
 
-#: calendar-julian.R:45
+#: calendar-julian.R:33
 msgid "There is no year zero in the Julian calendar."
 msgstr "Il n'y a pas d'année zéro dans le calendrier julien."
 
@@ -73,17 +73,25 @@ msgstr "Ère commune"
 msgid "Default calendar is invalid."
 msgstr "Le calendrier par défaut est invalide."
 
-#: calendar.R:162
+#: calendar.R:189
 msgid "Gregorian years"
 msgstr "Années grégoriennes"
 
-#: calendar.R:163
+#: calendar.R:190
 msgid "Julian years"
 msgstr "Années juliennes"
 
-#: calendar.R:164
+#: calendar.R:191
 msgid "Undefined"
 msgstr "Non défini"
+
+#: graph.R:29
+msgid "This is not an interval graph!"
+msgstr "Ceci n'est pas un graph d'intervalles!"
+
+#: graph.R:30
+msgid "Length of the shortest circle: %g."
+msgstr "Longueur du cycle le plus court : %g."
 
 #: intervals.R:44 series.R:43
 msgid "%s is already expressed in rata die: %s is ignored."

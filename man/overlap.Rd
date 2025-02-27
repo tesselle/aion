@@ -9,7 +9,7 @@
 \usage{
 overlap(x, ...)
 
-\S4method{overlap}{TimeIntervals}(x, calendar = NULL)
+\S4method{overlap}{TimeIntervals}(x, calendar = NULL, aggregate = TRUE)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{TimeIntervals}} object.}
@@ -18,6 +18,9 @@ overlap(x, ...)
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}). If \code{NULL} (the default), \emph{rata die} are returned.}
+
+\item{aggregate}{A \code{\link{logical}} scalar: should disjoint intervals referring to
+the same event be aggregated?}
 }
 \value{
 A symmetric \code{numeric} \code{\link{matrix}} of years.
@@ -47,13 +50,10 @@ plot(int) # Default calendar
 overlap(int, calendar = CE())
 }
 \seealso{
-Other tools: 
-\code{\link{span}()},
-\code{\link{start}()},
-\code{\link{time}()},
-\code{\link{window}()}
+Other chronological reasoning tools: 
+\code{\link{as_graph}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{tools}
+\concept{chronological reasoning tools}

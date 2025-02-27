@@ -62,7 +62,6 @@ head(df)
 }
 \seealso{
 Other tools: 
-\code{\link{overlap}()},
 \code{\link{span}()},
 \code{\link{time}()},
 \code{\link{window}()}

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.3.0.9000\n"
-"POT-Creation-Date: 2025-01-03 01:09+0100\n"
+"POT-Creation-Date: 2025-02-27 00:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: calendar-julian.R:45
+#: calendar-julian.R:33
 msgid "There is no year zero in the Julian calendar."
 msgstr ""
 
@@ -71,16 +71,24 @@ msgstr ""
 msgid "Default calendar is invalid."
 msgstr ""
 
-#: calendar.R:162
+#: calendar.R:189
 msgid "Gregorian years"
 msgstr ""
 
-#: calendar.R:163
+#: calendar.R:190
 msgid "Julian years"
 msgstr ""
 
-#: calendar.R:164
+#: calendar.R:191
 msgid "Undefined"
+msgstr ""
+
+#: graph.R:29
+msgid "This is not an interval graph!"
+msgstr ""
+
+#: graph.R:30
+msgid "Length of the shortest circle: %g."
 msgstr ""
 
 #: intervals.R:44 series.R:43

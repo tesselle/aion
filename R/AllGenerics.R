@@ -561,6 +561,54 @@ setGeneric(
   valueClass = "TimeIntervals"
 )
 
+# Chronological Reasoning ======================================================
+#' Time Overlap
+#'
+#' Computes the length of overlap of time intervals.
+#' @param x A [`TimeIntervals-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
+#'  the same event be aggregated?
+#' @param ... Currently not used.
+#' @details
+#'  The overlap of two time intervals is a difference between the minimum value
+#'  of the two upper boundaries and the maximum value of the two lower
+#'  boundaries, plus 1.
+#' @return
+#'  A symmetric `numeric` [`matrix`] of years.
+#' @example inst/examples/ex-intervals.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family chronological reasoning tools
+#' @aliases overlap-method
+setGeneric(
+  name = "overlap",
+  def = function(x, ...) standardGeneric("overlap")
+)
+
+#' Interval Graph
+#'
+#' @param object A [`TimeIntervals-class`] object.
+#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
+#'  the same event be aggregated?
+#' @param ... Currently not used.
+#' @details
+#'  An interval graph is the graph showing intersecting intervals on a line.
+#'  As time is linear and not circular, an interval graph contains no cycles
+#'  with more than three edges and no shortcuts.
+#' @return
+#'  An \pkg{igraph} graph object.
+#' @example inst/examples/ex-graph.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family chronological reasoning tools
+#' @aliases as_graph-method
+setGeneric(
+  name = "as_graph",
+  def = function(object, ...) standardGeneric("as_graph")
+)
+
 # Tools ========================================================================
 #' Terminal Times
 #'
@@ -638,29 +686,6 @@ NULL
 setGeneric(
   name = "span",
   def = function(x, ...) standardGeneric("span")
-)
-
-#' Time Overlap
-#'
-#' Computes the length of overlap of time intervals.
-#' @param x A [`TimeIntervals-class`] object.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
-#' @param ... Currently not used.
-#' @details
-#'  The overlap of two time intervals is a difference between the minimum value
-#'  of the two upper boundaries and the maximum value of the two lower
-#'  boundaries, plus 1.
-#' @return
-#'  A symmetric `numeric` [`matrix`] of years.
-#' @example inst/examples/ex-intervals.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family tools
-#' @aliases overlap-method
-setGeneric(
-  name = "overlap",
-  def = function(x, ...) standardGeneric("overlap")
 )
 
 # Plot =========================================================================

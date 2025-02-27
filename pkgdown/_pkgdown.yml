@@ -14,6 +14,9 @@ reference:
   contents:
   - has_concept("time series")
   - has_concept("time intervals")
+- title: Chronological Reasoning
+  contents:
+  - has_concept("chronological reasoning tools")
 - title: Tools
   contents:
   - has_concept("tools")
