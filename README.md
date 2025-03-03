@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Code
+coverage](https://packages.tesselle.org/aion/coverage/badge.svg)](https://packages.tesselle.org/aion/coverage/)
 [![Dependencies](https://tinyverse.netlify.app/badge/aion)](https://cran.r-project.org/package=aion)
 
 <a href="https://tesselle.r-universe.dev/aion"
