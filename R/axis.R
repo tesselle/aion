@@ -20,8 +20,8 @@ setMethod("pretty", "RataDie", pretty.RataDie)
 #' @export
 #' @rdname year_axis
 year_axis <- function(side, at = NULL, format = c("a", "ka", "Ma", "Ga"),
-                      labels = TRUE, calendar = getOption("aion.last_calendar"),
-                      current_calendar = getOption("aion.last_calendar"),
+                      labels = TRUE, calendar = get_calendar("current"),
+                      current_calendar = get_calendar("current"),
                       ...) {
   no_at <- missing(at) || is.null(at) || !is.numeric(at)
   if (no_at) at <- graphics::axTicks(side = side)

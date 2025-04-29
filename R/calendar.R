@@ -93,44 +93,46 @@ J <- function(...) {
 }
 
 # Default calendar =============================================================
-#' @export
-#' @rdname get_calendar
-#' @aliases get_calendar,ANY-method
-setMethod(
-  f = "get_calendar",
-  signature = "ANY",
-  definition = function(...) {
-    cal <- getOption("aion.calendar", default = function(...) calendar("CE"))
-    if (!is.function(cal)) {
-      stop(tr_("Default calendar is invalid."), call. = FALSE)
-    }
-    cal()
-  }
-)
+the <- new.env(parent = emptyenv())
+the$default_calendar <- function(...) calendar("CE")
+the$last_calendar <- function(...) return(NULL)
 
 #' @export
 #' @rdname get_calendar
-#' @aliases set_calendar,character-method
-setMethod(
-  f = "set_calendar",
-  signature = "character",
-  definition = function(object) {
-    cal <- function(...) calendar(object)
-    options(aion.calendar = cal)
-    invisible(cal())
+get_calendar <- function(which = c("default", "current")) {
+  which <- match.arg(which, several.ok = FALSE)
+  which_calendar <- switch(
+    which,
+    default = "default_calendar",
+    current = "last_calendar"
+  )
+
+  if (!exists(which_calendar, envir = the)) {
+    stop(tr_("Unspecified calendar."), call. = FALSE)
   }
-)
+
+  cal <- get(which_calendar, envir = the)
+  if (!is.null(cal()) && !is_calendar(cal())) {
+    stop(tr_("Invalid calendar."), call. = FALSE)
+  }
+  return(cal())
+}
 
 #' @export
 #' @rdname get_calendar
-#' @aliases set_calendar,missing-method
-setMethod(
-  f = "set_calendar",
-  signature = "missing",
-  definition = function() {
-    methods::callGeneric("CE")
-  }
-)
+set_calendar <- function(x, which = c("default", "current")) {
+  if (missing(x)) x <- "CE"
+  which <- match.arg(which, several.ok = FALSE)
+  which_calendar <- switch(
+    which,
+    default = "default_calendar",
+    current = "last_calendar"
+  )
+
+  cal <- function(...) calendar(x)
+  assign(which_calendar, value = cal, envir = the)
+  invisible(cal())
+}
 
 # Predicates ===================================================================
 #' Is an Object a Calendar?

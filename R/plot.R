@@ -13,7 +13,7 @@ plot.TimeIntervals <- function(x, calendar = get_calendar(),
                                frame.plot = axes,
                                panel.first = NULL, panel.last = NULL, ...) {
   ## Save calendar for further use, e.g. year_axis()
-  options(aion.last_calendar = calendar)
+  assign("last_calendar", value = function(...) calendar, envir = the)
 
   ## Get data
   lab <- labels(x)
@@ -108,7 +108,7 @@ plot.TimeSeries <- function(x, facet = c("multiple", "single"),
   facet <- match.arg(facet, several.ok = FALSE)
 
   ## Save calendar for further use, e.g. year_axis()
-  options(aion.last_calendar = calendar)
+  assign("last_calendar", value = function(...) calendar, envir = the)
 
   n <- dim(x)[2L]
 
@@ -381,7 +381,7 @@ xlim <- function(x, calendar, finite = FALSE) {
 #' @method image TimeSeries
 image.TimeSeries <- function(x, calendar = get_calendar(), k = 1, ...) {
   ## Save calendar for further use, e.g. year_axis()
-  options(aion.last_calendar = calendar)
+  assign("last_calendar", value = function(...) calendar, envir = the)
 
   ## Get data
   n <- seq_len(NCOL(x))

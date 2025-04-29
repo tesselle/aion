@@ -9,8 +9,8 @@
 #'
 #' @section Package options:
 #'  \pkg{aion} uses the following [options()] to configure behaviour:
-#'  * `aion.calendar`: a function that returns a [`TimeScale-class`] object
-#'    specifying the default calendar (see [get_calendar()]).
+#'  * `aion.verbose`: a [`logical`] scalar. Should \R report extra information
+#'    on progress? Defaults to [interactive()].
 #'
 #' @author
 #'  **Full list of authors and contributors** (alphabetic order):

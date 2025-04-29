@@ -149,30 +149,22 @@ NULL
 
 #' Get or Set the Default Calendar
 #'
-#' @param object A [`character`] string specifying the abbreviated label of
+#' @param x A [`character`] string specifying the abbreviated label of
 #'  the time scale (see [calendar()]) or an object from which to extract the
 #'  time scale.
-#' @param ... Currently not used.
+#' @param which A [`character`] string specifying the calendar to be set.
+#'  It must be one of "`default`" or "`current`". Note that "`current`" is
+#'  automatically set by [plot()] or [image()] and should not be changed
+#'  manually.
 #' @return
 #'  A [`TimeScale-class`] object.
 #' @example inst/examples/ex-calendar.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family calendar tools
-#' @aliases get_calendar-method
-setGeneric(
-  name = "get_calendar",
-  def = function(...) standardGeneric("get_calendar"),
-  valueClass = "TimeScale"
-)
-
+#' @name get_calendar
 #' @rdname get_calendar
-#' @aliases set_calendar-method
-setGeneric(
-  name = "set_calendar",
-  def = function(object) standardGeneric("set_calendar"),
-  valueClass = "TimeScale"
-)
+NULL
 
 #' Calendar Parameters
 #'

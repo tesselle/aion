@@ -3,28 +3,20 @@
 \docType{methods}
 \name{get_calendar}
 \alias{get_calendar}
-\alias{get_calendar-method}
 \alias{set_calendar}
-\alias{set_calendar-method}
-\alias{get_calendar,ANY-method}
-\alias{set_calendar,character-method}
-\alias{set_calendar,missing-method}
 \title{Get or Set the Default Calendar}
 \usage{
-get_calendar(...)
+get_calendar(which = c("default", "current"))
 
-set_calendar(object)
-
-\S4method{get_calendar}{ANY}(...)
-
-\S4method{set_calendar}{character}(object)
-
-\S4method{set_calendar}{missing}()
+set_calendar(x, which = c("default", "current"))
 }
 \arguments{
-\item{...}{Currently not used.}
+\item{which}{A \code{\link{character}} string specifying the calendar to be set.
+It must be one of "\code{default}" or "\code{current}". Note that "\code{current}" is
+automatically set by \code{\link[=plot]{plot()}} or \code{\link[=image]{image()}} and should not be changed
+manually.}
 
-\item{object}{A \code{\link{character}} string specifying the abbreviated label of
+\item{x}{A \code{\link{character}} string specifying the abbreviated label of
 the time scale (see \code{\link[=calendar]{calendar()}}) or an object from which to extract the
 time scale.}
 }

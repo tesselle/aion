@@ -10,8 +10,8 @@ year_axis(
   at = NULL,
   format = c("a", "ka", "Ma", "Ga"),
   labels = TRUE,
-  calendar = getOption("aion.last_calendar"),
-  current_calendar = getOption("aion.last_calendar"),
+  calendar = get_calendar("current"),
+  current_calendar = get_calendar("current"),
   ...
 )
 }
