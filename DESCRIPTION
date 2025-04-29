@@ -1,6 +1,6 @@
 Package: aion
 Title: Archaeological Time Series
-Version: 1.4.0.9000
+Version: 1.5.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944")),
@@ -13,6 +13,7 @@ Authors@R: c(
     person("CNRS", role = "fnd",
            comment = c(ROR = "02feahw73"))
   )
+Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: A toolkit for archaeological time series and time intervals.
     This package provides a system of classes and methods to represent and
     work with archaeological time series and time intervals. Dates are
@@ -35,7 +36,6 @@ Imports:
     utils
 Suggests: 
     folio (>= 1.5.0),
-    igraph,
     knitr,
     markdown,
     rsvg,
