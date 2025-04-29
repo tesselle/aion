@@ -668,6 +668,8 @@ setGeneric(
 #'  be given.
 #' @param calendar A [`TimeScale-class`] object specifying the target calendar
 #'  (see [calendar()]).
+#' @param groups A [`character`] vector specifying the group each interval
+#'  belongs to.
 #' @param sort A [`logical`] scalar: should the data be sorted in chronological
 #'  order?
 #' @param decreasing A [`logical`] scalar: should the sort order be decreasing?

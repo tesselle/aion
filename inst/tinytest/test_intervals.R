@@ -52,4 +52,9 @@ if (at_home()) {
 
   plot_interval_Inf <- function() plot(y, calendar = CE())
   expect_snapshot_plot(plot_interval_Inf, "plot_interval_Inf")
+
+  grp <- c("A", "A", "B", "B", "B", "A", "D", "D", "D", "C", "C",
+           "C", "C", "B", "B")
+  plot_interval_groups <- function() plot(x, calendar = CE(), groups = grp)
+  expect_snapshot_plot(plot_interval_CE, "plot_interval_groups")
 }

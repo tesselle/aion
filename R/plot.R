@@ -5,7 +5,7 @@ NULL
 # Plot =========================================================================
 #' @export
 #' @method plot TimeIntervals
-plot.TimeIntervals <- function(x, calendar = get_calendar(),
+plot.TimeIntervals <- function(x, calendar = get_calendar(), groups = NULL,
                                sort = TRUE, decreasing = FALSE,
                                xlab = NULL, ylab = NULL,
                                main = NULL, sub = NULL,
@@ -17,21 +17,31 @@ plot.TimeIntervals <- function(x, calendar = get_calendar(),
 
   ## Get data
   lab <- labels(x)
-  if (sort) {
-    mid <- start(x)
-    lvl <- unique(lab[order(mid, decreasing = decreasing)])
-  } else {
-    lvl <- unique(lab)
-  }
-  f <- factor(x = lab, levels = lvl, ordered = TRUE)
-  int <- split(x = as.data.frame(x, calendar = calendar), f = f)
-  n <- length(int)
+  int <- as.data.frame(x, calendar = calendar)
+  k <- nrow(int)
+  if (is.null(groups)) groups <- rep("", k)
+  arkhe::assert_length(groups, k)
 
   ## Graphical parameters
   dots <- list(...)
-  col <- make_par(dots, "col", n)
-  lwd <- make_par(dots, "lwd", n)
-  lty <- make_par(dots, "lty", n)
+  col <- make_par(dots, "col", k)
+  lwd <- make_par(dots, "lwd", k)
+  lty <- make_par(dots, "lty", k)
+
+  ## Sort and split
+  if (sort) {
+    i <- order(groups, start(x), end(x), decreasing = decreasing)
+  } else {
+    i <- order(groups, decreasing = decreasing)
+  }
+  int <- int[i, , drop = FALSE]
+  lab <- lab[i]
+  f <- factor(x = lab, levels = unique(lab), ordered = TRUE)
+  int <- split(x = int, f = f)
+  col <- split(x = col[i], f = f)
+  lwd <- split(x = lwd[i], f = f)
+  lty <- split(x = lty[i], f = f)
+  n <- length(int)
 
   ## Open new window
   grDevices::dev.hold()

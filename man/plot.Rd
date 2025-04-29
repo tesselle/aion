@@ -10,6 +10,7 @@
 \S4method{plot}{TimeIntervals,missing}(
   x,
   calendar = get_calendar(),
+  groups = NULL,
   sort = TRUE,
   decreasing = FALSE,
   xlab = NULL,
@@ -48,6 +49,9 @@
 
 \item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
 (see \code{\link[=calendar]{calendar()}}).}
+
+\item{groups}{A \code{\link{character}} vector specifying the group each interval
+belongs to.}
 
 \item{sort}{A \code{\link{logical}} scalar: should the data be sorted in chronological
 order?}
