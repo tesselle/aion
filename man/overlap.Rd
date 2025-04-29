@@ -49,10 +49,6 @@ plot(int) # Default calendar
 ## Overlap
 overlap(int, calendar = CE())
 }
-\seealso{
-Other chronological reasoning tools: 
-\code{\link{as_graph}()}
-}
 \author{
 N. Frerebeau
 }

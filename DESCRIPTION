@@ -65,7 +65,6 @@ Collate:
     'convert.R'
     'data.R'
     'format.R'
-    'graph.R'
     'intervals.R'
     'mutators.R'
     'operators.R'
