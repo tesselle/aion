@@ -1,10 +1,6 @@
 if (at_home()) {
   using("tinysnapshot")
-  options(tinysnapshot_device = "svglite")
-  options(tinysnapshot_height = 7) # inches
-  options(tinysnapshot_width = 7)
-  options(tinysnapshot_tol = 200) # pixels
-  options(tinysnapshot_os = "Linux")
+  source("helpers.R")
 
   Sys.setenv(LANGUAGE = "en") # Force locale
 
