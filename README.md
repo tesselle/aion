@@ -5,9 +5,16 @@
 
 <!-- badges: start -->
 
-[![Code
-coverage](https://packages.tesselle.org/aion/coverage/badge.svg)](https://packages.tesselle.org/aion/coverage/)
-[![Dependencies](https://tinyverse.netlify.app/badge/aion)](https://cran.r-project.org/package=aion)
+<a href="https://ci.codeberg.org/repos/14685" class="pkgdown-devel"><img
+src="https://ci.codeberg.org/api/badges/14685/status.svg"
+alt="status-badge" /></a>
+<a href="https://packages.tesselle.org/aion/coverage/"
+class="pkgdown-devel"><img
+src="https://packages.tesselle.org/aion/coverage/badge.svg"
+alt="Code coverage" /></a>
+<a href="https://cran.r-project.org/package=aion"
+class="pkgdown-devel"><img
+src="https://tinyverse.netlify.app/badge/aion" alt="Dependencies" /></a>
 
 <a href="https://tesselle.r-universe.dev/aion"
 class="pkgdown-devel"><img
