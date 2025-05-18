@@ -32,6 +32,7 @@ on progress? Defaults to \code{\link[=interactive]{interactive()}}.
 Useful links:
 \itemize{
   \item \url{https://codeberg.org/tesselle/aion}
+  \item \url{https://tesselle.r-universe.dev/aion}
   \item \url{https://packages.tesselle.org/aion/}
   \item Report bugs at \url{https://codeberg.org/tesselle/aion/issues}
 }
