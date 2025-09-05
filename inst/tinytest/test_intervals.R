@@ -36,21 +36,19 @@ expect_equivalent(
 )
 
 # Plot =========================================================================
-if (at_home()) {
-  using("tinysnapshot")
-  source("helpers.R")
+using("tinysnapshot")
+source("helpers.R")
 
-  plot_interval_rd <- function() plot(x, calendar = NULL)
-  expect_snapshot_plot(plot_interval_rd, "plot_interval_rd")
+plot_interval_rd <- function() plot(x, calendar = NULL)
+expect_snapshot_plot(plot_interval_rd, "plot_interval_rd")
 
-  plot_interval_CE <- function() plot(x, calendar = CE())
-  expect_snapshot_plot(plot_interval_CE, "plot_interval_CE")
+plot_interval_CE <- function() plot(x, calendar = CE())
+expect_snapshot_plot(plot_interval_CE, "plot_interval_CE")
 
-  plot_interval_Inf <- function() plot(y, calendar = CE())
-  expect_snapshot_plot(plot_interval_Inf, "plot_interval_Inf")
+plot_interval_Inf <- function() plot(y, calendar = CE())
+expect_snapshot_plot(plot_interval_Inf, "plot_interval_Inf")
 
-  grp <- c("A", "A", "B", "B", "B", "A", "D", "D", "D", "C", "C",
-           "C", "C", "B", "B")
-  plot_interval_groups <- function() plot(x, calendar = CE(), groups = grp)
-  expect_snapshot_plot(plot_interval_CE, "plot_interval_groups")
-}
+grp <- c("A", "A", "B", "B", "B", "A", "D", "D", "D", "C", "C",
+         "C", "C", "B", "B")
+plot_interval_groups <- function() plot(x, calendar = CE(), groups = grp)
+expect_snapshot_plot(plot_interval_CE, "plot_interval_groups")
