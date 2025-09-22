@@ -17,6 +17,7 @@ reference:
 - title: Chronological Reasoning
   contents:
   - has_concept("chronological reasoning tools")
+  - has_concept("Allen's intervals")
 - title: Tools
   contents:
   - has_concept("tools")

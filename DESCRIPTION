@@ -27,7 +27,7 @@ URL: https://codeberg.org/tesselle/aion,
     https://packages.tesselle.org/aion/
 BugReports: https://codeberg.org/tesselle/aion/issues
 Depends: 
-    R (>= 3.3)
+    R (>= 3.5)
 Imports: 
     arkhe (>= 1.10.0),
     graphics,
@@ -59,6 +59,7 @@ Collate:
     'AllGenerics.R'
     'aion-internal.R'
     'aion-package.R'
+    'allen.R'
     'axis.R'
     'calendar-gregorian.R'
     'calendar-julian.R'

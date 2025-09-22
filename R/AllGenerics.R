@@ -757,3 +757,136 @@ NULL
 #' @name year_axis
 #' @rdname year_axis
 NULL
+
+# Allen Algebra ================================================================
+#' Allen Relation Between Definite Intervals
+#'
+#' @param x,y A [`RataDie-class`] object giving the lower and upper boundaries
+#'  of the time intervals, respectively (see [fixed()]). If `y` is missing, `x`
+#'  must be a [`TimeIntervals-class`] object.
+#' @param ... Currently not used.
+#' @details
+#' \tabular{lrlr}{
+#'  **Relation** \tab     \tab     \tab  **Converse** \cr
+#'  precedes     \tab (p) \tab (P) \tab   preceded by \cr
+#'  meets        \tab (m) \tab (M) \tab        met by \cr
+#'  overlaps     \tab (o) \tab (O) \tab overlapped by \cr
+#'  finished by  \tab (F) \tab (f) \tab      finishes \cr
+#'  contains     \tab (D) \tab (d) \tab        during \cr
+#'  starts       \tab (s) \tab (S) \tab    started by \cr
+#'  equals       \tab (e) \tab     \tab               \cr
+#' }
+#' @return
+#'  A [`character`] matrix specifying the Allen relations.
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#'
+#'  Alspaugh, T. (2019). Allen's Interval Algebra.
+#'  URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
+#' @example inst/examples/ex-relation.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_relation-method
+setGeneric(
+  name = "allen_relation",
+  def = function(x, y, ...) standardGeneric("allen_relation")
+)
+
+#' Complement of an Allen Relation
+#'
+#' @param x A [`character`] vector or matrix of Allen relations (typically
+#'  returned by [allen_relation()]).
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector or matrix (same as `x`).
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#' @example inst/examples/ex-allen.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_complement-method
+setGeneric(
+  name = "allen_complement",
+  def = function(x, ...) standardGeneric("allen_complement")
+)
+
+#' Converse of an Allen Relation
+#'
+#' @param x A [`character`] vector or matrix of Allen relations (typically
+#'  returned by [allen_relation()]).
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector or matrix (same as `x`).
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#' @example inst/examples/ex-allen.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_converse-method
+setGeneric(
+  name = "allen_converse",
+  def = function(x, ...) standardGeneric("allen_converse")
+)
+
+#' Composition of Allen Relations
+#'
+#' @param x,y A [`character`] vector of Allen relations.
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector.
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#' @example inst/examples/ex-allen.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_composition-method
+setGeneric(
+  name = "allen_composition",
+  def = function(x, y, ...) standardGeneric("allen_composition")
+)
+
+#' Intersection of Allen Relations
+#'
+#' @param x,y A [`character`] vector of Allen relations.
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector.
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#' @example inst/examples/ex-allen.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_intersect-method
+setGeneric(
+  name = "allen_intersect",
+  def = function(x, y, ...) standardGeneric("allen_intersect")
+)
+
+#' Union of Allen Relations
+#'
+#' @param x,y A [`character`] vector of Allen relations.
+#' @param ... Currently not used.
+#' @return
+#'  A [`character`] vector.
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#' @example inst/examples/ex-allen.R
+#' @author T. S. Dye, N. Frerebeau
+#' @family Allen's intervals
+#' @docType methods
+#' @aliases allen_union-method
+setGeneric(
+  name = "allen_union",
+  def = function(x, y, ...) standardGeneric("allen_union")
+)

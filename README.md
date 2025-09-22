@@ -181,11 +181,26 @@ to this project, you agree to abide by its terms.
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
 
+<div id="ref-allen1983" class="csl-entry">
+
+Allen, James F. 1983. “Maintaining Knowledge about Temporal Intervals.”
+*Communications of the ACM* 26 (11): 832–43.
+<https://doi.org/10.1145/182.358434>.
+
+</div>
+
+<div id="ref-alspaugh2019" class="csl-entry">
+
+Alspaugh, Thomas. 2019. “Allen’s Interval Algebra.” 2019.
+<https://thomasalspaugh.org/pub/fnd/allen.html>.
+
+</div>
+
 <div id="ref-frerebeau2024" class="csl-entry">
 
-Frerebeau, Nicolas. 2024. “Aion: An R Package to Represent
-Archaeological TimeSeries.” *Journal of Open Source Software* 9 (96):
-6210. <https://doi.org/10.21105/joss.06210>.
+Frerebeau, Nicolas. 2024. “<span class="nocase">aion</span>: An R
+Package to Represent Archaeological Time Series.” *Journal of Open
+Source Software* 9 (96): 6210. <https://doi.org/10.21105/joss.06210>.
 
 </div>
 
