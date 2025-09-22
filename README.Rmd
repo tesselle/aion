@@ -126,7 +126,7 @@ Languages currently available are English (`en`) and French (`fr`).
 
 ## Related Works
 
-* [**era**](https://github.com/joeroe/era) provides a consistent representation of year-based time scales as a numeric vector with an associated era.
+* [**era**](https://cran.r-project.org/package=era) provides a consistent representation of year-based time scales as a numeric vector with an associated era.
 
 ## Contributing
 

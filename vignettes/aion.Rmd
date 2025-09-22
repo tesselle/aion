@@ -102,7 +102,7 @@ format(rd) # Default calendar (Gregorian Common Era)
 format(rd, prefix = "ka", calendar = calendar("BP"))
 ```
 
-The *rata die* vector provides the internal time representation of the **aion** time-series (if you want to work with numeric vectors that represent year-based time scales, you may be interested in the [**era**](https://github.com/joeroe/era) package).
+The *rata die* vector provides the internal time representation of the **aion** time-series (if you want to work with numeric vectors that represent year-based time scales, you may be interested in the [**era**](https://cran.r-project.org/package=era) package).
 
 # Time series
 
@@ -178,4 +178,4 @@ Note that **aion** uses the astronomical notation for Gregorian years (there *is
 
 Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.
 
-[^1]: It is intended that the *rata die* should be an integer value, but this is not enforced in the internal representation.
+[^1]: Although it is intended that the *rata die* should be an integer value, this is not enforced in the internal representation. R's numeric type is a double-precision floating-point that follows the [IEEE 754 standard](https://en.wikipedia.org/wiki/Double-precision_floating-point_format). This means that a numeric can safely represent an integer value up to `2^53 - 1`. This covers more than the age of the Universe: `fixed(13.8, calendar = CE(), scale = 10^9)`.
