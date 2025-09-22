@@ -2,6 +2,20 @@
 
 # Format =======================================================================
 #' @export
+#' @method format TimeIntervals
+format.TimeIntervals <- function(x, calendar = get_calendar(), ...) {
+  debut <- start(x, calendar = calendar)
+  fin <- end(x, calendar = calendar)
+
+  msg <- sprintf("[%g, %g]", debut, fin)
+  trimws(msg)
+}
+
+#' @export
+#' @rdname format
+setMethod("format", "TimeIntervals", format.TimeIntervals)
+
+#' @export
 #' @method format TimeScale
 format.TimeScale <- function(x, ...) {
   msg <- sprintf("%s %s", calendar_unit(x), calendar_label(x))

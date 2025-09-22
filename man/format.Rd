@@ -3,10 +3,13 @@
 \docType{methods}
 \name{format}
 \alias{format}
+\alias{format,TimeIntervals-method}
 \alias{format,TimeScale-method}
 \alias{format,RataDie-method}
 \title{Date Conversion to Character}
 \usage{
+\S4method{format}{TimeIntervals}(x, calendar = get_calendar(), ...)
+
 \S4method{format}{TimeScale}(x, ...)
 
 \S4method{format}{RataDie}(
@@ -20,6 +23,9 @@
 \arguments{
 \item{x}{A \code{\linkS4class{RataDie}} object.}
 
+\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
+(see \code{\link[=calendar]{calendar()}}).}
+
 \item{...}{Currently not used.}
 
 \item{prefix}{A \code{\link{character}} string specifying the prefix.
@@ -28,9 +34,6 @@ If \code{TRUE}, a good guess for an appropriate format is made.}
 
 \item{label}{A \code{\link{logical}} scalar: should the label of the calendar be
 displayed?}
-
-\item{calendar}{A \code{\linkS4class{TimeScale}} object specifying the target calendar
-(see \code{\link[=calendar]{calendar()}}).}
 }
 \value{
 A \code{\link{character}} vector representing the date.

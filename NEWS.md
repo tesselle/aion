@@ -1,4 +1,8 @@
 # aion 1.5.0.9000
+## New classes and methods
+* Add a `format()` method for `TimeIntervals` objects. 
+
+# aion 1.5.0
 ## Enhancements
 * The `plot()` method for `TimeIntervals` gained a new `groups` argument.
 
