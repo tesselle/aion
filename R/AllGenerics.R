@@ -579,6 +579,28 @@ setGeneric(
   def = function(x, ...) standardGeneric("overlap")
 )
 
+#' Interval Graph
+#'
+#' @param object A [`TimeIntervals-class`] object.
+#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
+#'  the same event be aggregated?
+#' @param ... Currently not used.
+#' @details
+#'  An interval graph is the graph showing intersecting intervals on a line.
+#'  As time is linear and not circular, an interval graph contains no cycles
+#'  with more than three edges and no shortcuts.
+#' @return
+#'  An \pkg{igraph} graph object.
+#' @example inst/examples/ex-graph.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family chronological reasoning tools
+#' @aliases graph-method
+setGeneric(
+  name = "graph",
+  def = function(object, ...) standardGeneric("graph")
+)
+
 # Tools ========================================================================
 #' Terminal Times
 #'

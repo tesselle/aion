@@ -38,6 +38,7 @@ Imports:
 Suggests: 
     folio (>= 1.5.0),
     fontquiver,
+    igraph,
     knitr,
     markdown,
     rsvg,
@@ -68,6 +69,7 @@ Collate:
     'convert.R'
     'data.R'
     'format.R'
+    'graph.R'
     'intervals.R'
     'mutators.R'
     'operators.R'

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.5.0.9000\n"
-"POT-Creation-Date: 2025-09-22 14:13+0200\n"
+"POT-Creation-Date: 2025-09-23 19:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,6 +137,14 @@ msgstr ""
 
 #: calendar.R:193
 msgid "Undefined"
+msgstr ""
+
+#: graph.R:28
+msgid "This is not an interval graph!"
+msgstr ""
+
+#: graph.R:29
+msgid "The graph is not chordal."
 msgstr ""
 
 #: intervals.R:44 series.R:43

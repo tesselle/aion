@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2025-09-22 14:13+0200\n"
+"POT-Creation-Date: 2025-09-23 19:45+0200\n"
 "PO-Revision-Date: 2025-06-03 15:58+0000\n"
 "Last-Translator: nfrerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>\n"
 "Language-Team: French <https://translate.codeberg.org/projects/tesselle/aion/"
@@ -140,6 +140,14 @@ msgstr "Années juliennes"
 #: calendar.R:193
 msgid "Undefined"
 msgstr "Non défini"
+
+#: graph.R:28
+msgid "This is not an interval graph!"
+msgstr "Ceci n'est pas un graphe d'intervalles !"
+
+#: graph.R:29
+msgid "The graph is not chordal."
+msgstr "Le graphe n'est pas cordal."
 
 #: intervals.R:44 series.R:43
 msgid "%s is already expressed in rata die: %s is ignored."
