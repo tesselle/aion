@@ -21,6 +21,7 @@ Get the length of an object.
 Other mutators: 
 \code{\link{as.data.frame}()},
 \code{\link{labels}()},
+\code{\link{names}()},
 \code{\link{subset}()}
 }
 \author{

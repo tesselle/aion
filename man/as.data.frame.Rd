@@ -74,6 +74,7 @@ head(df)
 Other mutators: 
 \code{\link{labels}()},
 \code{\link{length}()},
+\code{\link{names}()},
 \code{\link{subset}()}
 }
 \author{

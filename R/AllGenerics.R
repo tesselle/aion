@@ -34,6 +34,21 @@ NULL
 #' @rdname labels
 NULL
 
+#' Names
+#'
+#' Get or set the names of an object.
+#' @param x An \R object.
+#' @param value	A [`character`] vector of up to the same length as `x`, or
+#'  `NULL`.
+#' @return
+#'  The updated object.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family mutators
+#' @name names
+#' @rdname names
+NULL
+
 #' Length
 #'
 #' Get the length of an object.

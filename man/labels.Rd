@@ -26,6 +26,7 @@ Find a suitable set of labels from an object.
 Other mutators: 
 \code{\link{as.data.frame}()},
 \code{\link{length}()},
+\code{\link{names}()},
 \code{\link{subset}()}
 }
 \author{

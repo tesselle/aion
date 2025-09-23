@@ -29,8 +29,8 @@ setMethod(
 
     ## Aggregate in case of disjoint intervals referring to the same event
     if (isTRUE(aggregate)) {
-      mtx <- t(rowsum(mtx, group = rownames(mtx), reorder = FALSE))
-      mtx <- rowsum(mtx, group = rownames(mtx), reorder = FALSE)
+      mtx <- t(rowsum(mtx, group = labels, reorder = FALSE))
+      mtx <- rowsum(mtx, group = labels, reorder = FALSE)
     }
 
     mtx

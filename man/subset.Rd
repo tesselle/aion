@@ -34,7 +34,8 @@ Operators acting on objects to extract or replace parts.
 Other mutators: 
 \code{\link{as.data.frame}()},
 \code{\link{labels}()},
-\code{\link{length}()}
+\code{\link{length}()},
+\code{\link{names}()}
 }
 \author{
 N. Frerebeau
