@@ -568,54 +568,6 @@ setGeneric(
   valueClass = "TimeIntervals"
 )
 
-# Chronological Reasoning ======================================================
-#' Time Overlap
-#'
-#' Computes the length of overlap of time intervals.
-#' @param x A [`TimeIntervals-class`] object.
-#' @param calendar A [`TimeScale-class`] object specifying the target calendar
-#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
-#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
-#'  the same event be aggregated?
-#' @param ... Currently not used.
-#' @details
-#'  The overlap of two time intervals is a difference between the minimum value
-#'  of the two upper boundaries and the maximum value of the two lower
-#'  boundaries, plus 1.
-#' @return
-#'  A symmetric `numeric` [`matrix`] of years.
-#' @example inst/examples/ex-intervals.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family chronological reasoning tools
-#' @aliases overlap-method
-setGeneric(
-  name = "overlap",
-  def = function(x, ...) standardGeneric("overlap")
-)
-
-#' Interval Graph
-#'
-#' @param object A [`TimeIntervals-class`] object.
-#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
-#'  the same event be aggregated?
-#' @param ... Currently not used.
-#' @details
-#'  An interval graph is the graph showing intersecting intervals on a line.
-#'  As time is linear and not circular, an interval graph contains no cycles
-#'  with more than three edges and no shortcuts.
-#' @return
-#'  An \pkg{igraph} graph object.
-#' @example inst/examples/ex-graph.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family chronological reasoning tools
-#' @aliases graph-method
-setGeneric(
-  name = "graph",
-  def = function(object, ...) standardGeneric("graph")
-)
-
 # Tools ========================================================================
 #' Terminal Times
 #'
@@ -795,26 +747,162 @@ NULL
 #' @rdname year_axis
 NULL
 
-# Allen Algebra ================================================================
-#' Allen Relation Between Definite Intervals
+# Chronological Reasoning ======================================================
+#' Time Overlap
 #'
-#' @param x,y A [`RataDie-class`] object giving the lower and upper boundaries
-#'  of the time intervals, respectively (see [fixed()]). If `y` is missing, `x`
-#'  must be a [`TimeIntervals-class`] object.
+#' Computes the length of overlap of time intervals.
+#' @param x A [`TimeIntervals-class`] object.
+#' @param calendar A [`TimeScale-class`] object specifying the target calendar
+#'  (see [calendar()]). If `NULL` (the default), *rata die* are returned.
+#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
+#'  the same event be aggregated?
 #' @param ... Currently not used.
 #' @details
-#' \tabular{lrlr}{
-#'  **Relation** \tab     \tab     \tab  **Converse** \cr
-#'  precedes     \tab (p) \tab (P) \tab   preceded by \cr
-#'  meets        \tab (m) \tab (M) \tab        met by \cr
-#'  overlaps     \tab (o) \tab (O) \tab overlapped by \cr
-#'  finished by  \tab (F) \tab (f) \tab      finishes \cr
-#'  contains     \tab (D) \tab (d) \tab        during \cr
-#'  starts       \tab (s) \tab (S) \tab    started by \cr
-#'  equals       \tab (e) \tab     \tab               \cr
+#'  The overlap of two time intervals is a difference between the minimum value
+#'  of the two upper boundaries and the maximum value of the two lower
+#'  boundaries, plus 1.
+#' @return
+#'  A symmetric `numeric` [`matrix`] of years.
+#' @example inst/examples/ex-intervals.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family chronological reasoning tools
+#' @aliases overlap-method
+setGeneric(
+  name = "overlap",
+  def = function(x, ...) standardGeneric("overlap")
+)
+
+#' Interval Graph
+#'
+#' @param x A [`TimeIntervals-class`] object.
+#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
+#'  the same event be aggregated?
+#' @param ... Currently not used.
+#' @details
+#'  An interval graph is the graph showing intersecting intervals on a line.
+#'  As time is linear and not circular, an interval graph contains no cycles
+#'  with more than three edges and no shortcuts.
+#' @return
+#'  An \pkg{igraph} graph object.
+#' @note
+#'  Experimental: might change in a future release.
+#' @example inst/examples/ex-graph.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family chronological reasoning tools
+#' @aliases graph-method
+setGeneric(
+  name = "graph",
+  def = function(x, ...) standardGeneric("graph")
+)
+
+# Temporal Relations ===========================================================
+#' Temporal Relations
+#'
+#' Test for the logical relation between time intervals according to Allen's
+#' typology.
+#' @param x A [`TimeIntervals-class`] object.
+#' @param ... Currently not used.
+#' @section Relations:
+#'
+#' \tabular{lrll}{
+#' **Relation** \tab \tab \tab **Converse** \cr
+#' A *precedes* B
+#'
+#' ```
+#' A ===
+#' B     ===
+#' ```
+#' \tab (p) \tab (P) \tab
+#' A *preceded by* B
+#'
+#' ```
+#' A     ===
+#' B ===
+#' ```
+#' \cr
+#' A *meets* B
+#'
+#' ```
+#' A ===
+#' B    ===
+#' ```
+#' \tab (m) \tab (M) \tab
+#' A *met by* B
+#'
+#' ```
+#' A ===
+#' B    ===
+#' ```
+#' \cr
+#' A *overlaps* B
+#'
+#' ```
+#' A ===
+#' B   ===
+#' ```
+#' \tab (o) \tab (O) \tab
+#' A *overlapped by* B
+#'
+#' ```
+#' A   ===
+#' B ===
+#' ```
+#' \cr
+#' A *finished by* B
+#'
+#' ```
+#' A =====
+#' B   ===
+#' ```
+#' \tab (F) \tab (f) \tab
+#' A *finishes* B
+#'
+#' ```
+#' A   ===
+#' B =====
+#' ```
+#' \cr
+#' A *contains* B
+#'
+#' ```
+#' A =====
+#' B  ===
+#' ```
+#' \tab (D) \tab (d) \tab
+#' A *during* B
+#'
+#' ```
+#' A  ===
+#' B =====
+#' ```
+#' \cr
+#' A *starts* B
+#'
+#' ```
+#' A ===
+#' B =====
+#' ```
+#' \tab (s) \tab (S) \tab
+#' A *started by* B
+#'
+#' ```
+#' A =====
+#' B ===
+#' ```
+#' \cr
+#' A *equals* B
+#'
+#' ```
+#' A ===
+#' B ===
+#' ```
+#' \tab (e) \tab \tab
+#' \cr
 #' }
 #' @return
-#'  A [`character`] matrix specifying the Allen relations.
+#'  A square [`logical`] matrix.
 #' @references
 #'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
 #'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
@@ -822,7 +910,145 @@ NULL
 #'  Alspaugh, T. (2019). Allen's Interval Algebra.
 #'  URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
 #' @example inst/examples/ex-relation.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @seealso [allen_relation()]
+#' @family chronological reasoning tools
+#' @name relations
+#' @rdname relations
+NULL
+
+#' @rdname relations
+#' @aliases precedes-method
+setGeneric(
+  name = "precedes",
+  def = function(x, ...) standardGeneric("precedes")
+)
+
+#' @rdname relations
+#' @aliases preceded_by-method
+setGeneric(
+  name = "preceded_by",
+  def = function(x, ...) standardGeneric("preceded_by")
+)
+
+#' @rdname relations
+#' @aliases meets-method
+setGeneric(
+  name = "meets",
+  def = function(x, ...) standardGeneric("meets")
+)
+
+#' @rdname relations
+#' @aliases met_by-method
+setGeneric(
+  name = "met_by",
+  def = function(x, ...) standardGeneric("met_by")
+)
+
+#' @rdname relations
+#' @aliases overlaps-method
+setGeneric(
+  name = "overlaps",
+  def = function(x, ...) standardGeneric("overlaps")
+)
+
+#' @rdname relations
+#' @aliases overlapped_by-method
+setGeneric(
+  name = "overlapped_by",
+  def = function(x, ...) standardGeneric("overlapped_by")
+)
+
+#' @rdname relations
+#' @aliases finishes-method
+setGeneric(
+  name = "finishes",
+  def = function(x, ...) standardGeneric("finishes")
+)
+
+#' @rdname relations
+#' @aliases finished_by-method
+setGeneric(
+  name = "finished_by",
+  def = function(x, ...) standardGeneric("finished_by")
+)
+
+#' @rdname relations
+#' @aliases contains-method
+setGeneric(
+  name = "contains",
+  def = function(x, ...) standardGeneric("contains")
+)
+
+#' @rdname relations
+#' @aliases during-method
+setGeneric(
+  name = "during",
+  def = function(x, ...) standardGeneric("during")
+)
+
+#' @rdname relations
+#' @aliases starts-method
+setGeneric(
+  name = "starts",
+  def = function(x, ...) standardGeneric("starts")
+)
+
+#' @rdname relations
+#' @aliases started_by-method
+setGeneric(
+  name = "started_by",
+  def = function(x, ...) standardGeneric("started_by")
+)
+
+#' @rdname relations
+#' @aliases equals-method
+setGeneric(
+  name = "equals",
+  def = function(x, ...) standardGeneric("equals")
+)
+
+# Allen Algebra ================================================================
+#' Allen Relation Between Definite Intervals
+#'
+#' @param x,y A [`numeric`] vector giving the lower and upper boundaries of the
+#'  time intervals, respectively. If `y` is missing, `x` must be a
+#'  [`TimeIntervals-class`] object.
+#' @param ... Currently not used.
+#' @details
+#'  Allen (1983) proposed thirteen basic relations between time intervals that
+#'  are:
+#'
+#'  * **Distinct**: no pair of definite intervals can be related by more than
+#'    one of the relationships.
+#'  * **Exhaustive:** any pair of definite intervals are described by one of the
+#'    relations.
+#'  * **Qualitative:** no numeric time spans are considered.
+#'
+#'  \tabular{lrlr}{
+#'   **Relation** \tab     \tab     \tab  **Converse** \cr
+#'   precedes     \tab (p) \tab (P) \tab   preceded by \cr
+#'   meets        \tab (m) \tab (M) \tab        met by \cr
+#'   overlaps     \tab (o) \tab (O) \tab overlapped by \cr
+#'   finished by  \tab (F) \tab (f) \tab      finishes \cr
+#'   contains     \tab (D) \tab (d) \tab        during \cr
+#'   starts       \tab (s) \tab (S) \tab    started by \cr
+#'   equals       \tab (e) \tab     \tab               \cr
+#'  }
+#'
+#' @inheritSection relations Relations
+#' @return
+#'  A square [`character`] matrix specifying the Allen relations.
+#' @references
+#'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
+#'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
+#'
+#'  Alspaugh, T. (2019). Allen's Interval Algebra.
+#'  URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
+#' @example inst/examples/ex-allen.R
 #' @author T. S. Dye, N. Frerebeau
+#' @seealso [relations()]
 #' @family Allen's intervals
 #' @docType methods
 #' @aliases allen_relation-method

@@ -4,30 +4,40 @@
 \name{allen_relation}
 \alias{allen_relation}
 \alias{allen_relation-method}
-\alias{allen_relation,RataDie,RataDie-method}
+\alias{allen_relation,numeric,numeric-method}
 \alias{allen_relation,TimeIntervals,missing-method}
 \title{Allen Relation Between Definite Intervals}
 \usage{
 allen_relation(x, y, ...)
 
-\S4method{allen_relation}{RataDie,RataDie}(x, y)
+\S4method{allen_relation}{numeric,numeric}(x, y)
 
 \S4method{allen_relation}{TimeIntervals,missing}(x)
 }
 \arguments{
-\item{x, y}{A \code{\linkS4class{RataDie}} object giving the lower and upper boundaries
-of the time intervals, respectively (see \code{\link[=fixed]{fixed()}}). If \code{y} is missing, \code{x}
-must be a \code{\linkS4class{TimeIntervals}} object.}
+\item{x, y}{A \code{\link{numeric}} vector giving the lower and upper boundaries of the
+time intervals, respectively. If \code{y} is missing, \code{x} must be a
+\code{\linkS4class{TimeIntervals}} object.}
 
 \item{...}{Currently not used.}
 }
 \value{
-A \code{\link{character}} matrix specifying the Allen relations.
+A square \code{\link{character}} matrix specifying the Allen relations.
 }
 \description{
 Allen Relation Between Definite Intervals
 }
 \details{
+Allen (1983) proposed thirteen basic relations between time intervals that
+are:
+\itemize{
+\item \strong{Distinct}: no pair of definite intervals can be related by more than
+one of the relationships.
+\item \strong{Exhaustive:} any pair of definite intervals are described by one of the
+relations.
+\item \strong{Qualitative:} no numeric time spans are considered.
+}
+
 \tabular{lrlr}{
 \strong{Relation} \tab     \tab     \tab  \strong{Converse} \cr
 precedes     \tab (p) \tab (P) \tab   preceded by \cr
@@ -39,18 +49,132 @@ starts       \tab (s) \tab (S) \tab    started by \cr
 equals       \tab (e) \tab     \tab               \cr
 }
 }
+\section{Relations}{
+
+
+\tabular{lrll}{
+\strong{Relation} \tab \tab \tab \strong{Converse} \cr
+A \emph{precedes} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B     ===
+}\if{html}{\out{</div>}}
+
+\tab (p) \tab (P) \tab
+A \emph{preceded by} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A     ===
+B ===
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{meets} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B    ===
+}\if{html}{\out{</div>}}
+
+\tab (m) \tab (M) \tab
+A \emph{met by} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B    ===
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{overlaps} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B   ===
+}\if{html}{\out{</div>}}
+
+\tab (o) \tab (O) \tab
+A \emph{overlapped by} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A   ===
+B ===
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{finished by} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
+B   ===
+}\if{html}{\out{</div>}}
+
+\tab (F) \tab (f) \tab
+A \emph{finishes} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A   ===
+B =====
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{contains} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
+B  ===
+}\if{html}{\out{</div>}}
+
+\tab (D) \tab (d) \tab
+A \emph{during} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A  ===
+B =====
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{starts} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B =====
+}\if{html}{\out{</div>}}
+
+\tab (s) \tab (S) \tab
+A \emph{started by} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
+B ===
+}\if{html}{\out{</div>}}
+
+\cr
+A \emph{equals} B
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
+B ===
+}\if{html}{\out{</div>}}
+
+\tab (e) \tab \tab
+\cr
+}
+}
+
 \examples{
-## Create time intervals
+## Seven intervals
 int <- intervals(
-  start = c(625, 700, 1200, 1225, 1250, 500, 1000, 1200,
-            1325, 1375, 1200, 1300, 1375, 1275, 1325),
-  end = c(750, 825, 1250, 1275, 1325, 700, 1300, 1325,
-          1400, 1500, 1300, 1375, 1500, 1325, 1425),
-  calendar = CE()
+  start = c(1, 2, 3, 6, 9, 13, 17),
+  end = c(7, 4, 15, 14, 11, 18, 19),
+  calendar = CE(),
+  names = c("A", "B", "C", "D", "E", "F", "G")
 )
 
 ## Basic relations
 allen_relation(int)
+
+## Complement
+(comp <- allen_complement("F"))
+
+## Converse
+(conv <- allen_converse(comp))
+
+## Composition
+allen_composition("oFD", "oFDseS")
+
+## Intersection
+allen_intersect("pFsSf", "pmoFD")
+
+# Union
+allen_union("pFsSf", "pmoFD")
 }
 \references{
 Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
@@ -60,6 +184,8 @@ Alspaugh, T. (2019). Allen's Interval Algebra.
 URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
 }
 \seealso{
+\code{\link[=relations]{relations()}}
+
 Other Allen's intervals: 
 \code{\link{allen_complement}()},
 \code{\link{allen_composition}()},

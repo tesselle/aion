@@ -7,13 +7,13 @@ NULL
 #' @aliases graph,TimeIntervals-method
 setMethod(
   f = "graph",
-  signature = c(object = "TimeIntervals"),
-  definition = function(object, aggregate = TRUE, ...) {
+  signature = c(x = "TimeIntervals"),
+  definition = function(x, aggregate = TRUE, ...) {
     ## Validation
     arkhe::assert_package("igraph")
 
     ## Compute time overlaps
-    int <- overlap(object, calendar = NULL, aggregate = aggregate)
+    int <- overlap(x, calendar = NULL, aggregate = aggregate)
 
     adj <- int > 0
     graph <- igraph::graph_from_adjacency_matrix(

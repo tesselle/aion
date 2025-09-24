@@ -7,12 +7,12 @@
 \alias{graph,TimeIntervals-method}
 \title{Interval Graph}
 \usage{
-graph(object, ...)
+graph(x, ...)
 
-\S4method{graph}{TimeIntervals}(object, aggregate = TRUE, ...)
+\S4method{graph}{TimeIntervals}(x, aggregate = TRUE, ...)
 }
 \arguments{
-\item{object}{A \code{\linkS4class{TimeIntervals}} object.}
+\item{x}{A \code{\linkS4class{TimeIntervals}} object.}
 
 \item{...}{Currently not used.}
 
@@ -29,6 +29,9 @@ Interval Graph
 An interval graph is the graph showing intersecting intervals on a line.
 As time is linear and not circular, an interval graph contains no cycles
 with more than three edges and no shortcuts.
+}
+\note{
+Experimental: might change in a future release.
 }
 \examples{
 if (requireNamespace("igraph", quietly = TRUE)) {
@@ -50,7 +53,8 @@ if (requireNamespace("igraph", quietly = TRUE)) {
 }
 \seealso{
 Other chronological reasoning tools: 
-\code{\link{overlap}()}
+\code{\link{overlap}()},
+\code{\link{relations}}
 }
 \author{
 N. Frerebeau

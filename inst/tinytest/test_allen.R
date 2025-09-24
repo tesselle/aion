@@ -6,14 +6,14 @@ xmax <- c(2, 4, 5, 6, 7, 5, 6, 7, 4, 6, 6, 6, 6)
 ymin <- c(4, 4, 4, 4, 4, 4, 4, 4, 1, 2, 3, 3, 1)
 ymax <- c(6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 5, 4, 2)
 
-expect_equal(aion:::.relation(xmin, xmax, ymin, ymax), allen_relation_code())
+expect_equal(aion:::.allen_relation(xmin, xmax, ymin, ymax), allen_relation_code())
 
 # Relations ====================================================================
-z <- matrix(c(NA, "f", "F", NA), nrow = 2)
-expect_equal(allen_relation(as_fixed(c(1, 3)), as_fixed(c(4, 4))), z)
+z <- matrix(c(NA, "d", "O", "D", NA, "O", "o", "o", NA), nrow = 3)
+expect_equal(allen_relation(c(1, 2, 3), c(7, 4, 15)), z)
 
-expect_error(allen_relation(as_fixed(c(4, 3)), as_fixed(c(1, 4, 3))))
-expect_error(allen_relation(as_fixed(c(4, 3)), as_fixed(c(1, 4))))
+expect_error(allen_relation(c(4, 3), c(1, 4, 3)))
+expect_error(allen_relation(c(4, 3), c(1, 4)))
 
 # Complement ====================================================================
 x <- c("p", "pmoFD", "")

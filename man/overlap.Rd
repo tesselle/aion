@@ -51,7 +51,8 @@ overlap(int, calendar = CE())
 }
 \seealso{
 Other chronological reasoning tools: 
-\code{\link{graph}()}
+\code{\link{graph}()},
+\code{\link{relations}}
 }
 \author{
 N. Frerebeau

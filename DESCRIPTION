@@ -75,6 +75,7 @@ Collate:
     'operators.R'
     'overlap.R'
     'plot.R'
+    'relations.R'
     'series.R'
     'show.R'
     'span.R'

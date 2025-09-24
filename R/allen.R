@@ -65,31 +65,13 @@ allen_relation_distinct <- function(...) {
 # Relation =====================================================================
 #' @export
 #' @rdname allen_relation
-#' @aliases allen_relation,RataDie,RataDie-method
+#' @aliases allen_relation,numeric,numeric-method
 setMethod(
   f = "allen_relation",
-  signature = signature(x = "RataDie", y = "RataDie"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y) {
-    ## Validation
-    n <- length(x)
-    arkhe::assert_length(y, n)
-    assert_ordered(x, y)
-
-    comb <- utils::combn(n, m = 2, simplify = TRUE)
-    xmin <- x[comb[1, ]]
-    xmax <- y[comb[1, ]]
-    ymin <- x[comb[2, ]]
-    ymax <- y[comb[2, ]]
-
-    mtx <- matrix(data = NA_character_, nrow = n, ncol = n)
-    labels <- names(x) %||% names(y)
-    rownames(mtx) <- labels
-    colnames(mtx) <- labels
-
-    rel <- .relation(xmin, xmax, ymin, ymax)
-    mtx[lower.tri(mtx)] <- rel
-    mtx <- t(mtx)
-    mtx[lower.tri(mtx)] <- allen_converse(rel)
+    mtx <- .relation(x, y, f = .allen_relation)
+    mtx[lower.tri(mtx)] <- allen_converse(t(mtx)[lower.tri(mtx)])
     mtx
   }
 )
@@ -99,7 +81,7 @@ setMethod(
 #' @aliases allen_relation,TimeIntervals,missing-method
 setMethod(
   f = "allen_relation",
-  signature = signature(x = "TimeIntervals", y = "missing"),
+  signature = c(x = "TimeIntervals", y = "missing"),
   definition = function(x) {
     int_start <- start(x, calendar = NULL)
     int_end <- end(x, calendar = NULL)
@@ -107,6 +89,47 @@ setMethod(
     methods::callGeneric(x = int_start, y = int_end)
   }
 )
+
+.allen_relation <- function(xmin, xmax, ymin, ymax) {
+  n <- length(xmin)
+
+  ## Basic relations
+  p <- .precedes(xmin, xmax, ymin, ymax)      # X precedes Y
+  m <- .meets(xmin, xmax, ymin, ymax)         # X meets Y
+  o <- .overlaps(xmin, xmax, ymin, ymax)      # X overlaps Y
+  fi <- .finished_by(xmin, xmax, ymin, ymax)  # X finished by Y
+  D <- .contains(xmin, xmax, ymin, ymax)      # X contains Y
+
+  s <- .starts(xmin, xmax, ymin, ymax)        # X starts Y
+  e <- .equals(xmin, xmax, ymin, ymax)        # X equals Y
+  S <- .started_by(xmin, xmax, ymin, ymax)    # X started by Y
+
+  d <- .during(xmin, xmax, ymin, ymax)        # X during Y
+  f <- .finishes(xmin, xmax, ymin, ymax)      # X finished Y
+  O <- .overlapped_by(xmin, xmax, ymin, ymax) # X overlapped by Y
+
+  M <- .met_by(xmin, xmax, ymin, ymax)        # X met by Y
+  P <- .preceded_by(xmin, xmax, ymin, ymax)   # X preceded by Y
+
+  ## Merge relations
+  relations <- character(n)
+  relations[p] <- "p"
+  relations[m] <- "m"
+  relations[o] <- "o"
+  relations[fi] <- "F"
+  relations[D] <- "D"
+  relations[s] <- "s"
+  relations[e] <- "e"
+  relations[S] <- "S"
+  relations[d] <- "d"
+  relations[f] <- "f"
+  relations[O] <- "O"
+  relations[M] <- "M"
+  relations[P] <- "P"
+
+  # factor(relations, levels = .alspaugh_code)
+  relations
+}
 
 # Complement ===================================================================
 #' @export
@@ -253,85 +276,3 @@ setMethod(
     )
   }
 )
-
-# Helpers ======================================================================
-.relation <- function(xmin, xmax, ymin, ymax) {
-  n <- length(xmin)
-
-  ## Basic relations
-  p <- .precedes(xmin, xmax, ymin, ymax)      # X precedes Y
-  m <- .meets(xmin, xmax, ymin, ymax)         # X meets Y
-  o <- .overlaps(xmin, xmax, ymin, ymax)      # X overlaps Y
-  fi <- .finished_by(xmin, xmax, ymin, ymax)  # X finished by Y
-  D <- .contains(xmin, xmax, ymin, ymax)      # X contains Y
-
-  s <- .starts(xmin, xmax, ymin, ymax)        # X starts Y
-  e <- .equals(xmin, xmax, ymin, ymax)        # X equals Y
-  S <- .started_by(xmin, xmax, ymin, ymax)    # X started by Y
-
-  d <- .during(xmin, xmax, ymin, ymax)        # X during Y
-  f <- .finishes(xmin, xmax, ymin, ymax)      # X finished Y
-  O <- .overlapped_by(xmin, xmax, ymin, ymax) # X overlapped by Y
-
-  M <- .met_by(xmin, xmax, ymin, ymax)        # X met by Y
-  P <- .preceded_by(xmin, xmax, ymin, ymax)   # X preceded by Y
-
-  ## Merge relations
-  relations <- character(n)
-  relations[p] <- "p"
-  relations[m] <- "m"
-  relations[o] <- "o"
-  relations[fi] <- "F"
-  relations[D] <- "D"
-  relations[s] <- "s"
-  relations[e] <- "e"
-  relations[S] <- "S"
-  relations[d] <- "d"
-  relations[f] <- "f"
-  relations[O] <- "O"
-  relations[M] <- "M"
-  relations[P] <- "P"
-
-  # factor(relations, levels = .alspaugh_code)
-  relations
-}
-
-.precedes <- function(xmin, xmax, ymin, ymax) {
-  xmin < ymin & xmax < ymin
-}
-.meets <- function(xmin, xmax, ymin, ymax) {
-  xmin < ymin & xmax == ymin
-}
-.overlaps <- function(xmin, xmax, ymin, ymax) {
-  xmin < ymin & xmax > ymin & xmax < ymax
-}
-.finished_by <- function(xmin, xmax, ymin, ymax) {
-  xmin < ymin & xmax == ymax
-}
-.contains <- function(xmin, xmax, ymin, ymax) {
-  xmin < ymin & xmax > ymax
-}
-.starts <- function(xmin, xmax, ymin, ymax) {
-  xmin == ymin & xmax < ymax
-}
-.equals <- function(xmin, xmax, ymin, ymax) {
-  xmin == ymin & xmax == ymax
-}
-.started_by <- function(xmin, xmax, ymin, ymax) {
-  xmin == ymin & xmax > ymax
-}
-.during <- function(xmin, xmax, ymin, ymax) {
-  xmin > ymin & xmax < ymax
-}
-.finishes <- function(xmin, xmax, ymin, ymax) {
-  xmin > ymin & xmax == ymax
-}
-.overlapped_by <- function(xmin, xmax, ymin, ymax) {
-  xmin > ymin & xmin < ymax & xmax > ymax
-}
-.met_by <- function(xmin, xmax, ymin, ymax) {
-  xmin == ymax
-}
-.preceded_by <- function(xmin, xmax, ymin, ymax) {
-  xmin > ymax
-}
