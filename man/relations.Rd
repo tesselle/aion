@@ -110,14 +110,22 @@ equals(x, ...)
 \item{...}{Currently not used.}
 }
 \value{
-A square \code{\link{logical}} matrix.
+A two-columns \code{matrix} where each row specifies one relation.
 }
 \description{
 Test for the logical relation between time intervals according to Allen's
 typology.
 }
-\section{Relations}{
-
+\details{
+Allen (1983) proposed thirteen basic relations between time intervals that
+are (Alspaugh 2019):
+\itemize{
+\item \strong{Distinct}: no pair of definite intervals can be related by more than
+one of the relationships.
+\item \strong{Exhaustive:} any pair of definite intervals are described by one of the
+relations.
+\item \strong{Qualitative:} no numeric time spans are considered.
+}
 
 \tabular{lrll}{
 \strong{Relation} \tab \tab \tab \strong{Converse} \cr
@@ -215,7 +223,6 @@ B ===
 \cr
 }
 }
-
 \examples{
 ## Seven intervals
 int <- intervals(

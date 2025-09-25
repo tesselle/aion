@@ -1,4 +1,5 @@
-if (requireNamespace("igraph", quietly = TRUE)) {
+if (requireNamespace("igraph", quietly = TRUE) &&
+    requireNamespace("relations", quietly = TRUE)) {
   ## Seven intervals
   int <- intervals(
     start = c(1, 2, 3, 6, 9, 13, 17),
@@ -7,10 +8,11 @@ if (requireNamespace("igraph", quietly = TRUE)) {
     names = c("A", "B", "C", "D", "E", "F", "G")
   )
 
-  ## Do the intervals overlap?
-  overlap(int) > 0
-
   ## Interval graph
-  g <- graph(int)
+  g <- graph(int, type = "interval")
   plot(g)
+
+  ## Stratigraphic graph
+  g <- graph(int, type = "strati")
+  plot(g, layout = igraph::layout_with_sugiyama)
 }

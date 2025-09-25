@@ -14,7 +14,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .precedes,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -34,7 +35,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .preceded_by,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -55,7 +57,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .meets,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -75,7 +78,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .met_by,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -96,7 +100,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .overlaps,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -116,7 +121,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .overlapped_by,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -137,7 +143,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .finishes,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -157,7 +164,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .finished_by,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -178,7 +186,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .contains,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -198,7 +207,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .during,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -219,7 +229,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .starts,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -239,7 +250,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .started_by,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -260,7 +272,8 @@ setMethod(
       x = start(x, calendar = NULL),
       y = end(x, calendar = NULL),
       f = .equals,
-      labels = labels(x)
+      labels = labels(x),
+      ...
     )
   }
 )
@@ -270,26 +283,32 @@ setMethod(
 }
 
 # Helpers ======================================================================
-.relation <- function(x, y, f, labels = NULL) {
+.relation <- function(x, y, f, labels = NULL, use_names = TRUE) {
   n <- length(x)
   arkhe::assert_function(f)
   arkhe::assert_length(y, n)
   assert_ordered(x, y)
 
-  comb <- utils::combn(n, m = 2, simplify = TRUE)
+  labels <- labels %||% names(x) %||% names(y)
+  if (!isTRUE(use_names)) labels <- seq_along(labels)
+
+  el <- seq_len(n)
+  comb <- cbind(
+    utils::combn(el, m = 2, simplify = TRUE),
+    utils::combn(rev(el), m = 2, simplify = TRUE)
+  )
   xmin <- x[comb[1, ]]
   xmax <- y[comb[1, ]]
   ymin <- x[comb[2, ]]
   ymax <- y[comb[2, ]]
 
-  mtx <- matrix(data = FALSE, nrow = n, ncol = n)
-  labels <- labels %||% names(x) %||% names(y)
-  rownames(mtx) <- labels
-  colnames(mtx) <- labels
+  mtx <- matrix(
+    data = c(labels[comb[1, ]], labels[comb[2, ]]),
+    ncol = 2
+  )
 
   rel <- f(xmin, xmax, ymin, ymax)
-  mtx[lower.tri(mtx)] <- rel
-  mtx <- t(mtx)
-  diag(mtx) <- NA
+  mtx <- mtx[rel, , drop = FALSE]
+  mtx <- mtx[order(mtx[, 1], mtx[, 2]), ]
   mtx
 }
