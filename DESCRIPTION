@@ -60,7 +60,6 @@ Collate:
     'AllGenerics.R'
     'aion-internal.R'
     'aion-package.R'
-    'allen.R'
     'axis.R'
     'calendar-gregorian.R'
     'calendar-julian.R'

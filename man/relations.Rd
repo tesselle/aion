@@ -243,8 +243,6 @@ Alspaugh, T. (2019). Allen's Interval Algebra.
 URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
 }
 \seealso{
-\code{\link[=allen_relation]{allen_relation()}}
-
 Other chronological reasoning tools: 
 \code{\link{graph}()},
 \code{\link{overlap}()}
