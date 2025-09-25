@@ -773,20 +773,40 @@ setGeneric(
   def = function(x, ...) standardGeneric("overlap")
 )
 
-#' Interval Graph
+#' Graph
 #'
-#' @param x A [`TimeIntervals-class`] object.
-#' @param aggregate A [`logical`] scalar: should disjoint intervals referring to
-#'  the same event be aggregated?
+#' Creates an interval or a stratigraphic graph.
+#' @param x A [`TimeIntervals-class`] object or a two-columns `character`
+#'  [`matrix`] where each row specifies one relation element.
+#' @param type A [`character`] string specifying the type of the graph to be
+#'  computed. It must be one of "`interval`" (the default) or "`stratigraphy`"
+#'  (see details). Any unambiguous substring can be given.
+#' @param direction A [`character`] string specifying the direction of the
+#'  relations in `x`. It must be one of "`above`" (the default) or "`below`"
+#'  (see details). Any unambiguous substring can be given.
+#'  Only used if `type` is "`stratigraphy`".
+#' @param simplify A [`logical`] scalar: should multiple edges and loop edges
+#'  be removed?
+#' @param reduce A [`logical`] scalar: should transitive reduction be performed?
+#'  Only used if `type` is "`stratigraphy`".
 #' @param ... Currently not used.
 #' @details
-#'  An interval graph is the graph showing intersecting intervals on a line.
-#'  As time is linear and not circular, an interval graph contains no cycles
-#'  with more than three edges and no shortcuts.
+#'  \describe{
+#'   \item{`interval`}{An interval graph is the graph showing intersecting
+#'   intervals on a line. As time is linear and not circular, an interval graph
+#'   contains no cycles with more than three edges and no shortcuts (it must be
+#'   a chordal graph).}
+#'   \item{`stratigraphy`}{A stratigraphic graph represents directed
+#'   relationships between (stratigraphic) units (it must be a directed acyclic
+#'   graph).}
+#'  }
 #' @return
 #'  An \pkg{igraph} graph object.
 #' @note
 #'  Experimental: might change in a future release.
+#'
+#'  The \pkg{igraph} and \pkg{relations} packages needs to be installed on your
+#'  machine.
 #' @example inst/examples/ex-graph.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -804,7 +824,15 @@ setGeneric(
 #' typology.
 #' @param x A [`TimeIntervals-class`] object.
 #' @param ... Currently not used.
-#' @section Relations:
+#' @details
+#'  Allen (1983) proposed thirteen basic relations between time intervals that
+#'  are (Alspaugh 2019):
+#'
+#'  * **Distinct**: no pair of definite intervals can be related by more than
+#'    one of the relationships.
+#'  * **Exhaustive:** any pair of definite intervals are described by one of the
+#'    relations.
+#'  * **Qualitative:** no numeric time spans are considered.
 #'
 #' \tabular{lrll}{
 #' **Relation** \tab \tab \tab **Converse** \cr
@@ -902,7 +930,7 @@ setGeneric(
 #' \cr
 #' }
 #' @return
-#'  A square [`logical`] matrix.
+#'  A two-columns `matrix` where each row specifies one relation.
 #' @references
 #'  Allen, J. F. (1983). Maintaining Knowledge about Temporal Intervals.
 #'  *Communications of the ACM*, 26(11): 832-843. \doi{10.1145/182.358434}.
