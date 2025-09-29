@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.5.0.9000\n"
-"POT-Creation-Date: 2025-09-23 19:45+0200\n"
+"POT-Creation-Date: 2025-09-29 13:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,58 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
-#: allen.R:37
-msgid "precedes"
-msgstr ""
-
-#: allen.R:38
-msgid "meets"
-msgstr ""
-
-#: allen.R:39
-msgid "overlaps"
-msgstr ""
-
-#: allen.R:40
-msgid "finished by"
-msgstr ""
-
-#: allen.R:41
-msgid "contains"
-msgstr ""
-
-#: allen.R:42
-msgid "starts"
-msgstr ""
-
-#: allen.R:43
-msgid "equals"
-msgstr ""
-
-#: allen.R:44
-msgid "started by"
-msgstr ""
-
-#: allen.R:45
-msgid "during"
-msgstr ""
-
-#: allen.R:46
-msgid "finishes"
-msgstr ""
-
-#: allen.R:47
-msgid "overlapped by"
-msgstr ""
-
-#: allen.R:48
-msgid "met by"
-msgstr ""
-
-#: allen.R:49
-msgid "preceded by"
-msgstr ""
 
 #: calendar-julian.R:33
 msgid "There is no year zero in the Julian calendar."
@@ -139,12 +87,20 @@ msgstr ""
 msgid "Undefined"
 msgstr ""
 
-#: graph.R:28
+#: graph.R:63
 msgid "This is not an interval graph!"
 msgstr ""
 
-#: graph.R:29
-msgid "The graph is not chordal."
+#: graph.R:64
+msgid "This is not a chordal graph."
+msgstr ""
+
+#: graph.R:71
+msgid "This is not a stratigraphic graph!"
+msgstr ""
+
+#: graph.R:72
+msgid "This is not a directed acyclic graph."
 msgstr ""
 
 #: intervals.R:44 series.R:43

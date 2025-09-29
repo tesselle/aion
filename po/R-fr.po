@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: aion 1.1.0.9000\n"
-"POT-Creation-Date: 2025-09-23 19:45+0200\n"
+"POT-Creation-Date: 2025-09-29 13:45+0200\n"
 "PO-Revision-Date: 2025-06-03 15:58+0000\n"
 "Last-Translator: nfrerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>\n"
 "Language-Team: French <https://translate.codeberg.org/projects/tesselle/aion/"
@@ -12,58 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.11.4\n"
-
-#: allen.R:37
-msgid "precedes"
-msgstr "précède"
-
-#: allen.R:38
-msgid "meets"
-msgstr "rencontre"
-
-#: allen.R:39
-msgid "overlaps"
-msgstr "chevauche"
-
-#: allen.R:40
-msgid "finished by"
-msgstr "terminé par"
-
-#: allen.R:41
-msgid "contains"
-msgstr "contient"
-
-#: allen.R:42
-msgid "starts"
-msgstr "démarre"
-
-#: allen.R:43
-msgid "equals"
-msgstr "égal"
-
-#: allen.R:44
-msgid "started by"
-msgstr "démarré par"
-
-#: allen.R:45
-msgid "during"
-msgstr "pendant"
-
-#: allen.R:46
-msgid "finishes"
-msgstr "termine"
-
-#: allen.R:47
-msgid "overlapped by"
-msgstr "chevauché par"
-
-#: allen.R:48
-msgid "met by"
-msgstr "rencontré par"
-
-#: allen.R:49
-msgid "preceded by"
-msgstr "précédé par"
 
 #: calendar-julian.R:33
 msgid "There is no year zero in the Julian calendar."
@@ -141,13 +89,21 @@ msgstr "Années juliennes"
 msgid "Undefined"
 msgstr "Non défini"
 
-#: graph.R:28
+#: graph.R:63
 msgid "This is not an interval graph!"
 msgstr "Ceci n'est pas un graphe d'intervalles !"
 
-#: graph.R:29
-msgid "The graph is not chordal."
-msgstr "Le graphe n'est pas cordal."
+#: graph.R:64
+msgid "This is not a chordal graph."
+msgstr "Ce n'est pas un graphe cordal."
+
+#: graph.R:71
+msgid "This is not a stratigraphic graph!"
+msgstr "Ceci n'est pas un graphe stratigraphique !"
+
+#: graph.R:72
+msgid "This is not a directed acyclic graph."
+msgstr "Ce n'est pas un graphe orienté acyclique."
 
 #: intervals.R:44 series.R:43
 msgid "%s is already expressed in rata die: %s is ignored."
