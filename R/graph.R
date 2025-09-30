@@ -2,101 +2,151 @@
 #' @include AllGenerics.R
 NULL
 
+# S3 class as S4 ===============================================================
+setClass("igraph")
+
+# Create =======================================================================
 #' @export
-#' @rdname graph
-#' @aliases graph,matrix-method
+#' @rdname graph_create
+#' @aliases graph_create,data.frame-method
 setMethod(
-  f = "graph",
-  signature = c(x = "matrix"),
-  definition = function(x, type = c("interval", "stratigraphy"),
+  f = "graph_create",
+  signature = c(object = "data.frame"),
+  definition = function(object, type = c("interval", "stratigraphy"),
                         direction = c("above", "below"),
-                        simplify = TRUE, reduce = TRUE, ...) {
+                        verbose = getOption("aion.verbose"), ...) {
+    ## Coerce to character matrix
+    object[] <- lapply(X = object, FUN = as.character)
+    object <- as.matrix(object)
+
+    methods::callGeneric(object, type = type, direction = direction,
+                         verbose = verbose, ...)
+  }
+)
+
+#' @export
+#' @rdname graph_create
+#' @aliases graph_create,matrix-method
+setMethod(
+  f = "graph_create",
+  signature = c(object = "matrix"),
+  definition = function(object, type = c("interval", "stratigraphy"),
+                        direction = c("above", "below"),
+                        verbose = getOption("aion.verbose"), ...) {
     ## Validation
     arkhe::assert_package("igraph")
-    arkhe::assert_dim(x, c(nrow(x), 2L))
-    arkhe::assert_type(x, "character")
-    arkhe::assert_missing(x)
+    arkhe::assert_type(object, "character")
+    arkhe::assert_dim(object, c(nrow(object), 2L))
     type <- match.arg(type, several.ok = FALSE)
     direction <- match.arg(direction, several.ok = FALSE)
 
+    ## Remove singletons
+    object <- arkhe::discard_rows(object, f = anyNA, verbose = verbose)
+
     ## Graph type
-    if (identical(type, "interval")) {
-      directed <- FALSE
-      mode <- "upper"
-    }
-    if (identical(type, "stratigraphy")) {
-      directed <- TRUE
-      mode <- "directed"
-      if (identical(direction, "below")) {
-        x <- x[, c(2, 1)] # Fix relations, if needed
-      }
+    if (identical(type, "interval")) directed <- FALSE
+    if (identical(type, "stratigraphy")) directed <- TRUE
+
+    ## Switch relations, if needed
+    ## (does not matter if type == "interval")
+    if (identical(direction, "below")) {
+      object <- object[, c(2, 1)]
     }
 
     ## Reorder
-    x <- x[order(x[, 1], x[, 2]), ]
+    object <- object[order(object[, 1], object[, 2]), ]
 
     ## Create graph
-    ## Transitive reduction
-    if (identical(type, "stratigraphy") && isTRUE(reduce)) {
-      arkhe::assert_package("relations")
-      endo <- relations::endorelation(
-        # domain = lapply(unique(as.character(x)), sets::as.set),
-        graph = as.data.frame(x)
-      )
-      red <- relations::transitive_reduction(endo)
-      mat <- relations::relation_incidence(red)
-      graph <- igraph::graph_from_adjacency_matrix(mat, mode = mode)
-    } else {
-      graph <- igraph::graph_from_edgelist(el = x, directed = directed)
-    }
-
-    ## Remove multiple edges and loop edges
-    if (isTRUE(simplify)) {
-      graph <- igraph::simplify(graph, remove.multiple = TRUE,
-                                remove.loops = TRUE)
-    }
+    graph <- igraph::graph_from_edgelist(el = object, directed = directed)
 
     ## Check
-    ## Check that there are no cycles with more than three nodes
-    is_chordal <- igraph::is_chordal(graph)$chordal
-    if (identical(type, "interval") && !isTRUE(is_chordal)) {
-      warn <- tr_("This is not an interval graph!")
-      warning(warn, "\n", tr_("This is not a chordal graph."),
-              call. = FALSE)
-    }
-
-    ## Check if DAG
-    is_dag <- igraph::is_dag(graph)
-    if (identical(type, "stratigraphy") && !isTRUE(is_dag)) {
-      warn <- tr_("This is not a stratigraphic graph!")
-      warning(warn, "\n", tr_("This is not a directed acyclic graph."),
-              call. = FALSE)
-      # return(igraph::feedback_arc_set(graph))
-    }
+    if (identical(type, "interval")) assert_graph_chordal(graph)
+    if (identical(type, "stratigraphy")) assert_graph_dag(graph)
 
     graph
   }
 )
 
 #' @export
-#' @rdname graph
-#' @aliases graph,TimeIntervals-method
+#' @rdname graph_create
+#' @aliases graph_create,TimeIntervals-method
 setMethod(
-  f = "graph",
-  signature = c(x = "TimeIntervals"),
-  definition = function(x, type = c("interval", "stratigraphy"),
-                        simplify = TRUE, reduce = TRUE, ...) {
+  f = "graph_create",
+  signature = c(object = "TimeIntervals"),
+  definition = function(object, type = c("interval", "stratigraphy"),
+                        verbose = getOption("aion.verbose"), ...) {
     ## Validation
     type <- match.arg(type, several.ok = FALSE)
 
     ## Detect relations
     rel <- switch(
       type,
-      interval = rbind(overlaps(x), finishes(x), contains(x), starts(x), equals(x)),
-      stratigraphy = rbind(preceded_by(x), met_by(x))
+      interval = rbind(overlaps(object), finishes(object), contains(object),
+                       starts(object), equals(object)),
+      stratigraphy = rbind(preceded_by(object), met_by(object))
     )
 
     methods::callGeneric(rel, type = type, direction = "above",
-                         simplify = simplify, reduce = reduce, ...)
+                         verbose = verbose, ...)
   }
 )
+
+# Prune ========================================================================
+#' @export
+#' @rdname graph_prune
+#' @aliases graph_prune,igraph-method
+setMethod(
+  f = "graph_prune",
+  signature = c(object = "igraph"),
+  definition = function(object, reduce = TRUE,
+                        remove_multiple = TRUE, remove_loops = TRUE, ...) {
+
+    ## Transitive reduction
+    if (isTRUE(reduce) && isTRUE(igraph::is_dag(object))) {
+      arkhe::assert_package("relations")
+
+      edges <- as.matrix(object, matrix.type = c("edgelist"))
+      endo <- relations::endorelation(
+        # domain = lapply(unique(as.character(edges)), sets::as.set),
+        graph = as.data.frame(edges)
+      )
+      red <- relations::transitive_reduction(endo)
+      mat <- relations::relation_incidence(red)
+      object <- igraph::graph_from_adjacency_matrix(mat, mode = "directed")
+    }
+
+    ## Remove multiple edges and loop edges
+    if (isTRUE(remove_multiple) || isTRUE(remove_loops)) {
+      object <- igraph::simplify(
+        object,
+        remove.multiple = remove_multiple,
+        remove.loops = remove_loops
+      )
+    }
+
+    object
+  }
+)
+
+# Check ========================================================================
+## Check if DAG
+assert_graph_dag <- function(x, must_fail = FALSE) {
+  is_dag <- igraph::is_dag(x)
+  if (!isTRUE(is_dag)) {
+    msg <- tr_("This is not a stratigraphic graph!")
+    do <- if (isTRUE(must_fail)) stop else warning
+    do(msg, "\n", tr_("This is not a directed acyclic graph."), call. = FALSE)
+  }
+  invisible(x)
+}
+
+## Check that there are no cycles with more than three nodes
+assert_graph_chordal <- function(x, must_fail = FALSE) {
+  is_chordal <- igraph::is_chordal(x)$chordal
+  if (!isTRUE(is_chordal)) {
+    msg <- tr_("This is not an interval graph!")
+    do <- if (isTRUE(must_fail)) stop else warning
+    do(msg, "\n", tr_("This is not a chordal graph."), call. = FALSE)
+  }
+  invisible(x)
+}

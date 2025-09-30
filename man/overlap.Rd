@@ -50,11 +50,10 @@ plot(int) # Default calendar
 overlap(int, calendar = CE())
 }
 \seealso{
-Other chronological reasoning tools: 
-\code{\link{graph}()},
+Other temporal relations: 
 \code{\link{relations}}
 }
 \author{
 N. Frerebeau
 }
-\concept{chronological reasoning tools}
+\concept{temporal relations}

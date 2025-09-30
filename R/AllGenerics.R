@@ -748,6 +748,82 @@ NULL
 NULL
 
 # Chronological Reasoning ======================================================
+#' Create a Graph
+#'
+#' Creates an interval or a stratigraphic graph.
+#' @param object A [`TimeIntervals-class`] object or a two-columns `character`
+#'  [`matrix`] of edges (i.e. where each row specifies one relation element).
+#' @param type A [`character`] string specifying the type of the graph to be
+#'  computed. It must be one of "`interval`" (the default) or "`stratigraphy`"
+#'  (see details). Any unambiguous substring can be given.
+#' @param direction A [`character`] string specifying the direction of the
+#'  relations in `x`. It must be one of "`above`" (the default) or "`below`"
+#'  (see details). Any unambiguous substring can be given.
+#'  Only relevant if `type` is "`stratigraphy`".
+#' @param verbose A [`logical`] scalar: should \R report extra information
+#'  on progress?
+#' @param ... Currently not used.
+#' @details
+#'  \describe{
+#'   \item{`interval`}{An interval graph is the graph showing intersecting
+#'   intervals on a line. As time is linear and not circular, an interval graph
+#'   contains no cycles with more than three edges and no shortcuts (it must be
+#'   a chordal graph).}
+#'   \item{`stratigraphy`}{A stratigraphic graph represents the directed
+#'   relationships between temporal units (archaeological deposits), from the
+#'   most recent to the oldest (Harris 1997). It can be formally defined as a
+#'   directed acyclic graph (DAG), in which each vertex represents a layer and
+#'   the edges represent stratigraphic relations.}
+#'  }
+#' @return
+#'  An \pkg{igraph} graph object.
+#' @note
+#'  Experimental.
+#'
+#'  The \pkg{igraph} and \pkg{relations} packages need to be installed on your
+#'  machine.
+#' @references
+#'  Harris, Edward C., 1997. *Principles of Archaeological Stratigraphy*.
+#'  Seconde edition. Academic Press.
+#' @example inst/examples/ex-graph.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family graph tools
+#' @aliases graph_create-method
+setGeneric(
+  name = "graph_create",
+  def = function(object, ...) standardGeneric("graph_create")
+)
+
+#' Prune a Graph
+#'
+#' Removes redundant relations from a graph.
+#' @param object An \pkg{igraph} object (typically returned by
+#'  [graph_create()]).
+#' @param reduce A [`logical`] scalar: should transitive reduction be performed?
+#'  Only used if `object` is a directed acyclic graph.
+#' @param remove_multiple A [`logical`] scalar: should multiple edges be
+#'  removed?
+#' @param remove_loops A [`logical`] scalar: should loop edges be removed?
+#' @param ... Currently not used.
+#' @return
+#'  An \pkg{igraph} graph object.
+#' @note
+#'  Experimental.
+#'
+#'  The \pkg{igraph} and \pkg{relations} packages need to be installed on your
+#'  machine.
+#' @example inst/examples/ex-graph.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family graph tools
+#' @aliases graph_prune-method
+setGeneric(
+  name = "graph_prune",
+  def = function(object, ...) standardGeneric("graph_prune")
+)
+
+# Temporal Relations ===========================================================
 #' Time Overlap
 #'
 #' Computes the length of overlap of time intervals.
@@ -766,58 +842,13 @@ NULL
 #' @example inst/examples/ex-intervals.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family chronological reasoning tools
+#' @family temporal relations
 #' @aliases overlap-method
 setGeneric(
   name = "overlap",
   def = function(x, ...) standardGeneric("overlap")
 )
 
-#' Graph
-#'
-#' Creates an interval or a stratigraphic graph.
-#' @param x A [`TimeIntervals-class`] object or a two-columns `character`
-#'  [`matrix`] where each row specifies one relation element.
-#' @param type A [`character`] string specifying the type of the graph to be
-#'  computed. It must be one of "`interval`" (the default) or "`stratigraphy`"
-#'  (see details). Any unambiguous substring can be given.
-#' @param direction A [`character`] string specifying the direction of the
-#'  relations in `x`. It must be one of "`above`" (the default) or "`below`"
-#'  (see details). Any unambiguous substring can be given.
-#'  Only used if `type` is "`stratigraphy`".
-#' @param simplify A [`logical`] scalar: should multiple edges and loop edges
-#'  be removed?
-#' @param reduce A [`logical`] scalar: should transitive reduction be performed?
-#'  Only used if `type` is "`stratigraphy`".
-#' @param ... Currently not used.
-#' @details
-#'  \describe{
-#'   \item{`interval`}{An interval graph is the graph showing intersecting
-#'   intervals on a line. As time is linear and not circular, an interval graph
-#'   contains no cycles with more than three edges and no shortcuts (it must be
-#'   a chordal graph).}
-#'   \item{`stratigraphy`}{A stratigraphic graph represents directed
-#'   relationships between (stratigraphic) units (it must be a directed acyclic
-#'   graph).}
-#'  }
-#' @return
-#'  An \pkg{igraph} graph object.
-#' @note
-#'  Experimental: might change in a future release.
-#'
-#'  The \pkg{igraph} and \pkg{relations} packages needs to be installed on your
-#'  machine.
-#' @example inst/examples/ex-graph.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family chronological reasoning tools
-#' @aliases graph-method
-setGeneric(
-  name = "graph",
-  def = function(x, ...) standardGeneric("graph")
-)
-
-# Temporal Relations ===========================================================
 #' Temporal Relations
 #'
 #' Test for the logical relation between time intervals according to Allen's
@@ -940,7 +971,7 @@ setGeneric(
 #' @example inst/examples/ex-relation.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family chronological reasoning tools
+#' @family temporal relations
 #' @name relations
 #' @rdname relations
 NULL

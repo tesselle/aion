@@ -9,10 +9,11 @@ if (requireNamespace("igraph", quietly = TRUE) &&
   )
 
   ## Interval graph
-  g <- graph(int, type = "interval")
+  g <- graph_create(int, type = "interval")
   plot(g)
 
   ## Stratigraphic graph
-  g <- graph(int, type = "strati")
+  g <- graph_create(int, type = "strati")
+  g <- graph_prune(g) # Remove redundant relations
   plot(g, layout = igraph::layout_with_sugiyama)
 }

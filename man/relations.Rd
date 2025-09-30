@@ -250,11 +250,10 @@ Alspaugh, T. (2019). Allen's Interval Algebra.
 URL: \url{https://thomasalspaugh.org/pub/fnd/allen.html}.
 }
 \seealso{
-Other chronological reasoning tools: 
-\code{\link{graph}()},
+Other temporal relations: 
 \code{\link{overlap}()}
 }
 \author{
 N. Frerebeau
 }
-\concept{chronological reasoning tools}
+\concept{temporal relations}

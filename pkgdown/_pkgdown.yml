@@ -16,8 +16,8 @@ reference:
   - has_concept("time intervals")
 - title: Chronological Reasoning
   contents:
-  - has_concept("chronological reasoning tools")
-  - has_concept("Allen's intervals")
+  - has_concept("temporal relations")
+  - has_concept("graph tools")
 - title: Tools
   contents:
   - has_concept("tools")
@@ -33,3 +33,11 @@ reference:
 - title: Datasets
   contents:
   - has_concept("datasets")
+
+articles:
+- title: Stratigraphic Graphs
+  navbar: ~
+  contents: stratigraphy
+- title: Extending aion
+  navbar: ~
+  contents: extending
