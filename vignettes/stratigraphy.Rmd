@@ -1,0 +1,101 @@
+---
+title: "Stratigraphic Graphs"
+author: "N. Frerebeau"
+date: "`r Sys.Date()`"
+output:
+  markdown::html_format:
+    options:
+      toc: true
+      number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Stratigraphic Graphs}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+collapse = TRUE,
+comment = "#>"
+)
+```
+
+```{r setup, message=FALSE}
+library(aion)
+library(igraph)
+```
+
+A stratigraphic graph represents the directed relationships between temporal units (archaeological deposits), from the most recent to the oldest (Harris 1997). It can be formally defined as a directed acyclic graph (DAG), in which each vertex represents a layer and the edges represent stratigraphic relations.
+
+# From an edge matrix
+
+At the most basic level, stratigraphic relations can be captured in a two-column `matrix` (or `data.frame`) of edges, where each row represents a relation element.
+
+```{r harris}
+## Harris 1997, fig. 12
+harris <- data.frame(
+  X = c(1, 1, 1, 2, 3, 4, 5, 6, 6, 7, 8),
+  Y = c(2, 3, 4, 5, 5, 5, 6, 7, 8, 9, 9)
+)
+```
+
+This table of relations can then be used to create a graph. Note that these relations are to be read from the top of the stratigraphic sequence to the bottom ("X is above/later than Y"), but the reverse is possible by changing the `direction` argument in `graph_create()`.
+
+```{r create}
+## Create a graph object
+g <- graph_create(harris, direction = "above", type = "stratigraphy")
+```
+
+Multiple edges and loop edges may need to be removed, as well as redundant relations (by transitive reduction):
+
+```{r prune}
+## Remove redundant relations
+g <- graph_prune(g)
+```
+
+Finally, the graph can be plotted with an appropriate layout:
+
+```{r plot, fig.width=7, fig.height=7, fig.align='center'}
+plot(g, layout = layout_with_sugiyama)
+```
+
+# From time intervals
+
+A stratigraphic graph can also be used to represent temporal relations (posteriority) within a set of time intervals:
+
+```{r strati}
+## Seven time intervals expressed in years CE
+int <- intervals(
+  start = c(1, 2, 3, 6, 9, 13, 17),
+  end = c(7, 4, 15, 14, 11, 18, 19),
+  calendar = CE(),
+  names = c("A", "B", "C", "D", "E", "F", "G")
+)
+
+## Create a stratigraphic graph
+strati <- graph_create(int, type = "stratigraphy")
+
+## Remove redundant relations
+strati <- graph_prune(strati)
+```
+
+Equivalence relations (i.e. at least partial contemporaneity) can also be represented with an interval graph:
+
+```{r interval}
+## Create an interval graph
+inter <- graph_create(int, type = "interval")
+```
+
+These two graphs therefore capture all temporal relations:
+
+```{r graphs, fig.width=7, fig.height=7, out.width='50%', fig.show='hold'}
+## Stratigraphic graph
+plot(strati, layout = layout_with_sugiyama)
+
+## Interval graph
+plot(inter)
+```
+
+# References {.unnumbered}
+
+Harris, Edward C., 1997. *Principles of Archaeological Stratigraphy*. Seconde edition. Academic Press.

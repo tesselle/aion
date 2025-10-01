@@ -168,6 +168,6 @@ As an example, you can create a class that represent the results of the calibrat
 
 All methods defined in **aion** can then be used on objects belonging to this new class (e.g. `plot()`).
 
-# References
+# References {.unnumbered}
 
 Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.

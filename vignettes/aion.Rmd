@@ -174,7 +174,7 @@ mtext(format(CE()), side = 3, line = 3) # Add secondary axis title
 
 Note that **aion** uses the astronomical notation for Gregorian years (there *is* a year 0).
 
-# References
+# References {.unnumbered}
 
 Reingold, Edward M., and Nachum Dershowitz. 2018. *Calendrical Calculations: The Ultimate Edition*. 4th ed. Cambridge University Press. <https://doi.org/10.1017/9781107415058>.
 
