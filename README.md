@@ -77,7 +77,7 @@ Series.” *Journal of Open Source Software*, *9*(96), 6210.
 Frerebeau N, Roe J (2025). *aion: Archaeological Time Series*.
 Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.8032278> <https://doi.org/10.5281/zenodo.8032278>, R
-package version 1.5.0, <https://packages.tesselle.org/aion/>.
+package version 1.6.0, <https://packages.tesselle.org/aion/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -201,6 +201,13 @@ Alspaugh, Thomas. 2019. “Allen’s Interval Algebra.” 2019.
 Frerebeau, Nicolas. 2024. “<span class="nocase">aion</span>: An R
 Package to Represent Archaeological Time Series.” *Journal of Open
 Source Software* 9 (96): 6210. <https://doi.org/10.21105/joss.06210>.
+
+</div>
+
+<div id="ref-harris1997" class="csl-entry">
+
+Harris, Edward C. 1997. *Principles of Archaeological Stratigraphy*.
+Seconde edition. London: Academic Press.
 
 </div>
 

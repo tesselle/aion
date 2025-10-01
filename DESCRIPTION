@@ -1,6 +1,6 @@
 Package: aion
 Title: Archaeological Time Series
-Version: 1.5.0.9000
+Version: 1.6.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944")),
@@ -51,11 +51,11 @@ VignetteBuilder:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Archaeological Science
 X-schema.org-isPartOf: https://www.tesselle.org
-X-schema.org-keywords: time-series, chronology, archaeology,
-    archaeological-science, r-package
+X-schema.org-keywords: time-series, time-intervals, chronology, stratigraphy,
+    archaeology, archaeological-science, r-package
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'

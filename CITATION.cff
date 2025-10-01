@@ -8,7 +8,7 @@ message: 'To cite package "aion" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'aion: Archaeological Time Series'
-version: 1.5.0
+version: 1.6.0
 doi: 10.21105/joss.06210
 identifiers:
 - description: The concept DOI.
@@ -77,7 +77,7 @@ preferred-citation:
   start: '6210'
 repository: https://CRAN.R-project.org/package=aion
 repository-code: https://codeberg.org/tesselle/aion
-url: https://packages.tesselle.org/aion/
+url: https://tesselle.r-universe.dev/aion
 contact:
 - family-names: Frerebeau
   given-names: Nicolas
@@ -85,10 +85,12 @@ contact:
   orcid: https://orcid.org/0000-0001-5759-4944
 keywords:
 - time-series
-- r-package
+- time-intervals
+- chronology
+- stratigraphy
 - archaeology
 - archaeological-science
-- chronology
+- r-package
 references:
 - type: manual
   title: 'aion: Archaeological Time Series'
@@ -101,7 +103,7 @@ references:
   institution:
     name: Université Bordeaux Montaigne
     address: Pessac, France
-  notes: R package version 1.5.0
+  notes: R package version 1.6.0
   url: https://packages.tesselle.org/aion/
   doi: 10.5281/zenodo.8032278
 - type: software
@@ -114,7 +116,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2025'
-  version: '>= 3.3'
+  version: '>= 3.5'
 - type: software
   title: arkhe
   abstract: 'arkhe: Tools for Cleaning Rectangular Data'
@@ -190,10 +192,54 @@ references:
     given-names: Nicolas
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
-    affiliation: Université Bordeaux Montaigne
   year: '2025'
   doi: 10.32614/CRAN.package.folio
   version: '>= 1.5.0'
+- type: software
+  title: fontquiver
+  abstract: 'fontquiver: Set of Installed Fonts'
+  notes: Suggests
+  repository: https://CRAN.R-project.org/package=fontquiver
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  year: '2025'
+  doi: 10.32614/CRAN.package.fontquiver
+- type: software
+  title: igraph
+  abstract: 'igraph: Network Analysis and Visualization'
+  notes: Suggests
+  url: https://r.igraph.org/
+  repository: https://CRAN.R-project.org/package=igraph
+  authors:
+  - family-names: Csárdi
+    given-names: Gábor
+    email: csardi.gabor@gmail.com
+    orcid: https://orcid.org/0000-0001-7098-9676
+  - family-names: Nepusz
+    given-names: Tamás
+    email: ntamas@gmail.com
+    orcid: https://orcid.org/0000-0002-1451-338X
+  - family-names: Traag
+    given-names: Vincent
+    orcid: https://orcid.org/0000-0003-3170-3879
+  - family-names: Horvát
+    given-names: Szabolcs
+    email: szhorvat@gmail.com
+    orcid: https://orcid.org/0000-0002-3100-523X
+  - family-names: Zanini
+    given-names: Fabio
+    email: fabio.zanini@unsw.edu.au
+    orcid: https://orcid.org/0000-0001-7097-8539
+  - family-names: Noom
+    given-names: Daniel
+  - family-names: Müller
+    given-names: Kirill
+    email: kirill@cynkra.com
+    orcid: https://orcid.org/0000-0002-1416-3412
+  year: '2025'
+  doi: 10.32614/CRAN.package.igraph
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -224,6 +270,22 @@ references:
     given-names: Jeffrey
   year: '2025'
   doi: 10.32614/CRAN.package.markdown
+- type: software
+  title: relations
+  abstract: 'relations: Data Structures and Algorithms for Relations'
+  notes: Suggests
+  repository: https://CRAN.R-project.org/package=relations
+  authors:
+  - family-names: Meyer
+    given-names: David
+    email: David.Meyer@R-project.org
+    orcid: https://orcid.org/0000-0002-5196-3048
+  - family-names: Hornik
+    given-names: Kurt
+    email: Kurt.Hornik@R-project.org
+    orcid: https://orcid.org/0000-0003-4198-9911
+  year: '2025'
+  doi: 10.32614/CRAN.package.relations
 - type: software
   title: rsvg
   abstract: 'rsvg: Render SVG Images into PDF, PNG, (Encapsulated) PostScript, or
@@ -279,6 +341,7 @@ references:
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2025'
   doi: 10.32614/CRAN.package.tinysnapshot
+  version: '>= 0.2.0'
 - type: software
   title: tinytest
   abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
