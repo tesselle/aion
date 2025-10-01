@@ -127,101 +127,94 @@ relations.
 \item \strong{Qualitative:} no numeric time spans are considered.
 }
 
-\tabular{lrll}{
-\strong{Relation} \tab \tab \tab \strong{Converse} \cr
+\tabular{lrlr}{
+\strong{Relation} \tab     \tab     \tab  \strong{Converse} \cr
+precedes     \tab (p) \tab (P) \tab   preceded by \cr
+meets        \tab (m) \tab (M) \tab        met by \cr
+overlaps     \tab (o) \tab (O) \tab overlapped by \cr
+finished by  \tab (F) \tab (f) \tab      finishes \cr
+contains     \tab (D) \tab (d) \tab        during \cr
+starts       \tab (s) \tab (S) \tab    started by \cr
+equals       \tab (e) \tab     \tab               \cr
+}
+
 A \emph{precedes} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B     ===
 }\if{html}{\out{</div>}}
 
-\tab (p) \tab (P) \tab
 A \emph{preceded by} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A     ===
 B ===
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{meets} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B    ===
 }\if{html}{\out{</div>}}
 
-\tab (m) \tab (M) \tab
 A \emph{met by} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B    ===
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{overlaps} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B   ===
 }\if{html}{\out{</div>}}
 
-\tab (o) \tab (O) \tab
 A \emph{overlapped by} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A   ===
 B ===
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{finished by} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
 B   ===
 }\if{html}{\out{</div>}}
 
-\tab (F) \tab (f) \tab
 A \emph{finishes} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A   ===
 B =====
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{contains} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
 B  ===
 }\if{html}{\out{</div>}}
 
-\tab (D) \tab (d) \tab
 A \emph{during} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A  ===
 B =====
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{starts} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B =====
 }\if{html}{\out{</div>}}
 
-\tab (s) \tab (S) \tab
 A \emph{started by} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A =====
 B ===
 }\if{html}{\out{</div>}}
 
-\cr
 A \emph{equals} B
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{A ===
 B ===
 }\if{html}{\out{</div>}}
-
-\tab (e) \tab \tab
-\cr
-}
 }
 \examples{
 ## Seven intervals

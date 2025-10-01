@@ -865,101 +865,108 @@ setGeneric(
 #'    relations.
 #'  * **Qualitative:** no numeric time spans are considered.
 #'
-#' \tabular{lrll}{
-#' **Relation** \tab \tab \tab **Converse** \cr
+#' \tabular{lrlr}{
+#'  **Relation** \tab     \tab     \tab  **Converse** \cr
+#'  precedes     \tab (p) \tab (P) \tab   preceded by \cr
+#'  meets        \tab (m) \tab (M) \tab        met by \cr
+#'  overlaps     \tab (o) \tab (O) \tab overlapped by \cr
+#'  finished by  \tab (F) \tab (f) \tab      finishes \cr
+#'  contains     \tab (D) \tab (d) \tab        during \cr
+#'  starts       \tab (s) \tab (S) \tab    started by \cr
+#'  equals       \tab (e) \tab     \tab               \cr
+#' }
+#'
 #' A *precedes* B
 #'
 #' ```
 #' A ===
 #' B     ===
 #' ```
-#' \tab (p) \tab (P) \tab
+#'
 #' A *preceded by* B
 #'
 #' ```
 #' A     ===
 #' B ===
 #' ```
-#' \cr
+#'
 #' A *meets* B
 #'
 #' ```
 #' A ===
 #' B    ===
 #' ```
-#' \tab (m) \tab (M) \tab
+#'
 #' A *met by* B
 #'
 #' ```
 #' A ===
 #' B    ===
 #' ```
-#' \cr
+#'
 #' A *overlaps* B
 #'
 #' ```
 #' A ===
 #' B   ===
 #' ```
-#' \tab (o) \tab (O) \tab
+#'
 #' A *overlapped by* B
 #'
 #' ```
 #' A   ===
 #' B ===
 #' ```
-#' \cr
+#'
 #' A *finished by* B
 #'
 #' ```
 #' A =====
 #' B   ===
 #' ```
-#' \tab (F) \tab (f) \tab
+#'
 #' A *finishes* B
 #'
 #' ```
 #' A   ===
 #' B =====
 #' ```
-#' \cr
+#'
 #' A *contains* B
 #'
 #' ```
 #' A =====
 #' B  ===
 #' ```
-#' \tab (D) \tab (d) \tab
+#'
 #' A *during* B
 #'
 #' ```
 #' A  ===
 #' B =====
 #' ```
-#' \cr
+#'
 #' A *starts* B
 #'
 #' ```
 #' A ===
 #' B =====
 #' ```
-#' \tab (s) \tab (S) \tab
+#'
 #' A *started by* B
 #'
 #' ```
 #' A =====
 #' B ===
 #' ```
-#' \cr
+#'
 #' A *equals* B
 #'
 #' ```
 #' A ===
 #' B ===
 #' ```
-#' \tab (e) \tab \tab
-#' \cr
-#' }
+#'
 #' @return
 #'  A two-columns `matrix` where each row specifies one relation.
 #' @references
