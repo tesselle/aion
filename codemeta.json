@@ -230,7 +230,7 @@
   "applicationCategory": "ArchaeologicalScience",
   "isPartOf": "https://www.tesselle.org",
   "keywords": ["time-series", "time-intervals", "chronology", "stratigraphy", "archaeology", "archaeological-science", "r-package"],
-  "fileSize": "642.794KB",
+  "fileSize": "643.227KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
